@@ -20,7 +20,7 @@ P=eval/.venv/bin/python
 $P eval/fidelity.py  data/synthetic/X__fog_pixel.mp4 --seed data/seeds/X.mp4   # -> fidelity
 $P eval/yolo_eval.py data/synthetic/X__fog_pixel.mp4 --seed data/seeds/X.mp4   # -> yolo (+ results/boxes/<clip_id>.json)
 ```
-Both merge into `results/evals/<clip_id>.json` (`--out` to override) under a lock, keeping keys written by other tools, and recompute `failure` / `failure_reasons` per SPEC from whatever is present (`fidelity.pass`, `yolo.recall_vs_seed`, `reason.agree_vs_seed`).
+Both merge into `results/evals/<clip_id>.json` (`--out` to override) under a lock, keeping keys written by other tools, and recompute `failure` / `failure_reasons` from whatever is present: failure = `fidelity.pass` AND (`yolo.recall_vs_seed` < 0.7 OR `reason.agree_vs_seed` < 0.67).
 
 - `fidelity.edge_ssim`: mean over frames of SSIM(Canny(seed), Canny(variant)), both resized to 640x360 (gray, 5x5 Gaussian, Canny 100/200). `pass` = ≥ `--threshold` (default 0.5).
 - `yolo` backend: **hosted** (default) = the VSS ingest Detector YOLO11s at `$YOLO_URL` (POST `/v1/infer` `{video_base64, filename, include_frames:true}`, Bearer `$GPU_BEARER_TOKEN`; returns every frame `{frame_index, shape, detections:[{label, confidence, bbox xyxy px}]}`, conf 0.4 fixed server-side, no class/stride params; labels mapped to COCO ids; cache `model: hosted-yolo11s`, `frame_indices` recorded and recall uses only frames both caches have). `run_all.py` prefetches in parallel (`--workers 6`): ~7.4 s/request, ~1 s/clip effective. `--backend local` (or `SPORE_YOLO_BACKEND=local`) = ultralytics yolo11n fallback; old local caches in `results/boxes_local_yolo11n/`. Real-archive confirmation: `eval/real_confirm.py`.
@@ -44,7 +44,7 @@ $P eval/reason_eval.py --clip X.mp4         # one-off, prints answers, writes no
 $P eval/run_all.py --reason                 # fidelity + YOLO, then reason_eval (same --only/--force)
 ```
 - Whole mp4 sent as `{"type":"video_url","video_url":{"url":"data:video/mp4;base64,..."}}` (accepted by this NIM). If a server ever rejects it, auto-fallback to 8 sampled JPEG frames as `image_url` parts (`--frames`).
-- Prompt = SPEC's 4 fixed questions, asks for a JSON object `{vehicle_count, lane_change, stopped_vehicle, weather_lighting, summary}`; temperature 0. Parser: JSON (inside `<answer>`/code fences/after `<think>` ok) then per-field regex.
+- Prompt = 4 fixed questions (`QUESTIONS` in `reason_eval.py`), asks for a JSON object `{vehicle_count, lane_change, stopped_vehicle, weather_lighting, summary}`; temperature 0. Parser: JSON (inside `<answer>`/code fences/after `<think>` ok) then per-field regex.
 - Writes `reason: {summary, answers, agree_vs_seed, model, input, parsed_json, seconds, raw, src_mtime}`. `agree_vs_seed` = fraction of {vehicle_count (within ±1), lane_change, stopped_vehicle} equal to the seed's; questions the seed left unanswered are skipped; seeds = 1.0. Merged with `fidelity.merge_eval`, so `failure` includes `reason_disagree` (agree < 0.67).
 - Idempotent: re-asks only if `reason.answers` is missing, the clip's mtime changed, or `--force`; agreement is always recomputed from cached answers. Skips `bad`-rated clips.
 - Timing: ~2.2–2.6 s per 93-frame 1280x720 clip (no cold start, hosted); answers were identical across two `--force` runs (temp 0).

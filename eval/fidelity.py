@@ -70,7 +70,7 @@ def clip_info(src, seed_src=None):
 
 
 def recompute_failure(ev: dict):
-    """SPEC: failure = fidelity.pass AND (recall_vs_seed < 0.7 OR agree_vs_seed < 0.67)."""
+    """failure = fidelity.pass AND (recall_vs_seed < 0.7 OR agree_vs_seed < 0.67)."""
     reasons = []
     rec = (ev.get("yolo") or {}).get("recall_vs_seed")
     integ = ev.get("integrity") or {}

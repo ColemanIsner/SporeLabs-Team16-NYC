@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cosmos3-Reason Q&A (SPEC fixed question set) for every seed + synthetic clip -> results/evals.
+"""Cosmos3-Reason Q&A (fixed question set) for every seed + synthetic clip -> results/evals.
 
 Usage:
   eval/.venv/bin/python eval/reason_eval.py [--only SUBSTR] [--force] [--workers 4]
@@ -49,7 +49,7 @@ REVIEWS = ROOT / "results" / "reviews.json"
 DEFAULT_URL = "http://166.19.38.112:8001"
 STRUCT_KEYS = ("vehicle_count", "lane_change", "stopped_vehicle")
 
-# SPEC "Fixed question set for Cosmos Reason"
+# Fixed question set for Cosmos Reason
 QUESTIONS = [
     "How many vehicles are visible? (integer)",
     "Does any vehicle change lanes? (yes/no)",
