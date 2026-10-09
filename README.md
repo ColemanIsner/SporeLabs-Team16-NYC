@@ -2,13 +2,30 @@
 
 # Spore by SporeLabs
 
-**Spore by SporeLabs: Other tools find what your video archive is missing. Spore grows the data to fill it, and shows where your AI goes blind.**
+**Find where your video AI is weak. Grow the data to fix it.**
 
 Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
+
+![Spore demo: the six-step loop](docs/img/spore_story.png)
 
 We stress-test the exact models inside your VSS pipeline: the hosted YOLO11s (the VSS Detector) and the hosted Cosmos3 Nano Reasoner (the VSS Reasoner). Synthetic clips are never uploaded to or indexed in VSS. VSS is used to search the real archive.
 
 Every number below comes from a JSON file in `results/`, and the file is named next to it.
+
+## The loop
+
+These are the six steps in the demo. The detailed sections below follow the same order.
+
+| # | Step | What happens | Sponsor | Code → output |
+|---|---|---|---|---|
+| 1 | Look | Read every clip indexed in VSS, with its Cosmos Reason caption | VAST | `vss/coverage.py` → `results/inventory.json` |
+| 2 | Find weak spots | Search VSS for conditions the cameras never saw | VAST | `vss/coverage.py` → `results/coverage.json` |
+| 3 | Decide | An LLM on W&B Inference ranks which gaps matter (Weave-traced) | CoreWeave / W&B | `loop/report.py` → `results/gap_report.json` |
+| 4 | Grow data | Physics weather layer + NVIDIA Cosmos Transfer 2.5 on real seed clips | NVIDIA | `gen/weather.py`, `gen/modal_transfer.py` → `data/synthetic/` |
+| 5 | Test | Hosted YOLO11s + Cosmos3 Reasoner on every clip, integrity-gated | NVIDIA, CoreWeave / W&B | `eval/` → `results/evals/`, `severity_curve.json` |
+| 6 | Fix (next) | Retrain on the grown data. First attempt was a negative result, see below | | `fix/` → `results/fix/fix_detail.json` |
+
+Then `loop/spore.py` picks the next weak spot and goes again (`results/loop_log.json`).
 
 ## Results in one screen
 
@@ -18,7 +35,7 @@ Every number below comes from a JSON file in `results/`, and the file is named n
 - **Real footage gives weak, mixed confirmation.** Glare is the strongest case. Fog is **not** confirmed. No real snow footage exists. (`results/real_check.json`)
 - **Fine-tuning gave a negative result.** YOLO fine-tuned on our synthetic clips did not beat a free CLAHE contrast trick and hurt real clips. (`results/fix/fix_detail.json`)
 
-## The 5 stages
+## Stages in the code
 
 ```
 1 Search    VSS /api/v1/search + explore captions over 612 real clips   -> results/coverage.json
