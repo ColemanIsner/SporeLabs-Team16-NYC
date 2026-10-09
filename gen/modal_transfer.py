@@ -115,6 +115,53 @@ def transfer(video_bytes: bytes, prompt: str, name: str = "clip", seed: int = 1,
     return out.read_bytes()
 
 
+@app.function(gpu=GPU, volumes={CACHE: cache_vol}, secrets=[hf_secret], timeout=60 * 60)
+def transfer_full(video_bytes: bytes, prompt: str, name: str = "clip", controls: dict | None = None,
+                  num_steps: int = 35, guidance: int = 7, seed: int = 1,
+                  negative_prompt: str | None = None, preprocess: bool = True) -> bytes:
+    """Non-distilled Cosmos-Transfer2.5-2B, multi-control.
+
+    controls: e.g. {"depth": {"control_weight": 0.6}, "edge": {"control_weight": 0.3}}.
+    Missing control_path -> auto-generated (edge=canny, depth=VideoDepthAnything, seg=GroundingDINO+SAM2,
+    vis=blur). Weights are normalized upstream to sum <= 1. guidance is 0..7.
+    """
+    t0 = time.time()
+    controls = controls or {"edge": {"control_weight": 1.0}}
+    work = Path("/tmp/job") / name
+    work.mkdir(parents=True, exist_ok=True)
+    raw = work / "raw.mp4"
+    raw.write_bytes(video_bytes)
+    inp = work / "input.mp4"
+    if preprocess:
+        _preprocess(raw, inp)
+    else:
+        inp = raw
+    outdir = work / "out"
+    outdir.mkdir(exist_ok=True)
+    spec = {"name": name, "prompt": prompt, "video_path": str(inp), "guidance": int(guidance),
+            "num_steps": int(num_steps), "seed": seed}
+    if negative_prompt:
+        spec["negative_prompt"] = negative_prompt
+    for k, v in controls.items():
+        spec[k] = dict(v)
+    extra = []
+    if len(controls) == 1:  # single-control base model variant (edge/depth/seg/vis)
+        extra = [f"--model={next(iter(controls))}"]
+    spec_path = outdir / f"{name}_spec.json"
+    spec_path.write_text(json.dumps(spec))
+    cmd = [VENV_PY, "examples/inference.py", "-i", str(spec_path), "-o", str(outdir), "--disable-guardrails", *extra]
+    print("RUN:", " ".join(cmd), json.dumps(spec), flush=True)
+    try:
+        subprocess.run(cmd, cwd=WORKDIR, check=True)
+    finally:
+        cache_vol.commit()
+    out = outdir / f"{name}.mp4"
+    if not out.exists():
+        raise RuntimeError(f"no output; files: {list(outdir.iterdir())}")
+    print(f"[transfer_full] {name} done in {time.time() - t0:.1f}s on {GPU}", flush=True)
+    return out.read_bytes()
+
+
 @app.function(gpu=GPU, volumes={CACHE: cache_vol}, secrets=[hf_secret], timeout=60 * 10)
 def check_env() -> str:
     """Validate the image: GPU, torch, imports, CLI --help."""

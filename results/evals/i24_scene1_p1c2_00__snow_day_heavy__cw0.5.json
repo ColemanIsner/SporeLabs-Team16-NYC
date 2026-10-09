@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c2_00__snow_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c2_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7509,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7233,
+    "seconds": 1.22
+  },
+  "reason": {
+    "summary": "Aerial view of a multi-lane highway with moderate traffic flow in both directions. Vehicles are moving steadily, with no lane changes or stops observed. The road surface is dark, and the surrounding area shows patches of snow and dry vegetation.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.05,
+    "raw": "{\"vehicle_count\": 15, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"bright daylight\", \"summary\": \"Aerial view of a multi-lane highway with moderate traffic flow in both directions. Vehicles are moving steadily, with no lane changes or stops observed. The road surface is dark, and the surrounding area shows patches of snow and dry vegetation.\"}",
+    "src_mtime": 1791564509.491,
+    "agree_vs_seed": 1.0,
+    "condition_registered": false
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 5.366,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 7.29,
+    "recall_vs_seed": 0.6206,
+    "recall_vs_seed_all": 0.6206,
+    "frames": 93,
+    "seconds": 2.03,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c2_00__snow_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7521,
+    "recall_intact": 0.6591,
+    "patch_score_median": 0.4225,
+    "n_vehicle_patches": 234,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

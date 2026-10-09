@@ -1,0 +1,61 @@
+{
+  "clip_id": "nyc_003_00__rain_night_heavy__cw0.5",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "rain",
+    "time": "night",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.472,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4502,
+    "seconds": 6.2,
+    "rejected_by": "vehicle_integrity"
+  },
+  "reason": {
+    "summary": "A busy city intersection at night with multiple vehicles and pedestrians. The road is wet, reflecting the lights from street lamps and vehicles. A white SUV, a red car, a motorcycle, and a blue car are visible, along with a yellow taxi and a silver car. Pedestrians are crossing the street, and some are standing near the curb. The scene is illuminated by various light sources, creating a vibrant and dynamic atmosphere.",
+    "answers": {
+      "vehicle_count": 6,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Night time, wet road, street lights and vehicle lights reflecting on the road"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 17.49,
+    "raw": "{\"vehicle_count\": 6, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"Night time, wet road, street lights and vehicle lights reflecting on the road\", \"summary\": \"A busy city intersection at night with multiple vehicles and pedestrians. The road is wet, reflecting the lights from street lamps and vehicles. A white SUV, a red car, a motorcycle, and a blue car are visible, along with a yellow taxi and a silver car. Pedestrians are crossing the street, and some are standing near the curb. The scene is illuminated by various light sources, creating a vibrant and dynamic atmosphere.\"}",
+    "src_mtime": 1791564803.082,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 3.946,
+    "mean_count_person": 3.774,
+    "seed_mean_count": 4.14,
+    "recall_vs_seed": 0.8634,
+    "recall_vs_seed_all": 0.7499,
+    "frames": 93,
+    "seconds": 9.65,
+    "device": "cpu",
+    "boxes": "results/boxes/nyc_003_00__rain_night_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.303,
+    "recall_intact": 0.9,
+    "patch_score_median": 0.3047,
+    "n_vehicle_patches": 132,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

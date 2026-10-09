@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c1_08__rain_night_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c1_08",
+  "condition": {
+    "weather": "rain",
+    "time": "night",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7714,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7547,
+    "seconds": 1.13
+  },
+  "reason": {
+    "summary": "Multiple vehicles are driving on a multi-lane highway at night. The traffic is moving smoothly in both directions with no visible lane changes or stops.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Night time with street lights and headlights visible"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.65,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"Night time with street lights and headlights visible\", \"summary\": \"Multiple vehicles are driving on a multi-lane highway at night. The traffic is moving smoothly in both directions with no visible lane changes or stops.\"}",
+    "src_mtime": 1791564420.261,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 3.075,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 5.054,
+    "recall_vs_seed": 0.4286,
+    "recall_vs_seed_all": 0.4286,
+    "frames": 93,
+    "seconds": 1.86,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_08__rain_night_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7389,
+    "recall_intact": 0.4483,
+    "patch_score_median": 0.4305,
+    "n_vehicle_patches": 157,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

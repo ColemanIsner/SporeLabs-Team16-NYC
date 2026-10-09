@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_00__snow_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7594,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7325,
+    "seconds": 1.13
+  },
+  "reason": {
+    "summary": "A multi-lane highway with moderate traffic moving in both directions. Vehicles are traveling at a steady pace, with some lane changes occurring. The road is bordered by snow-covered areas and trees.",
+    "answers": {
+      "vehicle_count": 20,
+      "lane_change": true,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with snow on the ground and a light dusting of snow on the trees."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 11.99,
+    "raw": "{\"vehicle_count\": 20, \"lane_change\": true, \"stopped_vehicle\": false, \"weather_lighting\": \"Bright daylight with snow on the ground and a light dusting of snow on the trees.\", \"summary\": \"A multi-lane highway with moderate traffic moving in both directions. Vehicles are traveling at a steady pace, with some lane changes occurring. The road is bordered by snow-covered areas and trees.\"}",
+    "src_mtime": 1791564409.889,
+    "agree_vs_seed": 0.3333,
+    "condition_registered": true
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7",
+    "reason_disagree"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 5.022,
+    "mean_count_person": 0.172,
+    "seed_mean_count": 6.817,
+    "recall_vs_seed": 0.5314,
+    "recall_vs_seed_all": 0.5314,
+    "frames": 93,
+    "seconds": 1.96,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_00__snow_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7343,
+    "recall_intact": 0.5724,
+    "patch_score_median": 0.4243,
+    "n_vehicle_patches": 207,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "seed_id": "i24_c1_007",
+    "dataset": "i24_cam-1",
+    "vss_id": "vss-9f2a71",
+    "src": "media/seed_a.mp4",
+    "start_s": 0,
+    "end_s": 6,
+    "fps": 16,
+    "width": 1280,
+    "height": 720,
+    "notes": "dense traffic, 1 lane change"
+  },
+  {
+    "seed_id": "i24_c1_012",
+    "dataset": "i24_cam-1",
+    "vss_id": "vss-b03c18",
+    "src": "media/seed_b.mp4",
+    "start_s": 12,
+    "end_s": 18,
+    "fps": 16,
+    "width": 1280,
+    "height": 720,
+    "notes": "light traffic, stopped truck on shoulder"
+  }
+]

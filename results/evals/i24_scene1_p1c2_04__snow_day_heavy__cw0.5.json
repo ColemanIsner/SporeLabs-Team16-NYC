@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__snow_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with moderate traffic flow in both directions. Vehicles, including cars, SUVs, and trucks, are traveling at steady speeds. The road is bordered by snow-dusted vegetation, and the scene is illuminated by bright sunlight.",
+    "answers": {
+      "vehicle_count": 20,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear visibility and long shadows"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.97,
+    "raw": "```json\n{\n  \"vehicle_count\": 20,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear visibility and long shadows\",\n  \"summary\": \"An aerial view of a multi-lane highway with moderate traffic flow in both directions. Vehicles, including cars, SUVs, and trucks, are traveling at steady speeds. The road is bordered by snow-dusted vegetation, and the scene is illuminated by bright sunlight.\"\n}\n```",
+    "src_mtime": 1791564522.828,
+    "agree_vs_seed": 1.0,
+    "condition_registered": false
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "fidelity": {
+    "edge_ssim": 0.7561,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7199,
+    "seconds": 1.06,
+    "rejected_by": "vehicle_integrity"
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 6.495,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 8.366,
+    "recall_vs_seed": 0.6396,
+    "recall_vs_seed_all": 0.6396,
+    "frames": 93,
+    "seconds": 6.69,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__snow_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.6856,
+    "recall_intact": 0.674,
+    "patch_score_median": 0.4224,
+    "n_vehicle_patches": 264,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

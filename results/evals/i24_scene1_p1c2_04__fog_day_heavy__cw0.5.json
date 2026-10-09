@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__fog_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7773,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7419,
+    "seconds": 1.1
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with moderate traffic flowing in both directions. Vehicles, including cars, SUVs, and trucks, maintain steady speeds and stay within their lanes. The road surface is dry, and the surrounding landscape features dry grass and a concrete barrier separating the opposing traffic flows.",
+    "answers": {
+      "vehicle_count": 20,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear skies and strong sun glare on the left side of the frame."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 9.6,
+    "raw": "```json\n{\n  \"vehicle_count\": 20,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear skies and strong sun glare on the left side of the frame.\",\n  \"summary\": \"An aerial view of a multi-lane highway with moderate traffic flowing in both directions. Vehicles, including cars, SUVs, and trucks, maintain steady speeds and stay within their lanes. The road surface is dry, and the surrounding landscape features dry grass and a concrete barrier separating the opposing traffic flows.\"\n}\n```",
+    "src_mtime": 1791564514.063,
+    "agree_vs_seed": 1.0,
+    "condition_registered": false
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 6.473,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 8.366,
+    "recall_vs_seed": 0.6332,
+    "recall_vs_seed_all": 0.6332,
+    "frames": 93,
+    "seconds": 1.86,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__fog_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.75,
+    "recall_intact": 0.697,
+    "patch_score_median": 0.4559,
+    "n_vehicle_patches": 264,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

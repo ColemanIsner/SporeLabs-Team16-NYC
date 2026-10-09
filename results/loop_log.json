@@ -1,0 +1,300 @@
+[
+  {
+    "kind": "spore",
+    "iteration": 1,
+    "mode": "stage3",
+    "started": 1791564903.022552,
+    "status": "done",
+    "stages": {
+      "3": {
+        "name": "fill",
+        "t0": 1791564903.023125,
+        "status": "done",
+        "condition": "rain",
+        "label": "Heavy rain",
+        "arm": {
+          "weather": "rain",
+          "time": "day",
+          "intensity": "heavy"
+        },
+        "seeds": [
+          "i24_scene1_p1c1_00",
+          "i24_scene1_p1c1_04"
+        ],
+        "clips": [
+          "i24_scene1_p1c1_00__phys_rain",
+          "i24_scene1_p1c1_04__phys_rain"
+        ],
+        "generators": [
+          "physics"
+        ],
+        "t1": 1791565006.286252,
+        "seconds": 103.3
+      }
+    },
+    "running_stage": null,
+    "finished": 1791565006.288139
+  },
+  {
+    "kind": "spore",
+    "iteration": 2,
+    "mode": "stage4",
+    "started": 1791565033.9547908,
+    "status": "done",
+    "stages": {
+      "4": {
+        "name": "measure",
+        "t0": 1791565033.9552572,
+        "status": "done",
+        "steps": [
+          {
+            "step": "eval/run_all.py --reason",
+            "ok": true,
+            "seconds": 37.4,
+            "tail": ""
+          },
+          {
+            "step": "eval/render_all.py",
+            "ok": true,
+            "seconds": 63.6,
+            "tail": ""
+          },
+          {
+            "step": "vss/vss_eval.py",
+            "ok": true,
+            "seconds": 10.6,
+            "tail": ""
+          }
+        ],
+        "n_clips": 2,
+        "n_evaluated": 2,
+        "mean_recall": 0.148,
+        "failure_rate": 1.0,
+        "per_clip": [
+          {
+            "clip_id": "i24_scene1_p1c1_00__phys_rain",
+            "recall": 0.147,
+            "agree": 1.0,
+            "fidelity": 0.7702,
+            "failure": true
+          },
+          {
+            "clip_id": "i24_scene1_p1c1_04__phys_rain",
+            "recall": 0.1483,
+            "agree": null,
+            "fidelity": 0.7188,
+            "failure": true
+          }
+        ],
+        "top_failures": [
+          {
+            "arm": "rain_day_heavy",
+            "failure_rate": 1.0,
+            "n": 2,
+            "mean_recall": 0.148
+          },
+          {
+            "arm": "fog_day_heavy",
+            "failure_rate": 0.556,
+            "n": 9,
+            "mean_recall": 0.334
+          },
+          {
+            "arm": "clear_night_light",
+            "failure_rate": 0.444,
+            "n": 9,
+            "mean_recall": 0.141
+          },
+          {
+            "arm": "snow_day_heavy",
+            "failure_rate": 0.333,
+            "n": 9,
+            "mean_recall": 0.406
+          }
+        ],
+        "t1": 1791565145.530856,
+        "seconds": 111.6
+      }
+    },
+    "running_stage": null,
+    "finished": 1791565145.533987
+  },
+  {
+    "kind": "spore",
+    "iteration": 3,
+    "mode": "loop",
+    "started": 1791565179.959229,
+    "status": "done",
+    "stages": {
+      "1": {
+        "name": "search",
+        "t0": 1791565179.960243,
+        "status": "done",
+        "headline": "Search the real archive for each condition",
+        "n_indexed": 612,
+        "n_highway": 127,
+        "gaps": [
+          "rain",
+          "fog",
+          "snow",
+          "glare",
+          "night_rain"
+        ],
+        "per_condition": {
+          "clear_day": 23,
+          "night": 5,
+          "rain": 0,
+          "fog": 0,
+          "snow": 0,
+          "glare": 0,
+          "night_rain": 0
+        },
+        "t1": 1791565200.259555,
+        "seconds": 20.3
+      },
+      "2": {
+        "name": "report",
+        "t0": 1791565200.260832,
+        "status": "done",
+        "headline": "Explain the gap (W&B Inference)",
+        "gap": "Real archive coverage is missing highway scenes in heavy rain: 0 of 8 rain clips are highway, while synthetic heavy-rain validation fails completely.",
+        "next_condition": "rain",
+        "next_label": "Heavy rain",
+        "recommendation": "Fill the heavy-rain highway gap next because it is the highest-priority candidate and shows total synthetic failure with near-zero recall.",
+        "source": "llm",
+        "t1": 1791565211.600744,
+        "seconds": 11.3
+      },
+      "3": {
+        "name": "fill",
+        "t0": 1791565211.601859,
+        "status": "done",
+        "headline": "Generate Heavy rain clips",
+        "condition": "rain",
+        "label": "Heavy rain",
+        "arm": {
+          "weather": "rain",
+          "time": "day",
+          "intensity": "heavy"
+        },
+        "seeds": [
+          "i24_scene1_p1c1_08",
+          "i24_scene1_p1c2_00"
+        ],
+        "clips": [
+          "i24_scene1_p1c1_08__phys_rain",
+          "i24_scene1_p1c2_00__phys_rain"
+        ],
+        "generators": [
+          "physics"
+        ],
+        "t1": 1791565236.796941,
+        "seconds": 25.2
+      },
+      "4": {
+        "name": "measure",
+        "t0": 1791565236.797961,
+        "status": "done",
+        "headline": "Measure the stack on the new clips",
+        "n_clips": 2,
+        "n_evaluated": 2,
+        "mean_recall": 0.044,
+        "failure_rate": 1.0,
+        "per_clip": [
+          {
+            "clip_id": "i24_scene1_p1c1_08__phys_rain",
+            "recall": 0.084,
+            "agree": 0.6667,
+            "fidelity": 0.741,
+            "failure": true
+          },
+          {
+            "clip_id": "i24_scene1_p1c2_00__phys_rain",
+            "recall": 0.0032,
+            "agree": 1.0,
+            "fidelity": 0.736,
+            "failure": true
+          }
+        ],
+        "top_failures": [
+          {
+            "arm": "rain_day_heavy",
+            "failure_rate": 1.0,
+            "n": 4,
+            "mean_recall": 0.096
+          },
+          {
+            "arm": "fog_day_heavy",
+            "failure_rate": 0.556,
+            "n": 9,
+            "mean_recall": 0.334
+          },
+          {
+            "arm": "clear_night_light",
+            "failure_rate": 0.444,
+            "n": 9,
+            "mean_recall": 0.141
+          },
+          {
+            "arm": "snow_day_heavy",
+            "failure_rate": 0.333,
+            "n": 9,
+            "mean_recall": 0.406
+          }
+        ],
+        "steps": [
+          {
+            "step": "eval/run_all.py --reason",
+            "ok": true,
+            "seconds": 16.0,
+            "tail": ""
+          },
+          {
+            "step": "eval/render_all.py",
+            "ok": true,
+            "seconds": 5.1,
+            "tail": ""
+          },
+          {
+            "step": "vss/vss_eval.py",
+            "ok": true,
+            "seconds": 13.1,
+            "tail": ""
+          }
+        ],
+        "t1": 1791565270.938171,
+        "seconds": 34.1
+      },
+      "5": {
+        "name": "continue",
+        "t0": 1791565270.9392488,
+        "status": "done",
+        "headline": "Re-search the archive, pick the next gap",
+        "n_indexed": 612,
+        "n_highway": 127,
+        "gaps": [
+          "rain",
+          "fog",
+          "snow",
+          "glare",
+          "night_rain"
+        ],
+        "per_condition": {
+          "clear_day": 23,
+          "night": 5,
+          "rain": 0,
+          "fog": 0,
+          "snow": 0,
+          "glare": 0,
+          "night_rain": 0
+        },
+        "t1": 1791565293.9802198,
+        "seconds": 23.0
+      }
+    },
+    "running_stage": null,
+    "gap_id": "rain",
+    "summary": "Heavy rain: 0 real highway clips -> filled 2 -> recall 0.044",
+    "finished": 1791565293.981146
+  }
+]

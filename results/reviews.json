@@ -1,0 +1,92 @@
+{
+  "data/synthetic/nyc_003_00__rain_night_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "nyc_003_00__rain_night_heavy"
+  },
+  "data/synthetic/nyc_003_00__fog_day_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "nyc_003_00__fog_day_heavy"
+  },
+  "data/synthetic/nyc_002_00__rain_night_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "nyc_002_00__rain_night_heavy"
+  },
+  "data/synthetic/nyc_002_00__fog_day_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "nyc_002_00__fog_day_heavy"
+  },
+  "data/synthetic/i24_scene1_p1c3_08__snow_dusk_light.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c3_08__snow_dusk_light"
+  },
+  "data/synthetic/i24_scene1_p1c3_08__rain_night_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c3_08__rain_night_heavy"
+  },
+  "data/synthetic/i24_scene1_p1c3_08__fog_day_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c3_08__fog_day_heavy"
+  },
+  "data/synthetic/i24_scene1_p1c2_04__snow_dusk_light.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c2_04__snow_dusk_light"
+  },
+  "data/synthetic/i24_scene1_p1c2_04__rain_night_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c2_04__rain_night_heavy"
+  },
+  "data/synthetic/i24_scene1_p1c2_04__fog_day_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c2_04__fog_day_heavy"
+  },
+  "data/synthetic/i24_scene1_p1c1_00__snow_dusk_light.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c1_00__snow_dusk_light"
+  },
+  "data/synthetic/i24_scene1_p1c1_00__rain_night_heavy.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "i24_scene1_p1c1_00__rain_night_heavy"
+  },
+  "data/synthetic/i24_scene1_p1c1_00__fog_day_heavy.mp4": {
+    "rating": "meh",
+    "note": "",
+    "clip_id": "i24_scene1_p1c1_00__fog_day_heavy"
+  },
+  "data/sweep/nyc_002_00__rain_night_heavy__cw0.7.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "nyc_002_00__rain_night_heavy__cw0.7"
+  },
+  "data/sweep/nyc_002_00__rain_night_heavy__cw0.5.mp4": {
+    "rating": "bad",
+    "note": "",
+    "clip_id": "nyc_002_00__rain_night_heavy__cw0.5"
+  },
+  "data/sweep/nyc_002_00__fog_day_heavy__cw0.5.mp4": {
+    "rating": "meh",
+    "note": "",
+    "clip_id": "nyc_002_00__fog_day_heavy__cw0.5"
+  },
+  "data/sweep/i24_scene1_p1c2_04__rain_night_heavy__cw0.3.mp4": {
+    "rating": "good",
+    "note": "",
+    "clip_id": "i24_scene1_p1c2_04__rain_night_heavy__cw0.3"
+  },
+  "data/synthetic_cw1/i24_scene1_p1c1_00__fog_day_heavy.mp4": {
+    "rating": "meh",
+    "note": "",
+    "clip_id": "i24_scene1_p1c1_00__fog_day_heavy"
+  }
+}

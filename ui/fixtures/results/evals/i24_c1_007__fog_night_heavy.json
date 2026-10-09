@@ -1,0 +1,34 @@
+{
+  "clip_id": "i24_c1_007__fog_night_heavy",
+  "seed_id": "i24_c1_007",
+  "condition": {
+    "weather": "fog",
+    "time": "night",
+    "intensity": "heavy",
+    "kind": "generative"
+  },
+  "fidelity": {
+    "edge_ssim": 0.58,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 2.2,
+    "recall_vs_seed": 0.38,
+    "boxes": "results/boxes/i24_c1_007__fog_night_heavy.json"
+  },
+  "reason": {
+    "summary": "Heavy fog at night; visibility poor, 2 vehicles faintly visible.",
+    "answers": {
+      "vehicle_count": 2,
+      "lane_change": false,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 0.33
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7",
+    "reason_disagree"
+  ]
+}

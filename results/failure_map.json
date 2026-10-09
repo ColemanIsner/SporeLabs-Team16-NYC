@@ -1,0 +1,84 @@
+{
+  "arms": [
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 0.8,
+        "base": "seed",
+        "physics": "rain"
+      },
+      "arm": "rain_day_heavy",
+      "n": 4,
+      "failure_rate": 1.0,
+      "mean_recall": 0.096,
+      "mean_agree": 0.833,
+      "fidelity_rejects": 0
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "fog_day_heavy",
+      "n": 9,
+      "failure_rate": 0.556,
+      "mean_recall": 0.334,
+      "mean_agree": 0.963,
+      "fidelity_rejects": 2
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "night",
+        "intensity": "light",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "clear_night_light",
+      "n": 9,
+      "failure_rate": 0.444,
+      "mean_recall": 0.141,
+      "mean_agree": 0.889,
+      "fidelity_rejects": 2
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "snow_day_heavy",
+      "n": 9,
+      "failure_rate": 0.333,
+      "mean_recall": 0.406,
+      "mean_agree": 0.852,
+      "fidelity_rejects": 2
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "night",
+        "intensity": "heavy",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "rain_night_heavy",
+      "n": 9,
+      "failure_rate": 0.333,
+      "mean_recall": 0.116,
+      "mean_agree": 0.926,
+      "fidelity_rejects": 2
+    }
+  ],
+  "budget_used": 48,
+  "rounds": 0,
+  "updated": 1791565270.934718
+}

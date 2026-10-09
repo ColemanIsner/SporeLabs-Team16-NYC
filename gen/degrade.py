@@ -51,7 +51,7 @@ CONDS = {
         "format=yuv420p,geq=lum='lum(X,Y)*(0.30+0.40*Y/H)+190*(0.70-0.40*Y/H)'"
         ":cb='128+(cb(X,Y)-128)*0.4':cr='128+(cr(X,Y)-128)*0.4',gblur=sigma=1.5",
         [], {"weather": "fog", "time": "day", "intensity": "heavy"}),
-    "night_pixel": ("eq=brightness=-0.18:gamma=0.55:saturation=0.45,colorbalance=bs=0.12:bm=0.06,noise=alls=14:allf=t",
+    "night_pixel": ("eq=brightness=-0.12:gamma=0.6:saturation=0.45,colorbalance=bs=0.12:bm=0.06,noise=alls=14:allf=t",
                     [], {"weather": "clear", "time": "night", "intensity": "heavy"}),
 }
 

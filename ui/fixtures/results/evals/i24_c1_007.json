@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_c1_007",
+  "seed_id": "i24_c1_007",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "generative"
+  },
+  "fidelity": {
+    "edge_ssim": 1.0,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 5.8,
+    "recall_vs_seed": 1.0,
+    "boxes": ""
+  },
+  "reason": {
+    "summary": "Six vehicles travel along a multi-lane highway in clear daylight; one sedan changes from the middle lane to the left lane.",
+    "answers": {
+      "vehicle_count": 6,
+      "lane_change": true,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

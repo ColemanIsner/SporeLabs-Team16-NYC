@@ -1,0 +1,72 @@
+[
+ {
+  "clip_id": "i24_scene1_p1c2_08__rain_night_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c2_08",
+  "condition": {
+   "weather": "rain",
+   "time": "night",
+   "intensity": "heavy",
+   "kind": "generative",
+   "control_weight": 0.5
+  },
+  "label": "HEAVY RAIN \u00b7 NIGHT",
+  "mp4": "media/a_rain_night_heavy.mp4",
+  "frames": 93,
+  "recall_vs_seed": 0.0247,
+  "pooled_recall": 0.026,
+  "recall_intact": 0.0317,
+  "vehicles_intact": 0.8025,
+  "patch_score_median": 0.4552,
+  "render_recall_intact": 0.0298,
+  "seed_mean_count": 5.129,
+  "seed_mean_intact": 4.129,
+  "mean_detected": 0.108,
+  "poster_frame": 57,
+  "poster_missed": 9,
+  "poster_seed_count": 9,
+  "fidelity_pass": true,
+  "edge_ssim": 0.7821,
+  "reason_seed": "14 vehicles  \u00b7  \u201cBright daylight with clear visibility\u201d",
+  "reason_variant": "11 vehicles  \u00b7  \u201cNight time with streetlights and headlights visible, wet road surface reflecting light\u201d",
+  "failure": true,
+  "failure_reasons": [
+   "recall<0.7"
+  ],
+  "recall_drop": 0.9683
+ },
+ {
+  "clip_id": "i24_scene1_p1c1_04__clear_night_light__cw0.5",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+   "weather": "clear",
+   "time": "night",
+   "intensity": "light",
+   "kind": "generative",
+   "control_weight": 0.5
+  },
+  "label": "NIGHT",
+  "mp4": "media/a_fog_day_heavy.mp4",
+  "frames": 93,
+  "recall_vs_seed": 0.0708,
+  "pooled_recall": 0.0605,
+  "recall_intact": 0.0486,
+  "vehicles_intact": 0.7461,
+  "patch_score_median": 0.4146,
+  "render_recall_intact": 0.0537,
+  "seed_mean_count": 6.075,
+  "seed_mean_intact": 4.441,
+  "mean_detected": 0.269,
+  "poster_frame": 0,
+  "poster_missed": 10,
+  "poster_seed_count": 10,
+  "fidelity_pass": true,
+  "edge_ssim": 0.7559,
+  "reason_seed": "25 vehicles  \u00b7  \u201cBright daylight with clear visibility\u201d",
+  "reason_variant": "15 vehicles  \u00b7  \u201cNight time with streetlights and vehicle headlights\u201d",
+  "failure": true,
+  "failure_reasons": [
+   "recall<0.7"
+  ],
+  "recall_drop": 0.9514
+ }
+]

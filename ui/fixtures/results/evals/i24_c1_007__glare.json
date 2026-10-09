@@ -1,0 +1,32 @@
+{
+  "clip_id": "i24_c1_007__glare",
+  "seed_id": "i24_c1_007",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "pixel",
+    "effect": "glare"
+  },
+  "fidelity": {
+    "edge_ssim": 0.71,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 5.0,
+    "recall_vs_seed": 0.83,
+    "boxes": "results/boxes/i24_c1_007__glare.json"
+  },
+  "reason": {
+    "summary": "Highway with glare; about 5 vehicles.",
+    "answers": {
+      "vehicle_count": 5,
+      "lane_change": true,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

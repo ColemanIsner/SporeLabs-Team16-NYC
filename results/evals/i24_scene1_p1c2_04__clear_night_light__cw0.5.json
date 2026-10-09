@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__clear_night_light__cw0.5",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "clear",
+    "time": "night",
+    "intensity": "light",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "reason": {
+    "summary": "Aerial view of a multi-lane highway at night with moderate traffic flowing in both directions. Vehicles are moving steadily without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 18,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "night time, well lit by street lights"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 7.07,
+    "raw": "{\"vehicle_count\": 18, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"night time, well lit by street lights\", \"summary\": \"Aerial view of a multi-lane highway at night with moderate traffic flowing in both directions. Vehicles are moving steadily without any lane changes or stops.\"}",
+    "src_mtime": 1791564525.837,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "fidelity": {
+    "edge_ssim": 0.7944,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7545,
+    "seconds": 1.25,
+    "rejected_by": "vehicle_integrity"
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 3.903,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 8.366,
+    "recall_vs_seed": 0.3953,
+    "recall_vs_seed_all": 0.3953,
+    "frames": 93,
+    "seconds": 2.3,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__clear_night_light__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.678,
+    "recall_intact": 0.4693,
+    "patch_score_median": 0.4208,
+    "n_vehicle_patches": 264,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

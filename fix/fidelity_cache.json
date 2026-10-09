@@ -1,0 +1,72 @@
+{
+ "i24_scene1_p1c2_04__snow_day_heavy__cw0.5": {
+  "edge_ssim": 0.7561,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_04__clear_night_light__cw0.5": {
+  "edge_ssim": 0.7944,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_08__fog_day_heavy__cw0.5": {
+  "edge_ssim": 0.7965,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_08__rain_night_heavy__cw0.5": {
+  "edge_ssim": 0.7821,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_08__snow_day_heavy__cw0.5": {
+  "edge_ssim": 0.7628,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_08__clear_night_light__cw0.5": {
+  "edge_ssim": 0.8029,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c3_00__fog_day_heavy__cw0.5": {
+  "edge_ssim": 0.7662,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "nyc_002_00__rain_night_heavy__cw0.5": {
+  "edge_ssim": 0.4741,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_002_00__snow_day_heavy__cw0.5": {
+  "edge_ssim": 0.4749,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_002_00__clear_night_light__cw0.5": {
+  "edge_ssim": 0.4541,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_003_00__fog_day_heavy__cw0.5": {
+  "edge_ssim": 0.4955,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_003_00__rain_night_heavy__cw0.5": {
+  "edge_ssim": 0.472,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_003_00__snow_day_heavy__cw0.5": {
+  "edge_ssim": 0.4881,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_003_00__clear_night_light__cw0.5": {
+  "edge_ssim": 0.4823,
+  "pass": false,
+  "source": "fix/fallback"
+ }
+}

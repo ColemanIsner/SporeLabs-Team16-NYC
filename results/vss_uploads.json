@@ -1,0 +1,1304 @@
+{
+  "cw1/i24_scene1_p1c1_00__fog_day_heavy": {
+    "clip_id": "i24_scene1_p1c1_00__fog_day_heavy",
+    "seed_id": "i24_scene1_p1c1_00",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "object_key": "team-16/20261009_164356_0262313a.mp4",
+    "uploaded_at": 1791564236.911744,
+    "upload_seconds": 1.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_00,fog,day,heavy,spore",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 1.0,
+    "src": "data/synthetic_cw1/i24_scene1_p1c1_00__fog_day_heavy.mp4"
+  },
+  "_meta": {
+    "stale_reviews_baseline": {
+      "data/synthetic/nyc_003_00__rain_night_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "nyc_003_00__rain_night_heavy"
+      },
+      "data/synthetic/nyc_003_00__fog_day_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "nyc_003_00__fog_day_heavy"
+      },
+      "data/synthetic/nyc_002_00__rain_night_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "nyc_002_00__rain_night_heavy"
+      },
+      "data/synthetic/nyc_002_00__fog_day_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "nyc_002_00__fog_day_heavy"
+      },
+      "data/synthetic/i24_scene1_p1c3_08__snow_dusk_light.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c3_08__snow_dusk_light"
+      },
+      "data/synthetic/i24_scene1_p1c3_08__rain_night_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c3_08__rain_night_heavy"
+      },
+      "data/synthetic/i24_scene1_p1c3_08__fog_day_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c3_08__fog_day_heavy"
+      },
+      "data/synthetic/i24_scene1_p1c2_04__snow_dusk_light.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c2_04__snow_dusk_light"
+      },
+      "data/synthetic/i24_scene1_p1c2_04__rain_night_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c2_04__rain_night_heavy"
+      },
+      "data/synthetic/i24_scene1_p1c2_04__fog_day_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c2_04__fog_day_heavy"
+      },
+      "data/synthetic/i24_scene1_p1c1_00__snow_dusk_light.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c1_00__snow_dusk_light"
+      },
+      "data/synthetic/i24_scene1_p1c1_00__rain_night_heavy.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c1_00__rain_night_heavy"
+      },
+      "data/synthetic/i24_scene1_p1c1_00__fog_day_heavy.mp4": {
+        "rating": "meh",
+        "note": "",
+        "clip_id": "i24_scene1_p1c1_00__fog_day_heavy"
+      },
+      "data/seeds/nyc_003_00.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "nyc_003_00"
+      },
+      "data/raw/20261008_065749_VID_20261006_174811_003_chunk_0000.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "20261008_065749_VID_20261006_174811_003_chunk_0000"
+      },
+      "data/seeds/nyc_002_00.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "nyc_002_00"
+      },
+      "data/seeds/i24_scene1_p1c3_08.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "i24_scene1_p1c3_08"
+      },
+      "data/raw/20261008_064433_VID_20261006_171812_002_chunk_0000.mp4": {
+        "rating": "bad",
+        "note": "",
+        "clip_id": "20261008_064433_VID_20261006_171812_002_chunk_0000"
+      }
+    },
+    "note": "baseline = reviews.json as of 12:42, all of which rated the control_weight=1.0 set (now data/synthetic_cw1). Identical entries are ignored for new cw0.5 clips at the same path."
+  },
+  "i24_scene1_p1c1_00__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_00__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164621_d9a7debb.mp4",
+    "uploaded_at": 1791564381.675463,
+    "upload_seconds": 2.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_00,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_00__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_00__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_00__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164624_3e7861c3.mp4",
+    "uploaded_at": 1791564384.9782531,
+    "upload_seconds": 3.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_00,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_00__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_00__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_00__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164725_80286b94.mp4",
+    "uploaded_at": 1791564445.452928,
+    "upload_seconds": 1.9,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_00,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_00__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_00__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_00__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164727_7bb90961.mp4",
+    "uploaded_at": 1791564447.7537699,
+    "upload_seconds": 2.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_00,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_00__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_04__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_04__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164731_585d32c4.mp4",
+    "uploaded_at": 1791564451.464416,
+    "upload_seconds": 3.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_04,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_04__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_04__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_04__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164734_dfd2c14f.mp4",
+    "uploaded_at": 1791564455.0691168,
+    "upload_seconds": 3.6,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_04,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_04__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_04__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_04__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164738_8a6692e3.mp4",
+    "uploaded_at": 1791564458.19943,
+    "upload_seconds": 3.1,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_04,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_04__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_04__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_04__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164741_8250be28.mp4",
+    "uploaded_at": 1791564461.634988,
+    "upload_seconds": 3.4,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_04,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_04__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_08__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_08__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164748_aa13fe39.mp4",
+    "uploaded_at": 1791564468.666411,
+    "upload_seconds": 7.0,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_08,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_08__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_08__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_08__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164752_e28de3e8.mp4",
+    "uploaded_at": 1791564472.503693,
+    "upload_seconds": 3.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_08,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_08__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_08__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_08__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164826_f63bd038.mp4",
+    "uploaded_at": 1791564506.291432,
+    "upload_seconds": 2.0,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_08,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_08__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_08__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c1_08__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164827_30ca7846.mp4",
+    "uploaded_at": 1791564507.8551009,
+    "upload_seconds": 1.6,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_08,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_08__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_00__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_00__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164829_aae4397e.mp4",
+    "uploaded_at": 1791564509.6044228,
+    "upload_seconds": 1.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_00,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_00__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_00__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_00__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164904_4cd541de.mp4",
+    "uploaded_at": 1791564544.423483,
+    "upload_seconds": 3.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_00,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_00__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_00__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_00__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164906_19863a94.mp4",
+    "uploaded_at": 1791564546.728628,
+    "upload_seconds": 2.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_00,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_00__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_00__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_00__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164909_159e990c.mp4",
+    "uploaded_at": 1791564549.5240982,
+    "upload_seconds": 2.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_00,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_00__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_04__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_04__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164911_336a148c.mp4",
+    "uploaded_at": 1791564551.97639,
+    "upload_seconds": 2.5,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_04,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_04__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_04__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_04__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164914_c65089f8.mp4",
+    "uploaded_at": 1791564554.897281,
+    "upload_seconds": 2.9,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_04,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_04__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_04__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_04__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164918_a2f954c7.mp4",
+    "uploaded_at": 1791564558.3878899,
+    "upload_seconds": 3.5,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_04,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_04__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_04__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_04__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164922_ea4632f2.mp4",
+    "uploaded_at": 1791564562.6188102,
+    "upload_seconds": 4.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_04,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_04__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_08__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_08__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_164957_2eadcd9f.mp4",
+    "uploaded_at": 1791564597.555959,
+    "upload_seconds": 3.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_08,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_08__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_08__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_08__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165001_af4af115.mp4",
+    "uploaded_at": 1791564601.2354078,
+    "upload_seconds": 3.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_08,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_08__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_08__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_08__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165003_767502a3.mp4",
+    "uploaded_at": 1791564603.456269,
+    "upload_seconds": 2.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_08,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_08__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c2_08__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c2_08__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165006_a03fe304.mp4",
+    "uploaded_at": 1791564606.3055658,
+    "upload_seconds": 2.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_08,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_08__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_00__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_00__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165042_1c403570.mp4",
+    "uploaded_at": 1791564642.926686,
+    "upload_seconds": 2.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_00,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_00__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_00__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_00__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165341_b07bd3d4.mp4",
+    "uploaded_at": 1791564821.286726,
+    "upload_seconds": 2.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_00,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_00__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_00__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_00__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165343_9ea230f4.mp4",
+    "uploaded_at": 1791564823.565233,
+    "upload_seconds": 2.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_00,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_00__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_00__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_00__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165346_f71e5c47.mp4",
+    "uploaded_at": 1791564827.165302,
+    "upload_seconds": 3.6,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_00,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_00__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_04__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_04__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165348_43118f0e.mp4",
+    "uploaded_at": 1791564829.8218539,
+    "upload_seconds": 2.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_04,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_04__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_04__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_04__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165351_0dc7fbb6.mp4",
+    "uploaded_at": 1791564831.9623659,
+    "upload_seconds": 2.1,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_04,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_04__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_04__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_04__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165353_3288b9fe.mp4",
+    "uploaded_at": 1791564834.698893,
+    "upload_seconds": 2.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_04,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_04__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_04__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_04__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165356_3ed78540.mp4",
+    "uploaded_at": 1791564837.4838688,
+    "upload_seconds": 2.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_04,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_04__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_08__fog_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_08__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165359_8e2f0edc.mp4",
+    "uploaded_at": 1791564839.556903,
+    "upload_seconds": 2.1,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_08,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_08__fog_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_08__rain_night_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_08__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165400_1cd8befe.mp4",
+    "uploaded_at": 1791564841.244067,
+    "upload_seconds": 1.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_08,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_08__rain_night_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_08__snow_day_heavy__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_08__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165402_80545067.mp4",
+    "uploaded_at": 1791564842.559741,
+    "upload_seconds": 1.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_08,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_08__snow_day_heavy__cw0.5.mp4"
+  },
+  "i24_scene1_p1c3_08__clear_night_light__cw0.5": {
+    "clip_id": "i24_scene1_p1c3_08__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165403_319e7063.mp4",
+    "uploaded_at": 1791564843.739501,
+    "upload_seconds": 1.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c3_08,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c3_08__clear_night_light__cw0.5.mp4"
+  },
+  "nyc_002_00__fog_day_heavy__cw0.5": {
+    "clip_id": "nyc_002_00__fog_day_heavy__cw0.5",
+    "seed_id": "nyc_002_00",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165405_9725cbb6.mp4",
+    "uploaded_at": 1791564845.604427,
+    "upload_seconds": 1.9,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_002_00,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_002_00__fog_day_heavy__cw0.5.mp4"
+  },
+  "nyc_002_00__snow_day_heavy__cw0.5": {
+    "clip_id": "nyc_002_00__snow_day_heavy__cw0.5",
+    "seed_id": "nyc_002_00",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165407_cc9615db.mp4",
+    "uploaded_at": 1791564847.4941509,
+    "upload_seconds": 1.9,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_002_00,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_002_00__snow_day_heavy__cw0.5.mp4"
+  },
+  "nyc_002_00__clear_night_light__cw0.5": {
+    "clip_id": "nyc_002_00__clear_night_light__cw0.5",
+    "seed_id": "nyc_002_00",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165408_a31eba14.mp4",
+    "uploaded_at": 1791564848.489805,
+    "upload_seconds": 1.0,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_002_00,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_002_00__clear_night_light__cw0.5.mp4"
+  },
+  "nyc_003_00__fog_day_heavy__cw0.5": {
+    "clip_id": "nyc_003_00__fog_day_heavy__cw0.5",
+    "seed_id": "nyc_003_00",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165409_e4e35412.mp4",
+    "uploaded_at": 1791564849.6938062,
+    "upload_seconds": 1.2,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_003_00,fog,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_003_00__fog_day_heavy__cw0.5.mp4"
+  },
+  "nyc_003_00__rain_night_heavy__cw0.5": {
+    "clip_id": "nyc_003_00__rain_night_heavy__cw0.5",
+    "seed_id": "nyc_003_00",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165411_25a750a7.mp4",
+    "uploaded_at": 1791564851.436546,
+    "upload_seconds": 1.7,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_003_00,rain,night,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_003_00__rain_night_heavy__cw0.5.mp4"
+  },
+  "nyc_003_00__snow_day_heavy__cw0.5": {
+    "clip_id": "nyc_003_00__snow_day_heavy__cw0.5",
+    "seed_id": "nyc_003_00",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165413_97cac4b1.mp4",
+    "uploaded_at": 1791564853.4863412,
+    "upload_seconds": 2.0,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_003_00,snow,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_003_00__snow_day_heavy__cw0.5.mp4"
+  },
+  "nyc_003_00__clear_night_light__cw0.5": {
+    "clip_id": "nyc_003_00__clear_night_light__cw0.5",
+    "seed_id": "nyc_003_00",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "object_key": "team-16/20261009_165415_289368c3.mp4",
+    "uploaded_at": 1791564855.318511,
+    "upload_seconds": 1.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": "nyc_003_00,clear,night,light,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/nyc_003_00__clear_night_light__cw0.5.mp4"
+  },
+  "i24_scene1_p1c1_00__phys_rain": {
+    "clip_id": "i24_scene1_p1c1_00__phys_rain",
+    "seed_id": "i24_scene1_p1c1_00",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "object_key": "team-16/20261009_165615_3ff6c8f2.mp4",
+    "uploaded_at": 1791564975.234286,
+    "upload_seconds": 1.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_00,rain,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain.mp4"
+  },
+  "i24_scene1_p1c1_04__phys_rain": {
+    "clip_id": "i24_scene1_p1c1_04__phys_rain",
+    "seed_id": "i24_scene1_p1c1_04",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "object_key": "team-16/20261009_165745_1e26f31f.mp4",
+    "uploaded_at": 1791565065.600669,
+    "upload_seconds": 2.3,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_04,rain,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain.mp4"
+  },
+  "i24_scene1_p1c1_08__phys_rain": {
+    "clip_id": "i24_scene1_p1c1_08__phys_rain",
+    "seed_id": "i24_scene1_p1c1_08",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "object_key": "team-16/20261009_170055_bb3e3e7f.mp4",
+    "uploaded_at": 1791565255.3926778,
+    "upload_seconds": 1.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c1_08,rain,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_rain.mp4"
+  },
+  "i24_scene1_p1c2_00__phys_rain": {
+    "clip_id": "i24_scene1_p1c2_00__phys_rain",
+    "seed_id": "i24_scene1_p1c2_00",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "object_key": "team-16/20261009_170057_b457370d.mp4",
+    "uploaded_at": 1791565257.180407,
+    "upload_seconds": 1.8,
+    "fields": {
+      "is_public": "false",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": "i24_scene1_p1c2_00,rain,day,heavy,spore,cw0.5",
+      "scenario": "traffic"
+    },
+    "indexed": false,
+    "control_weight": 0.5,
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_rain.mp4"
+  }
+}

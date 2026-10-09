@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_c1_007__rain_day_light",
+  "seed_id": "i24_c1_007",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "light",
+    "kind": "generative"
+  },
+  "fidelity": {
+    "edge_ssim": 0.77,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 5.0,
+    "recall_vs_seed": 0.88,
+    "boxes": "results/boxes/i24_c1_007__rain_day_light.json"
+  },
+  "reason": {
+    "summary": "Highway scene in rain during day; 5 vehicles moving steadily.",
+    "answers": {
+      "vehicle_count": 5,
+      "lane_change": true,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

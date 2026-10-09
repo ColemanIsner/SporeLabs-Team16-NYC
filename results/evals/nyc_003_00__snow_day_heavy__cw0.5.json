@@ -1,0 +1,60 @@
+{
+  "clip_id": "nyc_003_00__snow_day_heavy__cw0.5",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.4881,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.467,
+    "seconds": 7.36
+  },
+  "reason": {
+    "summary": "A snowy urban intersection with multiple vehicles moving through, including a white SUV, a white sedan, and a white taxi. Pedestrians are crossing the street, and traffic lights are visible. The scene is busy with snow falling and accumulating on vehicles and the road.",
+    "answers": {
+      "vehicle_count": 5,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast, snowy, and dim"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 14.27,
+    "raw": "```json\n{\n  \"vehicle_count\": 5,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast, snowy, and dim\",\n  \"summary\": \"A snowy urban intersection with multiple vehicles moving through, including a white SUV, a white sedan, and a white taxi. Pedestrians are crossing the street, and traffic lights are visible. The scene is busy with snow falling and accumulating on vehicles and the road.\"\n}\n```",
+    "src_mtime": 1791564804.598,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 3.742,
+    "mean_count_person": 4.301,
+    "seed_mean_count": 4.14,
+    "recall_vs_seed": 0.779,
+    "recall_vs_seed_all": 0.7213,
+    "frames": 93,
+    "seconds": 9.95,
+    "device": "cpu",
+    "boxes": "results/boxes/nyc_003_00__snow_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7045,
+    "recall_intact": 0.8817,
+    "patch_score_median": 0.3749,
+    "n_vehicle_patches": 132,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

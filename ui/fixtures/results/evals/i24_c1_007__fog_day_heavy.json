@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_c1_007__fog_day_heavy",
+  "seed_id": "i24_c1_007",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative"
+  },
+  "fidelity": {
+    "edge_ssim": 0.74,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 4.7,
+    "recall_vs_seed": 0.81,
+    "boxes": "results/boxes/i24_c1_007__fog_day_heavy.json"
+  },
+  "reason": {
+    "summary": "Highway scene in fog during day; 5 vehicles moving steadily.",
+    "answers": {
+      "vehicle_count": 5,
+      "lane_change": true,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c2_00__fog_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c2_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7729,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7362,
+    "seconds": 1.11
+  },
+  "reason": {
+    "summary": "A multi-lane highway with moderate traffic flow in both directions. Vehicles, including cars and trucks, move steadily along the road. A notable event occurs when a white SUV collides with a black car, causing the black car to spin and emit smoke before coming to a stop. Other vehicles continue to pass by, with some performing lane changes.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": true,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear visibility and distinct shadows."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.73,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": true,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear visibility and distinct shadows.\",\n  \"summary\": \"A multi-lane highway with moderate traffic flow in both directions. Vehicles, including cars and trucks, move steadily along the road. A notable event occurs when a white SUV collides with a black car, causing the black car to spin and emit smoke before coming to a stop. Other vehicles continue to pass by, with some performing lane changes.\"\n}\n```",
+    "src_mtime": 1791564486.972,
+    "agree_vs_seed": 0.6667,
+    "condition_registered": false
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 2.247,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 7.29,
+    "recall_vs_seed": 0.3231,
+    "recall_vs_seed_all": 0.3231,
+    "frames": 93,
+    "seconds": 1.82,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c2_00__fog_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7906,
+    "recall_intact": 0.3135,
+    "patch_score_median": 0.4384,
+    "n_vehicle_patches": 234,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "clip_id": "i24_c1_007__motion_blur",
+  "seed_id": "i24_c1_007",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "pixel",
+    "effect": "motion_blur"
+  },
+  "fidelity": {
+    "edge_ssim": 0.55,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 4.1,
+    "recall_vs_seed": 0.69,
+    "boxes": "results/boxes/i24_c1_007__motion_blur.json"
+  },
+  "reason": {
+    "summary": "Highway with motion blur; about 4 vehicles.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": true,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 0.67
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ]
+}

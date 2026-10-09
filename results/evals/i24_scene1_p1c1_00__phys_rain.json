@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_00__phys_rain",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.8,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7702,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7484,
+    "seconds": 1.37
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "reason": {
+    "summary": "A multi-lane highway with moderate traffic moving in both directions during a rainstorm, viewed from an elevated perspective with raindrops visible on the camera lens.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "rainy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.07,
+    "raw": "{\"vehicle_count\": 15, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"rainy, overcast\", \"summary\": \"A multi-lane highway with moderate traffic moving in both directions during a rainstorm, viewed from an elevated perspective with raindrops visible on the camera lens.\"}",
+    "src_mtime": 1791564959.686,
+    "agree_vs_seed": 1.0
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 1.333,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.817,
+    "recall_vs_seed": 0.147,
+    "recall_vs_seed_all": 0.147,
+    "frames": 93,
+    "seconds": 19.06,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_00__phys_rain.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.9324,
+    "recall_intact": 0.1606,
+    "patch_score_median": 0.6292,
+    "n_vehicle_patches": 207,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

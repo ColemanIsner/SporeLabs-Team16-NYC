@@ -1,0 +1,59 @@
+[
+  {
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "vss_query": "highway at night in heavy rain",
+    "confirmed": true,
+    "clips": [
+      {
+        "vss_id": "vss-41d0e2",
+        "src": "media/real_rain_night_1.mp4",
+        "yolo_mean_count": 2.1,
+        "reason_answers": {
+          "vehicle_count": 2,
+          "lane_change": false,
+          "stopped_vehicle": false
+        },
+        "human_note": "7 vehicles visible to a human; stack sees 2"
+      },
+      {
+        "vss_id": "vss-41d7aa",
+        "src": "media/real_rain_night_2.mp4",
+        "yolo_mean_count": 1.4,
+        "reason_answers": {
+          "vehicle_count": 1,
+          "lane_change": false,
+          "stopped_vehicle": false
+        },
+        "human_note": "missed lane change in spray"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "weather": "fog",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "vss_query": "foggy highway at night",
+    "confirmed": true,
+    "clips": [
+      {
+        "vss_id": "vss-52a913",
+        "src": "media/real_fog_night_1.mp4",
+        "yolo_mean_count": 1.8,
+        "reason_answers": {
+          "vehicle_count": 2,
+          "lane_change": false,
+          "stopped_vehicle": true
+        },
+        "human_note": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "clip_id": "i24_scene1_p1c1_00",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "seed"
+  },
+  "fidelity": {
+    "edge_ssim": 1.0,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 1.0,
+    "seconds": 1.05
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 6.817,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.817,
+    "recall_vs_seed": 1.0,
+    "recall_vs_seed_all": 1.0,
+    "frames": 93,
+    "seconds": 6.69,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_00.json"
+  },
+  "excluded": false,
+  "reason": {
+    "summary": "Multiple vehicles, including trucks and cars, are traveling in both directions on a multi-lane highway. Traffic is free-flowing with no lane changes or stops observed.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.57,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear visibility\",\n  \"summary\": \"Multiple vehicles, including trucks and cars, are traveling in both directions on a multi-lane highway. Traffic is free-flowing with no lane changes or stops observed.\"\n}\n```",
+    "src_mtime": 1791563322.654,
+    "agree_vs_seed": 1.0
+  }
+}

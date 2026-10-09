@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c3_04__rain_night_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c3_04",
+  "condition": {
+    "weather": "rain",
+    "time": "night",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7432,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7063,
+    "seconds": 1.53,
+    "rejected_by": "vehicle_integrity"
+  },
+  "reason": {
+    "summary": "Aerial view of a multi-lane road at night with moderate traffic flow in both directions, illuminated by streetlights.",
+    "answers": {
+      "vehicle_count": 14,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "night time, street lights"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 23.4,
+    "raw": "{\"vehicle_count\": 14, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"night time, street lights\", \"summary\": \"Aerial view of a multi-lane road at night with moderate traffic flow in both directions, illuminated by streetlights.\"}",
+    "src_mtime": 1791564788.752,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 0.043,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 4.194,
+    "recall_vs_seed": 0.0097,
+    "recall_vs_seed_all": 0.0097,
+    "frames": 93,
+    "seconds": 13.52,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c3_04__rain_night_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.2348,
+    "recall_intact": 0.0645,
+    "patch_score_median": 0.2604,
+    "n_vehicle_patches": 132,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "clip_id": "nyc_002_00__clear_night_light__cw0.5",
+  "seed_id": "nyc_002_00",
+  "condition": {
+    "weather": "clear",
+    "time": "night",
+    "intensity": "light",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.4541,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4329,
+    "seconds": 2.21,
+    "rejected_by": "vehicle_integrity"
+  },
+  "reason": {
+    "summary": "A busy urban intersection at night with multiple vehicles moving through the frame. Pedestrians are crossing the street while cars and a utility truck navigate the intersection under streetlights.",
+    "answers": {
+      "vehicle_count": 7,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Night time with street lights and vehicle headlights"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 14.74,
+    "raw": "```json\n{\n  \"vehicle_count\": 7,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Night time with street lights and vehicle headlights\",\n  \"summary\": \"A busy urban intersection at night with multiple vehicles moving through the frame. Pedestrians are crossing the street while cars and a utility truck navigate the intersection under streetlights.\"\n}\n```",
+    "src_mtime": 1791564799.071,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 4.226,
+    "mean_count_person": 3.935,
+    "seed_mean_count": 4.763,
+    "recall_vs_seed": 0.8371,
+    "recall_vs_seed_all": 0.7944,
+    "frames": 93,
+    "seconds": 5.0,
+    "device": "cpu",
+    "boxes": "results/boxes/nyc_002_00__clear_night_light__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.5946,
+    "recall_intact": 0.875,
+    "patch_score_median": 0.3623,
+    "n_vehicle_patches": 148,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

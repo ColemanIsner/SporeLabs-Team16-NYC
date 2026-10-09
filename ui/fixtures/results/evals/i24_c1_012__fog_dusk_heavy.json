@@ -1,0 +1,33 @@
+{
+  "clip_id": "i24_c1_012__fog_dusk_heavy",
+  "seed_id": "i24_c1_012",
+  "condition": {
+    "weather": "fog",
+    "time": "dusk",
+    "intensity": "heavy",
+    "kind": "generative"
+  },
+  "fidelity": {
+    "edge_ssim": 0.44,
+    "pass": false
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 1.1,
+    "recall_vs_seed": 0.31,
+    "boxes": "results/boxes/i24_c1_012__fog_dusk_heavy.json"
+  },
+  "reason": {
+    "summary": "Highway scene in fog during dusk; 1 vehicles moving steadily.",
+    "answers": {
+      "vehicle_count": 1,
+      "lane_change": false,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 0.0
+  },
+  "failure": false,
+  "failure_reasons": [
+    "fidelity_fail"
+  ]
+}

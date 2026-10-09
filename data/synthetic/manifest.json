@@ -1,0 +1,782 @@
+[
+  {
+    "clip_id": "i24_scene1_p1c1_00__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 109.7,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 113.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 156.3,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 157.6,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 160.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 161.8,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 163.3,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 164.7,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 165.8,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 166.7,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 223.7,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 228.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 233.4,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 251.0,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 255.9,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 258.4,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 260.5,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 265.6,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 269.3,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 272.3,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 315.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 320.7,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 322.9,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 326.4,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 341.5,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 529.6,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 531.0,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 532.8,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 534.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 535.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 536.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 537.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__fog_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Dense fog drops visibility to about 50 m, headlights bloom into halos, and lane paint fades within a few car lengths.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 538.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__rain_night_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is a pitch-dark night, with pools of streetlight and headlights as the only source. Heavy rain cuts visibility to about 40 m, wet asphalt mirrors headlights and taillights, and tire spray hangs in the lanes.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 539.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__snow_day_heavy__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is harsh midday with a high hard sun and deep black shadows across the lanes. Heavy snow drops visibility to about 80 m, flakes veil the far lanes, and snow sits on barriers and vehicle roofs.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 540.4,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__clear_night_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is night, dark but readable, with streetlights and headlights on. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 541.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__fog_day_heavy__cw0.5",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. Dense grey fog fills the street, visibility is about 40 meters, distant buildings fade out, and headlights glow softly.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 542.1,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__rain_night_heavy__cw0.5",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. It is night in heavy rain: wet black asphalt mirrors streetlights and headlights, raindrops streak the air, and contrast is low.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 543.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__snow_day_heavy__cw0.5",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. A heavy snowstorm: thick falling snow fills the air, snow covers the road and sidewalks, and visibility is poor.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 544.4,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__clear_night_light__cw0.5",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. It is a clear night: dark sky, streetlights and headlights are the only light, and deep shadows hide details.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 545.5,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_003_00__fog_day_heavy__cw0.5",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__fog_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. Dense grey fog fills the street, visibility is about 40 meters, distant buildings fade out, and headlights glow softly.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 547.3,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_003_00__rain_night_heavy__cw0.5",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__rain_night_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. It is night in heavy rain: wet black asphalt mirrors streetlights and headlights, raindrops streak the air, and contrast is low.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 549.5,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_003_00__snow_day_heavy__cw0.5",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__snow_day_heavy__cw0.5.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. A heavy snowstorm: thick falling snow fills the air, snow covers the road and sidewalks, and visibility is poor.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 551.0,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_003_00__clear_night_light__cw0.5",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__clear_night_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. It is a clear night: dark sky, streetlights and headlights are the only light, and deep shadows hide details.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 552.0,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_rain",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.80",
+    "gpu": null,
+    "gen_seconds": 56.26,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_rain",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.80",
+    "gpu": null,
+    "gen_seconds": 45.7,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_rain",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_rain.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.80",
+    "gpu": null,
+    "gen_seconds": 12.4,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_rain",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_rain.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.80",
+    "gpu": null,
+    "gen_seconds": 12.2,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  }
+]

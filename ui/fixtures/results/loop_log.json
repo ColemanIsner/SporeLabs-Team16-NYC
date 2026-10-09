@@ -1,0 +1,164 @@
+[
+ {
+  "kind": "spore",
+  "iteration": 1,
+  "mode": "loop",
+  "started": 1791564755.8124642,
+  "status": "done",
+  "gap_id": "night_rain",
+  "stages": {
+   "1": {
+    "name": "search",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30
+   },
+   "2": {
+    "name": "report",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "next_label": "Night + rain"
+   },
+   "3": {
+    "name": "fill",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "clips": [
+     "a",
+     "b",
+     "c"
+    ],
+    "label": "Night + rain"
+   },
+   "4": {
+    "name": "measure",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "mean_recall": 0.04
+   },
+   "5": {
+    "name": "search",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30
+   }
+  },
+  "summary": "Night + rain: 0 real highway clips -> filled 3 -> recall 0.04"
+ },
+ {
+  "kind": "spore",
+  "iteration": 2,
+  "mode": "loop",
+  "started": 1791564875.8124642,
+  "status": "done",
+  "gap_id": "fog",
+  "stages": {
+   "1": {
+    "name": "search",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30
+   },
+   "2": {
+    "name": "report",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "next_label": "Dense fog"
+   },
+   "3": {
+    "name": "fill",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "clips": [
+     "a",
+     "b",
+     "c"
+    ],
+    "label": "Dense fog"
+   },
+   "4": {
+    "name": "measure",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "mean_recall": 0.33
+   },
+   "5": {
+    "name": "search",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30
+   }
+  },
+  "summary": "Dense fog: 0 real highway clips -> filled 3 -> recall 0.33"
+ },
+ {
+  "kind": "spore",
+  "iteration": 3,
+  "mode": "loop",
+  "started": 1791564995.8124642,
+  "status": "done",
+  "gap_id": "snow",
+  "stages": {
+   "1": {
+    "name": "search",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30
+   },
+   "2": {
+    "name": "report",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "next_label": "Snow"
+   },
+   "3": {
+    "name": "fill",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "clips": [
+     "a",
+     "b",
+     "c"
+    ],
+    "label": "Snow"
+   },
+   "4": {
+    "name": "measure",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30,
+    "mean_recall": 0.41
+   },
+   "5": {
+    "name": "search",
+    "status": "done",
+    "t0": 1791564635.8124642,
+    "t1": 1791564665.8124642,
+    "seconds": 30
+   }
+  },
+  "summary": "Snow: 0 real highway clips -> filled 3 -> recall 0.41"
+ }
+]

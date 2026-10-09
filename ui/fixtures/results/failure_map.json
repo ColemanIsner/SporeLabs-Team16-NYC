@@ -1,0 +1,345 @@
+{
+  "arms": [
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 6,
+      "failure_rate": 0.0,
+      "mean_recall": 0.95,
+      "mean_agree": 1.0
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "dusk",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 2,
+      "failure_rate": 0.12,
+      "mean_recall": 0.88,
+      "mean_agree": 0.92
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "night",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 1,
+      "failure_rate": 0.01,
+      "mean_recall": 0.94,
+      "mean_agree": 0.99
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 1,
+      "failure_rate": 0.01,
+      "mean_recall": 0.94,
+      "mean_agree": 0.99
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "dusk",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 1,
+      "failure_rate": 0.06,
+      "mean_recall": 0.91,
+      "mean_agree": 0.96
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "night",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 6,
+      "failure_rate": 0.4,
+      "mean_recall": 0.71,
+      "mean_agree": 0.72
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 3,
+      "failure_rate": 0.06,
+      "mean_recall": 0.91,
+      "mean_agree": 0.96
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "dusk",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 2,
+      "failure_rate": 0.04,
+      "mean_recall": 0.93,
+      "mean_agree": 0.97
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "night",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 4,
+      "failure_rate": 0.45,
+      "mean_recall": 0.68,
+      "mean_agree": 0.69
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 3,
+      "failure_rate": 0.07,
+      "mean_recall": 0.91,
+      "mean_agree": 0.95
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "dusk",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 3,
+      "failure_rate": 0.14,
+      "mean_recall": 0.87,
+      "mean_agree": 0.9
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "night",
+        "intensity": "light",
+        "kind": "generative"
+      },
+      "n": 1,
+      "failure_rate": 0.01,
+      "mean_recall": 0.94,
+      "mean_agree": 0.99
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 3,
+      "failure_rate": 0.1,
+      "mean_recall": 0.89,
+      "mean_agree": 0.93
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "dusk",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 2,
+      "failure_rate": 0.09,
+      "mean_recall": 0.9,
+      "mean_agree": 0.94
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "night",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 3,
+      "failure_rate": 0.25,
+      "mean_recall": 0.8,
+      "mean_agree": 0.82
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 1,
+      "failure_rate": 0.07,
+      "mean_recall": 0.91,
+      "mean_agree": 0.95
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "dusk",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 8,
+      "failure_rate": 0.67,
+      "mean_recall": 0.55,
+      "mean_agree": 0.53
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "night",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 7,
+      "failure_rate": 0.83,
+      "mean_recall": 0.45,
+      "mean_agree": 0.42
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 3,
+      "failure_rate": 0.11,
+      "mean_recall": 0.88,
+      "mean_agree": 0.92
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "dusk",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 6,
+      "failure_rate": 0.5,
+      "mean_recall": 0.65,
+      "mean_agree": 0.65
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "night",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 8,
+      "failure_rate": 0.78,
+      "mean_recall": 0.48,
+      "mean_agree": 0.45
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 2,
+      "failure_rate": 0.2,
+      "mean_recall": 0.83,
+      "mean_agree": 0.86
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "dusk",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 4,
+      "failure_rate": 0.33,
+      "mean_recall": 0.75,
+      "mean_agree": 0.77
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "night",
+        "intensity": "heavy",
+        "kind": "generative"
+      },
+      "n": 6,
+      "failure_rate": 0.6,
+      "mean_recall": 0.59,
+      "mean_agree": 0.58
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "pixel",
+        "effect": "glare"
+      },
+      "n": 6,
+      "failure_rate": 0.17,
+      "mean_recall": 0.86,
+      "mean_agree": 0.92
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "pixel",
+        "effect": "motion_blur"
+      },
+      "n": 6,
+      "failure_rate": 0.33,
+      "mean_recall": 0.78,
+      "mean_agree": 0.83
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "pixel",
+        "effect": "low_bitrate"
+      },
+      "n": 6,
+      "failure_rate": 0.12,
+      "mean_recall": 0.89,
+      "mean_agree": 0.94
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "pixel",
+        "effect": "lens_dirt"
+      },
+      "n": 6,
+      "failure_rate": 0.25,
+      "mean_recall": 0.82,
+      "mean_agree": 0.88
+    }
+  ],
+  "budget_used": 110
+}

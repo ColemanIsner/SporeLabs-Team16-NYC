@@ -1,0 +1,169 @@
+[
+  {
+    "clip_id": "i24_c1_007__fog_day_heavy",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_fog_day_heavy.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, fog, day, heavy",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 41.5,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_007__rain_night_heavy",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_rain_night_heavy.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, rain, night, heavy",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 48.0,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_007__snow_dusk_light",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_snow_dusk_light.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "dusk",
+      "intensity": "light",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, snow, dusk, light",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 45.7,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_007__clear_night_light",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_clear_night_light.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "night",
+      "intensity": "light",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, clear, night, light",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 36.2,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_007__fog_night_heavy",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_fog_night_heavy.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, fog, night, heavy",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 35.7,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_007__rain_day_light",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_rain_day_light.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, rain, day, light",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 36.4,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_012__rain_night_heavy",
+    "seed_id": "i24_c1_012",
+    "src": "media/b_rain_night_heavy.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "night",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, rain, night, heavy",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 43.5,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_012__fog_dusk_heavy",
+    "seed_id": "i24_c1_012",
+    "src": "media/b_fog_dusk_heavy.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "dusk",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, fog, dusk, heavy",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 37.5,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_012__snow_day_heavy",
+    "seed_id": "i24_c1_012",
+    "src": "media/b_snow_day_heavy.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "generative"
+    },
+    "prompt": "Highway traffic, snow, day, heavy",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 47.5,
+    "gpu": "H100"
+  },
+  {
+    "clip_id": "i24_c1_007__glare",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_glare.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "pixel",
+      "effect": "glare"
+    },
+    "prompt": "",
+    "generator": "ffmpeg",
+    "gen_seconds": 0.8,
+    "gpu": "cpu"
+  },
+  {
+    "clip_id": "i24_c1_007__motion_blur",
+    "seed_id": "i24_c1_007",
+    "src": "media/a_motion_blur.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "pixel",
+      "effect": "motion_blur"
+    },
+    "prompt": "",
+    "generator": "ffmpeg",
+    "gen_seconds": 0.8,
+    "gpu": "cpu"
+  }
+]

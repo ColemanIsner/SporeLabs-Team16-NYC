@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c1_00__fog_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.8045,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7769,
+    "seconds": 1.05,
+    "rejected_by": "vehicle_integrity"
+  },
+  "reason": {
+    "summary": "A multi-lane divided highway with moderate traffic flow in both directions. Vehicles, including cars, SUVs, and trucks, are driving straight at consistent speeds. The scene is illuminated by bright sunlight, creating a hazy, foggy effect and noticeable lens flare on the right side of the frame.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with a hazy, foggy atmosphere and lens flare from the sun."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.78,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with a hazy, foggy atmosphere and lens flare from the sun.\",\n  \"summary\": \"A multi-lane divided highway with moderate traffic flow in both directions. Vehicles, including cars, SUVs, and trucks, are driving straight at consistent speeds. The scene is illuminated by bright sunlight, creating a hazy, foggy effect and noticeable lens flare on the right side of the frame.\"\n}\n```",
+    "src_mtime": 1791564363.275,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 4.452,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.817,
+    "recall_vs_seed": 0.4658,
+    "recall_vs_seed_all": 0.4658,
+    "frames": 93,
+    "seconds": 6.04,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_00__fog_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.657,
+    "recall_intact": 0.4485,
+    "patch_score_median": 0.4,
+    "n_vehicle_patches": 207,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

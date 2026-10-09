@@ -1,0 +1,50 @@
+{
+  "clip_id": "i24_scene1_p1c2_08",
+  "seed_id": "i24_scene1_p1c2_08",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "seed"
+  },
+  "fidelity": {
+    "edge_ssim": 1.0,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 1.0,
+    "seconds": 1.14
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 5.129,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 5.129,
+    "recall_vs_seed": 1.0,
+    "recall_vs_seed_all": 1.0,
+    "frames": 93,
+    "seconds": 2.15,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c2_08.json"
+  },
+  "excluded": false,
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with light to moderate traffic flowing in both directions. Vehicles including cars, SUVs, and trucks are moving steadily without congestion. The road is dry and clearly marked with white dashed lane dividers and solid edge lines.",
+    "answers": {
+      "vehicle_count": 14,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.72,
+    "raw": "```json\n{\n  \"vehicle_count\": 14,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear visibility\",\n  \"summary\": \"An aerial view of a multi-lane highway with light to moderate traffic flowing in both directions. Vehicles including cars, SUVs, and trucks are moving steadily without congestion. The road is dry and clearly marked with white dashed lane dividers and solid edge lines.\"\n}\n```",
+    "src_mtime": 1791563406.299,
+    "agree_vs_seed": 1.0
+  }
+}

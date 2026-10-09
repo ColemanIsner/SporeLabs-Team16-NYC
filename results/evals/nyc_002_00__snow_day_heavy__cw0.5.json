@@ -1,0 +1,60 @@
+{
+  "clip_id": "nyc_002_00__snow_day_heavy__cw0.5",
+  "seed_id": "nyc_002_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.4749,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4491,
+    "seconds": 3.15
+  },
+  "reason": {
+    "summary": "A snowy urban intersection with moderate traffic flow. Vehicles, including SUVs and sedans, move steadily through the intersection. Pedestrians cross the street while a man stands near a large object in the crosswalk. The scene is characterized by wet, slushy roads and snow piled along the curbs.",
+    "answers": {
+      "vehicle_count": 10,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast, dim daylight with snow on the ground"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 21.41,
+    "raw": "```json\n{\n  \"vehicle_count\": 10,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast, dim daylight with snow on the ground\",\n  \"summary\": \"A snowy urban intersection with moderate traffic flow. Vehicles, including SUVs and sedans, move steadily through the intersection. Pedestrians cross the street while a man stands near a large object in the crosswalk. The scene is characterized by wet, slushy roads and snow piled along the curbs.\"\n}\n```",
+    "src_mtime": 1791564797.969,
+    "agree_vs_seed": 1.0,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 4.774,
+    "mean_count_person": 3.688,
+    "seed_mean_count": 4.763,
+    "recall_vs_seed": 0.9091,
+    "recall_vs_seed_all": 0.8236,
+    "frames": 93,
+    "seconds": 5.27,
+    "device": "cpu",
+    "boxes": "results/boxes/nyc_002_00__snow_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.8784,
+    "recall_intact": 0.9846,
+    "patch_score_median": 0.4221,
+    "n_vehicle_patches": 148,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

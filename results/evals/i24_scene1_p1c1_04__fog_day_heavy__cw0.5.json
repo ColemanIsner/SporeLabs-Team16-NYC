@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__fog_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7513,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7301,
+    "seconds": 1.14
+  },
+  "reason": {
+    "summary": "A multi-lane highway with moderate traffic flow in both directions, featuring various vehicles including cars, SUVs, and trucks moving steadily. The scene is illuminated by bright overhead lights causing lens flare, with a concrete median separating opposing traffic.",
+    "answers": {
+      "vehicle_count": 25,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with strong glare and lens flare from overhead lights"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.9,
+    "raw": "```json\n{\n  \"vehicle_count\": 25,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with strong glare and lens flare from overhead lights\",\n  \"summary\": \"A multi-lane highway with moderate traffic flow in both directions, featuring various vehicles including cars, SUVs, and trucks moving steadily. The scene is illuminated by bright overhead lights causing lens flare, with a concrete median separating opposing traffic.\"\n}\n```",
+    "src_mtime": 1791564413.633,
+    "agree_vs_seed": 1.0,
+    "condition_registered": false
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 4.108,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.075,
+    "recall_vs_seed": 0.4932,
+    "recall_vs_seed_all": 0.4932,
+    "frames": 93,
+    "seconds": 1.89,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_04__fog_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7306,
+    "recall_intact": 0.4326,
+    "patch_score_median": 0.4257,
+    "n_vehicle_patches": 193,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

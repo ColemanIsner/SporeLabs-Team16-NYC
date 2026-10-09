@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-10-09T13:01:10",
+  "camera_id": "spore_synthetic",
+  "seconds": 13.0,
+  "summary": {
+    "n_indexed": 0,
+    "n_uploaded": 48,
+    "caption_condition_hit_rate": null,
+    "caption_says_clear_rate": null,
+    "mean_seed_caption_consistency": null,
+    "seed_query_top1_rate": null,
+    "seed_query_top5_rate": null,
+    "by_condition": {},
+    "condition_query_mean_p_at_5_strict": null
+  },
+  "condition_queries": [
+    {
+      "query": "highway in dense fog",
+      "k": 5,
+      "returned": 0,
+      "precision_at_5_strict": null,
+      "precision_at_5_lenient": null,
+      "relevant_in_set_strict": 0,
+      "relevant_in_set_lenient": 0,
+      "random_baseline_strict": null,
+      "top5": []
+    },
+    {
+      "query": "traffic at night in heavy rain",
+      "k": 5,
+      "returned": 0,
+      "precision_at_5_strict": null,
+      "precision_at_5_lenient": null,
+      "relevant_in_set_strict": 0,
+      "relevant_in_set_lenient": 0,
+      "random_baseline_strict": null,
+      "top5": []
+    },
+    {
+      "query": "snowy street at dusk",
+      "k": 5,
+      "returned": 0,
+      "precision_at_5_strict": null,
+      "precision_at_5_lenient": null,
+      "relevant_in_set_strict": 0,
+      "relevant_in_set_lenient": 0,
+      "random_baseline_strict": null,
+      "top5": []
+    }
+  ],
+  "clips": []
+}

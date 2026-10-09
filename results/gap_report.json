@@ -1,0 +1,145 @@
+{
+  "gap": "Real archive coverage is missing highway scenes in heavy rain: 0 of 8 rain clips are highway, while synthetic heavy-rain validation fails completely.",
+  "evidence": [
+    "Real archive rain condition has 8 clips indexed but 0 highway clips; top VSS score for the heavy-rain query is only 0.2538.",
+    "Synthetic arm rain_day_heavy n=2 has failure_rate=1.0 and mean_recall=0.148.",
+    "VSS eval condition queries returned 0 results for highway in dense fog, traffic at night in heavy rain, and snowy street at dusk.",
+    "Candidate priority for rain is 0.938, the highest open gap; no conditions have been filled recently."
+  ],
+  "risk": "A heavy-rain highway search can silently return no real highway results, and the detector is a blind spot for rainy highway scenes with 100% synthetic failure.",
+  "recommendation": "Fill the heavy-rain highway gap next because it is the highest-priority candidate and shows total synthetic failure with near-zero recall.",
+  "next_condition": "rain",
+  "source": "llm",
+  "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "next_arm": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "heavy"
+  },
+  "next_label": "Heavy rain",
+  "candidates": [
+    {
+      "id": "rain",
+      "label": "Heavy rain",
+      "arm": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy"
+      },
+      "arm_key": "rain_day_heavy",
+      "real_clips_all": 8,
+      "real_clips_highway": 0,
+      "vss_query": "heavy rain on a wet road",
+      "vss_search_relevant": 3,
+      "vss_search_top_score": 0.2538,
+      "synthetic_n": 2,
+      "synthetic_failure_rate": 1.0,
+      "synthetic_mean_recall": 0.148,
+      "gap_score": 1.0,
+      "priority": 0.938
+    },
+    {
+      "id": "glare",
+      "label": "Low sun glare",
+      "arm": {
+        "kind": "pixel",
+        "pixel": "glare",
+        "effect": "glare"
+      },
+      "arm_key": "pixel:glare",
+      "real_clips_all": 3,
+      "real_clips_highway": 0,
+      "vss_query": "low sun glare into the camera",
+      "vss_search_relevant": 0,
+      "vss_search_top_score": 0.3251,
+      "synthetic_n": 0,
+      "synthetic_failure_rate": null,
+      "synthetic_mean_recall": null,
+      "gap_score": 1.0,
+      "priority": 0.85
+    },
+    {
+      "id": "fog",
+      "label": "Dense fog",
+      "arm": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy"
+      },
+      "arm_key": "fog_day_heavy",
+      "real_clips_all": 4,
+      "real_clips_highway": 0,
+      "vss_query": "dense fog with low visibility",
+      "vss_search_relevant": 10,
+      "vss_search_top_score": 0.4387,
+      "synthetic_n": 9,
+      "synthetic_failure_rate": 0.556,
+      "synthetic_mean_recall": 0.334,
+      "gap_score": 1.0,
+      "priority": 0.322
+    },
+    {
+      "id": "snow",
+      "label": "Snow",
+      "arm": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "heavy"
+      },
+      "arm_key": "snow_day_heavy",
+      "real_clips_all": 0,
+      "real_clips_highway": 0,
+      "vss_query": "snow covered road in a snowstorm",
+      "vss_search_relevant": 0,
+      "vss_search_top_score": 0.2169,
+      "synthetic_n": 9,
+      "synthetic_failure_rate": 0.333,
+      "synthetic_mean_recall": 0.406,
+      "gap_score": 1.0,
+      "priority": 0.233
+    },
+    {
+      "id": "night_rain",
+      "label": "Night + rain",
+      "arm": {
+        "weather": "rain",
+        "time": "night",
+        "intensity": "heavy"
+      },
+      "arm_key": "rain_night_heavy",
+      "real_clips_all": 0,
+      "real_clips_highway": 0,
+      "vss_query": "highway at night in heavy rain",
+      "vss_search_relevant": 2,
+      "vss_search_top_score": 0.3169,
+      "synthetic_n": 9,
+      "synthetic_failure_rate": 0.333,
+      "synthetic_mean_recall": 0.116,
+      "gap_score": 1.0,
+      "priority": 0.233
+    },
+    {
+      "id": "night",
+      "label": "Highway at night",
+      "arm": {
+        "weather": "clear",
+        "time": "night",
+        "intensity": "light"
+      },
+      "arm_key": "clear_night_light",
+      "real_clips_all": 32,
+      "real_clips_highway": 5,
+      "vss_query": "highway at night",
+      "vss_search_relevant": 10,
+      "vss_search_top_score": 0.2375,
+      "synthetic_n": 9,
+      "synthetic_failure_rate": 0.444,
+      "synthetic_mean_recall": 0.141,
+      "gap_score": 0.016,
+      "priority": 0.004
+    }
+  ],
+  "llm_seconds": 11.31,
+  "updated": 1791565211.594611,
+  "weave": true
+}

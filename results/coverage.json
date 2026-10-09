@@ -1,0 +1,580 @@
+{
+  "updated": 1791565293.976969,
+  "seconds": 23.0,
+  "n_indexed": 612,
+  "n_highway": 127,
+  "cameras": {
+    "nyc_bike_gopro-1": 78,
+    "nyc_streets_cam-2": 30,
+    "nyc_streets_cam-1": 60,
+    "sf_streets_cam-5": 30,
+    "sf_streets_cam-4": 30,
+    "sf_streets_cam-3": 7,
+    "sf_streets_cam-2": 30,
+    "sf_streets_cam-1": 25,
+    "smartspace_cam-1": 30,
+    "sdg_warehouse_cam-2": 30,
+    "neighborhood_cam-1": 52,
+    "pie_cam-3": 180,
+    "i24_cam-1": 30
+  },
+  "method": "VSS /api/v1/search per condition query + keyword scan of VSS reasoning_content captions from /api/v1/videos/explore",
+  "conditions": [
+    {
+      "id": "clear_day",
+      "label": "Clear daytime",
+      "vss_query": "highway in clear daytime sunshine",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": null,
+      "n_clips": 101,
+      "n_highway": 23,
+      "frac_clips": 0.165,
+      "frac_highway": 0.1811,
+      "cameras": [
+        "i24_cam-1",
+        "nyc_bike_gopro-1",
+        "pie_cam-3",
+        "sf_streets_cam-1",
+        "sf_streets_cam-2",
+        "sf_streets_cam-3",
+        "sf_streets_cam-4",
+        "sf_streets_cam-5",
+        "smartspace_cam-1"
+      ],
+      "search_top_score": 0.2312,
+      "search_relevant": 4,
+      "search_relevant_highway": 4,
+      "search_precision": 0.4,
+      "top_hits": [
+        {
+          "filename": "20261001_055249_scene1_p1c1_chunk_0000_segment_004_of_006.mp4",
+          "camera_id": "i24_cam-1",
+          "capture_type": "traffic",
+          "score": 0.2312,
+          "caption_matches": false,
+          "highway": true,
+          "caption": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather is clear, with no visible obstructions or debris. A central median separates the opposing directions of t",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_055249_scene1_p1c1_chunk_0000_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_063146_set03_video_chunk_0000_segment_004_of_006.mp4",
+          "camera_id": "pie_cam-3",
+          "capture_type": "streets",
+          "score": 0.2154,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The scene is captured from a vehicle traveling along a two-lane road that curves gently to the right. The road surface is paved with visible cracks and wear. On the right side, a concrete barrier runs alongside the roadw",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_063146_set03_video_chunk_0000_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_055431_scene1_p1c1_chunk_0004_segment_005_of_006.mp4",
+          "camera_id": "i24_cam-1",
+          "capture_type": "traffic",
+          "score": 0.1959,
+          "caption_matches": true,
+          "highway": true,
+          "caption": "The scene is a wide, multi-lane divided highway under clear, sunny conditions. Traffic flows in both directions, separated by a central median. The road surface is dry and marked with standard lane lines, and there are n",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_055431_scene1_p1c1_chunk_0004_segment_005_of_006.mp4"
+        },
+        {
+          "filename": "20261001_060509_scene1_p1c3_chunk_0009_segment_002_of_006.mp4",
+          "camera_id": "i24_cam-1",
+          "capture_type": "traffic",
+          "score": 0.1952,
+          "caption_matches": false,
+          "highway": true,
+          "caption": "The scene is a wide, multi-lane highway with a concrete median separating opposing directions of traffic. The road surface is dry and marked with clear white dashed lane dividers and solid edge lines. The weather appears",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_060509_scene1_p1c3_chunk_0009_segment_002_of_006.mp4"
+        },
+        {
+          "filename": "20261001_055315_scene1_p1c1_chunk_0001_segment_005_of_006.mp4",
+          "camera_id": "i24_cam-1",
+          "capture_type": "traffic",
+          "score": 0.1873,
+          "caption_matches": true,
+          "highway": true,
+          "caption": "The scene takes place on a multi-lane highway under clear, sunny conditions. The road surface is dry and well-maintained, with clear lane markings and a central median separating opposing directions of traffic. There are",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_055315_scene1_p1c1_chunk_0001_segment_005_of_006.mp4"
+        }
+      ],
+      "search_seconds": 6.07,
+      "error": null,
+      "gap": false
+    },
+    {
+      "id": "night",
+      "label": "Highway at night",
+      "vss_query": "highway at night",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": {
+        "weather": "clear",
+        "time": "night",
+        "intensity": "light"
+      },
+      "n_clips": 32,
+      "n_highway": 5,
+      "frac_clips": 0.0523,
+      "frac_highway": 0.0394,
+      "cameras": [
+        "neighborhood_cam-1",
+        "nyc_bike_gopro-1"
+      ],
+      "search_top_score": 0.2375,
+      "search_relevant": 10,
+      "search_relevant_highway": 0,
+      "search_precision": 1.0,
+      "top_hits": [
+        {
+          "filename": "20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4",
+          "camera_id": "nyc_bike_gopro-1",
+          "capture_type": "streets",
+          "score": 0.2375,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene is a nighttime urban sidewalk next to a road. A cyclist wearing a bright yellow-green reflective vest and a white helmet rides ahead on the paved walkway, with a red taillight visible. The camera follows from b",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4"
+        },
+        {
+          "filename": "20261001_074239_neighborhood_20260902_chunk_0015_segment_003_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2208,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, parked on the left side of the frame. Another vehicle is partially visible in the foreground, positioned n",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074239_neighborhood_20260902_chunk_0015_segment_003_of_006.mp4"
+        },
+        {
+          "filename": "20261001_074239_neighborhood_20260902_chunk_0015_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2069,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles. A car is visible in the background, positioned on the left side of the frame. Another vehicle is parked in the foreground, closer to the bottom right co",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074239_neighborhood_20260902_chunk_0015_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261008_075119_GX050001_chunk_0011_segment_002_of_006.mp4",
+          "camera_id": "nyc_bike_gopro-1",
+          "capture_type": "streets",
+          "score": 0.206,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene takes place on a city street at night, with a wide paved sidewalk running alongside a roadway. The sidewalk is bordered by metal bollards separating it from the road. A cyclist wearing a bright yellow-green ref",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261008_075119_GX050001_chunk_0011_segment_002_of_006.mp4"
+        },
+        {
+          "filename": "20261008_074731_GX050001_chunk_0002_segment_003_of_006.mp4",
+          "camera_id": "nyc_bike_gopro-1",
+          "capture_type": "streets",
+          "score": 0.2021,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene takes place on a city street at night, with a cyclist in a bright yellow-green jersey and white helmet riding on the sidewalk. The cyclist is moving forward, passing parked cars and metal bollards along the cur",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261008_074731_GX050001_chunk_0002_segment_003_of_006.mp4"
+        }
+      ],
+      "search_seconds": 5.34,
+      "error": null,
+      "gap": false
+    },
+    {
+      "id": "rain",
+      "label": "Heavy rain",
+      "vss_query": "heavy rain on a wet road",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy"
+      },
+      "n_clips": 8,
+      "n_highway": 0,
+      "frac_clips": 0.0131,
+      "frac_highway": 0.0,
+      "cameras": [
+        "neighborhood_cam-1",
+        "nyc_bike_gopro-1"
+      ],
+      "search_top_score": 0.2538,
+      "search_relevant": 3,
+      "search_relevant_highway": 0,
+      "search_precision": 0.3,
+      "top_hits": [
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2538,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white truck is seen driving along a foggy residential street, moving from the background toward the foreground. The truck's headlights are on, illuminating the misty road ahead. As it progresses, the truck passes by pa",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2519,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2432,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white van is driving on a residential street during foggy conditions. The van is moving from left to right across the frame, passing by parked cars and houses. The street is lined with trees and there are streetlights ",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_005_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2425,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A silver car is seen driving along a residential street during a foggy evening. The vehicle moves from the background toward the foreground, its headlights illuminating the misty road. The car passes by parked vehicles a",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_005_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2412,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A silver car is seen driving along a residential street, moving from the left side of the frame toward the right. The vehicle maintains a steady pace as it navigates the road, passing by parked cars and houses. The surro",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4"
+        }
+      ],
+      "search_seconds": 4.47,
+      "error": null,
+      "gap": true
+    },
+    {
+      "id": "fog",
+      "label": "Dense fog",
+      "vss_query": "dense fog with low visibility",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy"
+      },
+      "n_clips": 4,
+      "n_highway": 0,
+      "frac_clips": 0.0065,
+      "frac_highway": 0.0,
+      "cameras": [
+        "neighborhood_cam-1",
+        "sdg_warehouse_cam-2"
+      ],
+      "search_top_score": 0.4387,
+      "search_relevant": 10,
+      "search_relevant_highway": 0,
+      "search_precision": 1.0,
+      "top_hits": [
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.4387,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "A white truck is seen driving along a foggy residential street, moving from the background toward the foreground. The truck's headlights are on, illuminating the misty road ahead. As it progresses, the truck passes by pa",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.4311,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.4273,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "A white SUV is seen driving slowly along a residential street on a foggy day. The vehicle is moving from the left side of the frame toward the right, navigating the road carefully. The fog creates a hazy atmosphere, redu",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_002_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.4165,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "A white SUV is seen driving along a residential street on a foggy day. The vehicle moves from the left side of the frame toward the right, passing by parked cars and houses. The fog obscures distant trees and buildings, ",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_002_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.4161,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "A white van is driving on a residential street during foggy conditions. The van is moving from left to right across the frame, passing by parked cars and houses. The street is lined with trees and there are streetlights ",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
+        }
+      ],
+      "search_seconds": 5.12,
+      "error": null,
+      "gap": true
+    },
+    {
+      "id": "snow",
+      "label": "Snow",
+      "vss_query": "snow covered road in a snowstorm",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "heavy"
+      },
+      "n_clips": 0,
+      "n_highway": 0,
+      "frac_clips": 0.0,
+      "frac_highway": 0.0,
+      "cameras": [],
+      "search_top_score": 0.2169,
+      "search_relevant": 0,
+      "search_relevant_highway": 0,
+      "search_precision": 0.0,
+      "top_hits": [
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_002_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2169,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white SUV is seen driving along a residential street on a foggy day. The vehicle moves from the left side of the frame toward the right, passing by parked cars and houses. The fog obscures distant trees and buildings, ",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_002_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2105,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white truck is seen driving along a foggy residential street, moving from the background toward the foreground. The truck's headlights are on, illuminating the misty road ahead. As it progresses, the truck passes by pa",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2103,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white SUV is seen driving slowly along a residential street on a foggy day. The vehicle is moving from the left side of the frame toward the right, navigating the road carefully. The fog creates a hazy atmosphere, redu",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.1925,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.178,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white van is driving on a residential street during foggy conditions. The van is moving from left to right across the frame, passing by parked cars and houses. The street is lined with trees and there are streetlights ",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
+        }
+      ],
+      "search_seconds": 5.75,
+      "error": null,
+      "gap": true
+    },
+    {
+      "id": "glare",
+      "label": "Low sun glare",
+      "vss_query": "low sun glare into the camera",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": {
+        "kind": "pixel",
+        "pixel": "glare",
+        "effect": "glare"
+      },
+      "n_clips": 3,
+      "n_highway": 0,
+      "frac_clips": 0.0049,
+      "frac_highway": 0.0,
+      "cameras": [
+        "pie_cam-3"
+      ],
+      "search_top_score": 0.3251,
+      "search_relevant": 0,
+      "search_relevant_highway": 0,
+      "search_precision": 0.0,
+      "top_hits": [
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_005_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.3251,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A silver car is seen driving along a residential street during a foggy evening. The vehicle moves from the background toward the foreground, its headlights illuminating the misty road. The car passes by parked vehicles a",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_005_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.3099,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white truck is seen driving along a foggy residential street, moving from the background toward the foreground. The truck's headlights are on, illuminating the misty road ahead. As it progresses, the truck passes by pa",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.3079,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The video shows a nighttime scene with a parked car visible in the background. The area is dimly lit, with some streetlights providing illumination. There are no visible people or unusual activities occurring in the fram",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2985,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A silver car is seen driving along a residential street, moving from the left side of the frame toward the right. The vehicle maintains a steady pace as it navigates the road, passing by parked cars and houses. The surro",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.292,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "A white SUV is seen driving slowly along a residential street on a foggy day. The vehicle is moving from the left side of the frame toward the right, navigating the road carefully. The fog creates a hazy atmosphere, redu",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4"
+        }
+      ],
+      "search_seconds": 4.92,
+      "error": null,
+      "gap": true
+    },
+    {
+      "id": "night_rain",
+      "label": "Night + rain",
+      "vss_query": "highway at night in heavy rain",
+      "endpoint": "POST /api/v1/search",
+      "top_k": 10,
+      "arm": {
+        "weather": "rain",
+        "time": "night",
+        "intensity": "heavy"
+      },
+      "n_clips": 0,
+      "n_highway": 0,
+      "frac_clips": 0.0,
+      "frac_highway": 0.0,
+      "cameras": [],
+      "search_top_score": 0.3169,
+      "search_relevant": 2,
+      "search_relevant_highway": 0,
+      "search_precision": 0.2,
+      "top_hits": [
+        {
+          "filename": "20261001_074032_neighborhood_20260902_chunk_0010_segment_004_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.3169,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obstructing the view. The camera lens appe",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261001_074032_neighborhood_20260902_chunk_0010_segment_005_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2788,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, with raindrops visible on the lens. In the foreground, there is a tall, conical evergreen tree on the left side of the frame. Behind it, a paved area i",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_005_of_006.mp4"
+        },
+        {
+          "filename": "20261008_074731_GX050001_chunk_0002_segment_004_of_006.mp4",
+          "camera_id": "nyc_bike_gopro-1",
+          "capture_type": "streets",
+          "score": 0.276,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The scene unfolds on a city street at dusk, with the sky a dim blue and streetlights and building windows providing illumination. The road surface is wet, reflecting the lights from vehicles and storefronts. A cyclist we",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261008_074731_GX050001_chunk_0002_segment_004_of_006.mp4"
+        },
+        {
+          "filename": "20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4",
+          "camera_id": "nyc_bike_gopro-1",
+          "capture_type": "streets",
+          "score": 0.2327,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The scene is a nighttime urban sidewalk next to a road. A cyclist wearing a bright yellow-green reflective vest and a white helmet rides ahead on the paved walkway, with a red taillight visible. The camera follows from b",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4"
+        },
+        {
+          "filename": "20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4",
+          "camera_id": "neighborhood_cam-1",
+          "capture_type": "streets",
+          "score": 0.2315,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The video shows a nighttime scene with a parked car visible in the background. The area is dimly lit, with some streetlights providing illumination. There are no visible people or unusual activities occurring in the fram",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4"
+        }
+      ],
+      "search_seconds": 7.1,
+      "error": null,
+      "gap": true
+    }
+  ],
+  "gaps": [
+    "rain",
+    "fog",
+    "snow",
+    "glare",
+    "night_rain"
+  ]
+}

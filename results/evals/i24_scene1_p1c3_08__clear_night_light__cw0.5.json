@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c3_08__clear_night_light__cw0.5",
+  "seed_id": "i24_scene1_p1c3_08",
+  "condition": {
+    "weather": "clear",
+    "time": "night",
+    "intensity": "light",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7685,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7408,
+    "seconds": 1.37,
+    "rejected_by": "vehicle_integrity"
+  },
+  "reason": {
+    "summary": "An overhead view of a multi-lane road at night, with vehicles moving steadily in both directions. The road is divided by a concrete barrier, and the scene is illuminated by streetlights, creating reflections on the wet or glossy road surface.",
+    "answers": {
+      "vehicle_count": 10,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Night time with streetlights"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 15.61,
+    "raw": "```json\n{\n  \"vehicle_count\": 10,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Night time with streetlights\",\n  \"summary\": \"An overhead view of a multi-lane road at night, with vehicles moving steadily in both directions. The road is divided by a concrete barrier, and the scene is illuminated by streetlights, creating reflections on the wet or glossy road surface.\"\n}\n```",
+    "src_mtime": 1791564794.764,
+    "agree_vs_seed": 0.6667,
+    "condition_registered": true
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 0.054,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 2.075,
+    "recall_vs_seed": 0.0119,
+    "recall_vs_seed_all": 0.0119,
+    "frames": 93,
+    "seconds": 3.26,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c3_08__clear_night_light__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.5333,
+    "recall_intact": 0.0,
+    "patch_score_median": 0.3515,
+    "n_vehicle_patches": 60,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

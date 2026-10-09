@@ -1,0 +1,34 @@
+{
+  "clip_id": "i24_c1_012__rain_night_heavy",
+  "seed_id": "i24_c1_012",
+  "condition": {
+    "weather": "rain",
+    "time": "night",
+    "intensity": "heavy",
+    "kind": "generative"
+  },
+  "fidelity": {
+    "edge_ssim": 0.63,
+    "pass": true
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "mean_count": 2.1,
+    "recall_vs_seed": 0.47,
+    "boxes": "results/boxes/i24_c1_012__rain_night_heavy.json"
+  },
+  "reason": {
+    "summary": "Dark road with a few headlights; roughly 3 vehicles, no lane changes visible.",
+    "answers": {
+      "vehicle_count": 2,
+      "lane_change": false,
+      "stopped_vehicle": false
+    },
+    "agree_vs_seed": 0.33
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7",
+    "reason_disagree"
+  ]
+}

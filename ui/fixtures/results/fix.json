@@ -1,0 +1,26 @@
+[
+  {
+    "metric": "YOLO recall (night+rain)",
+    "before": 0.41,
+    "after": 0.68,
+    "set": "real held-out"
+  },
+  {
+    "metric": "Reason vehicle-count agreement",
+    "before": 0.33,
+    "after": 0.71,
+    "set": "real held-out"
+  },
+  {
+    "metric": "Lane-change detection",
+    "before": 0.25,
+    "after": 0.62,
+    "set": "real held-out"
+  },
+  {
+    "metric": "Clear-day recall (regression check)",
+    "before": 0.97,
+    "after": 0.96,
+    "set": "real held-out"
+  }
+]

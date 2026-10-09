@@ -1,0 +1,50 @@
+{
+  "clip_id": "nyc_003_00",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "seed"
+  },
+  "fidelity": {
+    "edge_ssim": 1.0,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 1.0,
+    "seconds": 1.12
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 4.14,
+    "mean_count_person": 4.591,
+    "seed_mean_count": 4.14,
+    "recall_vs_seed": 1.0,
+    "recall_vs_seed_all": 1.0,
+    "frames": 93,
+    "seconds": 1.78,
+    "device": "cpu",
+    "boxes": "results/boxes/nyc_003_00.json"
+  },
+  "excluded": false,
+  "reason": {
+    "summary": "A busy city intersection with multiple vehicles, including yellow taxis and a white truck, moving through the frame. Pedestrians are crossing the street and walking along the sidewalks. Construction barriers and traffic signals are visible, indicating an active urban environment.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 2.88,
+    "raw": "```json\n{\n  \"vehicle_count\": 4,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"bright daylight\",\n  \"summary\": \"A busy city intersection with multiple vehicles, including yellow taxis and a white truck, moving through the frame. Pedestrians are crossing the street and walking along the sidewalks. Construction barriers and traffic signals are visible, indicating an active urban environment.\"\n}\n```",
+    "src_mtime": 1791563478.982,
+    "agree_vs_seed": 1.0
+  }
+}

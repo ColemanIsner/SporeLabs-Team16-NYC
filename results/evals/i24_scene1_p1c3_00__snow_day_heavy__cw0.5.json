@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c3_00__snow_day_heavy__cw0.5",
+  "seed_id": "i24_scene1_p1c3_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.778,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7519,
+    "seconds": 2.06,
+    "rejected_by": "vehicle_integrity"
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with moderate traffic moving in both directions. The scene is viewed through a smoky or dusty haze, with the sun visible as a bright spot in the upper center. Vehicles are distributed across the lanes, with some moving towards the top of the frame and others towards the bottom. The road surface is dark with visible lane markings, and the overall visibility is reduced due to the atmospheric conditions.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight with a hazy or smoky atmosphere obscuring the sky"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 12.58,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"bright daylight with a hazy or smoky atmosphere obscuring the sky\", \"summary\": \"An aerial view of a multi-lane highway with moderate traffic moving in both directions. The scene is viewed through a smoky or dusty haze, with the sun visible as a bright spot in the upper center. Vehicles are distributed across the lanes, with some moving towards the top of the frame and others towards the bottom. The road surface is dark with visible lane markings, and the overall visibility is reduced due to the atmospheric conditions.\"}",
+    "src_mtime": 1791564784.553,
+    "agree_vs_seed": 1.0,
+    "condition_registered": false
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 0.387,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 2.473,
+    "recall_vs_seed": 0.0913,
+    "recall_vs_seed_all": 0.09,
+    "frames": 93,
+    "seconds": 4.89,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c3_00__snow_day_heavy__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.3816,
+    "recall_intact": 0.1379,
+    "patch_score_median": 0.3246,
+    "n_vehicle_patches": 76,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}
