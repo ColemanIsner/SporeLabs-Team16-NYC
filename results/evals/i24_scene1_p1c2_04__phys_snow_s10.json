@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__phys_snow_s10",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7128,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.6838,
+    "seconds": 1.77
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.677,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.0542,
+    "recall_vs_seed_all": 0.0542,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 18.73,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__phys_snow_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7375,
+    "recall_intact": 0.0805,
+    "patch_score_median": 0.5232,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A snowy highway scene with multiple vehicles traveling in both directions. The road is divided by a median, and snowflakes are visibly falling across the frame. Vehicles maintain their lanes and move steadily despite the weather conditions.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 7.97,
+    "raw": "{\"vehicle_count\": 15, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"snowy, overcast\", \"summary\": \"A snowy highway scene with multiple vehicles traveling in both directions. The road is divided by a median, and snowflakes are visibly falling across the frame. Vehicles maintain their lanes and move steadily despite the weather conditions.\"}",
+    "src_mtime": 1791565621.597,
+    "agree_vs_seed": 1.0
+  }
+}

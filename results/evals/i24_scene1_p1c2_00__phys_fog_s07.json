@@ -27,5 +27,37 @@
     "agree_vs_seed": 1.0
   },
   "failure": false,
-  "failure_reasons": []
+  "failure_reasons": [],
+  "fidelity": {
+    "edge_ssim": 0.7188,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.684,
+    "seconds": 1.35,
+    "rejected_by": "vehicle_integrity"
+  },
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 1.022,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 9.71,
+    "recall_vs_seed": 0.0991,
+    "recall_vs_seed_all": 0.0991,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 4.21,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_00__phys_fog_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.52,
+    "recall_intact": 0.1987,
+    "patch_score_median": 0.3742,
+    "n_vehicle_patches": 300,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
 }

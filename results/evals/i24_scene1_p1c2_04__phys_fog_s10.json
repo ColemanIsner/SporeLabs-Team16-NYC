@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__phys_fog_s10",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7219,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.6897,
+    "seconds": 1.21,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.097,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.0066,
+    "recall_vs_seed_all": 0.0066,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 3.59,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__phys_fog_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.225,
+    "recall_intact": 0.0278,
+    "patch_score_median": 0.1464,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "Multiple vehicles travel along a multi-lane highway through dense fog, maintaining their lanes and steady speeds.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "foggy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 2.36,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"foggy, overcast\", \"summary\": \"Multiple vehicles travel along a multi-lane highway through dense fog, maintaining their lanes and steady speeds.\"}",
+    "src_mtime": 1791565573.932,
+    "agree_vs_seed": 0.6667
+  }
+}

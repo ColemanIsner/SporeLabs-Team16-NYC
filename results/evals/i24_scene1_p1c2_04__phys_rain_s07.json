@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__phys_rain_s07",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7542,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7276,
+    "seconds": 1.32
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.28,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.3954,
+    "recall_vs_seed_all": 0.3954,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 11.35,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__phys_rain_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.95,
+    "recall_intact": 0.4145,
+    "patch_score_median": 0.6757,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A multi-lane highway with moderate traffic moving in both directions under rainy, overcast conditions. Vehicles are traveling at steady speeds without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "rainy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.59,
+    "raw": "{\"vehicle_count\": 15, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"rainy, overcast\", \"summary\": \"A multi-lane highway with moderate traffic moving in both directions under rainy, overcast conditions. Vehicles are traveling at steady speeds without any lane changes or stops.\"}",
+    "src_mtime": 1791565604.191,
+    "agree_vs_seed": 1.0
+  }
+}

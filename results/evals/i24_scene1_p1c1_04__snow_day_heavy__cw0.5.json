@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.669,
-    "seconds": 1.16,
+    "seconds": 1.81,
     "rejected_by": "vehicle_integrity"
   },
   "reason": {
@@ -34,27 +34,30 @@
     "agree_vs_seed": 0.6667,
     "condition_registered": false
   },
-  "failure": false,
-  "failure_reasons": [],
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 5.613,
-    "mean_count_person": 0.0,
-    "seed_mean_count": 6.075,
-    "recall_vs_seed": 0.6067,
-    "recall_vs_seed_all": 0.6067,
+    "mean_count": 12.355,
+    "mean_count_person": 0.022,
+    "seed_mean_count": 13.559,
+    "recall_vs_seed": 0.7152,
+    "recall_vs_seed_all": 0.714,
     "frames": 93,
-    "seconds": 1.91,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 4.59,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_04__snow_day_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.6995,
-    "recall_intact": 0.6444,
-    "patch_score_median": 0.4111,
-    "n_vehicle_patches": 193,
+    "vehicles_intact": 0.7676,
+    "recall_intact": 0.6498,
+    "patch_score_median": 0.4304,
+    "n_vehicle_patches": 413,
     "thresh": 0.35,
     "min_intact": 0.7
   }

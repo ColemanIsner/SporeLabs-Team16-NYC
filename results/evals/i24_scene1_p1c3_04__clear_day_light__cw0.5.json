@@ -1,0 +1,61 @@
+{
+  "clip_id": "i24_scene1_p1c3_04__clear_day_light__cw0.5",
+  "seed_id": "i24_scene1_p1c3_04",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7886,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7554,
+    "seconds": 1.29,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 2.667,
+    "mean_count_person": 0.011,
+    "seed_mean_count": 5.828,
+    "recall_vs_seed": 0.4068,
+    "recall_vs_seed_all": 0.4026,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 5.32,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c3_04__clear_day_light__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.3944,
+    "recall_intact": 0.3099,
+    "patch_score_median": 0.3289,
+    "n_vehicle_patches": 180,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with moderate traffic flow. Vehicles, including cars and trucks, move steadily in both directions. The road surface is dry, and lane markings are clearly visible. Shadows from overhead structures or trees are cast across the road, indicating bright, direct sunlight.",
+    "answers": {
+      "vehicle_count": 18,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear shadows"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 15.93,
+    "raw": "```json\n{\n  \"vehicle_count\": 18,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear shadows\",\n  \"summary\": \"An aerial view of a multi-lane highway with moderate traffic flow. Vehicles, including cars and trucks, move steadily in both directions. The road surface is dry, and lane markings are clearly visible. Shadows from overhead structures or trees are cast across the road, indicating bright, direct sunlight.\"\n}\n```",
+    "src_mtime": 1791565873.429,
+    "agree_vs_seed": 1.0
+  }
+}

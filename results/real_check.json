@@ -30,7 +30,20 @@
         "from_new_chunk": true,
         "trim_start_s": 0.0,
         "src": "data/real_check/real_night_neighborhood_cam_1_hood_20260902_chunk_0010_0.mp4",
-        "eyeball_note": "agent eyeball: true night but IR/monochrome security camera (not color headlights)"
+        "eyeball_note": "agent eyeball: true night but IR/monochrome security camera (not color headlights)",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 2.0,
+          "yolo_max_count": 2,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 0,
+          "reason_weather_lighting": "Night time with streetlights and building lights",
+          "reason_summary": "The scene is a nighttime view of a residential area with parked cars and trees. There is no visible traffic or movement.",
+          "caption_excerpt": "The video shows a nighttime scene in a residential area with parked cars and trees. A car is visible in the background, positioned on the left side of the frame. The vehicle appears stationary and is partially obscured b",
+          "evidence": "results/real_check_evidence/real_night_neighborhood_cam_1_hood_20260902_chunk_0010_0.json",
+          "blind_spot": null,
+          "why": "Reason sees no vehicles"
+        }
       },
       {
         "clip_id": "real_night_nyc_bike_gopro_1_4731_GX050001_chunk_0002_10",
@@ -52,10 +65,23 @@
         "from_new_chunk": true,
         "trim_start_s": 10.0,
         "src": "data/real_check/real_night_nyc_bike_gopro_1_4731_GX050001_chunk_0002_10.mp4",
-        "eyeball_note": "agent eyeball: evening/early night with artificial light; brighter than a true night scene"
+        "eyeball_note": "agent eyeball: evening/early night with artificial light; brighter than a true night scene",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 6.204,
+          "yolo_max_count": 13,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 8,
+          "reason_weather_lighting": "Night time with street lights and building lights",
+          "reason_summary": "A cyclist in a yellow vest and white helmet rides on a city street at night, passing parked cars and other cyclists. Traffic is moderate with vehicles moving and some stopped at intersections.",
+          "caption_excerpt": "The scene takes place on a city street at night, with a cyclist in a bright yellow-green jersey and white helmet riding on the sidewalk. The cyclist is moving forward, passing parked cars and metal bollards along the cur",
+          "evidence": "results/real_check_evidence/real_night_nyc_bike_gopro_1_4731_GX050001_chunk_0002_10.json",
+          "blind_spot": false,
+          "why": "YOLO 6.204/frame vs Reason 8 (78%)"
+        }
       }
     ],
-    "confirmed": null,
+    "confirmed": false,
     "queries": [
       "street at night with headlights and streetlights",
       "highway traffic at night",
@@ -134,7 +160,10 @@
         "new_chunks": 0,
         "picks": []
       }
-    ]
+    ],
+    "confirm_strength": "consistent",
+    "confirm_rule": "true if hosted YOLO11s vehicles/frame < 50% of Cosmos3-Reason vehicle_count on any real clip of this condition (same blind-spot signature as synthetic); false if Reason sees vehicles and YOLO keeps up; null if Reason sees no vehicles",
+    "confirm_note": "real_night_neighborhood_cam_1_hood_20260902_chunk_0010_0: Reason sees no vehicles; real_night_nyc_bike_gopro_1_4731_GX050001_chunk_0002_10: YOLO 6.204/frame vs Reason 8 (78%)"
   },
   {
     "condition_name": "rain",
@@ -169,7 +198,20 @@
         "from_new_chunk": true,
         "trim_start_s": 0.0,
         "src": "data/real_check/real_rain_nyc_bike_gopro_1_3542_GOPR0130_chunk_0028_0.mp4",
-        "eyeball_note": "agent eyeball: cyclist in rain poncho, overcast; light rain at most, weak rain example"
+        "eyeball_note": "agent eyeball: cyclist in rain poncho, overcast; light rain at most, weak rain example",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 0.989,
+          "yolo_max_count": 5,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 2,
+          "reason_weather_lighting": "bright daytime",
+          "reason_summary": "A cyclist in a silver jacket rides ahead of the camera, navigating city streets with pedestrians and traffic lights.",
+          "caption_excerpt": "The scene is a busy city street with multiple lanes and a marked crosswalk. A cyclist wearing a silver rain poncho and helmet rides ahead, followed closely by another cyclist whose handlebars are visible in the foregroun",
+          "evidence": "results/real_check_evidence/real_rain_nyc_bike_gopro_1_3542_GOPR0130_chunk_0028_0.json",
+          "blind_spot": true,
+          "why": "YOLO 0.989/frame vs Reason 2 (49%)"
+        }
       },
       {
         "clip_id": "real_rain_neighborhood_cam_1_hood_20260901_chunk_0002_25",
@@ -192,10 +234,23 @@
         "from_new_chunk": true,
         "trim_start_s": 24.1875,
         "src": "data/real_check/real_rain_neighborhood_cam_1_hood_20260901_chunk_0002_25.mp4",
-        "eyeball_note": "agent eyeball: overcast, damp-looking street; caption says rain/wet, rain not clearly visible in frame"
+        "eyeball_note": "agent eyeball: overcast, damp-looking street; caption says rain/wet, rain not clearly visible in frame",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 4.0,
+          "yolo_max_count": 4,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 1,
+          "reason_weather_lighting": "Overcast, dim daylight",
+          "reason_summary": "A large dark brown box truck with 'HUDSON' lettering drives slowly along a residential street, passing parked cars and houses under an overcast sky.",
+          "caption_excerpt": "A large truck with the word \"HUDSON\" written on its side is driving along a residential street. The truck is moving slowly and appears to be making a turn. There are several parked cars along the street, including a silv",
+          "evidence": "results/real_check_evidence/real_rain_neighborhood_cam_1_hood_20260901_chunk_0002_25.json",
+          "blind_spot": false,
+          "why": "YOLO 4.0/frame vs Reason 1 (400%)"
+        }
       }
     ],
-    "confirmed": null,
+    "confirmed": true,
     "queries": [
       "rainy street with wet road and reflections",
       "traffic in heavy rain",
@@ -280,7 +335,10 @@
         "new_chunks": 0,
         "picks": []
       }
-    ]
+    ],
+    "confirm_strength": "mixed (1/2 clips show it)",
+    "confirm_rule": "true if hosted YOLO11s vehicles/frame < 50% of Cosmos3-Reason vehicle_count on any real clip of this condition (same blind-spot signature as synthetic); false if Reason sees vehicles and YOLO keeps up; null if Reason sees no vehicles",
+    "confirm_note": "real_rain_nyc_bike_gopro_1_3542_GOPR0130_chunk_0028_0: YOLO 0.989/frame vs Reason 2 (49%); real_rain_neighborhood_cam_1_hood_20260901_chunk_0002_25: YOLO 4.0/frame vs Reason 1 (400%)"
   },
   {
     "condition_name": "fog",
@@ -314,7 +372,20 @@
         "from_new_chunk": true,
         "trim_start_s": 24.1875,
         "src": "data/real_check/real_fog_neighborhood_cam_1_hood_20260902_chunk_0001_25.mp4",
-        "eyeball_note": "agent eyeball: genuine fog (same camera/morning as the other fog clip, adjacent chunk, so not independent)"
+        "eyeball_note": "agent eyeball: genuine fog (same camera/morning as the other fog clip, adjacent chunk, so not independent)",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 4.495,
+          "yolo_max_count": 6,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 2,
+          "reason_weather_lighting": "Foggy evening with streetlights on",
+          "reason_summary": "A silver car drives through a foggy residential intersection, passing a parked gold sedan. The scene is dimly lit by streetlights and vehicle headlights, with parked cars visible in driveways.",
+          "caption_excerpt": "A silver car is seen driving along a residential street, moving from the left side of the frame toward the right. The vehicle maintains a steady pace as it navigates the road, passing by parked cars and houses. The surro",
+          "evidence": "results/real_check_evidence/real_fog_neighborhood_cam_1_hood_20260902_chunk_0001_25.json",
+          "blind_spot": false,
+          "why": "YOLO 4.495/frame vs Reason 2 (225%)"
+        }
       },
       {
         "clip_id": "real_fog_neighborhood_cam_1_hood_20260902_chunk_0000_15",
@@ -338,10 +409,23 @@
         "from_new_chunk": true,
         "trim_start_s": 15.0,
         "src": "data/real_check/real_fog_neighborhood_cam_1_hood_20260902_chunk_0000_15.mp4",
-        "eyeball_note": "agent eyeball: genuine fog, distant towers washed out; strongest real condition match"
+        "eyeball_note": "agent eyeball: genuine fog, distant towers washed out; strongest real condition match",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 4.505,
+          "yolo_max_count": 6,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 2,
+          "reason_weather_lighting": "Foggy conditions with dim, diffused lighting and streetlights on.",
+          "reason_summary": "A white van drives through a foggy residential intersection, passing parked cars and houses with lit streetlights.",
+          "caption_excerpt": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere",
+          "evidence": "results/real_check_evidence/real_fog_neighborhood_cam_1_hood_20260902_chunk_0000_15.json",
+          "blind_spot": false,
+          "why": "YOLO 4.505/frame vs Reason 2 (225%)"
+        }
       }
     ],
-    "confirmed": null,
+    "confirmed": false,
     "queries": [
       "highway in dense fog with low visibility",
       "foggy misty road",
@@ -420,7 +504,10 @@
         "new_chunks": 0,
         "picks": []
       }
-    ]
+    ],
+    "confirm_strength": "consistent",
+    "confirm_rule": "true if hosted YOLO11s vehicles/frame < 50% of Cosmos3-Reason vehicle_count on any real clip of this condition (same blind-spot signature as synthetic); false if Reason sees vehicles and YOLO keeps up; null if Reason sees no vehicles",
+    "confirm_note": "real_fog_neighborhood_cam_1_hood_20260902_chunk_0001_25: YOLO 4.495/frame vs Reason 2 (225%); real_fog_neighborhood_cam_1_hood_20260902_chunk_0000_15: YOLO 4.505/frame vs Reason 2 (225%)"
   },
   {
     "condition_name": "snow",
@@ -540,7 +627,20 @@
         "from_new_chunk": true,
         "trim_start_s": 5.0,
         "src": "data/real_check/real_dusk_nyc_bike_gopro_1_5028_GX050001_chunk_0009_5.mp4",
-        "eyeball_note": "agent eyeball: evening crosswalk with lit buildings; plausible dusk"
+        "eyeball_note": "agent eyeball: evening crosswalk with lit buildings; plausible dusk",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 0.441,
+          "yolo_max_count": 2,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 1,
+          "reason_weather_lighting": "night time with street lights and building lights",
+          "reason_summary": "A police car is parked on the left side of the street near a crosswalk. Pedestrians are crossing the street in front of the camera, which is moving forward. The scene takes place in an urban area with tall buildings and illuminated windows.",
+          "caption_excerpt": "The scene unfolds at a city intersection during twilight, with a marked pedestrian crosswalk spanning the roadway. A police car is parked on the left side of the street, near the curb. The camera moves forward along the ",
+          "evidence": "results/real_check_evidence/real_dusk_nyc_bike_gopro_1_5028_GX050001_chunk_0009_5.json",
+          "blind_spot": true,
+          "why": "YOLO 0.441/frame vs Reason 1 (44%)"
+        }
       },
       {
         "clip_id": "real_dusk_nyc_bike_gopro_1_4847_GX050001_chunk_0005_0",
@@ -562,10 +662,23 @@
         "from_new_chunk": true,
         "trim_start_s": 0.0,
         "src": "data/real_check/real_dusk_nyc_bike_gopro_1_4847_GX050001_chunk_0005_0.mp4",
-        "eyeball_note": "agent eyeball: evening/dusk city light, lit storefronts; plausible dusk, not dark night"
+        "eyeball_note": "agent eyeball: evening/dusk city light, lit storefronts; plausible dusk, not dark night",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 1.57,
+          "yolo_max_count": 7,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 2,
+          "reason_weather_lighting": "Night time with street lights and building lights",
+          "reason_summary": "A yellow taxi and a black car are driving on a city street at night, with pedestrians walking on the sidewalk.",
+          "caption_excerpt": "The scene is captured from a moving vehicle traveling along a city sidewalk at dusk. The road surface is a paved sidewalk with a raised curb separating it from the street. To the left, there is a street with multiple lan",
+          "evidence": "results/real_check_evidence/real_dusk_nyc_bike_gopro_1_4847_GX050001_chunk_0005_0.json",
+          "blind_spot": false,
+          "why": "YOLO 1.57/frame vs Reason 2 (78%)"
+        }
       }
     ],
-    "confirmed": null,
+    "confirmed": true,
     "queries": [
       "street at dusk with low sun",
       "sunset golden hour traffic",
@@ -646,7 +759,10 @@
         "new_chunks": 0,
         "picks": []
       }
-    ]
+    ],
+    "confirm_strength": "mixed (1/2 clips show it)",
+    "confirm_rule": "true if hosted YOLO11s vehicles/frame < 50% of Cosmos3-Reason vehicle_count on any real clip of this condition (same blind-spot signature as synthetic); false if Reason sees vehicles and YOLO keeps up; null if Reason sees no vehicles",
+    "confirm_note": "real_dusk_nyc_bike_gopro_1_5028_GX050001_chunk_0009_5: YOLO 0.441/frame vs Reason 1 (44%); real_dusk_nyc_bike_gopro_1_4847_GX050001_chunk_0005_0: YOLO 1.57/frame vs Reason 2 (78%)"
   },
   {
     "condition_name": "glare",
@@ -679,7 +795,20 @@
         "from_new_chunk": true,
         "trim_start_s": 15.0,
         "src": "data/real_check/real_glare_pie_cam_3_5_set04_video_chunk_0026_15.mp4",
-        "eyeball_note": "agent eyeball: visible lens flare streak at bottom of frame; mild glare"
+        "eyeball_note": "agent eyeball: visible lens flare streak at bottom of frame; mild glare",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 0.505,
+          "yolo_max_count": 5,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 2,
+          "reason_weather_lighting": "Bright daylight with scattered clouds and lens flare",
+          "reason_summary": "A white pickup truck and a dark SUV are stopped at an intersection, with the pickup truck beginning to turn left as the camera vehicle follows. The scene is set on a sunny day with clear visibility and modern buildings in the background.",
+          "caption_excerpt": "The scene is captured from a vehicle\u2019s dashboard camera, showing a view of a street lined with modern buildings. The road is a two-way street with a single lane in each direction. The weather is clear and sunny, with bri",
+          "evidence": "results/real_check_evidence/real_glare_pie_cam_3_5_set04_video_chunk_0026_15.json",
+          "blind_spot": true,
+          "why": "YOLO 0.505/frame vs Reason 2 (25%)"
+        }
       },
       {
         "clip_id": "real_glare_pie_cam_3_7_set03_video_chunk_0004_20",
@@ -701,10 +830,23 @@
         "from_new_chunk": true,
         "trim_start_s": 20.0,
         "src": "data/real_check/real_glare_pie_cam_3_7_set03_video_chunk_0004_20.mp4",
-        "eyeball_note": "agent eyeball: bright sunny street, little visible glare; weak glare example"
+        "eyeball_note": "agent eyeball: bright sunny street, little visible glare; weak glare example",
+        "confirmation": {
+          "yolo_model": "hosted-yolo11s",
+          "yolo_mean_count": 8.796,
+          "yolo_max_count": 12,
+          "yolo_frames": 93,
+          "reason_vehicle_count": 6,
+          "reason_weather_lighting": "Bright daylight with clear skies",
+          "reason_summary": "A black SUV is stopped at a red light in the center of the frame, with a silver hatchback to its left and a white sedan to its right. A pedestrian crosses the street in front of the stopped vehicles. Other vehicles are visible in the backgr",
+          "caption_excerpt": "The scene is a daytime view from a vehicle stopped at an intersection on a multi-lane road. The sky is clear and the sun is bright, creating glare on the windshield. The road surface is dry and marked with white lane lin",
+          "evidence": "results/real_check_evidence/real_glare_pie_cam_3_7_set03_video_chunk_0004_20.json",
+          "blind_spot": false,
+          "why": "YOLO 8.796/frame vs Reason 6 (147%)"
+        }
       }
     ],
-    "confirmed": null,
+    "confirmed": true,
     "queries": [
       "strong sun glare into the camera",
       "lens flare from bright sunlight",
@@ -784,6 +926,9 @@
         "new_chunks": 0,
         "picks": []
       }
-    ]
+    ],
+    "confirm_strength": "mixed (1/2 clips show it)",
+    "confirm_rule": "true if hosted YOLO11s vehicles/frame < 50% of Cosmos3-Reason vehicle_count on any real clip of this condition (same blind-spot signature as synthetic); false if Reason sees vehicles and YOLO keeps up; null if Reason sees no vehicles",
+    "confirm_note": "real_glare_pie_cam_3_5_set04_video_chunk_0026_15: YOLO 0.505/frame vs Reason 2 (25%); real_glare_pie_cam_3_7_set03_video_chunk_0004_20: YOLO 8.796/frame vs Reason 6 (147%)"
   }
 ]

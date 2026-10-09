@@ -16,23 +16,24 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7677,
-    "seconds": 1.75
+    "seconds": 1.66
   },
   "failure": true,
   "failure_reasons": [
     "recall<0.7"
   ],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 2.484,
+    "mean_count": 5.419,
     "mean_count_person": 0.0,
-    "seed_mean_count": 6.817,
-    "recall_vs_seed": 0.3085,
-    "recall_vs_seed_all": 0.3085,
+    "seed_mean_count": 13.366,
+    "recall_vs_seed": 0.381,
+    "recall_vs_seed_all": 0.381,
     "frames": 93,
-    "seconds": 12.75,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 5.82,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_00__phys_fog_s04.json"
   },
   "excluded": false,
@@ -54,9 +55,9 @@
   },
   "integrity": {
     "vehicles_intact": 1.0,
-    "recall_intact": 0.3237,
-    "patch_score_median": 0.8979,
-    "n_vehicle_patches": 207,
+    "recall_intact": 0.3816,
+    "patch_score_median": 0.841,
+    "n_vehicle_patches": 414,
     "thresh": 0.35,
     "min_intact": 0.7
   }

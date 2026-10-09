@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c3_08__phys_fog_s07",
+  "seed_id": "i24_scene1_p1c3_08",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "fidelity": {
+    "edge_ssim": 0.773,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7426,
+    "seconds": 1.17,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.054,
+    "mean_count_person": 0.011,
+    "seed_mean_count": 2.968,
+    "recall_vs_seed": 0.0235,
+    "recall_vs_seed_all": 0.0235,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 2.71,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c3_08__phys_fog_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.3516,
+    "recall_intact": 0.0312,
+    "patch_score_median": 0.2398,
+    "n_vehicle_patches": 91,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "Several vehicles, including cars and trucks, travel along a multi-lane road under heavy fog. The fog significantly limits visibility, making the vehicles appear as faint silhouettes moving steadily in their respective lanes.",
+    "answers": {
+      "vehicle_count": 7,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight with heavy fog reducing visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.39,
+    "raw": "{\"vehicle_count\": 7, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"bright daylight with heavy fog reducing visibility\", \"summary\": \"Several vehicles, including cars and trucks, travel along a multi-lane road under heavy fog. The fog significantly limits visibility, making the vehicles appear as faint silhouettes moving steadily in their respective lanes.\"}",
+    "src_mtime": 1791565742.235,
+    "agree_vs_seed": 0.6667
+  }
+}

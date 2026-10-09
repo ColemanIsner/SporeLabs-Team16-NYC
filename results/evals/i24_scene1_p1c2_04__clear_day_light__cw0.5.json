@@ -1,0 +1,60 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__clear_day_light__cw0.5",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7628,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7231,
+    "seconds": 1.31
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 10.774,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.8875,
+    "recall_vs_seed_all": 0.8875,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 6.55,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__clear_day_light__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.7969,
+    "recall_intact": 0.9176,
+    "patch_score_median": 0.4566,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "Multiple vehicles travel in both directions on a multi-lane highway, maintaining steady speeds and staying within their lanes.",
+    "answers": {
+      "vehicle_count": 20,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 9.28,
+    "raw": "{\"vehicle_count\": 20, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"bright daylight\", \"summary\": \"Multiple vehicles travel in both directions on a multi-lane highway, maintaining steady speeds and staying within their lanes.\"}",
+    "src_mtime": 1791565782.733,
+    "agree_vs_seed": 1.0
+  }
+}

@@ -26,6 +26,39 @@
     "src_mtime": 1791565524.969,
     "agree_vs_seed": 1.0
   },
-  "failure": false,
-  "failure_reasons": []
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "fidelity": {
+    "edge_ssim": 0.773,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7595,
+    "seconds": 1.3
+  },
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 2.968,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 8.118,
+    "recall_vs_seed": 0.3513,
+    "recall_vs_seed_all": 0.3513,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 7.67,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c1_08__phys_snow_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.3655,
+    "patch_score_median": 0.9345,
+    "n_vehicle_patches": 249,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
 }

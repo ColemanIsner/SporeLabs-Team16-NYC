@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7301,
-    "seconds": 1.14
+    "seconds": 2.06
   },
   "reason": {
     "summary": "A multi-lane highway with moderate traffic flow in both directions, featuring various vehicles including cars, SUVs, and trucks moving steadily. The scene is illuminated by bright overhead lights causing lens flare, with a concrete median separating opposing traffic.",
@@ -38,24 +38,25 @@
     "recall<0.7"
   ],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 4.108,
+    "mean_count": 11.43,
     "mean_count_person": 0.0,
-    "seed_mean_count": 6.075,
-    "recall_vs_seed": 0.4932,
-    "recall_vs_seed_all": 0.4932,
+    "seed_mean_count": 13.559,
+    "recall_vs_seed": 0.6503,
+    "recall_vs_seed_all": 0.6491,
     "frames": 93,
-    "seconds": 1.89,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 7.68,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_04__fog_day_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.7306,
-    "recall_intact": 0.4326,
-    "patch_score_median": 0.4257,
-    "n_vehicle_patches": 193,
+    "vehicles_intact": 0.7724,
+    "recall_intact": 0.5987,
+    "patch_score_median": 0.4355,
+    "n_vehicle_patches": 413,
     "thresh": 0.35,
     "min_intact": 0.7
   }

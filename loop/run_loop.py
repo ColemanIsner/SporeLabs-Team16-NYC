@@ -66,6 +66,8 @@ def load(p, default):
 def arm_key(cond: dict) -> str:
     if cond.get("kind") == "pixel":
         return "pixel:" + (cond.get("pixel") or cond.get("effect") or "?")
+    if cond.get("kind") in ("physics", "hybrid"):
+        return f"{cond['kind']}:{cond.get('effect') or cond.get('weather')}@{cond.get('severity')}"
     return f"{cond.get('weather')}_{cond.get('time')}_{cond.get('intensity')}"
 
 
@@ -80,10 +82,23 @@ def all_arms() -> list[dict]:
 def aggregate() -> dict:
     stats = defaultdict(lambda: {"n": 0, "fail": 0, "recall": [], "agree": [], "fid_reject": 0})
     conds = {}
-    for f in EVALS.glob("*.json"):
-        ev = load(f, {})
+    evs = [load(f, {}) for f in EVALS.glob("*.json")]
+
+    def _r(ev):
+        r = (ev.get("integrity") or {}).get("recall_intact")
+        return r if r is not None else (ev.get("yolo") or {}).get("recall_vs_seed")
+
+    # Per-seed Cosmos control: if Transfer can't even reproduce a clear day on this seed
+    # (small/far vehicles smeared), its Cosmos condition clips are generator noise -> excluded.
+    seed_ctrl = {ev.get("seed_id"): _r(ev) for ev in evs
+                 if (ev.get("condition") or {}).get("kind") == "generative"
+                 and arm_key(ev["condition"]) == "clear_day_light" and _r(ev) is not None}
+    excluded_seeds = sorted(sd for sd, r in seed_ctrl.items() if r < 0.5)
+    for ev in evs:
         cond = ev.get("condition") or {}
         if not cond or ev.get("excluded") or ev.get("clip_id") == ev.get("seed_id"):
+            continue
+        if cond.get("kind") == "generative" and ev.get("seed_id") in excluded_seeds:
             continue
         k = arm_key(cond)
         conds[k] = cond
@@ -93,7 +108,9 @@ def aggregate() -> dict:
             continue
         s["n"] += 1
         s["fail"] += int(bool(ev.get("failure")))
-        r = (ev.get("yolo") or {}).get("recall_vs_seed")
+        r = (ev.get("integrity") or {}).get("recall_intact")
+        if r is None:
+            r = (ev.get("yolo") or {}).get("recall_vs_seed")
         a = (ev.get("reason") or {}).get("agree_vs_seed")
         if r is not None:
             s["recall"].append(r)
@@ -104,9 +121,19 @@ def aggregate() -> dict:
              "failure_rate": round(s["fail"] / s["n"], 3) if s["n"] else None,
              "mean_recall": mean(s["recall"]), "mean_agree": mean(s["agree"]),
              "fidelity_rejects": s["fid_reject"]} for k, s in stats.items()]
+    # Attribute Cosmos drops to the condition, not the generator: divide by the clear-day Cosmos control.
+    ctrl = next((a for a in arms if a["arm"] == "clear_day_light"), None)
+    for a in arms:
+        a["kind"] = conds[a["arm"]].get("kind", "generative")
+        if a["kind"] == "generative" and ctrl and ctrl["mean_recall"]:
+            a["control_recall"] = ctrl["mean_recall"]
+            if a["mean_recall"] is not None:
+                a["recall_rel_control"] = round(min(1.0, a["mean_recall"] / ctrl["mean_recall"]), 3)
     arms.sort(key=lambda a: -(a["failure_rate"] or 0))
     prev = load(FAILURE_MAP, {})
-    fm = {"arms": arms, "budget_used": sum(a["n"] + a["fidelity_rejects"] for a in arms),
+    fm = {"cosmos_control_by_seed": seed_ctrl, "cosmos_excluded_seeds": excluded_seeds,
+          "cosmos_exclusion_note": "Cosmos Transfer drifts on far/small vehicles: seeds whose clear-day Cosmos control recall < 0.5 are excluded from Cosmos arms (physics arms keep all seeds).",
+          "arms": arms, "budget_used": sum(a["n"] + a["fidelity_rejects"] for a in arms),
           "rounds": prev.get("rounds", 0), "updated": time.time()}
     FAILURE_MAP.parent.mkdir(parents=True, exist_ok=True)
     FAILURE_MAP.write_text(json.dumps(fm, indent=2))

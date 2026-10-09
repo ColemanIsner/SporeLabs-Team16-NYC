@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c3_08__phys_snow_s07",
+  "seed_id": "i24_scene1_p1c3_08",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7705,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7453,
+    "seconds": 1.33
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.032,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 2.968,
+    "recall_vs_seed": 0.0086,
+    "recall_vs_seed_all": 0.0086,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 4.23,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c3_08__phys_snow_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.978,
+    "recall_intact": 0.0337,
+    "patch_score_median": 0.6849,
+    "n_vehicle_patches": 91,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "An overhead view of a multi-lane highway during a snowfall, with vehicles moving steadily in both directions. The road surface is wet and partially obscured by falling snowflakes, and traffic flows smoothly without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.37,
+    "raw": "```json\n{\n  \"vehicle_count\": 12,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"snowy, overcast\",\n  \"summary\": \"An overhead view of a multi-lane highway during a snowfall, with vehicles moving steadily in both directions. The road surface is wet and partially obscured by falling snowflakes, and traffic flows smoothly without any lane changes or stops.\"\n}\n```",
+    "src_mtime": 1791565767.588,
+    "agree_vs_seed": 1.0
+  }
+}

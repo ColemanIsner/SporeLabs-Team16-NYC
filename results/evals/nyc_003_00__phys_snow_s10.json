@@ -1,0 +1,62 @@
+{
+  "clip_id": "nyc_003_00__phys_snow_s10",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.4785,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4531,
+    "seconds": 1.3
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.172,
+    "mean_count_person": 3.011,
+    "seed_mean_count": 5.204,
+    "recall_vs_seed": 0.7112,
+    "recall_vs_seed_all": 0.6467,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 5.62,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_003_00__phys_snow_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.7697,
+    "patch_score_median": 0.6283,
+    "n_vehicle_patches": 165,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A snowy urban intersection with pedestrians crossing and vehicles moving through the scene.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 8.69,
+    "raw": "{\"vehicle_count\": 4, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"snowy, overcast\", \"summary\": \"A snowy urban intersection with pedestrians crossing and vehicles moving through the scene.\"}",
+    "src_mtime": 1791565873.327,
+    "agree_vs_seed": 1.0
+  }
+}

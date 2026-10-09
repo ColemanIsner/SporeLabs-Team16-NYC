@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7325,
-    "seconds": 1.13
+    "seconds": 2.06
   },
   "reason": {
     "summary": "A multi-lane highway with moderate traffic moving in both directions. Vehicles are traveling at a steady pace, with some lane changes occurring. The road is bordered by snow-covered areas and trees.",
@@ -39,24 +39,25 @@
     "reason_disagree"
   ],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 5.022,
-    "mean_count_person": 0.172,
-    "seed_mean_count": 6.817,
-    "recall_vs_seed": 0.5314,
-    "recall_vs_seed_all": 0.5314,
+    "mean_count": 10.742,
+    "mean_count_person": 0.011,
+    "seed_mean_count": 13.366,
+    "recall_vs_seed": 0.6077,
+    "recall_vs_seed_all": 0.6077,
     "frames": 93,
-    "seconds": 1.96,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 14.86,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_00__snow_day_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.7343,
-    "recall_intact": 0.5724,
-    "patch_score_median": 0.4243,
-    "n_vehicle_patches": 207,
+    "vehicles_intact": 0.7415,
+    "recall_intact": 0.5961,
+    "patch_score_median": 0.4317,
+    "n_vehicle_patches": 414,
     "thresh": 0.35,
     "min_intact": 0.7
   }

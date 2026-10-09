@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7413,
-    "seconds": 1.08
+    "seconds": 1.82
   },
   "reason": {
     "summary": "A multi-lane highway at night with moderate traffic flow in both directions. Vehicles, including cars and trucks, move steadily along the road, separated by a central median. The scene is illuminated by streetlights and vehicle headlights, with no visible lane changes or stops.",
@@ -38,24 +38,25 @@
     "recall<0.7"
   ],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 0.538,
+    "mean_count": 2.14,
     "mean_count_person": 0.0,
-    "seed_mean_count": 7.29,
-    "recall_vs_seed": 0.0877,
-    "recall_vs_seed_all": 0.0877,
+    "seed_mean_count": 9.71,
+    "recall_vs_seed": 0.1982,
+    "recall_vs_seed_all": 0.1982,
     "frames": 93,
-    "seconds": 2.03,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 5.55,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c2_00__rain_night_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.7222,
-    "recall_intact": 0.1361,
-    "patch_score_median": 0.4333,
-    "n_vehicle_patches": 234,
+    "vehicles_intact": 0.8033,
+    "recall_intact": 0.2324,
+    "patch_score_median": 0.4396,
+    "n_vehicle_patches": 300,
     "thresh": 0.35,
     "min_intact": 0.7
   }

@@ -1,5 +1,60 @@
 {
+  "cosmos_control_by_seed": {
+    "i24_scene1_p1c1_08": 0.9151,
+    "i24_scene1_p1c2_00": 0.8496,
+    "nyc_003_00": 0.8395,
+    "i24_scene1_p1c3_04": 0.3099,
+    "i24_scene1_p1c2_08": 0.8387,
+    "i24_scene1_p1c1_00": 0.6605,
+    "i24_scene1_p1c3_08": 0.0,
+    "i24_scene1_p1c2_04": 0.9176,
+    "i24_scene1_p1c3_00": 0.1,
+    "i24_scene1_p1c1_04": 0.6622,
+    "nyc_002_00": 0.7429
+  },
+  "cosmos_excluded_seeds": [
+    "i24_scene1_p1c3_00",
+    "i24_scene1_p1c3_04",
+    "i24_scene1_p1c3_08"
+  ],
+  "cosmos_exclusion_note": "Cosmos Transfer drifts on far/small vehicles: seeds whose clear-day Cosmos control recall < 0.5 are excluded from Cosmos arms (physics arms keep all seeds).",
   "arms": [
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 0.7,
+        "base": "seed",
+        "physics": "rain"
+      },
+      "arm": "physics:rain@0.7",
+      "n": 9,
+      "failure_rate": 1.0,
+      "mean_recall": 0.281,
+      "mean_agree": 1.0,
+      "fidelity_rejects": 2,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "light",
+        "kind": "physics",
+        "severity": 0.4,
+        "base": "seed",
+        "physics": "fog"
+      },
+      "arm": "physics:fog@0.4",
+      "n": 9,
+      "failure_rate": 1.0,
+      "mean_recall": 0.315,
+      "mean_agree": 0.963,
+      "fidelity_rejects": 2,
+      "kind": "physics"
+    },
     {
       "condition": {
         "weather": "rain",
@@ -10,57 +65,85 @@
         "base": "seed",
         "physics": "rain"
       },
-      "arm": "rain_day_heavy",
+      "arm": "physics:rain@0.8",
       "n": 4,
       "failure_rate": 1.0,
-      "mean_recall": 0.096,
+      "mean_recall": 0.257,
       "mean_agree": 0.833,
-      "fidelity_rejects": 0
+      "fidelity_rejects": 0,
+      "kind": "physics"
     },
     {
       "condition": {
-        "weather": "fog",
+        "weather": "snow",
         "time": "day",
-        "intensity": "heavy",
-        "kind": "generative",
-        "control_weight": 0.5
-      },
-      "arm": "fog_day_heavy",
-      "n": 9,
-      "failure_rate": 0.556,
-      "mean_recall": 0.334,
-      "mean_agree": 0.963,
-      "fidelity_rejects": 2
-    },
-    {
-      "condition": {
-        "weather": "clear",
-        "time": "night",
         "intensity": "light",
-        "kind": "generative",
-        "control_weight": 0.5
+        "kind": "physics",
+        "severity": 0.4,
+        "base": "seed",
+        "physics": "snow"
       },
-      "arm": "clear_night_light",
-      "n": 9,
-      "failure_rate": 0.444,
-      "mean_recall": 0.141,
-      "mean_agree": 0.889,
-      "fidelity_rejects": 2
+      "arm": "physics:snow@0.4",
+      "n": 11,
+      "failure_rate": 0.818,
+      "mean_recall": 0.406,
+      "mean_agree": 0.97,
+      "fidelity_rejects": 0,
+      "kind": "physics"
     },
     {
       "condition": {
         "weather": "snow",
         "time": "day",
         "intensity": "heavy",
-        "kind": "generative",
-        "control_weight": 0.5
+        "kind": "physics",
+        "severity": 0.7,
+        "base": "seed",
+        "physics": "snow"
       },
-      "arm": "snow_day_heavy",
+      "arm": "physics:snow@0.7",
+      "n": 11,
+      "failure_rate": 0.818,
+      "mean_recall": 0.277,
+      "mean_agree": 0.939,
+      "fidelity_rejects": 0,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 1.0,
+        "base": "seed",
+        "physics": "snow"
+      },
+      "arm": "physics:snow@1.0",
       "n": 9,
-      "failure_rate": 0.333,
-      "mean_recall": 0.406,
-      "mean_agree": 0.852,
-      "fidelity_rejects": 2
+      "failure_rate": 0.556,
+      "mean_recall": 0.064,
+      "mean_agree": 0.778,
+      "fidelity_rejects": 2,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "light",
+        "kind": "physics",
+        "severity": 0.4,
+        "base": "seed",
+        "physics": "rain"
+      },
+      "arm": "physics:rain@0.4",
+      "n": 11,
+      "failure_rate": 0.545,
+      "mean_recall": 0.713,
+      "mean_agree": 0.97,
+      "fidelity_rejects": 0,
+      "kind": "physics"
     },
     {
       "condition": {
@@ -71,14 +154,143 @@
         "control_weight": 0.5
       },
       "arm": "rain_night_heavy",
-      "n": 9,
+      "n": 6,
+      "failure_rate": 0.5,
+      "mean_recall": 0.48,
+      "mean_agree": 0.944,
+      "fidelity_rejects": 2,
+      "kind": "generative",
+      "control_recall": 0.807,
+      "recall_rel_control": 0.595
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "night",
+        "intensity": "light",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "clear_night_light",
+      "n": 6,
+      "failure_rate": 0.5,
+      "mean_recall": 0.694,
+      "mean_agree": 0.944,
+      "fidelity_rejects": 2,
+      "kind": "generative",
+      "control_recall": 0.807,
+      "recall_rel_control": 0.86
+    },
+    {
+      "condition": {
+        "weather": "snow",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "snow_day_heavy",
+      "n": 6,
       "failure_rate": 0.333,
-      "mean_recall": 0.116,
-      "mean_agree": 0.926,
-      "fidelity_rejects": 2
+      "mean_recall": 0.769,
+      "mean_agree": 0.833,
+      "fidelity_rejects": 2,
+      "kind": "generative",
+      "control_recall": 0.807,
+      "recall_rel_control": 0.953
+    },
+    {
+      "condition": {
+        "weather": "clear",
+        "time": "day",
+        "intensity": "light",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "clear_day_light",
+      "n": 6,
+      "failure_rate": 0.333,
+      "mean_recall": 0.807,
+      "mean_agree": 1.0,
+      "fidelity_rejects": 2,
+      "kind": "generative",
+      "control_recall": 0.807,
+      "recall_rel_control": 1.0
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "generative",
+        "control_weight": 0.5
+      },
+      "arm": "fog_day_heavy",
+      "n": 6,
+      "failure_rate": 0.333,
+      "mean_recall": 0.74,
+      "mean_agree": 0.944,
+      "fidelity_rejects": 2,
+      "kind": "generative",
+      "control_recall": 0.807,
+      "recall_rel_control": 0.917
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 1.0,
+        "base": "seed",
+        "physics": "rain"
+      },
+      "arm": "physics:rain@1.0",
+      "n": 9,
+      "failure_rate": 0.0,
+      "mean_recall": 0.058,
+      "mean_agree": 0.815,
+      "fidelity_rejects": 2,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 1.0,
+        "base": "seed",
+        "physics": "fog"
+      },
+      "arm": "physics:fog@1.0",
+      "n": 9,
+      "failure_rate": 0.0,
+      "mean_recall": 0.078,
+      "mean_agree": 0.667,
+      "fidelity_rejects": 2,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 0.7,
+        "base": "seed",
+        "physics": "fog"
+      },
+      "arm": "physics:fog@0.7",
+      "n": 9,
+      "failure_rate": 0.0,
+      "mean_recall": 0.2,
+      "mean_agree": 0.778,
+      "fidelity_rejects": 2,
+      "kind": "physics"
     }
   ],
-  "budget_used": 48,
+  "budget_used": 143,
   "rounds": 0,
-  "updated": 1791565270.934718
+  "updated": 1791567170.909716
 }

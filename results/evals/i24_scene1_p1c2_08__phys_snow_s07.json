@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c2_08__phys_snow_s07",
+  "seed_id": "i24_scene1_p1c2_08",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7395,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7156,
+    "seconds": 1.76
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.505,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.667,
+    "recall_vs_seed": 0.0604,
+    "recall_vs_seed_all": 0.0604,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 5.36,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_08__phys_snow_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.966,
+    "recall_intact": 0.0804,
+    "patch_score_median": 0.7565,
+    "n_vehicle_patches": 206,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A snowy highway scene with multiple vehicles traveling in both directions. A white truck and a white bus are visible on the left side of the highway, while various cars move along the right side. Snowflakes are falling heavily, creating a wintry atmosphere.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 11.3,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"snowy, overcast\", \"summary\": \"A snowy highway scene with multiple vehicles traveling in both directions. A white truck and a white bus are visible on the left side of the highway, while various cars move along the right side. Snowflakes are falling heavily, creating a wintry atmosphere.\"}",
+    "src_mtime": 1791565687.376,
+    "agree_vs_seed": 1.0
+  }
+}

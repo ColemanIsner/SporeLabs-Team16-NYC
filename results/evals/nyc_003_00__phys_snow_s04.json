@@ -1,0 +1,62 @@
+{
+  "clip_id": "nyc_003_00__phys_snow_s04",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.6499,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.6313,
+    "seconds": 1.25
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.882,
+    "mean_count_person": 4.161,
+    "seed_mean_count": 5.204,
+    "recall_vs_seed": 0.8708,
+    "recall_vs_seed_all": 0.8336,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 4.47,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_003_00__phys_snow_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.9455,
+    "patch_score_median": 0.9144,
+    "n_vehicle_patches": 165,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A snowy urban intersection with a yellow SUV, a black car, a white truck, and a motorcycle. A man in a green striped shirt stands near orange traffic cones and barriers, while pedestrians cross the street. Snow falls steadily, reducing visibility and contrast.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": false,
+      "stopped_vehicle": true,
+      "weather_lighting": "snowing, overcast, low contrast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 8.28,
+    "raw": "```json\n{\n  \"vehicle_count\": 4,\n  \"lane_change\": false,\n  \"stopped_vehicle\": true,\n  \"weather_lighting\": \"snowing, overcast, low contrast\",\n  \"summary\": \"A snowy urban intersection with a yellow SUV, a black car, a white truck, and a motorcycle. A man in a green striped shirt stands near orange traffic cones and barriers, while pedestrians cross the street. Snow falls steadily, reducing visibility and contrast.\"\n}\n```",
+    "src_mtime": 1791565845.877,
+    "agree_vs_seed": 0.6667
+  }
+}

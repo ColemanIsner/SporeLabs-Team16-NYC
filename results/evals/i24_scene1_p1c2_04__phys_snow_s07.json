@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__phys_snow_s07",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.738,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7147,
+    "seconds": 1.67
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 2.032,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.1627,
+    "recall_vs_seed_all": 0.1627,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 4.85,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__phys_snow_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.9938,
+    "recall_intact": 0.217,
+    "patch_score_median": 0.7756,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway during a snowfall, with vehicles moving steadily in both directions. The road surface is wet and reflective, and the surrounding landscape is partially obscured by falling snow and fog.",
+    "answers": {
+      "vehicle_count": 20,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast, low contrast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.86,
+    "raw": "```json\n{\n  \"vehicle_count\": 20,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"snowy, overcast, low contrast\",\n  \"summary\": \"An aerial view of a multi-lane highway during a snowfall, with vehicles moving steadily in both directions. The road surface is wet and reflective, and the surrounding landscape is partially obscured by falling snow and fog.\"\n}\n```",
+    "src_mtime": 1791565608.089,
+    "agree_vs_seed": 1.0
+  }
+}

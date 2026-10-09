@@ -1,0 +1,60 @@
+{
+  "clip_id": "i24_scene1_p1c2_08__clear_day_light__cw0.5",
+  "seed_id": "i24_scene1_p1c2_08",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "light",
+    "kind": "generative",
+    "control_weight": 0.5
+  },
+  "fidelity": {
+    "edge_ssim": 0.7815,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7463,
+    "seconds": 1.37
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 6.161,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.667,
+    "recall_vs_seed": 0.8144,
+    "recall_vs_seed_all": 0.8144,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 2.95,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_08__clear_day_light__cw0.5.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.9029,
+    "recall_intact": 0.8387,
+    "patch_score_median": 0.4887,
+    "n_vehicle_patches": 206,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with light to moderate traffic flowing in both directions. Vehicles, including cars and trucks, maintain steady speeds and stay within their lanes. The road is bordered by dry grass and a small body of water on the left, with no lane changes or stops observed.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with clear visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.3,
+    "raw": "```json\n{\n  \"vehicle_count\": 12,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with clear visibility\",\n  \"summary\": \"An aerial view of a multi-lane highway with light to moderate traffic flowing in both directions. Vehicles, including cars and trucks, maintain steady speeds and stay within their lanes. The road is bordered by dry grass and a small body of water on the left, with no lane changes or stops observed.\"\n}\n```",
+    "src_mtime": 1791565862.577,
+    "agree_vs_seed": 1.0
+  }
+}

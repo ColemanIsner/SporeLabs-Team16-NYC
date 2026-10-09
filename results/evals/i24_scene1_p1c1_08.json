@@ -13,21 +13,22 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 1.0,
-    "seconds": 1.16
+    "seconds": 2.3
   },
   "failure": false,
   "failure_reasons": [],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 5.054,
+    "mean_count": 8.118,
     "mean_count_person": 0.0,
-    "seed_mean_count": 5.054,
+    "seed_mean_count": 8.118,
     "recall_vs_seed": 1.0,
     "recall_vs_seed_all": 1.0,
     "frames": 93,
-    "seconds": 2.05,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 4.62,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_08.json"
   },
   "excluded": false,

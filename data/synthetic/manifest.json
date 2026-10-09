@@ -1709,5 +1709,1131 @@
     "gpu": null,
     "gen_seconds": 28.11,
     "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 60.76,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 61.15,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 60.65,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 28.16,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 6.41,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 5.94,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 6.34,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 10.48,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 7.57,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 15.68,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 15.58,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 7.82,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 16.56,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 5.51,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 5.74,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 9.16,
+    "input": "data/seeds/i24_scene1_p1c3_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 6.44,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 7.08,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 14.91,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 15.66,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 16.1,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 8.75,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 7.64,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 7.84,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 8.71,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 12.3,
+    "input": "data/seeds/i24_scene1_p1c3_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 168.0,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 10.64,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 175.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 21.84,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 22.85,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 23.21,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 12.5,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 188.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_fog_s04",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 9.58,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 194.6,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_fog_s07",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 9.68,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 14.68,
+    "input": "data/seeds/i24_scene1_p1c3_08.mp4"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_fog_s10",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 11.39,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 201.5,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_snow_s04",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 18.74,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_rain_s04",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 35.82,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_rain_s07",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 37.01,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_snow_s07",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 17.97,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_rain_s10",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 39.06,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_fog_s04",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 11.23,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_fog_s07",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 10.75,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_fog_s10",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 11.38,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_002_00__phys_snow_s10",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 18.09,
+    "input": "data/seeds/nyc_002_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_snow_s04",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 14.06,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_rain_s04",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 30.42,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_rain_s07",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 31.25,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_snow_s07",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 15.17,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_rain_s10",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 32.44,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 281.3,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_00__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_00",
+    "src": "data/synthetic/i24_scene1_p1c3_00__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 286.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_003_00__phys_snow_s10",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 14.86,
+    "input": "data/seeds/nyc_003_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_04__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_04",
+    "src": "data/synthetic/i24_scene1_p1c3_04__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 292.2,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c3_08__clear_day_light__cw0.5",
+    "seed_id": "i24_scene1_p1c3_08",
+    "src": "data/synthetic/i24_scene1_p1c3_08__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A locked-off elevated traffic camera looks along a multi-lane interstate, with the same lane markings, concrete barriers, cars, and trucks holding their lanes. It is bright midday with ordinary sun and short shadows on the pavement. The air is clear with long visibility, the asphalt is dry, and contrast stays natural.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 295.9,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_002_00__clear_day_light__cw0.5",
+    "seed_id": "nyc_002_00",
+    "src": "data/synthetic/nyc_002_00__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. It is a clear, ordinary sunny day with normal contrast and dry pavement.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 299.4,
+    "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "nyc_003_00__clear_day_light__cw0.5",
+    "seed_id": "nyc_003_00",
+    "src": "data/synthetic/nyc_003_00__clear_day_light__cw0.5.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "light",
+      "kind": "generative",
+      "control_weight": 0.5
+    },
+    "prompt": "A fixed street camera looks down a busy New York City avenue, with the same buildings, crosswalks, parked cars, moving traffic, and pedestrians in the same places. It is a clear, ordinary sunny day with normal contrast and dry pavement.",
+    "generator": "cosmos-transfer2.5-2b/edge-distilled",
+    "gen_seconds": 301.6,
+    "gpu": "H100 (Modal)"
   }
 ]

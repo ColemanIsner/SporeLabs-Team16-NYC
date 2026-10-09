@@ -68,5 +68,60 @@
   "edge_ssim": 0.4823,
   "pass": false,
   "source": "fix/fallback"
+ },
+ "i24_scene1_p1c1_00__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7613,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c1_04__clear_day_light__cw0.5": {
+  "edge_ssim": 0.724,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c1_08__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7475,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_00__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7643,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_04__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7628,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c2_08__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7815,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c3_00__clear_day_light__cw0.5": {
+  "edge_ssim": 0.8069,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c3_04__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7886,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "i24_scene1_p1c3_08__clear_day_light__cw0.5": {
+  "edge_ssim": 0.7993,
+  "pass": true,
+  "source": "fix/fallback"
+ },
+ "nyc_002_00__clear_day_light__cw0.5": {
+  "edge_ssim": 0.4583,
+  "pass": false,
+  "source": "fix/fallback"
+ },
+ "nyc_003_00__clear_day_light__cw0.5": {
+  "edge_ssim": 0.467,
+  "pass": false,
+  "source": "fix/fallback"
  }
 }

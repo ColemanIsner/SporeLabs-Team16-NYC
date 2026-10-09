@@ -1,0 +1,63 @@
+{
+  "clip_id": "nyc_003_00__phys_fog_s10",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "fidelity": {
+    "edge_ssim": 0.4769,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4518,
+    "seconds": 1.23,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.355,
+    "mean_count_person": 1.645,
+    "seed_mean_count": 5.204,
+    "recall_vs_seed": 0.0549,
+    "recall_vs_seed_all": 0.1858,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 9.56,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_003_00__phys_fog_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.0545,
+    "recall_intact": 0.0,
+    "patch_score_median": 0.2159,
+    "n_vehicle_patches": 165,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "The scene is a foggy urban street with a yellow taxi and a white car visible in the background. A person in a dark jacket and light pants walks across the crosswalk, while another person in a light jacket and dark pants stands near a traffic barrel. The fog obscures details and creates a muted, gray atmosphere.",
+    "answers": {
+      "vehicle_count": 3,
+      "lane_change": false,
+      "stopped_vehicle": true,
+      "weather_lighting": "Overcast with heavy fog, reducing visibility."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.27,
+    "raw": "```json\n{\n  \"vehicle_count\": 3,\n  \"lane_change\": false,\n  \"stopped_vehicle\": true,\n  \"weather_lighting\": \"Overcast with heavy fog, reducing visibility.\",\n  \"summary\": \"The scene is a foggy urban street with a yellow taxi and a white car visible in the background. A person in a dark jacket and light pants walks across the crosswalk, while another person in a light jacket and dark pants stands near a traffic barrel. The fog obscures details and creates a muted, gray atmosphere.\"\n}\n```",
+    "src_mtime": 1791565829.454,
+    "agree_vs_seed": 0.6667
+  }
+}

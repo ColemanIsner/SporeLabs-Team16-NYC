@@ -14,18 +14,18 @@
   "mp4": "results/overlays/i24_scene1_p1c1_00__phys_rain_s07.mp4",
   "jpg": "results/overlays/i24_scene1_p1c1_00__phys_rain_s07.jpg",
   "frames": 93,
-  "recall_vs_seed": 0.2615,
-  "pooled_recall": 0.2839,
-  "recall_intact": 0.3317,
-  "vehicles_intact": 0.9903,
-  "patch_score_median": 0.7333,
-  "render_recall_intact": 0.2632,
-  "seed_mean_count": 6.817,
-  "seed_mean_intact": 6.742,
-  "mean_detected": 1.914,
-  "poster_frame": 58,
-  "poster_missed": 9,
-  "poster_seed_count": 11,
+  "recall_vs_seed": 0.3005,
+  "pooled_recall": 0.3127,
+  "recall_intact": 0.3366,
+  "vehicles_intact": 0.9758,
+  "patch_score_median": 0.7234,
+  "render_recall_intact": 0.3079,
+  "seed_mean_count": 13.366,
+  "seed_mean_intact": 13.0,
+  "mean_detected": 4.065,
+  "poster_frame": 14,
+  "poster_missed": 15,
+  "poster_seed_count": 16,
   "fidelity_pass": true,
   "edge_ssim": 0.7811,
   "reason_seed": "15 vehicles  \u00b7  \u201cBright daylight with clear visibility\u201d",
@@ -34,5 +34,5 @@
   "failure_reasons": [
     "recall<0.7"
   ],
-  "sig": "[3, {\"lane_change\": false, \"stopped_vehicle\": false, \"vehicle_count\": 15, \"weather_lighting\": \"Rainy, overcast, with raindrops visible on the camera lens\"}, {\"lane_change\": false, \"stopped_vehicle\": false, \"vehicle_count\": 15, \"weather_lighting\": \"Bright daylight with clear visibility\"}, {\"min_intact\": 0.7, \"n_vehicle_patches\": 207, \"patch_score_median\": 0.7333, \"recall_intact\": 0.3317, \"thresh\": 0.35, \"vehicles_intact\": 0.9903}, {\"edge_ssim\": 0.7811, \"frames\": 93, \"min_frame_ssim\": 0.7618, \"pass\": true, \"seconds\": 1.87, \"threshold\": 0.5}, 0.2615]"
+  "sig": "[3, {\"lane_change\": false, \"stopped_vehicle\": false, \"vehicle_count\": 15, \"weather_lighting\": \"Rainy, overcast, with raindrops visible on the camera lens\"}, {\"lane_change\": false, \"stopped_vehicle\": false, \"vehicle_count\": 15, \"weather_lighting\": \"Bright daylight with clear visibility\"}, {\"min_intact\": 0.7, \"n_vehicle_patches\": 414, \"patch_score_median\": 0.7234, \"recall_intact\": 0.3366, \"thresh\": 0.35, \"vehicles_intact\": 0.9758}, {\"edge_ssim\": 0.7811, \"frames\": 93, \"min_frame_ssim\": 0.7618, \"pass\": true, \"seconds\": 2.36, \"threshold\": 0.5}, 0.3005]"
 }

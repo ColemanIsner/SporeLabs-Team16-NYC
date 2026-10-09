@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c3_00__phys_snow_s10",
+  "seed_id": "i24_scene1_p1c3_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.742,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7041,
+    "seconds": 1.32,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.011,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 4.387,
+    "recall_vs_seed": 0.0037,
+    "recall_vs_seed_all": 0.0037,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 8.22,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c3_00__phys_snow_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.6479,
+    "recall_intact": 0.0109,
+    "patch_score_median": 0.413,
+    "n_vehicle_patches": 142,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway during a snowstorm, with vehicles moving steadily in both directions despite the falling snow and reduced visibility.",
+    "answers": {
+      "vehicle_count": 10,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.13,
+    "raw": "{\"vehicle_count\": 10, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"snowy, overcast\", \"summary\": \"An aerial view of a multi-lane highway during a snowstorm, with vehicles moving steadily in both directions despite the falling snow and reduced visibility.\"}",
+    "src_mtime": 1791565717.381,
+    "agree_vs_seed": 0.6667
+  }
+}

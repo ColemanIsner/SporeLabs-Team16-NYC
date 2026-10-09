@@ -1,0 +1,62 @@
+{
+  "clip_id": "nyc_002_00__phys_snow_s04",
+  "seed_id": "nyc_002_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "fidelity": {
+    "edge_ssim": 0.6422,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.621,
+    "seconds": 1.3
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.839,
+    "mean_count_person": 4.742,
+    "seed_mean_count": 5.29,
+    "recall_vs_seed": 0.8896,
+    "recall_vs_seed_all": 0.8459,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 6.2,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_002_00__phys_snow_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.9693,
+    "patch_score_median": 0.9166,
+    "n_vehicle_patches": 163,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A snowy urban intersection with moderate traffic flow. A man in a green striped shirt and hat stands near orange traffic cones and a red barrier, holding an orange flag. Pedestrians cross the street while cars and a white utility truck move through the intersection.",
+    "answers": {
+      "vehicle_count": 8,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowing, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 9.74,
+    "raw": "```json\n{\n  \"vehicle_count\": 8,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"snowing, overcast\",\n  \"summary\": \"A snowy urban intersection with moderate traffic flow. A man in a green striped shirt and hat stands near orange traffic cones and a red barrier, holding an orange flag. Pedestrians cross the street while cars and a white utility truck move through the intersection.\"\n}\n```",
+    "src_mtime": 1791565798.582,
+    "agree_vs_seed": 1.0
+  }
+}

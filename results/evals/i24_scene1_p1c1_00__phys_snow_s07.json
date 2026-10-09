@@ -36,27 +36,28 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7399,
-    "seconds": 2.04
+    "seconds": 1.77
   },
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 0.763,
+    "mean_count": 3.581,
     "mean_count_person": 0.0,
-    "seed_mean_count": 6.817,
-    "recall_vs_seed": 0.0963,
-    "recall_vs_seed_all": 0.0963,
+    "seed_mean_count": 13.366,
+    "recall_vs_seed": 0.2367,
+    "recall_vs_seed_all": 0.2367,
     "frames": 93,
-    "seconds": 4.29,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 8.43,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_00__phys_snow_s07.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 1.0,
-    "recall_intact": 0.1014,
-    "patch_score_median": 0.835,
-    "n_vehicle_patches": 207,
+    "vehicles_intact": 0.9928,
+    "recall_intact": 0.2506,
+    "patch_score_median": 0.8128,
+    "n_vehicle_patches": 414,
     "thresh": 0.35,
     "min_intact": 0.7
   }

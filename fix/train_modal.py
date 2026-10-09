@@ -45,7 +45,7 @@ def train(epochs: int = 20, imgsz: int = 960, batch: int = 16) -> dict:
         f"path: {work}\ntrain: images/train\nval: images/val\nnames:\n" + "".join(f"  {k}: {v}\n" for k, v in names.items()))
     t1 = time.time()
     model.train(data=str(work / "data.yaml"), epochs=epochs, imgsz=imgsz, batch=batch, device=0, workers=8,
-                lr0=0.002, optimizer="AdamW", warmup_epochs=1, cos_lr=True, close_mosaic=3, patience=100,
+                lr0=float(os.environ.get("FIX_LR", "0.001")), optimizer="SGD", freeze=10, warmup_epochs=1, cos_lr=True, close_mosaic=3, patience=100,
                 project="/tmp/runs", name="spore", exist_ok=True, plots=False, verbose=False)
     train_s = time.time() - t1
     run = Path("/tmp/runs/spore")

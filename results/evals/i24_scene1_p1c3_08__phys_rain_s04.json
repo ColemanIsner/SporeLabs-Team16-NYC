@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c3_08__phys_rain_s04",
+  "seed_id": "i24_scene1_p1c3_08",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.8463,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.8155,
+    "seconds": 1.27
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 1.473,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 2.968,
+    "recall_vs_seed": 0.4296,
+    "recall_vs_seed_all": 0.4296,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 4.46,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c3_08__phys_rain_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.4835,
+    "patch_score_median": 0.8719,
+    "n_vehicle_patches": 91,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "Multiple vehicles travel in both directions on a multi-lane highway during a rainstorm, viewed from an elevated perspective with rain streaks visible across the frame.",
+    "answers": {
+      "vehicle_count": 14,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "rainy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.06,
+    "raw": "```json\n{\n  \"vehicle_count\": 14,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"rainy, overcast\",\n  \"summary\": \"Multiple vehicles travel in both directions on a multi-lane highway during a rainstorm, viewed from an elevated perspective with rain streaks visible across the frame.\"\n}\n```",
+    "src_mtime": 1791565762.805,
+    "agree_vs_seed": 1.0
+  }
+}

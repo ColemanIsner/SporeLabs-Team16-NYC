@@ -1,177 +1,235 @@
+Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
+
+**DEMO VIDEO: <<add link>>**
+
 # Spore by SporeLabs
 
-Take real clips from the VAST index, grow structure-preserving synthetic variants (fog, night, rain, glare…) with Cosmos Transfer, hunt for the conditions where the provided video stack fails, then check that those failures show up in the real archive, and fix them.
+We stress-test the exact models inside your VSS pipeline: the hosted YOLO11s (the VSS Detector) and the hosted Cosmos3 Nano Reasoner (the VSS Reasoner). Synthetic clips are never uploaded to or indexed in VSS. VSS is used to search the real archive.
 
-Transfer keeps the seed's edges and geometry, so the stack's answer on the clean seed (vehicle boxes, counts, events, summary) is the expected answer for every variant. Each synthetic clip is a test case with a known answer. A fidelity gate separates a bad generation from a real blind spot. A bandit spends the GPU budget on the conditions that break the stack. VSS then pulls real archive clips in that condition. A condition-aware prompt is the fix, re-measured on held-out real clips.
+Every number below comes from a JSON file in `results/`, and the file is named next to it.
 
-## Architecture
+## Results in one screen
+
+- **The gap is real.** There are 612 real clips indexed, and 127 of them are highway clips. Highway cameras have **0** heavy-rain, fog, snow, glare, or night-rain clips. Snow has **0 clips on any camera**. (`results/coverage.json`)
+- **The detector breaks early.** Recall on intact vehicles falls below 50% at severity **0.34 for snow, 0.35 for fog, 0.60 for rain**. (`results/severity_curve.json`)
+- **The Detector and Reasoner disagree.** In the worst physics condition (fog at severity 1.0), YOLO11s finds **0.34 vehicles/frame**, down from 7.77 on the clear seeds. Cosmos Reason still counts **7.6 vehicles**, down from 15.1. YOLO finds under 0.5 vehicles/frame on 7 of 11 clips, while Reason reports vehicles on 10 of 11. (computed from `results/evals/*__phys_fog_s10.json` and the seed evals)
+- **Real footage gives weak, mixed confirmation.** Glare is the strongest case. Fog is **not** confirmed. No real snow footage exists. (`results/real_check.json`)
+- **Fine-tuning gave a negative result.** YOLO fine-tuned on our synthetic clips did not beat a free CLAHE contrast trick and hurt real clips. (`results/fix/fix_detail.json`)
+
+## The 5 stages
 
 ```
-seed
-  -> Cosmos Transfer on Modal   (gen/; text prompts from gen/prompts.py)
-  -> ffmpeg pixel arms          (gen/degrade.py: glare, motion_blur, low_bitrate, lens_dirt)
-  -> fidelity gate              (eval/: edge-map SSIM; a miss counts only if this passes)
-  -> YOLO + Cosmos Reason       (systems under test)
-  -> bandit loop                (loop/: Thompson sampling over the condition grid)
-  -> VSS real-archive confirmation
-  -> fix                        (condition-aware Reason prompt; YOLO fine-tune is stretch)
+1 Search    VSS /api/v1/search + explore captions over 612 real clips   -> results/coverage.json
+2 Report    W&B Inference LLM gap report, Weave-traced                    -> results/gap_report.json
+3 Fill      gen/weather.py physics fog/rain/snow, sev 0.4/0.7/1.0         -> data/synthetic/ (99 clips)
+            + NVIDIA Cosmos Transfer 2.5 relighting on Modal H100            (44 clips + 11 clear-day controls)
+4 Measure   hosted YOLO11s (VSS Detector) + Cosmos3 Nano Reasoner (VSS Reasoner)
+            eval/integrity.py vehicle gate, severity breaking point     -> results/evals/, severity_curve.json, failure_map.json
+5 Loop      loop/spore.py picks the next gap, re-searches the archive    -> results/loop_log.json, results/real_check.json
+            for newly indexed real clips
 ```
 
-W&B Weave traces every gen and eval step. Footage review (`tools/review`) feeds notes back into generation and eval: bad-rated clips are excluded.
+### 1. Search: what has the archive never seen?
+
+`vss/coverage.py` sends one plain-English query per condition to `POST /api/v1/search`. It then keyword-scans the VSS caption (`reasoning_content` from `/api/v1/videos/explore`) of every indexed clip. Source: `results/coverage.json` (13 cameras).
+
+| Condition | Clips, any camera | Highway clips |
+|---|---|---|
+| Clear daytime | 101 | 23 |
+| Night | 32 | 5 |
+| Heavy rain | 8 | **0** |
+| Dense fog | 4 | **0** |
+| Low-sun glare | 3 | **0** |
+| Snow | **0** | **0** |
+| Night + rain | **0** | **0** |
+| **Total indexed** | **612** | **127** |
+
+### 2. Report: explain the gap (W&B Inference + Weave)
+
+`loop/report.py` gives the coverage and eval numbers to a W&B Inference LLM (`deepseek-ai/DeepSeek-V4-Pro-0813`, 11.31 s). The LLM writes the gap report and picks the next condition. The call is traced in Weave: [wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave](https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave).
+
+From `results/gap_report.json`:
+
+> "Real archive coverage is missing highway scenes in heavy rain: 0 of 8 rain clips are highway, while synthetic heavy-rain validation fails completely." Next condition: **rain**.
+
+This report was generated at 13:00, before we switched the evals to the hosted YOLO11s. Its archive counts still hold. Its synthetic recall figures (for example 0.148) come from the earlier local yolo11n run. Run `loop/spore.py --stage 2` to refresh them.
+
+### 3. Fill: generate the missing footage
+
+| Generator | What | Clips | Source |
+|---|---|---|---|
+| Physics weather layer (`gen/weather.py`) | fog, rain, snow at severity 0.4, 0.7, and 1.0 on 11 real seeds (9 I-24 highway, 2 NYC) | 99 (+4 rain at 0.8 from a loop iteration) | `data/synthetic/manifest.json` |
+| NVIDIA Cosmos Transfer 2.5 (edge-distilled 2B, Modal H100) | night, night + rain, fog, snow relighting | 44 | same |
+| Cosmos clear-day control | same generator, "nothing changes" prompt | 11 | same |
+
+The physics layer is the headline result because it only adds per-pixel overlays and never warps the image. Vehicles stay at exactly the same pixels, so the seed's labels remain exact ground truth.
+
+### 4. Measure: what breaks in your pipeline
+
+Breaking point is the severity at which mean recall on intact vehicles drops below 50%. Source: `results/severity_curve.json`, 11 clips per cell.
+
+| Layer | sev 0.4 | sev 0.7 | sev 1.0 | Breaking point |
+|---|---|---|---|---|
+| Snow | 0.41 | 0.28 | 0.21 | **0.34** |
+| Fog | 0.43 | 0.30 | 0.06 | **0.35** |
+| Rain | 0.71 | 0.39 | 0.14 | **0.60** |
+
+The highway camera is far more fragile than the NYC street camera. At fog 0.4, I-24 recall is 0.315 while NYC recall is 0.957 (`by_scene`, `results/severity_curve.json`; NYC is only 2 of the 11 seeds).
+
+**Reasoner vs Detector**, computed from `results/evals/*.json` with 11 clips per row:
+
+| Condition | YOLO11s vehicles/frame | Cosmos Reason vehicle_count |
+|---|---|---|
+| Clear seeds | 7.77 | 15.1 |
+| Snow 0.7 (all 11 pass the integrity gate) | 2.00 (26% of seed) | 12.5 (83% of seed) |
+| Fog 1.0 (worst condition) | 0.34 (4% of seed) | 7.6 (51% of seed) |
+
+Reason's absolute count is about twice YOLO's even on clean seeds, so compare the drop relative to each model's own seed count.
+
+The overlay shown by default in the UI is `i24_scene1_p1c3_04__phys_snow_s07`. On its poster frame, **YOLO sees 1 of 12** seed vehicles, and every vehicle is intact (vehicles_intact 1.0). Cosmos Reason on the same clip says "15 vehicles, snowy, overcast". (`results/overlays/i24_scene1_p1c3_04__phys_snow_s07.meta.json`)
+
+**Cosmos arms are reported relative to the control.** The Cosmos clear-day control, which should change nothing, already has recall **0.584**. So the Cosmos generator alone costs about 40% of recall, and we report Cosmos condition arms as `recall_rel_control`. Source: `results/failure_map.json`, n = 9 per arm; the 2 NYC seeds failed the edge-SSIM gate.
+
+| Cosmos arm | Mean recall | Relative to control |
+|---|---|---|
+| Clear day (control) | 0.584 | 1.00 |
+| Night + heavy rain | 0.405 | 0.69 |
+| Clear night | 0.479 | 0.82 |
+| Heavy fog | 0.508 | 0.87 |
+| Heavy snow | 0.556 | 0.95 |
+
+That is why the physics layer is the headline. Its pixels never move, so its labels are exact.
+
+There is one quirk in `failure_map.json`. It lists `failure_rate` 0.0 for fog 0.7, fog 1.0 and rain 1.0. That is because the vehicle-integrity gate marks most of those clips as invalid test cases (vehicles_intact < 0.7: heavy fog and rain wash out the vehicle patches). Their recall still collapses (`mean_recall` 0.20, 0.078 and 0.058).
+
+### 5. Loop: keep searching
+
+`loop/spore.py` runs Search → Report → Fill → Measure → Continue. It logs each iteration to `results/loop_log.json`. The logged loop iteration reads: "Heavy rain: 0 real highway clips -> filled 2 -> recall 0.044". (That recall predates the switch to hosted YOLO.) The re-search found the same 612 indexed clips. The second `vss/real_check.py` run found **0 new chunks** (`results/real_check.json` → `runs`). The loop is ready for newly indexed footage, but none has arrived yet.
+
+## Real-archive confirmation (honest: weak and mixed)
+
+`vss/real_check.py` searched the real archive for each condition and pulled 2 clips per condition (10 total). `eval/real_confirm.py` ran hosted YOLO11s and Cosmos Reason on them. A condition counts as "confirmed" if YOLO finds fewer than 50% of Reason's vehicle count on any clip, which is the same signature we see on synthetic clips. Source: `results/real_check.json`.
+
+| Condition | Confirmed | Evidence (YOLO vehicles/frame vs Reason count) |
+|---|---|---|
+| Glare | yes, 1 of 2 clips | **0.505 vs 2 (25%)**: the strongest case. The other clip: 8.796 vs 6 |
+| Dusk | yes, 1 of 2 | 0.441 vs 1 (44%); 1.57 vs 2 (78%) |
+| Rain | yes, 1 of 2 (borderline) | 0.989 vs 2 (49%); 4.0 vs 1 (400%). Rain is barely visible in either clip |
+| Night | no | 6.204 vs 8 (78%); on the other clip, an IR camera, Reason sees no vehicles |
+| Fog | **no** | YOLO beats Reason on real fog: 4.495 vs 2 and 4.505 vs 2. Both clips are adjacent chunks from one camera |
+| Snow | n/a | **No real snow footage exists**: 0 snow mentions in 3,537 VSS captions across 13 cameras |
+
+The sample is tiny and the confirmations are weak. We do not claim that real footage proves the synthetic findings. For snow, synthetic footage is the only way to test at all.
+
+## Fix attempt: a negative result
+
+We fine-tuned YOLO11s on about 2.4k synthetic frames (Cosmos + physics, with labels taken from the seeds). Training took 136 s for 10 epochs on a Modal L40S. We evaluated it on held-out cameras. This eval used local yolo11s weights, because the hosted endpoint can't swap weights. Source: `results/fix/fix_detail.json`, same numbers as `results/fix_wip.json`.
+
+| Held-out set | Stock | Fine-tuned | CLAHE only (no training) |
+|---|---|---|---|
+| 60 synthetic variants, recall | 0.318 | 0.310 | **0.363 (+4.5 pts)** |
+| Held-out camera i24 p1c3 (42 clips), recall | 0.161 | 0.205 | 0.202 |
+| Clean seeds (5), recall | 1.000 | 0.763 | 0.956 |
+| 10 real check clips, detections/frame (no ground truth) | 3.54 | 2.31 | 3.50 |
+
+The fine-tune failed its gate ("after > before on held-out variants AND clean-seed recall drop <= 5 pts"). **At this scale, synthetic footage is more valuable as a stress test than as training data.** `results/fix.json` was never written.
+
+**Next step:** a VSS re-ingest prompt fix. Re-ingest real archive clips with a condition-aware `custom_prompt` that makes the Reasoner state weather, lighting and visibility first. Then measure search precision on held-out real clips. This is designed but not measured.
 
 ## Sponsor tools
 
-| Sponsor | Use |
+| Sponsor | How Spore uses it |
 |---|---|
-| VAST (VSS / VastDB) | Seed retrieval, real-archive confirmation search, ingest of synthetic clips |
-| NVIDIA | Cosmos Transfer 2.5 (generate), Cosmos Reason (summaries / Q&A under test), YOLO (detection under test) |
-| W&B | Weave traces of every gen/eval step + eval table |
-| CoreWeave | W&B Inference (serverless, runs on CoreWeave) powers the loop agent's LLM calls (condition prompts, failure write-ups). The VSS stack itself also runs on CoreWeave GPUs. No raw GPU offered → Transfer runs on Modal |
-| SpaceXAI (Cursor) | Cursor agents (incl. Grok fast) build parts of the system in parallel |
+| VAST | VSS `/api/v1/search`, explore, and captions: finding the gap (stage 1) and finding real-condition clips for confirmation |
+| NVIDIA | Cosmos Transfer 2.5 on a Modal H100 (gap fill); hosted Cosmos3 Nano Reasoner and YOLO11s (the models under test) |
+| CoreWeave / Weights & Biases | Serverless W&B Inference for the gap-report agent, plus Weave traces. The hosted models run on CoreWeave GPUs |
+| SpaceXAI / Cursor | Built with Cursor agents, including Grok 4.7 running parallel tasks |
+
+## Reproduce
+
+### Environment (`.env` at repo root, names only)
+
+| Variable | Used by |
+|---|---|
+| `USERNAME`, `PASSWORD` | VSS login (`vss/client.py`) |
+| `GPU_BEARER_TOKEN` | hosted YOLO11s and Cosmos3 Reasoner (`eval/yolo_eval.py`, `eval/reason_eval.py`) |
+| `WANDB_API_KEY` | W&B Inference + Weave (`loop/llm.py`, `loop/tracing.py`) |
+| optional: `WANDB_ENTITY`, `WANDB_PROJECT`, `SPORE_LLM_MODEL`, `YOLO_URL`, `COSMOS3_REASON_URL`, `SPORE_YOLO_BACKEND` | overrides |
+
+Modal (Cosmos Transfer, fine-tune) authenticates with `modal token new`, not `.env`.
+
+### Per-stage commands
+
+```bash
+# Whole loop, or one stage (1 search, 2 report, 3 fill, 4 measure, 5 loop)
+loop/.venv/bin/python loop/spore.py --iterations 1 --k 2
+loop/.venv/bin/python loop/spore.py --stage N
+
+# 1 Search
+python3 vss/coverage.py                       # -> results/coverage.json
+python3 vss/real_check.py                     # -> results/real_check.json + data/real_check/*.mp4
+
+# 2 Report
+loop/.venv/bin/python loop/report.py          # -> results/gap_report.json (Weave-traced)
+
+# 3 Fill: physics grid (99 clips = 11 seeds x fog/rain/snow x 0.4/0.7/1.0)
+for S in $(python3 -c "import json;print(' '.join(s['seed_id'] for s in json.load(open('data/seeds/manifest.json'))))"); do
+  for K in fog rain snow; do for V in 0.4 0.7 1.0; do
+    python3 gen/weather.py --in data/seeds/$S.mp4 --kind $K --severity $V \
+      --out data/synthetic/${S}__phys_${K}_s$(printf %02d $(python3 -c "print(int($V*10))")).mp4 \
+      --manifest data/synthetic/manifest.json --seed-id $S
+  done; done
+done
+# 3 Fill: Cosmos Transfer 2.5 on Modal (4 conditions + clear-day control, control weight 0.5)
+modal deploy gen/modal_transfer.py
+SPORE_CONDS=fog_day_heavy,rain_night_heavy,snow_day_heavy,clear_night_light,clear_day_light python3 gen/first_batch.py
+
+# 4 Measure
+eval/.venv/bin/python eval/run_all.py --reason   # hosted YOLO11s + Cosmos3 Reasoner + edge-SSIM -> results/evals/
+eval/.venv/bin/python eval/integrity.py          # vehicle-integrity gate -> integrity block in results/evals/
+eval/.venv/bin/python eval/severity_curve.py     # -> results/severity_curve.json
+eval/.venv/bin/python eval/render_all.py         # -> results/overlays/*.mp4|jpg + index.json
+eval/.venv/bin/python eval/real_confirm.py       # YOLO vs Reason on real clips -> results/real_check.json
+
+# Demo UI
+cd ui && npm run dev                              # http://localhost:5173
+```
+
+Venv setup: [eval/README.md](eval/README.md), [gen/README.md](gen/README.md), [loop/README.md](loop/README.md).
+
+### Inputs and outputs
+
+| Path | Contents |
+|---|---|
+| `data/seeds/manifest.json` | 11 real seeds pulled from VSS (9 I-24 highway, 2 NYC), ~6 s, 16 fps, 93 frames, 1280×720 |
+| `data/synthetic/manifest.json` | 158 variants: `kind` = `physics` (weather layer, with `severity`) or `generative` (Cosmos, with `control_weight`) |
+| `results/coverage.json` | per-condition clip counts (any camera / highway) + VSS search top hits |
+| `results/gap_report.json` | LLM gap report, candidates, next condition |
+| `results/evals/<clip_id>.json` | `fidelity`, `yolo`, `reason`, `integrity`, `failure` per clip |
+| `results/severity_curve.json` | recall vs severity per layer, breaking points, per-scene split |
+| `results/failure_map.json` | per-arm n, mean recall, failure rate, `recall_rel_control` for Cosmos arms |
+| `results/overlays/` | seed vs variant overlay videos and stills, `index.json` (integrity-gated) |
+| `results/real_check.json` | real-archive clips per condition, YOLO vs Reason, confirmed flag, run log |
+| `results/loop_log.json` | per-iteration stage log |
+| `results/fix/fix_detail.json` | fine-tune vs stock vs CLAHE, per clip |
+
+### Metric definitions
+
+- **Seed pseudo-ground truth:** hosted YOLO11s vehicle boxes (conf 0.4) on the clean seed, copied to the same frame of each variant. We measure consistency with the clean-day detector, not absolute accuracy.
+- **`edge_ssim`:** mean over frames of SSIM(Canny(seed), Canny(variant)). The clip passes at ≥ 0.5 (`eval/fidelity.py`).
+- **`vehicles_intact`:** the fraction of seed vehicles whose seed and variant patches have a contrast-normalized gradient correlation ≥ 0.35, i.e. the generator kept the car. A clip is a valid test case only if this is ≥ 0.7 (`eval/integrity.py`).
+- **`recall_intact`:** detected intact vehicles divided by all intact vehicles (IoU ≥ 0.5). A miss counts only on a car that is actually there.
+- **Breaking point:** the first severity at which mean `recall_intact` falls below 0.5, linearly interpolated (`eval/severity_curve.py`).
+- **`recall_rel_control`:** a Cosmos arm's mean recall divided by the Cosmos clear-day control's recall (0.584).
 
 ## Repo layout
 
 ```
-SPEC.md                    this file
-tasks/                     per-agent task lists
-gen/                       Cosmos Transfer on Modal (Claude)          -> writes data/synthetic/
-gen/degrade.py             ffmpeg cheap conditions (Grok)              -> writes data/synthetic/
-vss/                       VSS client: search, download, ingest (Cursor)
-eval/                      YOLO, fidelity, Cosmos Reason Q&A, scoring (Claude + Grok)
-loop/                      bandit orchestrator + Weave (Claude)
-ui/                        demo UI, reads results/*.json + data/ (Grok)
-data/seeds/                seed mp4s + manifest.json
-data/synthetic/            variant mp4s + manifest.json
-data/real_check/           real archive clips pulled for confirmation
-results/                   evals + failure map + real check (JSON)
+vss/      VSS client: coverage search, real-archive check (no synthetic ingest)
+loop/     loop/spore.py 5-stage loop, report.py (W&B Inference), Weave tracing
+gen/      weather.py physics layer, Cosmos Transfer 2.5 on Modal
+eval/     hosted YOLO11s + Cosmos3 Reasoner, fidelity, integrity, severity curve, overlays
+fix/      YOLO fine-tune experiment (negative result)
+ui/       demo UI (reads data/ and results/)
+results/  all JSON outputs
 ```
-
-`gen/prompts.py` holds the 24-arm condition grid (`weather × time × intensity`) and `prompt_for(scene, condition)`.
-
-## How to run
-
-### Prompts
-
-```bash
-python3 gen/prompts.py
-```
-
-Prints `NEGATIVE` plus a Transfer prompt for every condition on both scenes (`highway`, `warehouse`). Pass `prompt_for(...)` as the `--prompt` to Modal.
-
-### Generate (Cosmos Transfer)
-
-Details and one-time Modal / Hugging Face setup: [gen/README.md](gen/README.md).
-
-```bash
-modal run gen/modal_transfer.py::smoke
-modal run gen/modal_transfer.py --video path.mp4 --prompt "..." --out out.mp4
-modal run gen/modal_transfer.py::batch --jobs jobs.json --out-dir data/synthetic
-```
-
-Outputs land in `data/synthetic/` as 93-frame, 16 fps, 1280×720 mp4s, with `manifest.json`.
-
-### Generate (cheap pixel arms, no GPU)
-
-```bash
-python3 gen/degrade.py --seed data/seeds/X.mp4 --cond all --out data/synthetic/
-```
-
-Arms: `glare`, `motion_blur`, `low_bitrate`, `lens_dirt`, plus `fog_pixel` and `night_pixel`.
-
-### Eval
-
-Details: [eval/README.md](eval/README.md).
-
-```bash
-eval/.venv/bin/python eval/fidelity.py data/synthetic/X__fog.mp4 --seed data/seeds/X.mp4
-eval/.venv/bin/python eval/yolo_eval.py data/synthetic/X__fog.mp4 --seed data/seeds/X.mp4
-```
-
-Each command merges into `results/evals/<clip_id>.json`. Box caches go to `results/boxes/`.
-
-### Loop, real check, fix
-
-`loop/` runs the bandit: read evals, pick the next arm, write `results/failure_map.json`. `vss/` searches the real archive and writes `results/real_check.json`. The fix re-measures held-out real clips into `results/fix.json`. See those directories' READMEs as they land.
-
-### Demo UI
-
-Details: [ui/README.md](ui/README.md).
-
-```bash
-cd ui && npm install && npm run dev
-```
-
-Serves the grid at http://localhost:5173 and reads `data/` and `results/` from the repo root.
-
-### Footage review
-
-```bash
-python3 tools/review/server.py
-```
-
-http://localhost:8765. Ratings and notes land in `results/reviews.json`. Generation and eval must read it.
-
-## Inputs and outputs
-
-Seeds (`data/seeds/manifest.json`): about 6 s, 16 fps, 93 frames, 1280×720.
-
-```json
-[{"seed_id": "i24_c1_007", "dataset": "i24_cam-1", "vss_id": "<id from VSS>", "src": "data/seeds/i24_c1_007.mp4",
-  "start_s": 0, "end_s": 6, "fps": 16, "width": 1280, "height": 720, "notes": "dense traffic, 1 lane change"}]
-```
-
-Variants (`data/synthetic/manifest.json`). `kind` is `generative` (Cosmos) or `pixel` (ffmpeg). Seeds themselves appear with condition `clear/day/light`.
-
-```json
-[{"clip_id": "i24_c1_007__fog_night_heavy", "seed_id": "i24_c1_007", "src": "data/synthetic/i24_c1_007__fog_night_heavy.mp4",
-  "condition": {"weather": "fog", "time": "night", "intensity": "heavy", "kind": "generative"},
-  "prompt": "...", "generator": "cosmos-transfer2.5-2b/edge-distilled", "gen_seconds": 41.2, "gpu": "H100"}]
-```
-
-Per-clip eval (`results/evals/<clip_id>.json`):
-
-```json
-{"clip_id": "...", "seed_id": "...", "condition": {...},
- "fidelity": {"edge_ssim": 0.71, "pass": true},
- "yolo": {"model": "yolo11n", "mean_count": 5.2, "recall_vs_seed": 0.63, "boxes": "results/boxes/<clip_id>.json"},
- "reason": {"summary": "...", "answers": {"vehicle_count": 4, "lane_change": false, "stopped_vehicle": false}, "agree_vs_seed": 0.33},
- "failure": true, "failure_reasons": ["recall<0.7", "reason_disagree"]}
-```
-
-Failure map (`results/failure_map.json`):
-
-```json
-{"arms": [{"condition": {}, "n": 3, "failure_rate": 0.67, "mean_recall": 0.52, "mean_agree": 0.44}], "budget_used": 30}
-```
-
-Real check (`results/real_check.json`):
-
-```json
-[{"condition": {}, "vss_query": "highway at night in heavy rain", "clips": [{"vss_id": "...", "src": "...", "yolo_mean_count": 0, "reason_answers": {}, "human_note": ""}], "confirmed": true}]
-```
-
-Cosmos Reason question set (seed and variants):
-
-1. How many vehicles are visible? (integer)
-2. Does any vehicle change lanes? (yes/no)
-3. Is any vehicle stopped or nearly stopped? (yes/no)
-4. Describe the weather and lighting. (free text, used to check the condition "took")
-
-### Metric definitions
-
-- `edge_ssim`: SSIM between Canny edge maps of seed and variant, averaged over frames. `pass` if ≥ threshold (calibrate on first batch, start 0.5).
-- `recall_vs_seed`: per frame, fraction of seed YOLO boxes (conf≥0.4, vehicle classes) matched by a variant box with IoU≥0.5; mean over frames. Seed boxes are pseudo-GT.
-- `agree_vs_seed`: fraction of the fixed question set where the variant answer equals the seed answer.
-- `failure` = fidelity.pass AND (recall_vs_seed < 0.7 OR agree_vs_seed < 0.67).
-
-## Results
-
-<!-- TODO(results): replace the TODOs below with measured numbers before submit. Do not invent them. -->
-
-- Seeds evaluated: **TODO**
-- Variants generated (generative / pixel): **TODO** / **TODO**
-- Clips evaluated (`budget_used`): **TODO**
-- Top failure arm and failure rate: **TODO**
-- Mean recall / mean agree on that arm: **TODO** / **TODO**
-- Real-archive conditions confirmed: **TODO**
-- Fix, before → after on held-out real clips: **TODO**

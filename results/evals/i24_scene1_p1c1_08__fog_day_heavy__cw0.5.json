@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7654,
-    "seconds": 1.08
+    "seconds": 1.58
   },
   "reason": {
     "summary": "A multi-lane highway with moderate traffic flow in both directions. Vehicles, including cars and trucks, are moving steadily. The right side of the highway is illuminated by bright overhead lights, creating a glare effect. The scene is viewed from an elevated perspective, showing the road, surrounding vegetation, and a distant building.",
@@ -33,29 +33,28 @@
     "agree_vs_seed": 1.0,
     "condition_registered": false
   },
-  "failure": true,
-  "failure_reasons": [
-    "recall<0.7"
-  ],
+  "failure": false,
+  "failure_reasons": [],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 5.14,
-    "mean_count_person": 0.204,
-    "seed_mean_count": 5.054,
-    "recall_vs_seed": 0.7325,
-    "recall_vs_seed_all": 0.7325,
+    "mean_count": 7.925,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 8.118,
+    "recall_vs_seed": 0.8527,
+    "recall_vs_seed_all": 0.8527,
     "frames": 93,
-    "seconds": 1.84,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 9.31,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c1_08__fog_day_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.7325,
-    "recall_intact": 0.6783,
-    "patch_score_median": 0.4121,
-    "n_vehicle_patches": 157,
+    "vehicles_intact": 0.7229,
+    "recall_intact": 0.8833,
+    "patch_score_median": 0.4267,
+    "n_vehicle_patches": 249,
     "thresh": 0.35,
     "min_intact": 0.7
   }

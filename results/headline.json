@@ -1,0 +1,59 @@
+{
+  "set": "hosted YOLO11s recall on intact seed vehicles, physics layer, I-24 cameras p1c1+p1c2 (6 seeds)",
+  "by_condition": {
+    "fog@0.4": {
+      "mean": 0.405,
+      "min": 0.361,
+      "max": 0.506,
+      "n": 6
+    },
+    "fog@0.7": {
+      "mean": 0.28,
+      "min": 0.199,
+      "max": 0.392,
+      "n": 6
+    },
+    "fog@1.0": {
+      "mean": 0.112,
+      "min": 0.027,
+      "max": 0.2,
+      "n": 6
+    },
+    "snow@0.4": {
+      "mean": 0.386,
+      "min": 0.296,
+      "max": 0.463,
+      "n": 6
+    },
+    "snow@0.7": {
+      "mean": 0.199,
+      "min": 0.08,
+      "max": 0.254,
+      "n": 6
+    },
+    "snow@1.0": {
+      "mean": 0.094,
+      "min": 0.036,
+      "max": 0.152,
+      "n": 6
+    },
+    "rain@0.4": {
+      "mean": 0.748,
+      "min": 0.634,
+      "max": 0.849,
+      "n": 6
+    },
+    "rain@0.7": {
+      "mean": 0.347,
+      "min": 0.276,
+      "max": 0.414,
+      "n": 6
+    },
+    "rain@1.0": {
+      "mean": 0.086,
+      "min": 0.007,
+      "max": 0.141,
+      "n": 6
+    }
+  }
+}

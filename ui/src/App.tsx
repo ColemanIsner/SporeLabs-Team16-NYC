@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   FIXTURES, url, useJSON, useEvals, condLabel, isPixel, pixelName, pct, num, fmtAnswer,
   WEATHERS, TIMES, INTENSITIES, ago,
@@ -21,6 +21,13 @@ export default function App() {
   const loopLog = useJSON<LoopEntry[]>("results/loop_log.json", POLL);
   const map = useFixtureReplay(rawMap);
   const sevCurve = useJSON<SeverityCurve>("results/severity_curve.json", POLL);
+  const fixOk = Array.isArray(fix) && fix.length > 0;
+  const headline = useJSON<Headline>("results/headline.json", POLL);
+  const ovSorted = useMemo(() => sortOverlays(overlays), [overlays]);
+  const [selClip, setSelClip] = useState<string | null>(null);
+  const curOv = (ovSorted ?? []).find((o) => o.clip_id === selClip) ?? (ovSorted ?? [])[0];
+  const selEval = useJSON<Eval>(curOv ? `results/evals/${curOv.clip_id}.json` : null, POLL);
+  const seedEval = useJSON<Eval>(curOv?.seed_id ? `results/evals/${curOv.seed_id}.json` : null, POLL);
 
   const spore = useMemo(() => (Array.isArray(loopLog) ? loopLog : []).filter((e) => e && e.kind === "spore"), [loopLog]);
   const lastFill = useMemo(() => [...spore].reverse().find((e) => e.stages?.["3"]?.clips), [spore]);
@@ -75,20 +82,36 @@ export default function App() {
             aside={<div className="aside-row"><LiveTag active={running?.running_stage === 3} /><PlayCtl {...ctl} /></div>}>
             <SeedPicker seeds={seeds} seed={seed} onPick={setSeedId} filled={filled} synthetic={synthetic ?? []} />
             <GrowGrid seed={seed} variants={variants} evals={evals} loading={synthetic === undefined} filled={filled} />
+            {!FIXTURES && <CosmosShowcase />}
           </Section>
         )}
       </SyncGroup>
       <Section n="4" id="measure" kicker="Measure"
-        title={<>Run the stack on the filled gap. <em>Green boxes it still sees, red ones it lost.</em></>}
+        title={<>Same segment, same VSS pipeline, two models disagree. <em>Filter by detected vehicles in bad weather and the archive silently returns nothing.</em></>}
         aside={<LiveTag label={map?.budget_used != null ? `${map.budget_used} clips scored` : undefined} active={running?.running_stage === 4} />}>
-        <Aha ov={overlays} />
-        <h3 className="subhead">Breaking point: how much weather before YOLO goes blind</h3>
+        <Contrast ev={selEval} seedEv={seedEval} />
+        <HeadlineStrip h={headline} />
         <BreakingPoint curve={sevCurve} synthetic={synthetic ?? []} seeds={seeds ?? []} />
-        <h3 className="subhead">Failure rate by condition</h3>
-        <Heatmap map={map} />
-        <h3 className="subhead">Fix: fine-tune on the filled gap, before → after</h3>
-        <FixTable rows={fix} />
+        <h3 className="subhead">Same scene, same cars: green boxes the detector still sees, red ones it lost</h3>
+        <Aha ov={ovSorted} sel={curOv?.clip_id ?? null} onSel={setSelClip} />
+        <h3 className="subhead">Physics weather layers <em className="muted">· pixels never move, so labels are exact</em></h3>
+        <Heatmap map={map} mode="physics" />
+        <h3 className="subhead">Cosmos Transfer <em className="muted">· generative, recall relative to the clear-day Cosmos control</em></h3>
+        <Heatmap map={map} mode="cosmos" />
+        {map?.cosmos_exclusion_note && (
+          <p className="footnote">* {map.cosmos_exclusion_note}{map.cosmos_excluded_seeds?.length ? ` Excluded: ${map.cosmos_excluded_seeds.join(", ")}.` : ""}</p>
+        )}
+        {fixOk && (
+          <>
+            <h3 className="subhead">Fix: re-ingest with a weather-aware prompt, before → after (real clips)</h3>
+            <FixTable rows={fix} />
+          </>
+        )}
       </Section>
+      <div className="blind">
+        <p><b>Search is blind to weather</b> → fixed by a weather-aware re-ingest prompt (real before/after above, when available).</p>
+        <p><b>The detector is blind in weather</b> → next: train on Spore's synthetic data.</p>
+      </div>
       <Section n="5" id="loop" kicker="Continue the loop"
         title={<>Then search again and pick the next gap. <em>Every iteration: gap → filled → measured.</em></>}
         aside={<LiveTag active={!!running} label={running ? `iteration ${running.iteration} · stage ${running.running_stage ?? "…"}` : undefined} />}>
@@ -187,11 +210,19 @@ function SeedPicker({ seeds, seed, onPick, filled, synthetic }: { seeds: Seed[] 
 
 /* ---------- 4 aha ---------- */
 
-function Aha({ ov }: { ov: Overlay[] | null | undefined }) {
-  const [i, setI] = useState(0);
+const HERO_CLIP = "i24_scene1_p1c2_00__phys_fog_s04";
+
+function sortOverlays(raw: Overlay[] | null | undefined) {
+  if (!Array.isArray(raw)) return raw;
+  const score = (o: Overlay) => (o.clip_id === HERO_CLIP ? 2 : o.condition?.kind === "physics" ? 1 : 0);
+  return [...raw].sort((a, b) => score(b) - score(a));
+}
+
+function Aha({ ov, sel, onSel }: { ov: Overlay[] | null | undefined; sel: string | null; onSel: (id: string) => void }) {
   if (ov === undefined) return <div className="skeleton tall" />;
   if (!ov || !ov.length) return <Empty title="No overlay rendered yet" hint="eval/.venv/bin/python eval/render_all.py" />;
-  const o = ov[Math.min(i, ov.length - 1)];
+  const o = ov.find((x) => x.clip_id === sel) ?? ov[0];
+  const short = (id?: string) => (id ?? "").replace("i24_scene1_", "");
   return (
     <div className="aha">
       <div className="aha-video frame wide">
@@ -208,16 +239,98 @@ function Aha({ ov }: { ov: Overlay[] | null | undefined }) {
           <div><dt>vehicles / frame, variant</dt><dd>{num(o.mean_detected, 1)}</dd></div>
           <div><dt>scene kept (edge SSIM)</dt><dd>{num(o.edge_ssim, 2)}</dd></div>
         </dl>
-        {o.reason_seed && <p className="note"><span className="label">Cosmos Reason · seed</span><br />{o.reason_seed}</p>}
-        {o.reason_variant && <p className="note"><span className="label">Cosmos Reason · variant</span><br />{o.reason_variant}</p>}
         {ov.length > 1 && (
           <div className="picker-row">
-            {ov.slice(0, 8).map((x, j) => (
-              <button key={x.clip_id} className={j === i ? "on" : ""} onClick={() => setI(j)}>{x.label ?? x.clip_id}</button>
+            {ov.slice(0, 10).map((x) => (
+              <button key={x.clip_id} className={x.clip_id === o.clip_id ? "on" : ""} onClick={() => onSel(x.clip_id)}>
+                {x.condition?.kind === "physics" ? "physics · " : "cosmos · "}{x.label ?? x.clip_id} · {short(x.seed_id)}
+              </button>
             ))}
           </div>
         )}
       </aside>
+    </div>
+  );
+}
+
+const modelName = (m?: string) => (m ? m.replace(/^hosted-/, "").replace(/^yolo/i, "YOLO") : "YOLO11s");
+
+function Contrast({ ev, seedEv }: { ev: Eval | null | undefined; seedEv: Eval | null | undefined }) {
+  if (!ev) return null;
+  const rc = ev.reason?.answers?.vehicle_count;
+  const wl = ev.reason?.answers?.weather_lighting;
+  const m = ev.yolo?.mean_count;
+  return (
+    <div className="contrast">
+      <div className="contrast-col reason">
+        <p className="label">Cosmos Reason (caption)</p>
+        <p className="contrast-big">sees <b>{rc != null ? String(rc) : "—"}</b> vehicles</p>
+        {wl != null && <p className="contrast-sub">“{String(wl)}”</p>}
+      </div>
+      <div className="contrast-vs">vs</div>
+      <div className="contrast-col yolo">
+        <p className="label">{modelName(ev.yolo?.model)} (detector)</p>
+        <p className="contrast-big">sees <b>{num(m, 1)}</b></p>
+        <p className="contrast-sub">vehicles per frame · was <b>{num(seedEv?.yolo?.mean_count, 1)}</b> on the clear seed</p>
+      </div>
+    </div>
+  );
+}
+
+type Headline = { set?: string; by_condition?: Record<string, { mean: number; min?: number; max?: number; n?: number }> };
+
+function HeadlineStrip({ h }: { h: Headline | null | undefined }) {
+  const bc = h?.by_condition;
+  let text = "Light fog (severity 0.4) alone cuts the VSS detector to 41% recall · light snow 39% · at full severity every condition ≤ 11%";
+  if (bc && bc["fog@0.4"]) {
+    const full = Object.entries(bc).filter(([k]) => k.endsWith("@1.0")).map(([, v]) => v.mean);
+    const parts = [`Light fog (severity 0.4) alone cuts the VSS detector to ${pct(bc["fog@0.4"].mean)} recall`];
+    if (bc["snow@0.4"]) parts.push(`light snow ${pct(bc["snow@0.4"].mean)}`);
+    if (full.length) parts.push(`at full severity every condition ≤ ${pct(Math.max(...full))}`);
+    text = parts.join(" · ");
+  }
+  const kinds = ["fog", "rain", "snow"];
+  return (
+    <div className="headline">
+      <p className="headline-text">{text}</p>
+      {bc && (
+        <div className="headline-tiles">
+          {kinds.map((k) => (
+            <div key={k} className="hl-tile">
+              <p className="label">{k}</p>
+              <div className="hl-row">
+                {["0.4", "0.7", "1.0"].map((s) => {
+                  const v = bc[`${k}@${s}`];
+                  return <div key={s}><b className={v && v.mean < 0.5 ? "bad" : ""}>{v ? pct(v.mean) : "—"}</b><small>sev {s}</small></div>;
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {h?.set && <p className="legend-cap">{h.set}</p>}
+    </div>
+  );
+}
+
+function CosmosShowcase() {
+  const clips = [
+    { src: "data/seeds/i24_scene1_p1c2_04.mp4", label: "real seed" },
+    { src: "data/sweep_full/fog_B_depth05_edge03.mp4", label: "fog" },
+    { src: "data/sweep_full/rainnight_B_depth05_edge03.mp4", label: "rain · night" },
+    { src: "data/sweep_full/snow_B_depth05_edge03.mp4", label: "snow" },
+  ];
+  return (
+    <div className="showcase">
+      <p className="label">Cosmos Transfer 2.5 · full model (depth+edge) · <b>generative relighting (not used for scoring)</b></p>
+      <div className="showcase-row">
+        {clips.map((c) => (
+          <div key={c.src} className="strip-frame">
+            <div className="frame"><video src={url(c.src)} autoPlay muted loop playsInline className="vid" /></div>
+            <span className="mono">{c.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -444,7 +557,7 @@ function Hero({ stats }: { stats: { k: string; v: number | string; hot?: boolean
       <p className="eyebrow">Find the gap · fill it · measure · repeat</p>
       <h1>
         Your video archive has <br />no rain at night.
-        <span className="sub">Spore searches it, explains what's missing, grows the missing footage, and measures what breaks.</span>
+        <span className="sub">Other tools find what your video archive is missing. Spore grows the data to fill it, and shows where your AI goes blind.</span>
       </h1>
       <div className="stats">
         {stats.map((s) => (
@@ -629,10 +742,15 @@ function LiveTag({ label, active }: { label?: string; active?: boolean }) {
   );
 }
 
-function Heatmap({ map }: { map: FailureMap | null | undefined }) {
+const armKind = (a: Arm) => (isPixel(a.condition) ? "pixel" : a.condition.kind === "physics" || a.condition.kind === "hybrid" ? "physics" : "cosmos");
+
+function Heatmap({ map, mode }: { map: FailureMap | null | undefined; mode: "physics" | "cosmos" }) {
   if (map === undefined) return <div className="skeleton tall" />;
   if (!map || !Array.isArray(map.arms)) return <Empty title="The hunt hasn't started" hint="results/failure_map.json" />;
-  const arms = map.arms;
+  const arms = map.arms.filter((a) => (mode === "physics" ? armKind(a) !== "cosmos" : armKind(a) === "cosmos"));
+  const control = mode === "cosmos" ? map.arms.find((a) => armKind(a) === "cosmos" && (a.arm === "clear_day_light" || sameCond(a.condition, "clear", "day", "light"))) : undefined;
+  if (!arms.some((a) => a.n > 0)) return <p className="muted">No {mode === "physics" ? "physics-layer" : "Cosmos"} arms scored yet.</p>;
+  if (mode === "physics") return <PhysicsGrid arms={arms} />;
   const weathers = [...WEATHERS, ...new Set(arms.filter((a) => !isPixel(a.condition) && a.condition.weather && !WEATHERS.includes(a.condition.weather)).map((a) => a.condition.weather!))];
   const pixel = arms.filter((a) => isPixel(a.condition));
   const top = arms.filter((a) => a.n > 0).sort((a, b) => b.failure_rate - a.failure_rate || b.n - a.n).slice(0, 4);
@@ -646,7 +764,7 @@ function Heatmap({ map }: { map: FailureMap | null | undefined }) {
               <span />
               {TIMES.map((t) => <span key={t} className="hm-col">{t}</span>)}
               {weathers.map((w) => (
-                <Row key={w} w={w} inten={inten} arms={arms} />
+                <Row key={w} w={w} inten={inten} arms={arms} mode={mode} control={control} />
               ))}
             </div>
           </div>
@@ -657,11 +775,11 @@ function Heatmap({ map }: { map: FailureMap | null | undefined }) {
         {top.length ? (
           <ol className="rank">
             {top.map((a, i) => (
-              <li key={condLabel(a.condition)} style={{ animationDelay: `${i * 60}ms` }}>
+              <li key={`${a.arm ?? condLabel(a.condition)}-${i}`} style={{ animationDelay: `${i * 60}ms` }}>
                 <span className="rank-n">{i + 1}</span>
                 <div>
                   <p>{condLabel(a.condition)}</p>
-                  <small>recall {pct(a.mean_recall)} · agree {pct(a.mean_agree)} · n={a.n}</small>
+                  <small>recall {pct(a.mean_recall)}{a.recall_rel_control != null ? ` · ${pct(a.recall_rel_control)} of control` : ""} · n={a.n}</small>
                 </div>
                 <b style={{ color: heat(Math.max(a.failure_rate, 0.55)) }}>{pct(a.failure_rate)}</b>
               </li>
@@ -692,7 +810,54 @@ function Heatmap({ map }: { map: FailureMap | null | undefined }) {
   );
 }
 
-function Row({ w, inten, arms }: { w: string; inten: string; arms: Arm[] }) {
+function PhysicsGrid({ arms }: { arms: Arm[] }) {
+  const phys = arms.filter((a) => !isPixel(a.condition) && typeof a.condition.severity === "number" && a.n > 0);
+  const kinds = [...new Set(phys.map((a) => String(a.condition.physics ?? a.condition.weather)))].sort();
+  const sevs = [...new Set(phys.map((a) => (a.condition.severity as number).toFixed(1)))].sort();
+  const get = (k: string, s: string) => phys.find((a) => String(a.condition.physics ?? a.condition.weather) === k && (a.condition.severity as number).toFixed(1) === s);
+  return (
+    <div className="hunt">
+      <div className="facets">
+        <div className="facet">
+          <p className="label">YOLO recall vs the clean seed · rows = weather layer · columns = severity</p>
+          <div className="hm" style={{ gridTemplateColumns: `64px repeat(${sevs.length}, 1fr)` }}>
+            <span />
+            {sevs.map((s) => <span key={s} className="hm-col">severity {s}</span>)}
+            {kinds.map((k) => (
+              <Fragment key={k}>
+                <span className="hm-row">{k}</span>
+                {sevs.map((s) => {
+                  const a = get(k, s);
+                  const r = a?.mean_recall;
+                  const bad = r == null ? 0 : 1 - r;
+                  return (
+                    <div key={s} className={`cell ${a ? "on" : "off"} ${bad >= 0.5 && a ? "hotcell" : ""}`}
+                      style={{ background: a ? heat(bad) : undefined, color: bad > 0.75 ? "#1a0d07" : undefined }}
+                      title={a ? `${k} @ ${s}\nrecall ${pct(r)} · failure ${pct(a.failure_rate)} · n=${a.n}` : "not run"}>
+                      {a ? (<><b>{pct(r)}</b><small>recall · n={a.n}</small></>) : <small>—</small>}
+                    </div>
+                  );
+                })}
+              </Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+      <aside className="hunt-side">
+        <p className="label">How to read it</p>
+        <p className="muted">Physics layers add fog, rain and snow on top of the real seed without moving a pixel of geometry, so every vehicle YOLO found on the clean seed is still there. Lost boxes are pure detector failures.</p>
+        <div className="legend">
+          <span>100%</span>
+          <i style={{ background: `linear-gradient(90deg, ${RAMP.join(",")})` }} />
+          <span>0%</span>
+        </div>
+        <p className="legend-cap">recall · darker = detector still sees the cars</p>
+      </aside>
+    </div>
+  );
+}
+
+function Row({ w, inten, arms, mode, control: ctrlArm }: { w: string; inten: string; arms: Arm[]; mode: "physics" | "cosmos"; control?: Arm }) {
   return (
     <>
       <span className="hm-row">{w}</span>
@@ -708,10 +873,15 @@ function Row({ w, inten, arms }: { w: string; inten: string; arms: Arm[] }) {
             style={{ background: n ? heat(r) : undefined, color: r > 0.75 ? "#1a0d07" : undefined }}
             title={a ? `${condLabel(a.condition)}\nfailure ${pct(r)} · n=${n}\nrecall ${pct(a.mean_recall)} · agree ${pct(a.mean_agree)}` : "unexplored"}
           >
-            {n ? (
+            {control && mode === "cosmos" && ctrlArm?.mean_recall != null ? (
+              <>
+                <b>{pct(ctrlArm.mean_recall)}</b>
+                <small>control recall</small>
+              </>
+            ) : n ? (
               <>
                 <b>{n}</b>
-                <small>{pct(r)}</small>
+                <small>{mode === "cosmos" && a?.recall_rel_control != null ? `${pct(a.recall_rel_control)} of ctrl` : pct(r)}</small>
               </>
             ) : <small>—</small>}
             {control && <em className="ctrl">control</em>}
@@ -824,7 +994,7 @@ function FixTable({ rows }: { rows: FixRow[] | null | undefined }) {
                 <td className={`mono ${d > 0.005 ? "up" : d < -0.005 ? "down" : "dim"}`}>
                   {d > 0 ? "+" : ""}{frac ? `${Math.round(d * 100)} pts` : num(d, 2)}
                 </td>
-                <td className="dim">{r.set ?? ""}</td>
+                <td className="dim">{r.set ?? ""}{r.note ? <><br /><small>{r.note}</small></> : null}</td>
               </tr>
             );
           })}

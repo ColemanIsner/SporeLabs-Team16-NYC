@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c3_00__phys_fog_s10",
+  "seed_id": "i24_scene1_p1c3_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7628,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7399,
+    "seconds": 1.48,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 0.0,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 4.387,
+    "recall_vs_seed": 0.0,
+    "recall_vs_seed_all": 0.0,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 1.57,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c3_00__phys_fog_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.2535,
+    "recall_intact": 0.0,
+    "patch_score_median": 0.125,
+    "n_vehicle_patches": 142,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "Several vehicles are driving on a multi-lane road through heavy fog. Due to the poor visibility, the vehicles appear as faint, indistinct shapes moving slowly. The road markings are barely visible, and the overall scene is obscured by thick white fog.",
+    "answers": {
+      "vehicle_count": 7,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "dense fog, very low visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.7,
+    "raw": "```json\n{\n  \"vehicle_count\": 7,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"dense fog, very low visibility\",\n  \"summary\": \"Several vehicles are driving on a multi-lane road through heavy fog. Due to the poor visibility, the vehicles appear as faint, indistinct shapes moving slowly. The road markings are barely visible, and the overall scene is obscured by thick white fog.\"\n}\n```",
+    "src_mtime": 1791565694.142,
+    "agree_vs_seed": 0.6667
+  }
+}

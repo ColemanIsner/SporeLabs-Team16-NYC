@@ -1,0 +1,62 @@
+{
+  "clip_id": "nyc_003_00__phys_fog_s04",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "fidelity": {
+    "edge_ssim": 0.4972,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4751,
+    "seconds": 1.23
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 5.118,
+    "mean_count_person": 4.215,
+    "seed_mean_count": 5.204,
+    "recall_vs_seed": 0.898,
+    "recall_vs_seed_all": 0.8298,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 12.24,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_003_00__phys_fog_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.9455,
+    "patch_score_median": 0.8238,
+    "n_vehicle_patches": 165,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A foggy urban intersection with yellow taxis and a white van moving through the scene. Pedestrians cross the street while a man in a green shirt stands near construction barriers. The fog obscures distant details and reduces visibility.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight with heavy fog"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.1,
+    "raw": "```json\n{\n  \"vehicle_count\": 4,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"bright daylight with heavy fog\",\n  \"summary\": \"A foggy urban intersection with yellow taxis and a white van moving through the scene. Pedestrians cross the street while a man in a green shirt stands near construction barriers. The fog obscures distant details and reduces visibility.\"\n}\n```",
+    "src_mtime": 1791565826.818,
+    "agree_vs_seed": 1.0
+  }
+}

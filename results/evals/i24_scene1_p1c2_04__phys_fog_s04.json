@@ -1,0 +1,64 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__phys_fog_s04",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "fidelity": {
+    "edge_ssim": 0.7604,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7342,
+    "seconds": 1.23
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.022,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.3441,
+    "recall_vs_seed_all": 0.3441,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 4.81,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__phys_fog_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.9969,
+    "recall_intact": 0.395,
+    "patch_score_median": 0.7769,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "Multiple vehicles travel in both directions on a multi-lane highway under overcast, foggy conditions. Traffic flows steadily with no lane changes or stops observed.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast with light fog"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.6,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast with light fog\",\n  \"summary\": \"Multiple vehicles travel in both directions on a multi-lane highway under overcast, foggy conditions. Traffic flows steadily with no lane changes or stops observed.\"\n}\n```",
+    "src_mtime": 1791565569.077,
+    "agree_vs_seed": 1.0
+  }
+}

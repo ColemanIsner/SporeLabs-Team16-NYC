@@ -1,13 +1,26 @@
 # Submission — tokensand.com/vastnyc/submit
 
-## Description
+## Team
 
-Spore by SporeLabs takes real clips from the VAST index and grows structure-preserving synthetic variants with NVIDIA Cosmos Transfer. Fog, night, rain, and snow change the weather and the light while the camera, lanes, and vehicles stay put, so the stack's answer on the clean seed is the expected answer on every variant. A fidelity gate measures whether the generator kept the scene. Only then do YOLO detections and Cosmos Reason answers count as failures. A bandit spends the GPU budget on the conditions that break the stack. For each blind spot, VSS pulls real archive clips in that condition, and we check that the same failure shows up there. A condition-aware prompt is the fix, re-measured on held-out real clips. Weights & Biases Weave traces the run. The primary footage is real I-24 highway video, so the confirmation step is on real clips. Transfer runs on Modal. The loop's language-model calls use W&B Inference on CoreWeave.
+- Coleman Isner — colemanisner@gmail.com
+- <<name/email>>
+
+## Description (~150 words)
+
+Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
+
+Across 612 real clips searched with VSS, highway cameras have zero rain, fog, snow, glare, or night-rain clips, and no camera has snow. A W&B Inference agent writes the gap report, traced in Weave. Spore fills the gap with a geometry-preserving physics weather layer (99 clips) and NVIDIA Cosmos Transfer 2.5 relighting, measured against a clear-day control. It then runs the VSS Detector (YOLO11s) and Reasoner (Cosmos3) on the results. Detector recall falls below 50% at snow 0.34, fog 0.35, and rain 0.60, while Cosmos Reason keeps counting vehicles. Real-archive confirmation is weak: glare is the strongest case, fog is unconfirmed, and no real snow exists. A synthetic fine-tune lost to a free contrast trick. At this scale, synthetic footage works better as a stress test than as training data.
 
 ## Tools used
 
-- VAST (VSS / VastDB) — seed retrieval, real-archive confirmation search, ingest of synthetic clips
-- NVIDIA — Cosmos Transfer 2.5 (generate), Cosmos Reason (summaries / Q&A under test), YOLO (detection under test)
-- Weights & Biases — Weave traces of every gen/eval step and the eval table
-- CoreWeave — W&B Inference for the loop agent's LLM calls; the VSS stack runs on CoreWeave GPUs
-- SpaceXAI (Cursor) — Cursor agents, including Grok, building the system in parallel
+- **VAST**: VSS `/api/v1/search`, explore, and captions, used to find the coverage gap and to find real-condition clips for confirmation
+- **NVIDIA**: Cosmos Transfer 2.5 (Modal H100), hosted Cosmos3 Nano Reasoner, and hosted YOLO11s
+- **CoreWeave / Weights & Biases**: serverless W&B Inference for the gap-report agent, plus Weave traces; the hosted models run on CoreWeave GPUs
+- **SpaceXAI / Cursor**: built with Cursor agents, including Grok 4.7 running parallel tasks
+- Also used: Modal (H100 for Cosmos Transfer, L40S for the fine-tune experiment), Ultralytics, OpenCV, React + Vite UI
+
+## Links
+
+- Repo: https://github.com/ColemanIsner/team16
+- Demo video: <<add link>>
+- Weave: https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave

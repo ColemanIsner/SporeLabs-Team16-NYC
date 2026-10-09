@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.74,
-    "seconds": 2.3,
+    "seconds": 1.17,
     "rejected_by": "vehicle_integrity"
   },
   "reason": {
@@ -37,24 +37,25 @@
   "failure": false,
   "failure_reasons": [],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 0.215,
+    "mean_count": 1.914,
     "mean_count_person": 0.0,
-    "seed_mean_count": 2.473,
-    "recall_vs_seed": 0.0638,
-    "recall_vs_seed_all": 0.0629,
+    "seed_mean_count": 4.387,
+    "recall_vs_seed": 0.2704,
+    "recall_vs_seed_all": 0.2704,
     "frames": 93,
-    "seconds": 11.42,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 13.59,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c3_00__rain_night_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.2895,
-    "recall_intact": 0.0909,
-    "patch_score_median": 0.2902,
-    "n_vehicle_patches": 76,
+    "vehicles_intact": 0.2324,
+    "recall_intact": 0.3939,
+    "patch_score_median": 0.2779,
+    "n_vehicle_patches": 142,
     "thresh": 0.35,
     "min_intact": 0.7
   }

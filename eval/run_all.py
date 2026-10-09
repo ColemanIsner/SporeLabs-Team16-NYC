@@ -55,7 +55,11 @@ def main():
     ap.add_argument("--reviews", type=Path, default=REVIEWS)
     ap.add_argument("--threshold", type=float, default=fidelity.DEFAULT_THRESHOLD)
     ap.add_argument("--reason", action="store_true", help="then run reason_eval.py (Cosmos3-Reason Q&A)")
+    ap.add_argument("--backend", choices=["hosted", "local"], default=yolo_eval.BACKEND,
+                    help="YOLO under test: hosted VSS YOLO11s (default; env SPORE_YOLO_BACKEND) or local yolo11n")
+    ap.add_argument("--workers", type=int, default=6, help="parallel hosted YOLO requests")
     a = ap.parse_args()
+    yolo_eval.set_backend(a.backend)
 
     reviews = load_json(a.reviews, {}) or {}
     seeds = load_json(a.seeds, []) or []
@@ -74,6 +78,39 @@ def main():
 
     stats = {"done": 0, "cached": 0, "bad": 0, "missing": 0, "error": 0}
     t_all = time.time()
+    if a.backend == "hosted":  # prefetch boxes in parallel; the sequential loop below then hits the cache
+        from concurrent.futures import ThreadPoolExecutor
+        todo = {}
+        for clip_id, clip, seed in jobs:
+            if (a.only and a.only not in clip_id) or not clip.exists() or not seed.exists():
+                continue
+            if is_bad(reviews, clip) or (clip != seed and is_bad(reviews, seed)):
+                continue
+            if not a.force and up_to_date(EVALS / f"{clip_id}.json", clip, seed):
+                continue
+            todo[clip_id] = clip
+            sid = fidelity.clip_info(seed, seed)[0]
+            todo.setdefault(sid, seed)
+
+        def fetch(item):
+            cid, path = item
+            try:
+                return cid, yolo_eval.detect(path, cid, force=a.force)["seconds"], None
+            except BaseException as e:  # noqa: BLE001
+                return cid, None, e
+
+        if todo:
+            t0 = time.time()
+            with ThreadPoolExecutor(a.workers) as ex:
+                res = list(ex.map(fetch, todo.items()))
+            secs = [r[1] for r in res if r[1] is not None]
+            for cid, _, e in res:
+                if e is not None:
+                    print(f"[error]   hosted YOLO {cid}: {e!r}")
+            print(f"[hosted]  {len(secs)}/{len(todo)} clips in {time.time() - t0:.1f}s wall "
+                  f"({(time.time() - t0) / max(len(todo), 1):.2f}s/clip effective, "
+                  f"{sum(secs) / max(len(secs), 1):.2f}s/clip per request, {a.workers} workers)", flush=True)
+            a.force_boxes = False
     for clip_id, clip, seed in jobs:
         if a.only and a.only not in clip_id:
             continue
@@ -96,7 +133,7 @@ def main():
         try:
             t0 = time.time()
             fid = fidelity.run(clip, seed, ev_path, a.threshold)
-            yo = yolo_eval.run(clip, seed, ev_path, a.device, a.force)
+            yo = yolo_eval.run(clip, seed, ev_path, a.device, getattr(a, "force_boxes", a.force))
             merge_eval(ev_path, clip_id, None, None, {"excluded": False})
             print(f"[ok]      {clip_id}: edge_ssim={fid['edge_ssim']} count={yo['mean_count']} "
                   f"recall={yo['recall_vs_seed']} ({time.time() - t0:.1f}s)")

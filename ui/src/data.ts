@@ -13,16 +13,17 @@ export type Eval = {
   reason?: { summary?: string; answers?: Record<string, unknown>; agree_vs_seed?: number };
   failure?: boolean; failure_reasons?: string[];
 };
-export type Arm = { condition: Condition; n: number; failure_rate: number; mean_recall?: number; mean_agree?: number };
-export type FailureMap = { arms: Arm[]; budget_used?: number };
+export type Arm = { condition: Condition; arm?: string; n: number; failure_rate: number; mean_recall?: number; mean_agree?: number; control_recall?: number | null; recall_rel_control?: number | null };
+export type FailureMap = { arms: Arm[]; budget_used?: number; cosmos_control_by_seed?: Record<string, number>; cosmos_excluded_seeds?: string[]; cosmos_exclusion_note?: string };
 export type RealCheck = {
   condition: Condition; vss_query?: string; confirmed?: boolean;
   clips: { vss_id?: string; src?: string; yolo_mean_count?: number; reason_answers?: Record<string, unknown>; human_note?: string }[];
 };
-export type FixRow = { metric: string; before: number; after: number; set?: string };
+export type FixRow = { metric: string; before: number; after: number; set?: string; note?: string };
 
 export const FIXTURES = new URLSearchParams(location.search).has("fixtures");
-const BASE = FIXTURES ? "/fixtures/" : "/";
+const ROOT = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + "/";
+const BASE = FIXTURES ? ROOT + "fixtures/" : ROOT;
 
 /** Resolve a repo-relative path (e.g. "data/seeds/x.mp4") to a served URL. */
 export function url(p?: string): string | undefined {

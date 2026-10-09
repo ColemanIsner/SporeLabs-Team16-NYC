@@ -1,0 +1,62 @@
+{
+  "clip_id": "nyc_002_00__phys_rain_s07",
+  "seed_id": "nyc_002_00",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.4819,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.467,
+    "seconds": 1.28
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.634,
+    "mean_count_person": 3.462,
+    "seed_mean_count": 5.29,
+    "recall_vs_seed": 0.8484,
+    "recall_vs_seed_all": 0.7023,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 8.56,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_002_00__phys_rain_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.9448,
+    "patch_score_median": 0.7056,
+    "n_vehicle_patches": 163,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A rainy urban street scene with multiple vehicles moving through an intersection. A man in a green shirt and hat stands near construction barriers, directing traffic. Pedestrians cross the street while cars and a white truck navigate the wet road.",
+    "answers": {
+      "vehicle_count": 6,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "rainy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 7.88,
+    "raw": "{\"vehicle_count\": 6, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"rainy, overcast\", \"summary\": \"A rainy urban street scene with multiple vehicles moving through an intersection. A man in a green shirt and hat stands near construction barriers, directing traffic. Pedestrians cross the street while cars and a white truck navigate the wet road.\"}",
+    "src_mtime": 1791565815.106,
+    "agree_vs_seed": 1.0
+  }
+}

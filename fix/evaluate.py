@@ -155,9 +155,10 @@ def main():
 
     train_log = json.loads((OUT / "train_log.json").read_text()) if (OUT / "train_log.json").exists() else {}
     notes = [
-        "Pseudo-GT = yolo11n (conf>=0.4, imgsz 640) vehicle boxes on the CLEAN seed, copied to the same frame of each "
-        "structure-preserving Cosmos-Transfer variant (fidelity edge-SSIM pass). It is incomplete (yolo11n misses small/far "
-        "vehicles), so recall is 'recall of what the base pipeline sees in daylight', and counts above GT are not necessarily FPs.",
+        "Pseudo-GT = stock yolo11s (conf>=0.4, imgsz 960) vehicle boxes on the CLEAN seed, copied to the same frame of each "
+        "structure-preserving variant (Cosmos-Transfer gen_* with edge-SSIM pass, or physics phys_* with exact geometry). "
+        "Recall = 'fraction of what the stock model sees in clear daylight that it still sees under the condition'. "
+        "On clean seeds the base model's recall is 1.0 by construction; the clean row measures agreement/regression only.",
         "All methods are yolo11s, conf 0.4, vehicle classes, imgsz %d; before = stock yolo11s; after = yolo11s fine-tuned "
         "only on train cameras (i24 p1c1/p1c2 variants + clean seeds); test = held-out camera i24 p1c3 + NYC (different city)." % a.imgsz,
         "clahe_baseline = stock yolo11s with CLAHE (+gamma lift on dark frames) preprocessing, no training.",
@@ -170,9 +171,22 @@ def main():
            "eval_seconds": round(time.time() - t0, 1), "device": a.device}
     if "spore" not in methods:
         print("spore weights missing -> base/clahe only, not writing results/fix.json"); print(json.dumps(results, indent=1)); return
-    (ROOT / "results" / "fix.json").write_text(json.dumps(results, indent=2))
+    get = lambda st, k: next((r[k] for r in results if r["set"] == st and r["metric"].startswith("vehicle recall")), None)
+    hv, cl = "held-out synthetic variants (all conditions)", "held-out CLEAN seeds (daytime regression check)"
+    ok = get(hv, "after") is not None and get(hv, "after") > get(hv, "before") and get(cl, "after") >= get(cl, "before") - 0.05
+    doc["gate"] = {"passed": bool(ok), "rule": "after > before on held-out variants AND clean-seed recall drop <= 5 pts"}
+    notes.append("VERDICT (run 2, SGD lr 0.001, freeze=10, 10 ep, 2.4k imgs): NO reliable win. Held-out i24 camera p1c3 recall "
+                 "0.161 -> 0.205 but CLAHE alone gets 0.202; NYC physics variants (all NYC Cosmos variants failed edge-SSIM 0.45-0.50) and clean seeds regress, real-clip detections/frame drop. "
+                 "Run 1 (AdamW lr 0.002, labels from yolo11n@640) collapsed confidences (clean recall 0.89 -> 0.02); kept as "
+                 "results/fix/yolo11s_spore_run1_collapsed.pt. Likely causes: tiny, highly correlated train set (6 seeds), "
+                 "pseudo-labels miss vehicles the model learns to suppress, no hard-negative/label-quality control. Not a demo claim.")
+    results.append({"metric": "notes", "set": "-", "before": None, "after": None, "notes": notes, "gate": doc["gate"]})
+    (ROOT / "results" / ("fix.json" if ok else "fix_wip.json")).write_text(json.dumps(results, indent=2))
+    print("GATE", ok)
     (OUT / "fix_detail.json").write_text(json.dumps(doc, indent=2))
     for r in results:
+        if r["metric"] == "notes":
+            continue
         print(f"{r['metric'][:34]:34s} | {r['set'][:58]:58s} n={r['n_clips']:2d}  before {r['before']:.3f}  clahe {r['clahe_baseline']:.3f}  after {r['after']:.3f}")
 
 

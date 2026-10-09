@@ -60,6 +60,7 @@ function staticMounts(): Plugin {
 }
 
 export default defineConfig({
+  base: "./",
   plugins: [react(), staticMounts()],
   server: { port: 5173, host: true },
 });

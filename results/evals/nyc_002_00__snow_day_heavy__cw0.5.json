@@ -14,7 +14,7 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.4491,
-    "seconds": 3.15
+    "seconds": 2.76
   },
   "reason": {
     "summary": "A snowy urban intersection with moderate traffic flow. Vehicles, including SUVs and sedans, move steadily through the intersection. Pedestrians cross the street while a man stands near a large object in the crosswalk. The scene is characterized by wet, slushy roads and snow piled along the curbs.",
@@ -36,24 +36,25 @@
   "failure": false,
   "failure_reasons": [],
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 4.774,
-    "mean_count_person": 3.688,
-    "seed_mean_count": 4.763,
-    "recall_vs_seed": 0.9091,
-    "recall_vs_seed_all": 0.8236,
+    "mean_count": 4.86,
+    "mean_count_person": 4.849,
+    "seed_mean_count": 5.29,
+    "recall_vs_seed": 0.8431,
+    "recall_vs_seed_all": 0.7835,
     "frames": 93,
-    "seconds": 5.27,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 16.69,
+    "device": "hosted",
     "boxes": "results/boxes/nyc_002_00__snow_day_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.8784,
-    "recall_intact": 0.9846,
-    "patch_score_median": 0.4221,
-    "n_vehicle_patches": 148,
+    "vehicles_intact": 0.8896,
+    "recall_intact": 1.0,
+    "patch_score_median": 0.4264,
+    "n_vehicle_patches": 163,
     "thresh": 0.35,
     "min_intact": 0.7
   }

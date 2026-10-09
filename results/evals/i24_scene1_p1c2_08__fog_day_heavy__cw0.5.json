@@ -25,37 +25,36 @@
     "agree_vs_seed": 1.0,
     "condition_registered": false
   },
-  "failure": true,
-  "failure_reasons": [
-    "recall<0.7"
-  ],
+  "failure": false,
+  "failure_reasons": [],
   "fidelity": {
     "edge_ssim": 0.7965,
     "pass": true,
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.7604,
-    "seconds": 1.27
+    "seconds": 1.34
   },
   "yolo": {
-    "model": "yolo11n",
+    "model": "hosted-yolo11s",
     "conf": 0.4,
-    "mean_count": 1.957,
+    "mean_count": 5.505,
     "mean_count_person": 0.0,
-    "seed_mean_count": 5.129,
-    "recall_vs_seed": 0.333,
-    "recall_vs_seed_all": 0.333,
+    "seed_mean_count": 6.667,
+    "recall_vs_seed": 0.7408,
+    "recall_vs_seed_all": 0.7408,
     "frames": 93,
-    "seconds": 2.34,
-    "device": "cpu",
+    "backend": "hosted",
+    "seconds": 6.1,
+    "device": "hosted",
     "boxes": "results/boxes/i24_scene1_p1c2_08__fog_day_heavy__cw0.5.json"
   },
   "excluded": false,
   "integrity": {
-    "vehicles_intact": 0.8344,
-    "recall_intact": 0.4122,
-    "patch_score_median": 0.4574,
-    "n_vehicle_patches": 157,
+    "vehicles_intact": 0.8883,
+    "recall_intact": 0.7104,
+    "patch_score_median": 0.4688,
+    "n_vehicle_patches": 206,
     "thresh": 0.35,
     "min_intact": 0.7
   }

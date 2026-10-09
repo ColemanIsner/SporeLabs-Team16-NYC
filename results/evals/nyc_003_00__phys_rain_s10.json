@@ -1,0 +1,63 @@
+{
+  "clip_id": "nyc_003_00__phys_rain_s10",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.478,
+    "pass": false,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.4526,
+    "seconds": 1.3,
+    "rejected_by": "vehicle_integrity"
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 2.043,
+    "mean_count_person": 2.29,
+    "seed_mean_count": 5.204,
+    "recall_vs_seed": 0.4007,
+    "recall_vs_seed_all": 0.4006,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 2.99,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_003_00__phys_rain_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.6727,
+    "recall_intact": 0.3874,
+    "patch_score_median": 0.3968,
+    "n_vehicle_patches": 165,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A rainy urban street scene with heavy rain obscuring visibility. A yellow taxi and a white van are parked on the right side of the street. A person in a green jacket stands near orange traffic cones and barriers in the foreground. Another person in a dark jacket walks across the crosswalk from left to right. The overall atmosphere is gloomy and wet.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": false,
+      "stopped_vehicle": true,
+      "weather_lighting": "heavy rain, overcast, low contrast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.53,
+    "raw": "{\"vehicle_count\": 4, \"lane_change\": false, \"stopped_vehicle\": true, \"weather_lighting\": \"heavy rain, overcast, low contrast\", \"summary\": \"A rainy urban street scene with heavy rain obscuring visibility. A yellow taxi and a white van are parked on the right side of the street. A person in a green jacket stands near orange traffic cones and barriers in the foreground. Another person in a dark jacket walks across the crosswalk from left to right. The overall atmosphere is gloomy and wet.\"}",
+    "src_mtime": 1791565862.503,
+    "agree_vs_seed": 0.6667
+  }
+}

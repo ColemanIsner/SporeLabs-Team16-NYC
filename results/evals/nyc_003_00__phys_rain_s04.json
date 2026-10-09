@@ -1,0 +1,62 @@
+{
+  "clip_id": "nyc_003_00__phys_rain_s04",
+  "seed_id": "nyc_003_00",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.6588,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.6418,
+    "seconds": 1.28
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 4.763,
+    "mean_count_person": 4.484,
+    "seed_mean_count": 5.204,
+    "recall_vs_seed": 0.8701,
+    "recall_vs_seed_all": 0.8575,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 7.01,
+    "device": "hosted",
+    "boxes": "results/boxes/nyc_003_00__phys_rain_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.9152,
+    "patch_score_median": 0.8987,
+    "n_vehicle_patches": 165,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "A rainy urban intersection with pedestrians crossing and vehicles, including yellow taxis, navigating the wet streets. A man in a green striped shirt stands near construction barriers while others walk through the rain.",
+    "answers": {
+      "vehicle_count": 4,
+      "lane_change": false,
+      "stopped_vehicle": true,
+      "weather_lighting": "Rainy, overcast, with wet pavement and blurred raindrops on the camera lens."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 7.86,
+    "raw": "```json\n{\n  \"vehicle_count\": 4,\n  \"lane_change\": false,\n  \"stopped_vehicle\": true,\n  \"weather_lighting\": \"Rainy, overcast, with wet pavement and blurred raindrops on the camera lens.\",\n  \"summary\": \"A rainy urban intersection with pedestrians crossing and vehicles, including yellow taxis, navigating the wet streets. A man in a green striped shirt stands near construction barriers while others walk through the rain.\"\n}\n```",
+    "src_mtime": 1791565857.854,
+    "agree_vs_seed": 0.6667
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c2_04__phys_rain_s04",
+  "seed_id": "i24_scene1_p1c2_04",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.8345,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.8152,
+    "seconds": 1.67
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 9.355,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 10.323,
+    "recall_vs_seed": 0.8265,
+    "recall_vs_seed_all": 0.8265,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 10.69,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c2_04__phys_rain_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.9938,
+    "recall_intact": 0.8491,
+    "patch_score_median": 0.8888,
+    "n_vehicle_patches": 320,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with moderate traffic flowing in both directions. Vehicles including cars, SUVs, pickup trucks, and a large semi-truck are moving steadily. Light rain is falling, creating visible streaks and lens flares across the camera view.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight with light rain and lens flares"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.15,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"bright daylight with light rain and lens flares\",\n  \"summary\": \"An aerial view of a multi-lane highway with moderate traffic flowing in both directions. Vehicles including cars, SUVs, pickup trucks, and a large semi-truck are moving steadily. Light rain is falling, creating visible streaks and lens flares across the camera view.\"\n}\n```",
+    "src_mtime": 1791565597.77,
+    "agree_vs_seed": 1.0
+  }
+}

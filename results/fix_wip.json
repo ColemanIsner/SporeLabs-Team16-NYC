@@ -1,0 +1,432 @@
+[
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic variants (all conditions)",
+    "n_clips": 60,
+    "before": 0.3176,
+    "after": 0.31,
+    "clahe_baseline": 0.363,
+    "gt_vehicles_per_frame": 4.839
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic variants (all conditions)",
+    "n_clips": 60,
+    "before": 1.8065,
+    "after": 1.9373,
+    "clahe_baseline": 2.0369,
+    "gt_vehicles_per_frame": 4.839
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: gen_clear_day_light",
+    "n_clips": 3,
+    "before": 0.1475,
+    "after": 0.1984,
+    "clahe_baseline": 0.1518,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: gen_clear_day_light",
+    "n_clips": 3,
+    "before": 0.8925,
+    "after": 1.3477,
+    "clahe_baseline": 0.9462,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: gen_clear_night_light",
+    "n_clips": 3,
+    "before": 0.0377,
+    "after": 0.0985,
+    "clahe_baseline": 0.1507,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: gen_clear_night_light",
+    "n_clips": 3,
+    "before": 0.1828,
+    "after": 0.7957,
+    "clahe_baseline": 0.6487,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: gen_fog_day_heavy",
+    "n_clips": 3,
+    "before": 0.0578,
+    "after": 0.0988,
+    "clahe_baseline": 0.1715,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: gen_fog_day_heavy",
+    "n_clips": 3,
+    "before": 0.3584,
+    "after": 0.6523,
+    "clahe_baseline": 0.8925,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: gen_rain_night_heavy",
+    "n_clips": 3,
+    "before": 0.2715,
+    "after": 0.3041,
+    "clahe_baseline": 0.262,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: gen_rain_night_heavy",
+    "n_clips": 3,
+    "before": 1.7599,
+    "after": 1.7993,
+    "clahe_baseline": 1.4194,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: gen_snow_day_heavy",
+    "n_clips": 3,
+    "before": 0.201,
+    "after": 0.1973,
+    "clahe_baseline": 0.246,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: gen_snow_day_heavy",
+    "n_clips": 3,
+    "before": 1.2581,
+    "after": 1.3943,
+    "clahe_baseline": 1.3871,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_fog_s04",
+    "n_clips": 5,
+    "before": 0.4405,
+    "after": 0.4977,
+    "clahe_baseline": 0.6834,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_fog_s04",
+    "n_clips": 5,
+    "before": 2.3699,
+    "after": 2.9032,
+    "clahe_baseline": 3.7226,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_fog_s07",
+    "n_clips": 5,
+    "before": 0.2663,
+    "after": 0.2652,
+    "clahe_baseline": 0.3593,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_fog_s07",
+    "n_clips": 5,
+    "before": 1.6796,
+    "after": 1.671,
+    "clahe_baseline": 2.0667,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_fog_s10",
+    "n_clips": 5,
+    "before": 0.0,
+    "after": 0.0287,
+    "clahe_baseline": 0.1574,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_fog_s10",
+    "n_clips": 5,
+    "before": 0.0172,
+    "after": 0.2667,
+    "clahe_baseline": 1.3247,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_rain_s04",
+    "n_clips": 5,
+    "before": 0.7601,
+    "after": 0.6288,
+    "clahe_baseline": 0.7427,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_rain_s04",
+    "n_clips": 5,
+    "before": 4.0839,
+    "after": 3.6409,
+    "clahe_baseline": 3.9548,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_rain_s07",
+    "n_clips": 5,
+    "before": 0.4812,
+    "after": 0.4138,
+    "clahe_baseline": 0.4561,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_rain_s07",
+    "n_clips": 5,
+    "before": 2.686,
+    "after": 2.6065,
+    "clahe_baseline": 2.4731,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_rain_s10",
+    "n_clips": 5,
+    "before": 0.136,
+    "after": 0.1433,
+    "clahe_baseline": 0.1313,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_rain_s10",
+    "n_clips": 5,
+    "before": 0.8602,
+    "after": 1.4086,
+    "clahe_baseline": 0.7742,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_snow_s04",
+    "n_clips": 5,
+    "before": 0.5914,
+    "after": 0.5299,
+    "clahe_baseline": 0.5183,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_snow_s04",
+    "n_clips": 5,
+    "before": 3.2194,
+    "after": 3.114,
+    "clahe_baseline": 2.7742,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_snow_s07",
+    "n_clips": 5,
+    "before": 0.3804,
+    "after": 0.3991,
+    "clahe_baseline": 0.3829,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_snow_s07",
+    "n_clips": 5,
+    "before": 2.1591,
+    "after": 2.4151,
+    "clahe_baseline": 2.157,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: phys_snow_s10",
+    "n_clips": 5,
+    "before": 0.326,
+    "after": 0.2752,
+    "clahe_baseline": 0.3357,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: phys_snow_s10",
+    "n_clips": 5,
+    "before": 1.9312,
+    "after": 1.628,
+    "clahe_baseline": 2.0194,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: camera i24_scene1_p1c3",
+    "n_clips": 42,
+    "before": 0.1605,
+    "after": 0.2052,
+    "clahe_baseline": 0.2016,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: camera i24_scene1_p1c3",
+    "n_clips": 42,
+    "before": 0.9183,
+    "after": 1.4511,
+    "clahe_baseline": 1.1014,
+    "gt_vehicles_per_frame": 4.692
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: camera nyc_002",
+    "n_clips": 9,
+    "before": 0.7157,
+    "after": 0.6098,
+    "clahe_baseline": 0.7619,
+    "gt_vehicles_per_frame": 5.366
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: camera nyc_002",
+    "n_clips": 9,
+    "before": 4.1493,
+    "after": 3.3907,
+    "clahe_baseline": 4.4313,
+    "gt_vehicles_per_frame": 5.366
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out synthetic: camera nyc_003",
+    "n_clips": 9,
+    "before": 0.6525,
+    "after": 0.4991,
+    "clahe_baseline": 0.7176,
+    "gt_vehicles_per_frame": 5.0
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out synthetic: camera nyc_003",
+    "n_clips": 9,
+    "before": 3.6081,
+    "after": 2.7527,
+    "clahe_baseline": 4.0084,
+    "gt_vehicles_per_frame": 5.0
+  },
+  {
+    "metric": "vehicle recall vs seed pseudo-GT",
+    "set": "held-out CLEAN seeds (daytime regression check)",
+    "n_clips": 5,
+    "before": 1.0,
+    "after": 0.7631,
+    "clahe_baseline": 0.9556,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "vehicles detected / frame",
+    "set": "held-out CLEAN seeds (daytime regression check)",
+    "n_clips": 5,
+    "before": 4.8882,
+    "after": 4.314,
+    "clahe_baseline": 5.0559,
+    "gt_vehicles_per_frame": 4.888
+  },
+  {
+    "metric": "detections/frame on real night/rain clips, no GT",
+    "set": "data/real_check",
+    "n_clips": 10,
+    "before": 3.54,
+    "after": 2.312,
+    "clahe_baseline": 3.498,
+    "per_clip": [
+      {
+        "clip_id": "real_dusk_nyc_bike_gopro_1_4847_GX050001_chunk_0005_0",
+        "count_base": 1.935483870967742,
+        "count_clahe": 1.6021505376344085,
+        "count_spore": 0.6881720430107527
+      },
+      {
+        "clip_id": "real_dusk_nyc_bike_gopro_1_5028_GX050001_chunk_0009_5",
+        "count_base": 0.6881720430107527,
+        "count_clahe": 0.7526881720430108,
+        "count_spore": 0.3763440860215054
+      },
+      {
+        "clip_id": "real_fog_neighborhood_cam_1_hood_20260902_chunk_0000_15",
+        "count_base": 4.67741935483871,
+        "count_clahe": 4.537634408602151,
+        "count_spore": 3.3010752688172045
+      },
+      {
+        "clip_id": "real_fog_neighborhood_cam_1_hood_20260902_chunk_0001_25",
+        "count_base": 4.709677419354839,
+        "count_clahe": 4.612903225806452,
+        "count_spore": 3.4623655913978495
+      },
+      {
+        "clip_id": "real_glare_pie_cam_3_5_set04_video_chunk_0026_15",
+        "count_base": 0.6236559139784946,
+        "count_clahe": 0.6344086021505376,
+        "count_spore": 0.27956989247311825
+      },
+      {
+        "clip_id": "real_glare_pie_cam_3_7_set03_video_chunk_0004_20",
+        "count_base": 9.741935483870968,
+        "count_clahe": 9.935483870967742,
+        "count_spore": 6.935483870967742
+      },
+      {
+        "clip_id": "real_night_neighborhood_cam_1_hood_20260902_chunk_0010_0",
+        "count_base": 1.0,
+        "count_clahe": 1.010752688172043,
+        "count_spore": 1.0
+      },
+      {
+        "clip_id": "real_night_nyc_bike_gopro_1_4731_GX050001_chunk_0002_10",
+        "count_base": 6.731182795698925,
+        "count_clahe": 6.419354838709677,
+        "count_spore": 2.4408602150537635
+      },
+      {
+        "clip_id": "real_rain_neighborhood_cam_1_hood_20260901_chunk_0002_25",
+        "count_base": 4.0,
+        "count_clahe": 4.0,
+        "count_spore": 4.0
+      },
+      {
+        "clip_id": "real_rain_nyc_bike_gopro_1_3542_GOPR0130_chunk_0028_0",
+        "count_base": 1.2903225806451613,
+        "count_clahe": 1.4731182795698925,
+        "count_spore": 0.6344086021505376
+      }
+    ]
+  },
+  {
+    "metric": "notes",
+    "set": "-",
+    "before": null,
+    "after": null,
+    "notes": [
+      "Pseudo-GT = stock yolo11s (conf>=0.4, imgsz 960) vehicle boxes on the CLEAN seed, copied to the same frame of each structure-preserving variant (Cosmos-Transfer gen_* with edge-SSIM pass, or physics phys_* with exact geometry). Recall = 'fraction of what the stock model sees in clear daylight that it still sees under the condition'. On clean seeds the base model's recall is 1.0 by construction; the clean row measures agreement/regression only.",
+      "All methods are yolo11s, conf 0.4, vehicle classes, imgsz 960; before = stock yolo11s; after = yolo11s fine-tuned only on train cameras (i24 p1c1/p1c2 variants + clean seeds); test = held-out camera i24 p1c3 + NYC (different city).",
+      "clahe_baseline = stock yolo11s with CLAHE (+gamma lift on dark frames) preprocessing, no training.",
+      "Test set is small: 60 variant clips x 93 frames (frames within a clip are highly correlated); held-out clean seeds: 5. Treat per-condition numbers (1-5 clips) as indicative.",
+      "Real-clip row (if present) has no ground truth: more detections/frame is suggestive, not proof (could include FPs).",
+      "VERDICT (run 2, SGD lr 0.001, freeze=10, 10 ep, 2.4k imgs): NO reliable win. Held-out i24 camera p1c3 recall 0.161 -> 0.205 but CLAHE alone gets 0.202; NYC physics variants (all NYC Cosmos variants failed edge-SSIM 0.45-0.50) and clean seeds regress, real-clip detections/frame drop. Run 1 (AdamW lr 0.002, labels from yolo11n@640) collapsed confidences (clean recall 0.89 -> 0.02); kept as results/fix/yolo11s_spore_run1_collapsed.pt. Likely causes: tiny, highly correlated train set (6 seeds), pseudo-labels miss vehicles the model learns to suppress, no hard-negative/label-quality control. Not a demo claim."
+    ],
+    "gate": {
+      "passed": false,
+      "rule": "after > before on held-out variants AND clean-seed recall drop <= 5 pts"
+    }
+  }
+]
