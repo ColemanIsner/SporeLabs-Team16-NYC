@@ -8,7 +8,12 @@ import "./story.css";
 const SEED = "i24_scene1_p1c2_00";
 const HERO = `${SEED}__phys_fog_s04`;
 const WEAVE = "https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave";
-const LINE = "Other tools find what your video archive is missing. Spore grows the data to fill it, and shows where your AI goes blind.";
+const LINE = (
+  <>
+    <span>Other tools find what your video archive is missing.</span>{" "}
+    <span className="hl">Spore grows the data to fill it, and shows where your AI goes blind.</span>
+  </>
+);
 
 const GROW = [
   { src: `data/seeds/${SEED}.mp4`, label: "Real", sub: "clear day", real: true },
@@ -167,7 +172,7 @@ function Title({ kicker, children }: { kicker: string; children: ReactNode }) {
 function Intro() {
   return (
     <div className="st-intro">
-      <div className="st-logo rv"><span className="st-dot big" /> Spore</div>
+      <div className="st-logo rv">Spore</div>
       <p className="st-line rv" style={{ animationDelay: "0.25s" }}>{LINE}</p>
       <p className="st-hint rv" style={{ animationDelay: "0.6s" }}>An agent for video archives. Press → to watch it work.</p>
     </div>
