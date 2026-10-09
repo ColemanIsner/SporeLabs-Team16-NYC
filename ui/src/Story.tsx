@@ -64,7 +64,7 @@ export default function Story() {
     { key: "grow", render: () => <Grow /> },
     { key: "test", render: () => <Test seed={seedEval} hero={heroEval} /> },
     { key: "blind", render: () => <Blind curve={curve} headline={headline} /> },
-    { key: "fix", render: () => <Fix fix={fix} /> },
+    ...((fix ?? []).some((r) => r.after > r.before) ? [{ key: "fix", render: () => <Fix fix={fix} /> }] : []),
     { key: "again", render: () => <Again report={report} loop={loop} /> },
   ];
 
@@ -175,17 +175,35 @@ function Intro() {
   );
 }
 
+function useCountUp(target: number, ms = 1600) {
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    if (!target) return;
+    const t0 = performance.now();
+    let id = 0;
+    const tick = (t: number) => {
+      const k = Math.min(1, (t - t0) / ms);
+      setV(Math.round(target * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) id = requestAnimationFrame(tick);
+    };
+    id = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(id);
+  }, [target, ms]);
+  return v;
+}
+
 function Inv({ coverage, inventory }: { coverage?: (Coverage & { cameras?: Record<string, number> }) | null; inventory?: Inventory | null }) {
   const rows: { name: string; n: number }[] = inventory?.length
-    ? inventory.map((r) => ({ name: r.label ?? r.scene_type.replace(/_/g, " "), n: r.n_clips }))
+    ? inventory.map((r) => ({ name: (r.label ?? r.scene_type.replace(/_/g, " ")).split(" /")[0], n: r.n_clips }))
     : SCENES.map((s) => ({ name: s.name, n: s.cams.reduce((a, c) => a + (coverage?.cameras?.[c] ?? 0), 0) }));
   const total = coverage?.n_indexed ?? rows.reduce((a, r) => a + r.n, 0);
+  const shown = useCountUp(total);
   const max = Math.max(1, ...rows.map((r) => r.n));
   return (
     <>
       <Title kicker="1 · Look">First, it looks through everything you have.</Title>
-      <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
-        <b>{total || "…"}</b> real clips in VAST
+      <div className="st-count rv" style={{ animationDelay: "0.2s" }}>
+        <b>{shown}</b><span>real clips scanned in VAST</span>
       </div>
       <div className="st-bars">
         {rows.map((r, k) => (
@@ -199,61 +217,63 @@ function Inv({ coverage, inventory }: { coverage?: (Coverage & { cameras?: Recor
         ))}
       </div>
       <Powered by={["vast", "nvidia"]} delay={1.9}
-        what="Reads every clip VSS has indexed in VastDB, with the captions NVIDIA Cosmos Reason wrote at ingest"
-        call={<>GET /api/v1/videos/explore → {total} clips, {rows.length} scene types</>} />
+        what="Every clip VSS indexed in VastDB, with its Cosmos Reason caption"
+        call="GET /api/v1/videos/explore" />
     </>
   );
 }
 
+const GAP_ROWS = [
+  { id: "clear_day", q: "highway in clear daytime" },
+  { id: "night", q: "highway at night" },
+  { id: "rain", q: "highway in heavy rain" },
+  { id: "fog", q: "highway in dense fog" },
+  { id: "snow", q: "highway covered in snow" },
+];
 function Missing({ coverage }: { coverage?: Coverage | null }) {
-  const order = ["clear_day", "night", "rain", "fog", "snow", "glare", "night_rain"];
-  const rows = (coverage?.conditions ?? []).slice().sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
-  return (
-    <>
-      <Title kicker="2 · Find the gaps">Then it asks: what conditions do the highway cameras actually cover?</Title>
-      <div className="st-grid-cond">
-        {rows.map((r, k) => (
-          <div key={r.id} {...rv(k + 1)}>
-            <div className={`st-cond ${r.n_highway === 0 ? "zero" : ""}`}>
-              <span className="n">{r.n_highway}</span>
-              <span className="l">{r.label}</span>
-              {r.n_highway === 0 && <span className="tag">no footage</span>}
-            </div>
-          </div>
-        ))}
-      </div>
-      <LiveLog delay={0.4 + rows.length * 0.22} />
-      <Powered by={["vast"]} delay={0.6 + rows.length * 0.22}
-        what="VSS hybrid search (Cosmos Embed1 vectors + captions), then a check of each hit's own caption"
-        call="POST /api/v1/search · live" />
-    </>
-  );
-}
-
-const LIVE_QUERIES = ["highway in heavy rain", "highway in dense fog", "highway covered in snow"];
-function LiveLog({ delay }: { delay: number }) {
-  const [res, setRes] = useState<Record<string, AskRes | "err">>({});
+  const [done, setDone] = useState<Record<string, AskRes | "err">>({});
   useEffect(() => {
     let alive = true;
-    LIVE_QUERIES.forEach((q) => askVSS(q).then((r) => alive && setRes((m) => ({ ...m, [q]: r }))).catch(() => alive && setRes((m) => ({ ...m, [q]: "err" }))));
-    return () => { alive = false; };
+    GAP_ROWS.forEach((r, k) => {
+      // Stagger the starts so rows visibly land one by one.
+      setTimeout(() => {
+        askVSS(r.q).then((x) => alive && setDone((m) => ({ ...m, [r.id]: x })))
+          .catch(() => alive && setDone((m) => ({ ...m, [r.id]: "err" })));
+      }, 400 + k * 500);
+    });
+    // Never let a slow search stall the demo: reveal the archive count after 14 s regardless.
+    const t = setTimeout(() => alive && setDone((m) => Object.fromEntries(GAP_ROWS.map((r) => [r.id, m[r.id] ?? "err"]))), 14000);
+    return () => { alive = false; clearTimeout(t); };
   }, []);
-  const t = useElapsed(Object.keys(res).length < LIVE_QUERIES.length);
+  const t = useElapsed(Object.keys(done).length < GAP_ROWS.length);
+  const cov = Object.fromEntries((coverage?.conditions ?? []).map((c) => [c.id, c]));
   return (
-    <div className="st-log rv" style={{ animationDelay: `${delay}s` }}>
-      {LIVE_QUERIES.map((q) => {
-        const r = res[q];
-        const hw = r && r !== "err" ? r.hits.filter((h) => h.highway && h.shows_it).length : 0;
-        return (
-          <div key={q} className="ln">
-            <span className="cmd">vss.search(“{q}”)</span>
-            {!r ? <span className="run">searching… {t.toFixed(1)}s</span>
-              : r === "err" ? <span className="bad">offline</span>
-              : <span className={hw ? "ok" : "bad"}>{r.hits.length} hits · {hw} highway clips actually show it · {r.seconds}s</span>}
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Title kicker="2 · Find the gaps">Then it checks what your highway cameras have actually seen.</Title>
+      <div className="st-live">
+        {GAP_ROWS.map((r, k) => {
+          const c = cov[r.id];
+          const res = done[r.id];
+          const n = c?.n_highway;
+          const zero = n === 0;
+          return (
+            <div key={r.id} {...rv(k + 1)}>
+              <div className={`st-live-row ${res ? (zero ? "zero" : "have") : "busy"}`}>
+                <span className="lbl">{c?.label ?? r.id}</span>
+                <code>vss.search(“{r.q}”)</code>
+                <span className="res">
+                  {!res ? <i className="spin">searching {t.toFixed(1)}s</i>
+                    : <><b>{n ?? "?"}</b>{zero ? <em>no footage</em> : <em>clips</em>}</>}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <Powered by={["vast"]} delay={1.6}
+        what="Live VSS hybrid search, checked against every clip's own caption"
+        call="POST /api/v1/search" />
+    </>
   );
 }
 
@@ -318,57 +338,64 @@ function Ask() {
 }
 
 function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] }) | null }) {
-  const cands = (report?.candidates ?? []).slice(0, 3);
+  const seen = new Set<string>();
+  const cands = (report?.candidates ?? []).filter((c) => { const l = c.label ?? c.condition ?? ""; if (seen.has(l)) return false; seen.add(l); return true; }).slice(0, 4);
+  const top = cands[0];
   const why = (c: Candidate) => {
     const cond = (c.label ?? c.condition ?? "this").toLowerCase().replace(/^highway at /, "");
     const scene = (c.scene_label ?? "Highway").split(" /")[0];
     const have = c.real_clips ?? c.real_clips_highway ?? 0;
     const of = c.scene_clips != null ? ` of ${c.scene_clips}` : "";
-    const tested = c.mean_recall != null ? `In synthetic tests YOLO finds ${Math.round(c.mean_recall * 100)}% of cars.` : "Never tested.";
-    return `${scene} cameras face ${cond}. They have ${have}${of} clips in it. ${tested}`;
+    return `${scene} cameras face ${cond}. They have ${have}${of} clips of it, and nobody has tested the AI in it.`;
   };
   return (
     <>
-      <Title kicker="3 · Decide">It picks the gaps that matter for this footage.</Title>
-      <div className="st-cands">
-        {cands.map((c, k) => (
-          <div key={c.id ?? k} {...rv(k + 1)}>
-            <div className={`st-cand ${k === 0 ? "first" : ""}`}>
-              <span className="rank">{k + 1}</span>
-              <div>
-                <div className="name">{c.label ?? c.condition}</div>
-                <div className="why">{why(c)}</div>
-              </div>
-              {k === 0 && <span className="pick">filling first</span>}
-            </div>
-          </div>
-        ))}
-      </div>
-      <Powered by={["wandb"]} delay={1.1}
-        what={<>An LLM on W&B Inference reads the search results and evals and ranks the gaps. Every call is traced in <a href={WEAVE} target="_blank" rel="noreferrer">Weave</a></>}
-        call={report?.model ? `${report.model}${(report as { llm_seconds?: number }).llm_seconds ? ` · ${(report as { llm_seconds?: number }).llm_seconds}s` : ""}` : undefined} />
+      <Title kicker="3 · Decide">It decides which gap matters most.</Title>
+      {top && (
+        <div className="st-pick rv" style={{ animationDelay: "0.35s" }}>
+          <div className="k">Filling first</div>
+          <div className="n">{top.label ?? top.condition}</div>
+          <div className="w">{why(top)}</div>
+        </div>
+      )}
+      {cands.length > 1 && (
+        <div className="st-then rv" style={{ animationDelay: "0.9s" }}>
+          <span>Then</span>
+          {cands.slice(1).map((c, k) => <b key={c.id ?? k}>{c.label ?? c.condition}</b>)}
+        </div>
+      )}
+      <Powered by={["wandb"]} delay={1.3}
+        what={<>An LLM on W&B Inference ranks the gaps; every call traced in <a href={WEAVE} target="_blank" rel="noreferrer">Weave</a></>}
+        call={report?.model} />
     </>
   );
 }
 
 function Grow() {
+  const [k, setK] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setK((x) => (x + 1) % GROW.length), 2600);
+    return () => clearInterval(id);
+  }, []);
+  const box = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    box.current?.querySelectorAll("video").forEach((v) => { if (v.paused) v.play().catch(() => {}); });
+  }, [k]);
+  const g = GROW[k];
   return (
     <>
       <Title kicker="4 · Fill">So it grows the missing footage from a real clip.</Title>
-      <div className="st-grow">
-        {GROW.map((g, k) => (
-          <figure key={g.src} {...rv(k + 1)} className={`rv ${g.real ? "real" : ""}`}>
-            <Video src={g.src} />
-            <figcaption><b>{g.label}</b> {g.sub}</figcaption>
-          </figure>
+      <div ref={box} className="st-morph rv" style={{ animationDelay: "0.3s" }}>
+        {GROW.map((v, j) => (
+          <video key={v.src} src={url(v.src)} autoPlay muted loop playsInline preload="auto" className={j === k ? "on" : ""} />
         ))}
+        <div className={`st-morph-tag ${g.real ? "real" : ""}`}><b>{g.label}</b><span>{g.sub}</span></div>
+        <div className="st-morph-dots">{GROW.map((v, j) => <i key={v.src} className={j === k ? "on" : ""} />)}</div>
       </div>
-      <p className="st-foot rv" style={{ animationDelay: "1.5s" }}>
-        Same cars, same lanes. So we already know the right answer for every clip.
-      </p>
-      <Powered by={["nvidia"]} delay={1.8}
-        what="Cosmos Transfer 2.5 relights the real clip (night); a weather layer adds fog, rain and snow without moving a pixel"
-        call="cosmos-transfer2.5-2b · edge control · 93 frames 720p · H100" />
+      <p className="st-sub rv" style={{ animationDelay: "0.9s" }}>Same cars, same lanes. So the right answer is already known.</p>
+      <Powered by={["nvidia"]} delay={1.3}
+        what="Cosmos Transfer 2.5 relights the real clip; a weather layer adds fog, rain and snow"
+        call="cosmos-transfer2.5-2b · H100" />
     </>
   );
 }
@@ -376,33 +403,20 @@ function Grow() {
 function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
   const yS = seed?.yolo?.mean_count, yH = hero?.yolo?.mean_count;
   const rH = hero?.reason?.answers?.vehicle_count as number | undefined;
-  const wH = hero?.reason?.answers?.weather_lighting as string | undefined;
   return (
     <>
       <Title kicker="5 · Test">Then it tests the models inside VSS on it.</Title>
       <div className="rv" style={{ animationDelay: "0.3s" }}>
         <Video src={`results/overlays/${HERO}.mp4`} className="st-hero" />
       </div>
-      <div className="st-vs">
-        <div {...rv(3)}>
-          <div className="st-say ok">
-            <div className="who">Cosmos Reason, the caption model</div>
-            <div className="what">“{wH ?? "fog"}”, <b>{rH ?? "…"} vehicles</b></div>
-          </div>
-        </div>
-        <div {...rv(4)}>
-          <div className="st-say bad">
-            <div className="who">YOLO11, the detector</div>
-            <div className="what"><b>{yH != null ? yH.toFixed(1) : "…"}</b> vehicles <span>(clear day: {yS != null ? yS.toFixed(1) : "…"})</span></div>
-          </div>
-        </div>
+      <div className="st-verdict rv" style={{ animationDelay: "1.0s" }}>
+        <span className="ok">Cosmos Reason: <b>“dense fog, {rH ?? "…"} vehicles”</b></span>
+        <span className="vs">vs</span>
+        <span className="bad">YOLO11: <b>{yH != null ? yH.toFixed(1) : "…"} vehicles</b> <i>per frame, vs {yS != null ? yS.toFixed(1) : "…"} on the clear clip</i></span>
       </div>
-      <p className="st-foot rv" style={{ animationDelay: "1.4s" }}>
-        Light fog. Same clip, same VSS pipeline, and two models disagree.
-      </p>
-      <Powered by={["nvidia"]} delay={1.7}
-        what="The hosted models VSS runs at ingest, on CoreWeave GPUs: YOLO11s detector and Cosmos3-Reason"
-        call={`YOLO11s × 93 frames · Cosmos3-Reason ${hero?.reason && (hero.reason as { seconds?: number }).seconds ? `${(hero.reason as { seconds?: number }).seconds}s` : ""}`} />
+      <Powered by={["nvidia"]} delay={1.5}
+        what="The hosted YOLO11s and Cosmos3-Reason that VSS runs at ingest, on CoreWeave GPUs"
+        call="same clip · two models · they disagree" />
     </>
   );
 }
@@ -453,7 +467,7 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
   const fmt = (v: number) => (v <= 1 ? `${Math.round(v * 100)}%` : v.toFixed(1));
   return (
     <>
-      <Title kicker="7 · Fix">Some of it, it can fix right away.</Title>
+      <Title kicker="Fix">Some of it, it can fix right away.</Title>
       {rows.length ? (
         <>
           <p className="st-sub rv" style={{ animationDelay: "0.3s" }}>
@@ -489,9 +503,9 @@ function Again({ report, loop }: { report?: GapReport | null; loop?: LoopEntry[]
   const n = loop?.length ?? 0;
   return (
     <>
-      <Title kicker="8 · Repeat">Then it searches again and picks the next gap.</Title>
+      <Title kicker="Repeat">Then it searches again and picks the next gap.</Title>
       <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
-        Next up: <b>{report?.next_label ?? "…"}</b>
+        Next up: <b>{(report as { candidates?: Candidate[] } | null | undefined)?.candidates?.[1]?.label ?? report?.next_label ?? "…"}</b>
       </div>
       <p className="st-sub rv" style={{ animationDelay: "0.6s" }}>
         {n} loop iteration{n === 1 ? "" : "s"} so far. Every step is traced in{" "}
