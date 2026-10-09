@@ -289,3 +289,13 @@
 
 .st-loop-wrap { width: 100%; max-width: 980px; }
 .st-loop.mini { width: 500px; max-height: 50px; }
+.st-morph { width: auto; height: min(56vh, 540px); max-width: 100%; }
+.st-morph { height: min(50vh, 460px); }
+
+/* sponsor chips under loop nodes */
+.st-loop .chip rect { stroke-width: 1.2; }
+.st-loop .chip text { font-family: var(--sans); font-weight: 700; font-size: 13px; }
+.st-loop .chip-vast rect { fill: rgba(76,195,255,0.08); stroke: rgba(76,195,255,0.5); } .st-loop .chip-vast text { fill: #4cc3ff; }
+.st-loop .chip-nvidia rect { fill: rgba(118,185,0,0.09); stroke: rgba(118,185,0,0.55); } .st-loop .chip-nvidia text { fill: #8ed100; }
+.st-loop .chip-wandb rect { fill: rgba(255,204,51,0.08); stroke: rgba(255,204,51,0.5); } .st-loop .chip-wandb text { fill: #ffcc33; }
+.st-loop .chip-cursor rect { fill: none; stroke: var(--line2); } .st-loop .chip-cursor text { fill: var(--text); }

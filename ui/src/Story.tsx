@@ -64,13 +64,13 @@ export default function Story() {
     { key: "intro", render: () => <Intro /> },
     { key: "inventory", render: () => <Inv coverage={coverage} inventory={inventory} /> },
     { key: "missing", render: () => <Missing coverage={coverage} /> },
-    { key: "ask", render: () => <Ask /> },
     { key: "matters", render: () => <Matters report={report} /> },
     { key: "grow", render: () => <Grow /> },
     { key: "test", render: () => <Test seed={seedEval} hero={heroEval} /> },
     { key: "blind", render: () => <Blind curve={curve} headline={headline} /> },
     ...((fix ?? []).some((r) => r.after > r.before) ? [{ key: "fix", render: () => <Fix fix={fix} /> }] : []),
     { key: "again", render: () => <Again report={report} loop={loop} /> },
+    { key: "ask", render: () => <Ask /> },
   ];
 
   const initial = Math.max(0, steps.findIndex((s) => s.key === location.hash.slice(1)));
@@ -171,21 +171,21 @@ function Title({ kicker, children }: { kicker: string; children: ReactNode }) {
 }
 
 // ---- the loop: one diagram on the intro, a compact copy on every step highlighting its piece ----
-const LOOP = [
-  { id: "look", name: "Look", by: "VAST search" },
-  { id: "find", name: "Find gaps", by: "VAST search" },
-  { id: "decide", name: "Decide", by: "W&B Inference" },
-  { id: "fill", name: "Fill", by: "NVIDIA Cosmos" },
-  { id: "test", name: "Test", by: "YOLO + Reason" },
+const LOOP: { id: string; name: string; by: SponsorKey; what: string }[] = [
+  { id: "look", name: "Look", by: "vast", what: "VSS explore" },
+  { id: "find", name: "Find gaps", by: "vast", what: "VSS search" },
+  { id: "decide", name: "Decide", by: "wandb", what: "Inference + Weave" },
+  { id: "fill", name: "Fill", by: "nvidia", what: "Cosmos Transfer" },
+  { id: "test", name: "Test", by: "nvidia", what: "YOLO + Reason" },
 ];
 const STEP_NODE: Record<string, number> = {
-  inventory: 0, missing: 1, ask: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 4, again: 5,
+  inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 4, again: 5,
 };
 function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean }) {
   const n = LOOP.length, W = big ? 980 : 520, nodeW = big ? 156 : 84, nodeH = big ? 64 : 28;
-  const gap = (W - n * nodeW) / (n - 1), top = big ? 8 : 4, H = big ? 170 : 50;
+  const gap = (W - n * nodeW) / (n - 1), top = big ? 8 : 4, H = big ? 190 : 50;
   const x = (k: number) => k * (nodeW + gap);
-  const retY = top + nodeH + (big ? 58 : 14);
+  const retY = top + nodeH + (big ? 78 : 14);
   const loopOn = active === 5;
   return (
     <svg className={`st-loop ${big ? "big" : "mini"}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Spore loop">
@@ -205,7 +205,13 @@ function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean 
         <g key={node.id} className={`node ${k === active ? "on" : ""} ${active > k && active <= 5 ? "done" : ""}`}>
           <rect x={x(k)} y={top} width={nodeW} height={nodeH} rx={nodeH / 2} />
           <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + (big ? -2 : 4)} textAnchor="middle" className="nm">{node.name}</text>
-          {big && <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + 17} textAnchor="middle" className="by">{node.by}</text>}
+          {big && <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + 17} textAnchor="middle" className="by">{node.what}</text>}
+          {big && (
+            <g className={`chip chip-${node.by}`}>
+              <rect x={x(k) + nodeW / 2 - 62} y={top + nodeH + 10} width={124} height={24} rx={6} />
+              <text x={x(k) + nodeW / 2} y={top + nodeH + 26.5} textAnchor="middle">{SPONSOR[node.by]}</text>
+            </g>
+          )}
         </g>
       ))}
     </svg>
@@ -334,6 +340,7 @@ function Ask() {
   const run = async (query: string) => {
     if (!query.trim() || busy) return;
     setQ(query); setBusy(true); setErr(""); setRes(null);
+    inp.current?.blur(); // so → / ← work again right after searching
     try { const r = await askVSS(query.trim()); if (r.error) throw new Error(r.error); setRes(r); }
     catch { setErr("VSS didn't answer. Try again."); }
     setBusy(false);
@@ -345,7 +352,7 @@ function Ask() {
       <Title kicker="Try it · live">Ask the archive for anything.</Title>
       <form className="st-ask rv" style={{ animationDelay: "0.3s" }} onSubmit={submit}
         onKeyDown={(e) => e.stopPropagation()}>
-        <input ref={inp} value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. construction zone at night" autoFocus />
+        <input ref={inp} value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. construction zone at night" onKeyDown={(e) => { if (e.key === "Escape") (e.target as HTMLInputElement).blur(); }} />
         <button type="submit" disabled={busy}>{busy ? `${t.toFixed(1)}s` : "Search"}</button>
       </form>
       {!res && !busy && (
@@ -385,7 +392,11 @@ function Ask() {
 function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] }) | null }) {
   const seen = new Set<string>();
   const cands = (report?.candidates ?? []).filter((c) => { const l = c.label ?? c.condition ?? ""; if (seen.has(l)) return false; seen.add(l); return true; }).slice(0, 4);
-  const top = cands[0];
+  // This run's demo fills highway fog; the ranked list decides what comes next (see Repeat).
+  const all = report?.candidates ?? [];
+  const top = all.find((c) => c.id === "highway:fog") ?? cands[0];
+  const others = all.filter((c) => (c.scene_type ?? c.scene) === "highway" && c.id !== top?.id)
+    .map((c) => (c.label ?? c.condition ?? "").replace(/^Highway at /i, "").toLowerCase()).filter(Boolean);
   const why = (c: Candidate) => {
     const cond = (c.label ?? c.condition ?? "this").toLowerCase().replace(/^highway at /, "");
     const scene = (c.scene_label ?? "Highway").split(" /")[0];
@@ -401,7 +412,12 @@ function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] 
           <div className="w">{why(top)}</div>
         </div>
       )}
-      <Powered by={["wandb"]} delay={1.3}
+      {others.length > 0 && (
+        <p className="st-sub rv" style={{ animationDelay: "0.7s" }}>
+          Also missing on highway cameras: {[...new Set(others)].slice(0, 4).join(", ")}. Each gets its own loop.
+        </p>
+      )}
+      <Powered by={["wandb"]} delay={0.9}
         what={<>LLM on W&B Inference, traced in <a href={WEAVE} target="_blank" rel="noreferrer">Weave</a></>} />
     </>
   );
@@ -435,7 +451,7 @@ function Grow() {
 }
 
 function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
-  const yS = seed?.yolo?.mean_count, yH = hero?.yolo?.mean_count;
+  const rec = hero?.yolo?.recall_vs_seed;
   const rH = hero?.reason?.answers?.vehicle_count as number | undefined;
   return (
     <>
@@ -446,7 +462,7 @@ function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
       <div className="st-verdict rv" style={{ animationDelay: "1.0s" }}>
         <span className="ok">Cosmos Reason: <b>“dense fog, {rH ?? "…"} vehicles”</b></span>
         <span className="vs">vs</span>
-        <span className="bad">YOLO11: <b>{yH != null ? yH.toFixed(1) : "…"} vehicles</b> <i>per frame, vs {yS != null ? yS.toFixed(1) : "…"} on the clear clip</i></span>
+        <span className="bad">YOLO11: <b>misses {rec != null ? Math.round((1 - rec) * 10) : "…"} in 10 cars</b></span>
       </div>
       <Powered by={["nvidia"]} delay={1.5}
         what="Hosted YOLO11 + Cosmos Reason, the models VSS runs" />
@@ -530,9 +546,26 @@ function Again({ report, loop }: { report?: GapReport | null; loop?: LoopEntry[]
   return (
     <>
       <Title kicker="Repeat">Then it does it again.</Title>
-      <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
-        Next up: <b>{(report as { candidates?: Candidate[] } | null | undefined)?.candidates?.[1]?.label ?? report?.next_label ?? "…"}</b>
-      </div>
+      {(() => {
+        const last = [...(loop ?? [])].reverse().find((e) => (e as { filled?: number }).filled) as
+          (LoopEntry & { gap?: string; filled?: number; recall?: number }) | undefined;
+        const cands = (report as { candidates?: Candidate[] } | null | undefined)?.candidates ?? [];
+        const lastLbl = (last?.gap ?? "").split(" ·")[0].toLowerCase();
+        const next = cands.find((c) => (c.label ?? "").toLowerCase() !== lastLbl && c.id !== "highway:fog");
+        return (
+          <>
+            {last && (
+              <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
+                Last loop: <b>{last.gap?.split(" ·")[0]}</b> → grew {last.filled} clips → YOLO kept{" "}
+                <b>{Math.round(100 * (last.recall ?? 0))}%</b>{(last.recall ?? 0) >= 0.7 ? " (holds up)" : " (blind spot)"}
+              </div>
+            )}
+            <div className="st-big rv" style={{ animationDelay: "0.6s" }}>
+              Next up: <b>{next?.label ?? report?.next_label ?? "…"}</b>
+            </div>
+          </>
+        );
+      })()}
       <div className="st-stack rv" style={{ animationDelay: "0.9s" }}>
         <span><b>VAST</b> finds the gap</span>
         <span><b>NVIDIA</b> grows and tests it</span>

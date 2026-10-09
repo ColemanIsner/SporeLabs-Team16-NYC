@@ -151,8 +151,10 @@ def matches(cond: dict, caption: str) -> bool:
 
 
 def is_highway(clip: dict) -> bool:
-    return clip.get("capture_type") == "traffic" or str(clip.get("camera_id", "")).startswith("i24") \
-        or bool(HIGHWAY.search((clip.get("reasoning_content") or "").lower()))
+    # Highway = the fixed highway cameras (I-24). Every one of these 30 chunks was also checked by eye
+    # (results/verify/i24_all_chunks.jpg). Caption/capture_type heuristics pulled in residential and bike
+    # cams, which made "highway at night" look non-empty when highway cameras have none.
+    return str(clip.get("camera_id", "")).startswith("i24")
 
 
 def run_search(cond: dict, k: int) -> dict:
@@ -218,6 +220,24 @@ def main():
     ap.add_argument("--out", default=str(OUT))
     a = ap.parse_args()
     cov = coverage(a.k)
+    # Captions rarely say "daylight", so keyword counts undercount clear days. The highway cams were
+    # checked frame-by-frame (vss/verify_i24.py): use that for the clear-day row and highway inventory.
+    ver = ROOT / "results" / "verify" / "i24_verify.json"
+    if ver.exists():
+        n_ver = json.loads(ver.read_text()).get("n_chunks")
+        for r in cov.get("conditions", []):
+            if r["id"] == "clear_day" and n_ver:
+                r["n_highway_caption"] = r["n_highway"]
+                r["n_highway"] = n_ver
+                r["note"] = f"all {n_ver} highway chunks verified clear daylight by eye (results/verify/i24_all_chunks.jpg)"
+        for sc in (cov.get("inventory") or {}).get("scenes", []):
+            if sc.get("id") == "highway":
+                for c in sc.get("conditions", []):
+                    if c.get("id") == "clear_day" and n_ver:
+                        c["n"] = n_ver
+        for sc in cov.get("inventory_list", []):
+            if sc.get("scene_type") == "highway" and "clear_day" in (sc.get("conditions") or {}) and n_ver:
+                sc["conditions"]["clear_day"] = n_ver
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     tmp = Path(a.out).with_suffix(".tmp")
     tmp.write_text(json.dumps(cov, indent=2))

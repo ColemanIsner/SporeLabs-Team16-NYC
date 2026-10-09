@@ -1,8 +1,8 @@
 {
-  "updated": 1791567744.7215,
-  "seconds": 26.0,
+  "updated": 1791571678.9121768,
+  "seconds": 17.8,
   "n_indexed": 612,
-  "n_highway": 127,
+  "n_highway": 30,
   "cameras": {
     "nyc_bike_gopro-1": 78,
     "nyc_streets_cam-2": 30,
@@ -28,9 +28,9 @@
       "top_k": 10,
       "arm": null,
       "n_clips": 101,
-      "n_highway": 23,
+      "n_highway": 30,
       "frac_clips": 0.165,
-      "frac_highway": 0.1811,
+      "frac_highway": 0.2333,
       "cameras": [
         "i24_cam-1",
         "nyc_bike_gopro-1",
@@ -98,9 +98,11 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_055315_scene1_p1c1_chunk_0001_segment_005_of_006.mp4"
         }
       ],
-      "search_seconds": 4.64,
+      "search_seconds": 8.18,
       "error": null,
-      "gap": false
+      "gap": false,
+      "n_highway_caption": 7,
+      "note": "all 30 highway chunks verified clear daylight by eye (results/verify/i24_all_chunks.jpg)"
     },
     {
       "id": "night",
@@ -114,18 +116,48 @@
         "intensity": "light"
       },
       "n_clips": 32,
-      "n_highway": 5,
+      "n_highway": 0,
       "frac_clips": 0.0523,
-      "frac_highway": 0.0394,
+      "frac_highway": 0.0,
       "cameras": [
         "neighborhood_cam-1",
         "nyc_bike_gopro-1"
       ],
-      "search_top_score": 0.2375,
+      "search_top_score": 0.3793,
       "search_relevant": 10,
       "search_relevant_highway": 0,
       "search_precision": 1.0,
       "top_hits": [
+        {
+          "filename": "20261009_164624_3e7861c3_segment_001_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.3793,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene is a multi-lane highway at night, viewed from an elevated perspective. Traffic flows in both directions, separated by a central median. On the left side of the highway, vehicles including cars and trucks move t",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164624_3e7861c3_segment_001_of_002.mp4"
+        },
+        {
+          "filename": "20261009_164734_dfd2c14f_segment_001_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.3743,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene takes place at night on a multi-lane highway, viewed from an elevated perspective. The road is divided by a central median, with traffic flowing in both directions. Streetlights and vehicle headlights illuminat",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164734_dfd2c14f_segment_001_of_002.mp4"
+        },
+        {
+          "filename": "20261009_164752_e28de3e8_segment_002_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.3382,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene is a nighttime view of a multi-lane highway with a central median separating opposing directions of travel. The road surface is dark and appears wet, reflecting the overhead streetlights and vehicle headlights.",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164752_e28de3e8_segment_002_of_002.mp4"
+        },
         {
           "filename": "20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4",
           "camera_id": "nyc_bike_gopro-1",
@@ -145,41 +177,11 @@
           "highway": false,
           "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, parked on the left side of the frame. Another vehicle is partially visible in the foreground, positioned n",
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_074239_neighborhood_20260902_chunk_0015_segment_003_of_006.mp4"
-        },
-        {
-          "filename": "20261001_074239_neighborhood_20260902_chunk_0015_segment_004_of_006.mp4",
-          "camera_id": "neighborhood_cam-1",
-          "capture_type": "streets",
-          "score": 0.2069,
-          "caption_matches": true,
-          "highway": false,
-          "caption": "The scene is a nighttime outdoor area with several parked vehicles. A car is visible in the background, positioned on the left side of the frame. Another vehicle is parked in the foreground, closer to the bottom right co",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074239_neighborhood_20260902_chunk_0015_segment_004_of_006.mp4"
-        },
-        {
-          "filename": "20261008_075119_GX050001_chunk_0011_segment_002_of_006.mp4",
-          "camera_id": "nyc_bike_gopro-1",
-          "capture_type": "streets",
-          "score": 0.206,
-          "caption_matches": true,
-          "highway": false,
-          "caption": "The scene takes place on a city street at night, with a wide paved sidewalk running alongside a roadway. The sidewalk is bordered by metal bollards separating it from the road. A cyclist wearing a bright yellow-green ref",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261008_075119_GX050001_chunk_0011_segment_002_of_006.mp4"
-        },
-        {
-          "filename": "20261008_074731_GX050001_chunk_0002_segment_003_of_006.mp4",
-          "camera_id": "nyc_bike_gopro-1",
-          "capture_type": "streets",
-          "score": 0.2021,
-          "caption_matches": true,
-          "highway": false,
-          "caption": "The scene takes place on a city street at night, with a cyclist in a bright yellow-green jersey and white helmet riding on the sidewalk. The cyclist is moving forward, passing parked cars and metal bollards along the cur",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261008_074731_GX050001_chunk_0002_segment_003_of_006.mp4"
         }
       ],
-      "search_seconds": 5.9,
+      "search_seconds": 4.33,
       "error": null,
-      "gap": false
+      "gap": true
     },
     {
       "id": "rain",
@@ -256,7 +258,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4"
         }
       ],
-      "search_seconds": 4.25,
+      "search_seconds": 4.98,
       "error": null,
       "gap": true
     },
@@ -335,7 +337,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
         }
       ],
-      "search_seconds": 9.15,
+      "search_seconds": 4.15,
       "error": null,
       "gap": true
     },
@@ -355,11 +357,31 @@
       "frac_clips": 0.0,
       "frac_highway": 0.0,
       "cameras": [],
-      "search_top_score": 0.2169,
-      "search_relevant": 0,
+      "search_top_score": 0.2669,
+      "search_relevant": 2,
       "search_relevant_highway": 0,
-      "search_precision": 0.0,
+      "search_precision": 0.2,
       "top_hits": [
+        {
+          "filename": "20261009_164918_a2f954c7_segment_001_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.2669,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "The scene is a wide, multi-lane highway viewed from an elevated perspective. The road surface is dark asphalt with clear white lane markings, and the surrounding area shows patches of snow along the edges, suggesting col",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164918_a2f954c7_segment_001_of_002.mp4"
+        },
+        {
+          "filename": "20261009_165003_767502a3_segment_002_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.2325,
+          "caption_matches": true,
+          "highway": false,
+          "caption": "A white car is driving on a multi-lane highway, moving away from the camera. The road is divided by a central median, and there are other vehicles visible in the distance. The surrounding area appears to be lightly snow-",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165003_767502a3_segment_002_of_002.mp4"
+        },
         {
           "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_002_of_006.mp4",
           "camera_id": "neighborhood_cam-1",
@@ -389,29 +411,9 @@
           "highway": false,
           "caption": "A white SUV is seen driving slowly along a residential street on a foggy day. The vehicle is moving from the left side of the frame toward the right, navigating the road carefully. The fog creates a hazy atmosphere, redu",
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4"
-        },
-        {
-          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4",
-          "camera_id": "neighborhood_cam-1",
-          "capture_type": "streets",
-          "score": 0.1925,
-          "caption_matches": false,
-          "highway": false,
-          "caption": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4"
-        },
-        {
-          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4",
-          "camera_id": "neighborhood_cam-1",
-          "capture_type": "streets",
-          "score": 0.178,
-          "caption_matches": false,
-          "highway": false,
-          "caption": "A white van is driving on a residential street during foggy conditions. The van is moving from left to right across the frame, passing by parked cars and houses. The street is lined with trees and there are streetlights ",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
         }
       ],
-      "search_seconds": 4.0,
+      "search_seconds": 7.78,
       "error": null,
       "gap": true
     },
@@ -489,7 +491,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4"
         }
       ],
-      "search_seconds": 4.16,
+      "search_seconds": 3.93,
       "error": null,
       "gap": true
     },
@@ -509,20 +511,50 @@
       "frac_clips": 0.0,
       "frac_highway": 0.0,
       "cameras": [],
-      "search_top_score": 0.3169,
+      "search_top_score": 0.3609,
       "search_relevant": 2,
       "search_relevant_highway": 0,
       "search_precision": 0.2,
       "top_hits": [
         {
-          "filename": "20261001_074032_neighborhood_20260902_chunk_0010_segment_004_of_006.mp4",
-          "camera_id": "neighborhood_cam-1",
-          "capture_type": "streets",
-          "score": 0.3169,
+          "filename": "20261009_164624_3e7861c3_segment_001_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.3609,
           "caption_matches": true,
           "highway": false,
-          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obstructing the view. The camera lens appe",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_004_of_006.mp4"
+          "caption": "The scene is a multi-lane highway at night, viewed from an elevated perspective. Traffic flows in both directions, separated by a central median. On the left side of the highway, vehicles including cars and trucks move t",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164624_3e7861c3_segment_001_of_002.mp4"
+        },
+        {
+          "filename": "20261009_164752_e28de3e8_segment_002_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.3434,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The scene is a nighttime view of a multi-lane highway with a central median separating opposing directions of travel. The road surface is dark and appears wet, reflecting the overhead streetlights and vehicle headlights.",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164752_e28de3e8_segment_002_of_002.mp4"
+        },
+        {
+          "filename": "20261009_164734_dfd2c14f_segment_001_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.3132,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The scene takes place at night on a multi-lane highway, viewed from an elevated perspective. The road is divided by a central median, with traffic flowing in both directions. Streetlights and vehicle headlights illuminat",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164734_dfd2c14f_segment_001_of_002.mp4"
+        },
+        {
+          "filename": "20261009_165341_b07bd3d4_segment_001_of_002.mp4",
+          "camera_id": "spore_synthetic",
+          "capture_type": "synthetic",
+          "score": 0.2994,
+          "caption_matches": false,
+          "highway": false,
+          "caption": "The scene is captured from a traffic camera positioned above a multi-lane road at night. The road surface is wet, reflecting the overhead streetlights, which cast a yellowish glow across the lanes. The lanes are marked w",
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165341_b07bd3d4_segment_001_of_002.mp4"
         },
         {
           "filename": "20261001_074032_neighborhood_20260902_chunk_0010_segment_005_of_006.mp4",
@@ -533,44 +565,15 @@
           "highway": false,
           "caption": "The video shows a nighttime scene captured by a surveillance camera, with raindrops visible on the lens. In the foreground, there is a tall, conical evergreen tree on the left side of the frame. Behind it, a paved area i",
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_005_of_006.mp4"
-        },
-        {
-          "filename": "20261008_074731_GX050001_chunk_0002_segment_004_of_006.mp4",
-          "camera_id": "nyc_bike_gopro-1",
-          "capture_type": "streets",
-          "score": 0.276,
-          "caption_matches": false,
-          "highway": false,
-          "caption": "The scene unfolds on a city street at dusk, with the sky a dim blue and streetlights and building windows providing illumination. The road surface is wet, reflecting the lights from vehicles and storefronts. A cyclist we",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261008_074731_GX050001_chunk_0002_segment_004_of_006.mp4"
-        },
-        {
-          "filename": "20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4",
-          "camera_id": "nyc_bike_gopro-1",
-          "capture_type": "streets",
-          "score": 0.2327,
-          "caption_matches": false,
-          "highway": false,
-          "caption": "The scene is a nighttime urban sidewalk next to a road. A cyclist wearing a bright yellow-green reflective vest and a white helmet rides ahead on the paved walkway, with a red taillight visible. The camera follows from b",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261008_075119_GX050001_chunk_0011_segment_003_of_006.mp4"
-        },
-        {
-          "filename": "20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4",
-          "camera_id": "neighborhood_cam-1",
-          "capture_type": "streets",
-          "score": 0.2315,
-          "caption_matches": false,
-          "highway": false,
-          "caption": "The video shows a nighttime scene with a parked car visible in the background. The area is dimly lit, with some streetlights providing illumination. There are no visible people or unusual activities occurring in the fram",
-          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4"
         }
       ],
-      "search_seconds": 6.53,
+      "search_seconds": 4.15,
       "error": null,
       "gap": true
     }
   ],
   "gaps": [
+    "night",
     "rain",
     "fog",
     "snow",
@@ -590,7 +593,7 @@
           {
             "id": "clear_day",
             "label": "Clear daytime",
-            "n": 7,
+            "n": 30,
             "frac": 0.233,
             "relevant": false,
             "empty": false
