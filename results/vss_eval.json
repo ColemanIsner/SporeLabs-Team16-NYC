@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-09T13:01:10",
+  "generated_at": "2026-10-09T13:41:58",
   "camera_id": "spore_synthetic",
-  "seconds": 13.0,
+  "seconds": 29.0,
   "summary": {
     "n_indexed": 0,
-    "n_uploaded": 48,
+    "n_uploaded": 61,
     "caption_condition_hit_rate": null,
     "caption_says_clear_rate": null,
     "mean_seed_caption_consistency": null,

@@ -26,3 +26,5 @@ results/overlays/*.mp4
 results/fix/*.pt
 fix/dataset/
 results/fix/*/
+results/verify/i24_frames/
+data/fix_frames/

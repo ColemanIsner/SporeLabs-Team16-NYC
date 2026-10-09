@@ -1,0 +1,156 @@
+{
+  "n_chunks": 30,
+  "sheet": "results/verify/i24_all_chunks.jpg",
+  "chunks": [
+    {
+      "filename": "20261001_055249_scene1_p1c1_chunk_0000.mp4",
+      "frame": "results/verify/i24_frames/20261001_055249_scene1_p1c1_chunk_0000.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstructions o"
+    },
+    {
+      "filename": "20261001_055315_scene1_p1c1_chunk_0001.mp4",
+      "frame": "results/verify/i24_frames/20261001_055315_scene1_p1c1_chunk_0001.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstruct"
+    },
+    {
+      "filename": "20261001_055340_scene1_p1c1_chunk_0002.mp4",
+      "frame": "results/verify/i24_frames/20261001_055340_scene1_p1c1_chunk_0002.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. On the left side of the frame, vehicles are moving away from the camera, while on the"
+    },
+    {
+      "filename": "20261001_055405_scene1_p1c1_chunk_0003.mp4",
+      "frame": "results/verify/i24_frames/20261001_055405_scene1_p1c1_chunk_0003.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions, separated by a central median. Vehicles are moving steadily in both directions, with "
+    },
+    {
+      "filename": "20261001_055431_scene1_p1c1_chunk_0004.mp4",
+      "frame": "results/verify/i24_frames/20261001_055431_scene1_p1c1_chunk_0004.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. Vehicles are moving steadily, with no signs of congestion or unusual delays. The road"
+    },
+    {
+      "filename": "20261001_055456_scene1_p1c1_chunk_0005.mp4",
+      "frame": "results/verify/i24_frames/20261001_055456_scene1_p1c1_chunk_0005.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear. Vehicles are distributed acros"
+    },
+    {
+      "filename": "20261001_055521_scene1_p1c1_chunk_0006.mp4",
+      "frame": "results/verify/i24_frames/20261001_055521_scene1_p1c1_chunk_0006.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstructions o"
+    },
+    {
+      "filename": "20261001_055547_scene1_p1c1_chunk_0007.mp4",
+      "frame": "results/verify/i24_frames/20261001_055547_scene1_p1c1_chunk_0007.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. On the left side of the road, vehicles are moving away from the camera, while on the "
+    },
+    {
+      "filename": "20261001_055612_scene1_p1c1_chunk_0008.mp4",
+      "frame": "results/verify/i24_frames/20261001_055612_scene1_p1c1_chunk_0008.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstructions o"
+    },
+    {
+      "filename": "20261001_055638_scene1_p1c1_chunk_0009.mp4",
+      "frame": "results/verify/i24_frames/20261001_055638_scene1_p1c1_chunk_0009.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. Vehicles are moving at steady speeds with no signs of congestion. In the lanes moving"
+    },
+    {
+      "filename": "20261001_055705_scene1_p1c2_chunk_0000.mp4",
+      "frame": "results/verify/i24_frames/20261001_055705_scene1_p1c2_chunk_0000.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway viewed from an elevated perspective. Traffic flows in both directions, separated by a central median. On the left side of the "
+    },
+    {
+      "filename": "20261001_055730_scene1_p1c2_chunk_0001.mp4",
+      "frame": "results/verify/i24_frames/20261001_055730_scene1_p1c2_chunk_0001.jpg",
+      "caption_excerpt": "The scene shows a multi-lane highway with traffic flowing in both directions. Vehicles are traveling at consistent speeds, maintaining their respective lanes wi"
+    },
+    {
+      "filename": "20261001_055756_scene1_p1c2_chunk_0002.mp4",
+      "frame": "results/verify/i24_frames/20261001_055756_scene1_p1c2_chunk_0002.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstructions o"
+    },
+    {
+      "filename": "20261001_055821_scene1_p1c2_chunk_0003.mp4",
+      "frame": "results/verify/i24_frames/20261001_055821_scene1_p1c2_chunk_0003.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane highway with traffic flowing in both directions, separated by a central median. The road surface is dry and marked with clear wh"
+    },
+    {
+      "filename": "20261001_055846_scene1_p1c2_chunk_0004.mp4",
+      "frame": "results/verify/i24_frames/20261001_055846_scene1_p1c2_chunk_0004.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions, separated by a central median. The road surface is dry and the weather appears clear,"
+    },
+    {
+      "filename": "20261001_055912_scene1_p1c2_chunk_0005.mp4",
+      "frame": "results/verify/i24_frames/20261001_055912_scene1_p1c2_chunk_0005.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstructions o"
+    },
+    {
+      "filename": "20261001_055937_scene1_p1c2_chunk_0006.mp4",
+      "frame": "results/verify/i24_frames/20261001_055937_scene1_p1c2_chunk_0006.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions, separated by a central median. The road surface is dry and the weather appears clear,"
+    },
+    {
+      "filename": "20261001_060003_scene1_p1c2_chunk_0007.mp4",
+      "frame": "results/verify/i24_frames/20261001_060003_scene1_p1c2_chunk_0007.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions, separated by a central median. Vehicles are moving at steady speeds with no visible c"
+    },
+    {
+      "filename": "20261001_060028_scene1_p1c2_chunk_0008.mp4",
+      "frame": "results/verify/i24_frames/20261001_060028_scene1_p1c2_chunk_0008.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane divided highway with a grassy median separating opposing directions of travel. The road surface is dry and marked with clear whi"
+    },
+    {
+      "filename": "20261001_060054_scene1_p1c2_chunk_0009.mp4",
+      "frame": "results/verify/i24_frames/20261001_060054_scene1_p1c2_chunk_0009.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway with traffic flowing in both directions. The road surface is dry and the weather appears clear, with no visible obstructions o"
+    },
+    {
+      "filename": "20261001_060120_scene1_p1c3_chunk_0000.mp4",
+      "frame": "results/verify/i24_frames/20261001_060120_scene1_p1c3_chunk_0000.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway viewed from an elevated perspective. Traffic flows in both directions, separated by a concrete median with a yellow line. The "
+    },
+    {
+      "filename": "20261001_060146_scene1_p1c3_chunk_0001.mp4",
+      "frame": "results/verify/i24_frames/20261001_060146_scene1_p1c3_chunk_0001.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane highway viewed from an elevated perspective. Traffic flows in both directions, separated by a central median with a yellow line."
+    },
+    {
+      "filename": "20261001_060211_scene1_p1c3_chunk_0002.mp4",
+      "frame": "results/verify/i24_frames/20261001_060211_scene1_p1c3_chunk_0002.jpg",
+      "caption_excerpt": "The scene is captured from an overhead perspective, showing a multi-lane highway with traffic flowing in both directions. The road surface is dry and marked wit"
+    },
+    {
+      "filename": "20261001_060237_scene1_p1c3_chunk_0003.mp4",
+      "frame": "results/verify/i24_frames/20261001_060237_scene1_p1c3_chunk_0003.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane highway viewed from an elevated perspective. Traffic flows steadily in both directions, with vehicles moving smoothly and mainta"
+    },
+    {
+      "filename": "20261001_060302_scene1_p1c3_chunk_0004.mp4",
+      "frame": "results/verify/i24_frames/20261001_060302_scene1_p1c3_chunk_0004.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane highway with traffic flowing in both directions. The road surface is dry and marked with clear white lane lines and a yellow cen"
+    },
+    {
+      "filename": "20261001_060328_scene1_p1c3_chunk_0005.mp4",
+      "frame": "results/verify/i24_frames/20261001_060328_scene1_p1c3_chunk_0005.jpg",
+      "caption_excerpt": "The scene is captured from an elevated traffic camera view, showing a multi-lane highway with vehicles moving in both directions. The road surface is dry and ma"
+    },
+    {
+      "filename": "20261001_060353_scene1_p1c3_chunk_0006.mp4",
+      "frame": "results/verify/i24_frames/20261001_060353_scene1_p1c3_chunk_0006.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway viewed from an elevated traffic camera. The road surface is dry and marked with clear white dashed lane dividers and solid edg"
+    },
+    {
+      "filename": "20261001_060418_scene1_p1c3_chunk_0007.mp4",
+      "frame": "results/verify/i24_frames/20261001_060418_scene1_p1c3_chunk_0007.jpg",
+      "caption_excerpt": "The scene is a wide, multi-lane highway viewed from an elevated perspective. Traffic flows in both directions, separated by a concrete median with yellow lines."
+    },
+    {
+      "filename": "20261001_060444_scene1_p1c3_chunk_0008.mp4",
+      "frame": "results/verify/i24_frames/20261001_060444_scene1_p1c3_chunk_0008.jpg",
+      "caption_excerpt": "The scene is a multi-lane highway viewed from an elevated perspective. Traffic flows in both directions, separated by a concrete median. In the lanes moving awa"
+    },
+    {
+      "filename": "20261001_060509_scene1_p1c3_chunk_0009.mp4",
+      "frame": "results/verify/i24_frames/20261001_060509_scene1_p1c3_chunk_0009.jpg",
+      "caption_excerpt": "The scene is captured from an elevated traffic camera view, showing a multi-lane highway with vehicles moving in both directions. The road surface is dry and ma"
+    }
+  ]
+}

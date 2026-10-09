@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_00__phys_glare",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "clear",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.8,
+    "base": "seed",
+    "physics": "glare",
+    "glare": true
+  },
+  "fidelity": {
+    "edge_ssim": 0.8087,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7939,
+    "seconds": 1.26
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "yolo": {
+    "model": "hosted-yolo11s",
+    "conf": 0.4,
+    "mean_count": 10.785,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 13.366,
+    "recall_vs_seed": 0.7386,
+    "recall_vs_seed_all": 0.7386,
+    "frames": 93,
+    "backend": "hosted",
+    "seconds": 9.68,
+    "device": "hosted",
+    "boxes": "results/boxes/i24_scene1_p1c1_00__phys_glare.json"
+  },
+  "excluded": false,
+  "reason": {
+    "summary": "A multi-lane divided highway with moderate traffic flowing in both directions. Vehicles, including cars, SUVs, and trucks, maintain steady speeds and consistent lane positions. The sun creates a bright glare on the right side of the road, partially obscuring visibility in that area.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with strong sun glare on the right side of the frame."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.54,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with strong sun glare on the right side of the frame.\",\n  \"summary\": \"A multi-lane divided highway with moderate traffic flowing in both directions. Vehicles, including cars, SUVs, and trucks, maintain steady speeds and consistent lane positions. The sun creates a bright glare on the right side of the road, partially obscuring visibility in that area.\"\n}\n```",
+    "src_mtime": 1791567650.151,
+    "agree_vs_seed": 1.0
+  },
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.7319,
+    "patch_score_median": 0.9465,
+    "n_vehicle_patches": 414,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

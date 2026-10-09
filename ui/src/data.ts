@@ -13,7 +13,7 @@ export type Eval = {
   reason?: { summary?: string; answers?: Record<string, unknown>; agree_vs_seed?: number };
   failure?: boolean; failure_reasons?: string[];
 };
-export type Arm = { condition: Condition; arm?: string; n: number; failure_rate: number; mean_recall?: number; mean_agree?: number; control_recall?: number | null; recall_rel_control?: number | null };
+export type Arm = { condition: Condition; arm?: string; n: number; failure_rate: number; mean_recall?: number; mean_agree?: number; control_recall?: number | null; recall_rel_control?: number | null; n_gated?: number; scored?: boolean };
 export type FailureMap = { arms: Arm[]; budget_used?: number; cosmos_control_by_seed?: Record<string, number>; cosmos_excluded_seeds?: string[]; cosmos_exclusion_note?: string };
 export type RealCheck = {
   condition: Condition; vss_query?: string; confirmed?: boolean;
@@ -125,10 +125,14 @@ export type CovRow = {
   search_top_score?: number | null; search_relevant?: number; search_relevant_highway?: number;
   top_hits?: CovHit[]; gap?: boolean; error?: string | null;
 };
-export type Coverage = { n_indexed: number; n_highway: number; conditions: CovRow[]; updated?: number; method?: string; seconds?: number };
+export type InvCell = { id: string; label: string; n: number; frac?: number; relevant?: boolean; empty?: boolean };
+export type InvScene = { id: string; label: string; n_clips: number; cameras: Record<string, number>; conditions: InvCell[]; n_empty?: number };
+export type Coverage = { n_indexed: number; n_highway: number; conditions: CovRow[]; updated?: number; method?: string; seconds?: number; inventory?: { scenes: InvScene[]; method?: string } };
+export type GapCandidate = { id: string; rank?: number; scene?: string; scene_type?: string; scene_label?: string; condition: string; label: string; real_clips?: number; scene_clips?: number; synthetic_n?: number; failure_rate?: number | null; mean_recall?: number | null; fillable?: boolean; repeat?: boolean; priority?: number; score?: number; why?: string };
 export type GapReport = {
   gap?: string; evidence?: string[] | string; risk?: string; recommendation?: string;
   next_condition?: string | null; next_label?: string | null; source?: string; model?: string; updated?: number;
+  next_id?: string | null; next_why?: string | null; candidates?: GapCandidate[];
 };
 export type Overlay = {
   clip_id: string; seed_id?: string; label?: string; mp4?: string; jpg?: string; condition?: Condition;
@@ -140,6 +144,7 @@ export type LoopEntry = {
   kind?: string; iteration?: number; round?: number; mode?: string; started?: number; t?: number; status?: string;
   running_stage?: number | null; stages?: Record<string, LoopStage>; summary?: string; gap_id?: string;
   arms?: string[]; made?: number;
+  gap?: string; why?: string; next_condition?: string; filled?: number; recall?: number | null; failure_rate?: number | null;
 };
 export const ago = (t?: number) => {
   if (!t) return "";

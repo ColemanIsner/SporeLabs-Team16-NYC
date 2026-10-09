@@ -1,0 +1,105 @@
+[
+  {
+    "scene_type": "highway",
+    "label": "Highway / traffic cam",
+    "n_clips": 30,
+    "cameras": [
+      "i24_cam-1"
+    ],
+    "conditions": {
+      "night": 0,
+      "rain": 0,
+      "fog": 0,
+      "snow": 0,
+      "glare": 0,
+      "dusk": 0
+    }
+  },
+  {
+    "scene_type": "dashcam",
+    "label": "Dashcam / driving",
+    "n_clips": 180,
+    "cameras": [
+      "pie_cam-3"
+    ],
+    "conditions": {
+      "night": 0,
+      "rain": 0,
+      "fog": 0,
+      "snow": 0,
+      "glare": 3,
+      "dusk": 0
+    }
+  },
+  {
+    "scene_type": "city_street",
+    "label": "City street cam",
+    "n_clips": 212,
+    "cameras": [
+      "nyc_streets_cam-1",
+      "nyc_streets_cam-2",
+      "sf_streets_cam-1",
+      "sf_streets_cam-2",
+      "sf_streets_cam-3",
+      "sf_streets_cam-4",
+      "sf_streets_cam-5"
+    ],
+    "conditions": {
+      "night": 0,
+      "rain": 0,
+      "fog": 0,
+      "snow": 0,
+      "glare": 0,
+      "dusk": 0
+    }
+  },
+  {
+    "scene_type": "residential",
+    "label": "Residential / neighborhood",
+    "n_clips": 52,
+    "cameras": [
+      "neighborhood_cam-1"
+    ],
+    "conditions": {
+      "night": 15,
+      "rain": 6,
+      "fog": 3,
+      "snow": 0,
+      "glare": 0,
+      "dusk": 0
+    }
+  },
+  {
+    "scene_type": "bike",
+    "label": "Bike / egocentric",
+    "n_clips": 78,
+    "cameras": [
+      "nyc_bike_gopro-1"
+    ],
+    "conditions": {
+      "night": 17,
+      "rain": 2,
+      "fog": 0,
+      "snow": 0,
+      "glare": 0,
+      "dusk": 12
+    }
+  },
+  {
+    "scene_type": "indoor",
+    "label": "Warehouse / indoor",
+    "n_clips": 60,
+    "cameras": [
+      "sdg_warehouse_cam-2",
+      "smartspace_cam-1"
+    ],
+    "conditions": {
+      "night": 0,
+      "rain": 0,
+      "fog": 1,
+      "snow": 0,
+      "glare": 0,
+      "dusk": 0
+    }
+  }
+]

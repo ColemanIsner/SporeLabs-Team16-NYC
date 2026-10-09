@@ -103,7 +103,16 @@ def _next_iteration() -> int:
 
 
 def _history() -> list[str]:
-    return [e.get("gap_id") for e in (load(LOG, []) or []) if isinstance(e, dict) and e.get("gap_id")]
+    """Recently filled gaps (only iterations/stages that actually filled something)."""
+    out = []
+    for e in load(LOG, []) or []:
+        if not isinstance(e, dict):
+            continue
+        s3 = (e.get("stages") or {}).get("3") or {}
+        g = e.get("gap_id") or s3.get("condition")
+        if g and (s3.get("clips") or e.get("mode") == "loop"):
+            out.append(g)
+    return out
 
 
 # ---------------------------------------------------------------- stages
@@ -111,6 +120,7 @@ def _history() -> list[str]:
 def stage_search(k: int = 10) -> dict:
     c = cov_mod.coverage(k)
     _write(R / "coverage.json", c)
+    _write(R / "inventory.json", c.get("inventory_list", []))
     return {"n_indexed": c["n_indexed"], "n_highway": c["n_highway"], "gaps": c["gaps"],
             "per_condition": {r["id"]: r["n_highway"] for r in c["conditions"]}}
 
@@ -120,11 +130,15 @@ def stage_report() -> dict:
     return report_mod.make_report(_history())
 
 
-def _pick_seeds(cid: str, k: int) -> list[dict]:
+SCENE_SEEDS = {"highway": "i24", "city_street": "nyc"}
+
+
+def _pick_seeds(cid: str, k: int, scene: str | None = "highway") -> list[dict]:
     bad = run_loop.bad_seeds()
     made = {(e.get("seed_id"), e.get("clip_id")) for e in load(SYN, []) or []}
+    pre = SCENE_SEEDS.get(scene or "highway", "i24")
     seeds = [s for s in load(SEEDS, []) or [] if (ROOT / s["src"]).exists() and s["seed_id"] not in bad
-             and s.get("dataset", s["seed_id"]).startswith("i24")]
+             and s["seed_id"].startswith(pre)]
     fresh = [s for s in seeds if (s["seed_id"], f"{s['seed_id']}__phys_{cid}") not in made]
     return (fresh or seeds)[:k]
 
@@ -181,7 +195,7 @@ def stage_fill(rep: dict, k: int, gens: list[str]) -> dict:
     cid, arm = rep.get("next_condition"), rep.get("next_arm")
     if not cid:
         return {"condition": None, "clips": []}
-    seeds = _pick_seeds(cid, k)
+    seeds = _pick_seeds(cid, k, rep.get("next_scene"))
     clips: list[str] = []
     if "physics" in gens:
         clips += fill_physics(cid, seeds)
@@ -190,7 +204,7 @@ def stage_fill(rep: dict, k: int, gens: list[str]) -> dict:
             clips += fill_cosmos(arm, seeds)
         except Exception as e:
             print(f"[fill] cosmos failed: {e}", flush=True)
-    return {"condition": cid, "label": rep.get("next_label"), "arm": arm, "seeds": [s["seed_id"] for s in seeds],
+    return {"condition": cid, "scene": rep.get("next_scene"), "label": rep.get("next_label"), "arm": arm, "seeds": [s["seed_id"] for s in seeds],
             "clips": clips, "generators": gens}
 
 
@@ -241,19 +255,28 @@ def iteration(it: int, k: int, gens: list[str], reason: bool, render: bool) -> d
     log.stage(2, "report", headline="Explain the gap (W&B Inference)")
     rep = stage_report()
     log.done(2, gap=rep.get("gap"), next_condition=rep.get("next_condition"), next_label=rep.get("next_label"),
+             next_id=rep.get("next_id"), why=rep.get("next_why"),
              recommendation=rep.get("recommendation"), source=rep.get("source"))
-    log.entry["gap_id"] = rep.get("next_condition")
+    log.entry.update(gap_id=rep.get("next_id"), gap=rep.get("next_label"), why=rep.get("next_why"),
+                     next_condition=rep.get("next_condition"), next_scene=rep.get("next_scene"))
+    log.flush()
     log.stage(3, "fill", headline=f"Generate {rep.get('next_label')} clips")
     s3 = stage_fill(rep, k, gens)
     log.done(3, **s3)
+    log.entry["filled"] = len(s3["clips"])
+    log.flush()
     log.stage(4, "measure", headline="Measure the stack on the new clips")
     s4 = stage_measure(s3["clips"], reason, render)
     log.done(4, **{k_: v for k_, v in s4.items() if k_ != "steps"}, steps=s4["steps"])
+    log.entry["recall"] = s4.get("mean_recall")
+    log.entry["failure_rate"] = s4.get("failure_rate")
+    log.flush()
     log.stage(5, "continue", headline="Re-search the archive, pick the next gap")
     s5 = stage_search()  # newly indexed real clips (incl. uploaded synthetic) are picked up here
     log.done(5, **s5)
-    log.finish(summary=f"{rep.get('next_label')}: {s1['per_condition'].get(rep.get('next_condition'), '?')} real highway "
-                       f"clips -> filled {len(s3['clips'])} -> recall {s4.get('mean_recall')}")
+    nxt = next((c for c in rep.get("candidates", []) if c["id"] == rep.get("next_id")), {})
+    log.finish(summary=f"{rep.get('next_label')}: {nxt.get('real_clips', '?')} real clips of {nxt.get('scene_clips', '?')} "
+                       f"-> filled {len(s3['clips'])} -> recall {s4.get('mean_recall')}")
     return log.entry
 
 
@@ -281,8 +304,8 @@ def main():
             out = stage_search()
         elif a.stage == 2:
             rep = stage_report()
-            log.entry["gap_id"] = rep.get("next_condition")
-            out = {k: rep.get(k) for k in ("gap", "risk", "recommendation", "next_condition", "next_label", "source")}
+            log.entry.update(gap=rep.get("next_label"), why=rep.get("next_why"), next_condition=rep.get("next_condition"))
+            out = {k: rep.get(k) for k in ("gap", "risk", "recommendation", "next_id", "next_condition", "next_label", "next_why", "source")}
         elif a.stage == 3:
             out = stage_fill(load(R / "gap_report.json", {}) or stage_report(), a.k, gens)
         else:

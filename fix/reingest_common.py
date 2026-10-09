@@ -19,9 +19,20 @@ from coverage import CONDITIONS, matches  # noqa: E402
 CAMERA = "neighborhood_cam-1"
 N_TARGET = 10
 LABELS = ROOT / "fix" / "visual_labels.json"
-BEFORE = ROOT / "results" / "fix_before.json"
 JOBS = ROOT / "results" / "fix_jobs.json"
 SET = "real archive, neighborhood_cam-1, n=10 chunks"
+
+# Target sets. "latest" = the approved spec (10 latest complete chunks = 20260902 stream chunks 12..21,
+# all visually night, captions already say night). "nightfog" = alternative with headroom: 20260902 stream
+# chunks 2..11, visually night + fog/mist, whose captions name the fog in 3/60 segments.
+TARGET_SETS = ("latest", "nightfog")
+
+
+def before_path(which: str = "latest") -> Path:
+    return ROOT / "results" / ("fix_before.json" if which == "latest" else f"fix_before_{which}.json")
+
+
+BEFORE = before_path("latest")
 
 CUSTOM_PROMPT = (
     "First state the weather (clear, rain, fog, snow), lighting (day, dusk, night, glare) and "
@@ -52,9 +63,14 @@ def latest_key(c: dict):
             c.get("filename") or "")
 
 
-def targets(chunks: list[dict] | None = None) -> list[dict]:
-    cam = [c for c in camera_chunks(chunks) if complete(c)]
-    return sorted(cam, key=latest_key, reverse=True)[:N_TARGET]
+def targets(chunks: list[dict] | None = None, which: str = "latest") -> list[dict]:
+    cam = sorted([c for c in camera_chunks(chunks) if complete(c)], key=latest_key, reverse=True)
+    if which == "latest":
+        return cam[:N_TARGET]
+    if which == "nightfog":
+        return [c for c in cam if "_neighborhood_20260902_chunk_" in c["filename"]
+                and 2 <= int(c["filename"].rsplit("_chunk_", 1)[1][:4]) <= 11]
+    raise ValueError(which)
 
 
 def seg_captions(c: dict) -> list[dict]:
@@ -64,7 +80,9 @@ def seg_captions(c: dict) -> list[dict]:
 
 
 def search_hits(qid: str, k: int = 10) -> list[dict]:
-    r = client.search(QUERIES[qid], k=k, metadata_filters={"camera_id": CAMERA}, llm_top_n=0)
+    r = client.search(QUERIES[qid], k=k, metadata_filters={"camera_id": CAMERA})
+    if not r.get("results") and "detail" in r:
+        raise RuntimeError(f"search error: {str(r)[:300]}")
     return [{"rank": i + 1, "original_video": h.get("original_video"), "filename": h.get("filename"),
              "segment_number": h.get("segment_number"), "score": round(float(h.get("similarity_score") or 0), 4),
              "caption": (h.get("reasoning_content") or "")[:240]}

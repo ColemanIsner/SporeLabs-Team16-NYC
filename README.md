@@ -1,8 +1,10 @@
-Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
-
 **DEMO VIDEO: <<add link>>**
 
 # Spore by SporeLabs
+
+**Spore by SporeLabs: Other tools find what your video archive is missing. Spore grows the data to fill it, and shows where your AI goes blind.**
+
+Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
 
 We stress-test the exact models inside your VSS pipeline: the hosted YOLO11s (the VSS Detector) and the hosted Cosmos3 Nano Reasoner (the VSS Reasoner). Synthetic clips are never uploaded to or indexed in VSS. VSS is used to search the real archive.
 

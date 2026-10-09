@@ -2835,5 +2835,45 @@
     "generator": "cosmos-transfer2.5-2b/edge-distilled",
     "gen_seconds": 301.6,
     "gpu": "H100 (Modal)"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_glare",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_glare.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "glare",
+      "glare": true
+    },
+    "prompt": null,
+    "generator": "weather.py/glare@0.80",
+    "gpu": null,
+    "gen_seconds": 5.04,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_glare",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_glare.mp4",
+    "condition": {
+      "weather": "clear",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.8,
+      "base": "seed",
+      "physics": "glare",
+      "glare": true
+    },
+    "prompt": null,
+    "generator": "weather.py/glare@0.80",
+    "gpu": null,
+    "gen_seconds": 5.49,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
   }
 ]

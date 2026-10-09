@@ -1,6 +1,6 @@
 {
-  "updated": 1791565200.2542431,
-  "seconds": 20.3,
+  "updated": 1791567629.461633,
+  "seconds": 28.4,
   "n_indexed": 612,
   "n_highway": 127,
   "cameras": {
@@ -98,7 +98,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_055315_scene1_p1c1_chunk_0001_segment_005_of_006.mp4"
         }
       ],
-      "search_seconds": 5.04,
+      "search_seconds": 5.31,
       "error": null,
       "gap": false
     },
@@ -177,7 +177,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261008_074731_GX050001_chunk_0002_segment_003_of_006.mp4"
         }
       ],
-      "search_seconds": 11.98,
+      "search_seconds": 5.24,
       "error": null,
       "gap": false
     },
@@ -256,7 +256,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4"
         }
       ],
-      "search_seconds": 4.05,
+      "search_seconds": 6.05,
       "error": null,
       "gap": true
     },
@@ -335,7 +335,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
         }
       ],
-      "search_seconds": 5.41,
+      "search_seconds": 5.72,
       "error": null,
       "gap": true
     },
@@ -411,7 +411,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4"
         }
       ],
-      "search_seconds": 4.38,
+      "search_seconds": 4.17,
       "error": null,
       "gap": true
     },
@@ -489,7 +489,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4"
         }
       ],
-      "search_seconds": 6.93,
+      "search_seconds": 5.48,
       "error": null,
       "gap": true
     },
@@ -565,7 +565,7 @@
           "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4"
         }
       ],
-      "search_seconds": 6.57,
+      "search_seconds": 4.28,
       "error": null,
       "gap": true
     }
@@ -576,5 +576,437 @@
     "snow",
     "glare",
     "night_rain"
+  ],
+  "inventory": {
+    "scenes": [
+      {
+        "id": "highway",
+        "label": "Highway / traffic cam",
+        "n_clips": 30,
+        "cameras": {
+          "i24_cam-1": 30
+        },
+        "conditions": [
+          {
+            "id": "clear_day",
+            "label": "Clear daytime",
+            "n": 7,
+            "frac": 0.233,
+            "relevant": false,
+            "empty": false
+          },
+          {
+            "id": "night",
+            "label": "Highway at night",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "rain",
+            "label": "Heavy rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "fog",
+            "label": "Dense fog",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "snow",
+            "label": "Snow",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "glare",
+            "label": "Low sun glare",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "night_rain",
+            "label": "Night + rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          }
+        ],
+        "n_empty": 6
+      },
+      {
+        "id": "dashcam",
+        "label": "Dashcam / driving",
+        "n_clips": 180,
+        "cameras": {
+          "pie_cam-3": 180
+        },
+        "conditions": [
+          {
+            "id": "clear_day",
+            "label": "Clear daytime",
+            "n": 58,
+            "frac": 0.322,
+            "relevant": false,
+            "empty": false
+          },
+          {
+            "id": "night",
+            "label": "Highway at night",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "rain",
+            "label": "Heavy rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "fog",
+            "label": "Dense fog",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "snow",
+            "label": "Snow",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "glare",
+            "label": "Low sun glare",
+            "n": 3,
+            "frac": 0.017,
+            "relevant": true,
+            "empty": false
+          },
+          {
+            "id": "night_rain",
+            "label": "Night + rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          }
+        ],
+        "n_empty": 5
+      },
+      {
+        "id": "city_street",
+        "label": "City street cam",
+        "n_clips": 212,
+        "cameras": {
+          "nyc_streets_cam-2": 30,
+          "nyc_streets_cam-1": 60,
+          "sf_streets_cam-5": 30,
+          "sf_streets_cam-4": 30,
+          "sf_streets_cam-3": 7,
+          "sf_streets_cam-2": 30,
+          "sf_streets_cam-1": 25
+        },
+        "conditions": [
+          {
+            "id": "clear_day",
+            "label": "Clear daytime",
+            "n": 31,
+            "frac": 0.146,
+            "relevant": false,
+            "empty": false
+          },
+          {
+            "id": "night",
+            "label": "Highway at night",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "rain",
+            "label": "Heavy rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "snow",
+            "label": "Snow",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "night_rain",
+            "label": "Night + rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          }
+        ],
+        "n_empty": 4
+      },
+      {
+        "id": "residential",
+        "label": "Residential / neighborhood",
+        "n_clips": 52,
+        "cameras": {
+          "neighborhood_cam-1": 52
+        },
+        "conditions": [
+          {
+            "id": "clear_day",
+            "label": "Clear daytime",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": false,
+            "empty": false
+          },
+          {
+            "id": "night",
+            "label": "Highway at night",
+            "n": 15,
+            "frac": 0.288,
+            "relevant": true,
+            "empty": false
+          },
+          {
+            "id": "rain",
+            "label": "Heavy rain",
+            "n": 6,
+            "frac": 0.115,
+            "relevant": true,
+            "empty": false
+          },
+          {
+            "id": "snow",
+            "label": "Snow",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          }
+        ],
+        "n_empty": 1
+      },
+      {
+        "id": "bike",
+        "label": "Bike / egocentric",
+        "n_clips": 78,
+        "cameras": {
+          "nyc_bike_gopro-1": 78
+        },
+        "conditions": [
+          {
+            "id": "clear_day",
+            "label": "Clear daytime",
+            "n": 4,
+            "frac": 0.051,
+            "relevant": false,
+            "empty": false
+          },
+          {
+            "id": "night",
+            "label": "Highway at night",
+            "n": 17,
+            "frac": 0.218,
+            "relevant": true,
+            "empty": false
+          },
+          {
+            "id": "rain",
+            "label": "Heavy rain",
+            "n": 2,
+            "frac": 0.026,
+            "relevant": true,
+            "empty": false
+          },
+          {
+            "id": "snow",
+            "label": "Snow",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "night_rain",
+            "label": "Night + rain",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          }
+        ],
+        "n_empty": 2
+      },
+      {
+        "id": "indoor",
+        "label": "Warehouse / indoor",
+        "n_clips": 60,
+        "cameras": {
+          "smartspace_cam-1": 30,
+          "sdg_warehouse_cam-2": 30
+        },
+        "conditions": [
+          {
+            "id": "clear_day",
+            "label": "Clear daytime",
+            "n": 1,
+            "frac": 0.017,
+            "relevant": false,
+            "empty": false
+          },
+          {
+            "id": "low_light",
+            "label": "Dim / low light",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          },
+          {
+            "id": "occlusion",
+            "label": "Heavy occlusion",
+            "n": 0,
+            "frac": 0.0,
+            "relevant": true,
+            "empty": true
+          }
+        ],
+        "n_empty": 2
+      }
+    ],
+    "n_scenes": 6,
+    "method": "scene type from camera_id prefix (fallback: capture_type + caption); condition = keyword match on the VSS caption"
+  },
+  "inventory_list": [
+    {
+      "scene_type": "highway",
+      "label": "Highway / traffic cam",
+      "n_clips": 30,
+      "cameras": [
+        "i24_cam-1"
+      ],
+      "conditions": {
+        "night": 0,
+        "rain": 0,
+        "fog": 0,
+        "snow": 0,
+        "glare": 0,
+        "dusk": 0
+      }
+    },
+    {
+      "scene_type": "dashcam",
+      "label": "Dashcam / driving",
+      "n_clips": 180,
+      "cameras": [
+        "pie_cam-3"
+      ],
+      "conditions": {
+        "night": 0,
+        "rain": 0,
+        "fog": 0,
+        "snow": 0,
+        "glare": 3,
+        "dusk": 0
+      }
+    },
+    {
+      "scene_type": "city_street",
+      "label": "City street cam",
+      "n_clips": 212,
+      "cameras": [
+        "nyc_streets_cam-1",
+        "nyc_streets_cam-2",
+        "sf_streets_cam-1",
+        "sf_streets_cam-2",
+        "sf_streets_cam-3",
+        "sf_streets_cam-4",
+        "sf_streets_cam-5"
+      ],
+      "conditions": {
+        "night": 0,
+        "rain": 0,
+        "fog": 0,
+        "snow": 0,
+        "glare": 0,
+        "dusk": 0
+      }
+    },
+    {
+      "scene_type": "residential",
+      "label": "Residential / neighborhood",
+      "n_clips": 52,
+      "cameras": [
+        "neighborhood_cam-1"
+      ],
+      "conditions": {
+        "night": 15,
+        "rain": 6,
+        "fog": 3,
+        "snow": 0,
+        "glare": 0,
+        "dusk": 0
+      }
+    },
+    {
+      "scene_type": "bike",
+      "label": "Bike / egocentric",
+      "n_clips": 78,
+      "cameras": [
+        "nyc_bike_gopro-1"
+      ],
+      "conditions": {
+        "night": 17,
+        "rain": 2,
+        "fog": 0,
+        "snow": 0,
+        "glare": 0,
+        "dusk": 12
+      }
+    },
+    {
+      "scene_type": "indoor",
+      "label": "Warehouse / indoor",
+      "n_clips": 60,
+      "cameras": [
+        "sdg_warehouse_cam-2",
+        "smartspace_cam-1"
+      ],
+      "conditions": {
+        "night": 0,
+        "rain": 0,
+        "fog": 1,
+        "snow": 0,
+        "glare": 0,
+        "dusk": 0
+      }
+    }
   ]
 }

@@ -1,0 +1,1447 @@
+{
+  "updated": "2026-10-09T13:42:02",
+  "set": "real archive, neighborhood_cam-1, n=10 chunks",
+  "target_set": "nightfog",
+  "camera_id": "neighborhood_cam-1",
+  "selection": "20260902 stream chunks 2..11 (visually night + fog/mist)",
+  "custom_prompt": "First state the weather (clear, rain, fog, snow), lighting (day, dusk, night, glare) and visibility (good, reduced, poor), and whether the road is wet. Then describe the scene: road type, every vehicle you can clearly see with its type and color, people, and any notable events such as stops, lane changes or near-misses. Give a vehicle count of only clearly visible vehicles.",
+  "targets": [
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_074057_neighborhood_20260902_chunk_0011.mp4",
+      "filename": "20261001_074057_neighborhood_20260902_chunk_0011.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 11,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0011"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074057_neighborhood_20260902_chunk_0011_segment_001_of_006.mp4",
+          "caption": "The video shows a nighttime outdoor scene with a paved area, trees, and parked vehicles. A tall, slender tree is visible on the left side of the frame, illuminated by a streetlight. In the background, there are several cars parked along the street, including a white van and a dark-colored sedan. The area appears quiet and still, with no visible movement or activity. The lighting is dim, creating a subdued atmosphere typical of a residential or park setting at night."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074057_neighborhood_20260902_chunk_0011_segment_002_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area illuminated by streetlights and ambient light from a nearby building. A tall, slender tree is prominent on the left side of the frame, with a smaller tree nearby. In the background, a bus is visible on the road, and several cars are parked along the street and in a driveway. The environment appears calm and quiet, with no immediate signs of unusual activity or movement."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074057_neighborhood_20260902_chunk_0011_segment_003_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area illuminated by streetlights, with a tall, slender tree on the left side of the frame. A parked car is visible in the background, positioned near the tree. In the foreground, part of a vehicle is seen, and a bench is located near the center of the frame. The environment appears calm and quiet, with no visible movement or activity occurring."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074057_neighborhood_20260902_chunk_0011_segment_004_of_006.mp4",
+          "caption": "A car is parked on the left side of the frame, near the edge of the road. Another car is parked further down the road, closer to the center of the frame. A third car is parked on the right side of the frame, near the edge of the road. All three cars remain stationary throughout the video."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074057_neighborhood_20260902_chunk_0011_segment_005_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a quiet residential street. A car is parked on the left side of the frame, near a tall, illuminated tree. Another vehicle is visible further down the street, parked near a building with lit windows. The area is dimly lit by streetlights, and there are no visible people or unusual activities. The overall atmosphere is calm and still, with no signs of movement or interaction."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074057_neighborhood_20260902_chunk_0011_segment_006_of_006.mp4",
+          "caption": "A donut is visible in the frame."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_074032_neighborhood_20260902_chunk_0010.mp4",
+      "filename": "20261001_074032_neighborhood_20260902_chunk_0010.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 10,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0010"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_001_of_006.mp4",
+          "caption": "The video shows a nighttime scene in a residential area with parked cars and trees. A car is visible in the background, positioned on the left side of the frame. The vehicle appears stationary and is partially obscured by trees and bushes. There are no visible movements or activities involving the car or any other objects in the scene. The environment is calm, with no signs of unusual behavior or safety hazards. The lighting is dim, typical of a night setting, and the overall atmosphere is quiet and still."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_002_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area illuminated by streetlights, with trees and parked vehicles visible. A car is positioned in the background, partially obscured by foliage. There are no people or unusual activities present in the frame. The environment appears calm and static, with no signs of movement or interaction."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential or semi-urban area with trees, parked vehicles, and a building in the background. The footage is in black and white, likely due to night vision. A tall, slender tree is prominently visible on the left side of the frame, while other trees and bushes are scattered throughout the area. Several cars are parked along the street and in driveways, including a white van and a dark-colored sedan. The lighting is dim, with some streetlights illuminating parts of the scene. There are no visible people or unusual activities occurring in the video."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_004_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obstructing the view. The camera lens appears to be covered with water droplets, likely from rain, which creates a blurred and distorted effect across the entire frame. The droplets move slightly, indicating ongoing rainfall. In the background, several cars are parked along the street, and a tall building with lit windows is visible on the right side of the frame. The overall atmosphere is dark and wet, typical of a rainy night."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_005_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, with raindrops visible on the lens. In the foreground, there is a tall, conical evergreen tree on the left side of the frame. Behind it, a paved area is visible, with a few parked vehicles including a car and a van. The background features trees and a tall building with lit windows on the right side. The overall scene is dimly lit, with streetlights providing some illumination."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074032_neighborhood_20260902_chunk_0010_segment_006_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area illuminated by streetlights and ambient light from nearby buildings. A tall, slender tree is prominent on the left side of the frame, partially obscuring the view. In the background, a multi-story building with lit windows is visible on the right. The ground appears to be paved, with some vegetation and small trees scattered around. A parked car is visible in the mid-ground, and another vehicle is partially visible in the foreground. There are no people or moving objects in the scene, and the overall atmosphere is quiet and still."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_074007_neighborhood_20260902_chunk_0009.mp4",
+      "filename": "20261001_074007_neighborhood_20260902_chunk_0009.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 9,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0009"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074007_neighborhood_20260902_chunk_0009_segment_001_of_006.mp4",
+          "caption": "The video shows a nighttime outdoor scene with a residential or suburban setting. A tall, slender tree is visible on the left side of the frame, illuminated by a streetlight. In the background, there are several parked cars, including a white van and a dark-colored vehicle. The area is surrounded by trees and shrubs, and a building with lit windows can be seen in the distance on the right side of the frame. The scene appears calm and quiet, with no visible movement or activity."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074007_neighborhood_20260902_chunk_0009_segment_002_of_006.mp4",
+          "caption": "The video shows a nighttime scene in a residential area with several parked vehicles and trees. A car is visible on the left side of the frame, parked near a tall, illuminated tree. In the center, there is a small, open area with a few trees and bushes. On the right side, there is a white van parked near a building with a lit window. The overall environment appears quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074007_neighborhood_20260902_chunk_0009_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene in a residential area with several parked vehicles. A car is visible in the background, positioned on the left side of the frame, near some trees and bushes. The vehicle appears stationary throughout the footage. There are no people or unusual activities observed in the scene. The environment is calm, with no signs of movement or interaction. The lighting is dim, typical of a night setting, and the focus remains on the parked car and the surrounding area."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074007_neighborhood_20260902_chunk_0009_segment_004_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera. In the foreground, there is a tall, slender tree with dense foliage on the left side of the frame. To the right, a portion of a building with a sloped roof is visible. In the background, several parked cars are seen along a street lined with trees and streetlights. The lighting is dim, with the primary illumination coming from the streetlights and some ambient light from nearby buildings. The scene appears calm and quiet, with no visible movement or activity."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074007_neighborhood_20260902_chunk_0009_segment_005_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area illuminated by streetlights and ambient lighting. In the foreground, there is a tall, slender tree on the left side of the frame. A paved area with a crosswalk is visible, and several vehicles are parked along the roadside. A car is parked on the left side of the frame near the crosswalk. Another vehicle is parked further back, closer to the center of the scene. A third vehicle is partially visible in the lower right corner, near some bushes and a building structure. The background includes trees and a tall building with lit windows on the right side. The overall environment appears calm and quiet, with no visible movement or activity."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_074007_neighborhood_20260902_chunk_0009_segment_006_of_006.mp4",
+          "caption": "A car is parked in the background on the left side of the frame, near a tall, illuminated streetlight. Another vehicle is partially visible in the foreground, positioned near the bottom right corner of the frame."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073942_neighborhood_20260902_chunk_0008.mp4",
+      "filename": "20261001_073942_neighborhood_20260902_chunk_0008.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 8,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0008"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073942_neighborhood_20260902_chunk_0008_segment_001_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area, likely a residential or park setting, viewed through a window with visible raindrops on the glass. The environment is dimly lit by streetlights and ambient light from nearby buildings. In the foreground, there is a tall, conical evergreen tree on the left side of the frame. Behind it, a paved area with a small tree in a square planter is visible. To the right, there is a low hedge and part of a building with a sloped roof. In the background, several parked cars are visible along a street lined with trees and illuminated by streetlights. A tall building with lit windows is visible on the far right. The overall atmosphere is quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073942_neighborhood_20260902_chunk_0008_segment_002_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a tall, slender tree on the left side of the frame. In the background, there are parked cars and a building with lit windows. The area appears to be a residential or suburban setting with trees and shrubs visible. There are no people, unusual behavior, or safety hazards evident in the scene. The vehicles remain stationary throughout the footage, and there are no signs of movement or activity that would suggest any security concerns."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073942_neighborhood_20260902_chunk_0008_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a tall, slender tree on the left side of the frame. A car is parked on the street in the background, and another vehicle is partially visible in the foreground. The area appears to be a residential or suburban neighborhood with trees and a building in the distance. There are no people or unusual activities visible in the footage. The lighting is dim, and the overall atmosphere is quiet and still."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073942_neighborhood_20260902_chunk_0008_segment_004_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area, likely a residential or commercial driveway or parking space, viewed from a fixed camera. The footage is in black and white, with visible raindrops on the camera lens, indicating light to moderate rainfall. A tall, slender evergreen tree is prominent on the left side of the frame. In the background, a street with parked cars and a tall building with lit windows can be seen. A donut is visible in the foreground, positioned near the bottom center of the frame. It appears to be resting on a surface, possibly a table or counter, and remains stationary throughout the clip. There are no people or other moving objects in the scene. The overall atmosphere is quiet and still, with no apparent activity or interaction occurring."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073942_neighborhood_20260902_chunk_0008_segment_005_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obstructing the view. The donut appears to be in motion, possibly being held or moved by an unseen person. The background includes a street with a few parked cars and some illuminated buildings in the distance. The overall atmosphere is quiet and still, with no other significant activity or movement observed."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073942_neighborhood_20260902_chunk_0008_segment_006_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obstructing the view. The donut appears to be in motion, likely due to wind or some other external force, as it moves across the frame. The background includes a street with a few cars parked along the side, and a tall building with lit windows is visible in the distance. The overall atmosphere is quiet and still, with no significant human activity or movement apart from the donut."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073916_neighborhood_20260902_chunk_0007.mp4",
+      "filename": "20261001_073916_neighborhood_20260902_chunk_0007.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 7,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0007"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073916_neighborhood_20260902_chunk_0007_segment_001_of_006.mp4",
+          "caption": "A car is driving on a road at night. The scene is captured in black and white, with streetlights illuminating the area. Trees and bushes are visible along the roadside, and a few parked cars can be seen in the background. The car in motion has its headlights on, casting light on the road ahead. The overall atmosphere is quiet and still, with no other vehicles or pedestrians in sight."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073916_neighborhood_20260902_chunk_0007_segment_002_of_006.mp4",
+          "caption": "The video shows a nighttime outdoor scene with a dark, monochromatic appearance. A tall, slender tree is visible on the left side of the frame, illuminated by a streetlight. In the background, there are several parked cars and a building with lit windows. The area appears to be a residential or urban setting with trees and shrubs scattered around. There are no visible people, unusual behavior, or safety hazards in the scene. The overall atmosphere is calm and quiet, with no significant activity occurring."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073916_neighborhood_20260902_chunk_0007_segment_003_of_006.mp4",
+          "caption": "A vehicle is parked in the background on the left side of the frame, remaining stationary throughout the video. Another vehicle is parked in the foreground on the right side, also remaining stationary. There are no people, unusual behavior, or safety hazards visible in the scene. The environment appears calm and undisturbed."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073916_neighborhood_20260902_chunk_0007_segment_004_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area, likely a residential or park setting, illuminated by streetlights and ambient lighting. A tall, slender tree is prominent on the left side of the frame, while other trees and bushes are scattered throughout the background. In the distance, a multi-story building with lit windows is visible on the right. A car is parked on the left side of the frame, near the tall tree. Another vehicle, possibly an SUV or van, is parked further back, closer to the center of the scene. The ground appears to be paved, with some patches of grass or dirt visible around the trees and bushes. There are no people or moving objects in the scene, and the overall atmosphere is quiet and still."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073916_neighborhood_20260902_chunk_0007_segment_005_of_006.mp4",
+          "caption": "A car is seen driving through the frame from left to right."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073916_neighborhood_20260902_chunk_0007_segment_006_of_006.mp4",
+          "caption": "A white car is driving on a road at night. The car is moving from left to right across the frame. The scene is illuminated by streetlights and the headlights of the car. There are trees and bushes along the roadside, and a few parked cars are visible in the background. The car continues its journey along the road, passing by the stationary vehicles and vegetation."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073851_neighborhood_20260902_chunk_0006.mp4",
+      "filename": "20261001_073851_neighborhood_20260902_chunk_0006.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 6,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0006"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073851_neighborhood_20260902_chunk_0006_segment_001_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area with a paved surface and surrounding vegetation. A tall, slender tree is prominent on the left side of the frame, illuminated by a streetlight. In the background, a multi-story building with lit windows is visible on the right. A car is parked on the left side of the frame, near the tree. The environment appears quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073851_neighborhood_20260902_chunk_0006_segment_002_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area with a paved surface and surrounding vegetation. A tall, slender tree is prominent on the left side of the frame, illuminated by a streetlight. In the background, a multi-story building with lit windows is visible on the right. The area appears quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073851_neighborhood_20260902_chunk_0006_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with trees and parked vehicles. A tall, illuminated evergreen tree is prominent on the left side of the frame. In the background, a multi-story building with lit windows is visible. The scene is dimly lit by streetlights, creating a contrast between the bright tree and the darker surroundings. There are no visible people, unusual behavior, or safety hazards in the footage. The vehicles remain stationary throughout the clip, and there are no signs of movement or activity that would suggest any security concerns."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073851_neighborhood_20260902_chunk_0006_segment_004_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a tall, illuminated tree on the left side of the frame. In the background, there are several parked cars and a building with lit windows. The area appears to be a residential or suburban setting with trees and shrubs visible. There are no people, unusual behavior, or safety hazards evident in the footage. The scene remains static throughout the video."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073851_neighborhood_20260902_chunk_0006_segment_005_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area illuminated by streetlights, with trees and parked vehicles visible. A car is positioned on the left side of the frame, partially obscured by a tall, dense bush in the foreground. Another vehicle is parked further back near the center of the scene, and a third vehicle is visible on the right side, partially hidden behind bushes and a structure. The environment appears quiet and stationary, with no visible movement or activity occurring among the vehicles or surrounding elements."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073851_neighborhood_20260902_chunk_0006_segment_006_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area, likely a residential or commercial driveway or parking space, captured in black-and-white infrared footage. Several vehicles are parked in the area, including a car on the left side of the frame and a van or SUV on the right. The environment is surrounded by trees and shrubbery, with a tall, dense bush on the left side of the frame. In the background, a multi-story building with lit windows is visible, suggesting an urban or suburban setting. A person is seen walking through the scene, moving from the left side of the frame toward the center. The individual appears to be walking at a steady pace, and their movement is the primary activity in the otherwise still environment. There are no other people or moving objects visible in the frame. The overall atmosphere is quiet and calm, with no signs of unusual behavior or safety hazards. The lighting is consistent with nighttime surveillance footage, and the focus remains on the person walking and the parked vehicles."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073826_neighborhood_20260902_chunk_0005.mp4",
+      "filename": "20261001_073826_neighborhood_20260902_chunk_0005.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 5,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0005"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_001_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A tall, slender tree is prominently visible on the left side of the frame, illuminated by a streetlight. In the background, a multi-story building with lit windows can be seen. Several cars are parked along the street and in driveways, including a white van and a dark-colored sedan. The scene appears calm and static, with no visible movement or activity."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_002_of_006.mp4",
+          "caption": "A donut is visible in the frame."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a tall, illuminated streetlamp on the left side of the frame. In the background, there is a multi-story building with lit windows. The foreground features a large, leafy tree on the left and a smaller tree near the center. A parked car is visible in the mid-ground, positioned near the smaller tree. The overall environment appears to be a quiet residential or urban area with no visible movement or activity."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_004_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area with a paved surface and some vegetation, including a tall, bushy tree on the left side of the frame. In the background, there are parked vehicles, including a car visible on the left side of the frame. The lighting is dim, with a streetlight illuminating part of the area on the left. The overall environment appears to be a quiet, possibly residential or semi-urban setting. There are no visible people, unusual activities, or immediate safety hazards in the scene."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_005_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area, likely a parking lot or driveway, with a tall, slender tree on the left side of the frame. The environment is dimly lit, with some ambient light illuminating the surroundings. In the background, there are parked vehicles and what appears to be a building with lit windows. The overall atmosphere is quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073826_neighborhood_20260902_chunk_0005_segment_006_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a parked car visible in the background. The area is dimly lit, with some streetlights providing illumination. There are no visible people or unusual activities occurring in the frame. The car remains stationary throughout the footage, and there are no signs of movement or interaction with other objects or individuals. The environment appears calm and quiet, with no immediate safety hazards or security concerns evident."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073800_neighborhood_20260902_chunk_0004.mp4",
+      "filename": "20261001_073800_neighborhood_20260902_chunk_0004.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 4,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0004"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073800_neighborhood_20260902_chunk_0004_segment_001_of_006.mp4",
+          "caption": "A vehicle is seen driving on a road at night. The scene is illuminated by streetlights and the headlights of the moving car. The vehicle appears to be a sedan or similar type of car. It is traveling along a residential street with parked cars visible on the sides. The road is lined with trees and there are some buildings in the background. The vehicle's headlights are on, indicating it is moving through the area. There are no other vehicles or pedestrians visible in the immediate vicinity of the moving car."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073800_neighborhood_20260902_chunk_0004_segment_002_of_006.mp4",
+          "caption": "A car is driving on a road at night. The vehicle is moving along the road, passing by trees and other parked cars. The scene is illuminated by streetlights, and the car's headlights are visible as it moves. The car appears to be a standard passenger vehicle, and there are no other moving vehicles or pedestrians in the immediate vicinity. The road is relatively quiet, and the car continues its journey without any apparent issues or interactions with other objects or people."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073800_neighborhood_20260902_chunk_0004_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with trees and parked vehicles. A tall, slender tree is visible on the left side of the frame, illuminated by a streetlight. In the background, a multi-story building with lit windows can be seen. The scene is partially obscured by raindrops on the camera lens, creating a hazy effect. A car is parked on the street, and another vehicle is visible in a driveway. There are no people or unusual activities present in the video."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073800_neighborhood_20260902_chunk_0004_segment_004_of_006.mp4",
+          "caption": "The video shows a nighttime outdoor scene with a tall, slender tree on the left side of the frame. A car is parked on the street in the background, and another vehicle is partially visible in the foreground. The area is illuminated by streetlights, and there are trees and bushes surrounding the scene. A donut is visible in the foreground, and a laptop is also present in the scene. The overall atmosphere is calm, with no significant movement or activity observed."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073800_neighborhood_20260902_chunk_0004_segment_005_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area, likely a residential or park setting, viewed from a fixed camera. The footage is in black and white, with visible raindrops on the camera lens creating streaks and blurring the image. A tall, dense bush or tree is prominent on the left side of the frame. In the background, a street is visible with a few parked cars, including a sedan and a van. A tall building with lit windows can be seen in the distance on the right. A person is walking along the street in the background, moving from left to right. The overall atmosphere is quiet and still, with no significant activity or movement apart from the person walking and the rain falling."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073800_neighborhood_20260902_chunk_0004_segment_006_of_006.mp4",
+          "caption": "A car is parked on the left side of the frame, facing away from the camera. Another car is parked on the right side, facing towards the camera. A third car is parked in the foreground, partially visible. A person is standing near the parked car on the right side of the frame. The person appears to be stationary and is not engaged in any visible activity."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073735_neighborhood_20260902_chunk_0003.mp4",
+      "filename": "20261001_073735_neighborhood_20260902_chunk_0003.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 3,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0003"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073735_neighborhood_20260902_chunk_0003_segment_001_of_006.mp4",
+          "caption": "The scene is a nighttime residential street captured in black and white. A car is parked on the left side of the frame near a tall tree, and another vehicle is parked further down the street. A third car is visible in the foreground, partially obscured by bushes. The street is lined with trees and there are houses visible in the background. A tall building with lit windows can be seen on the right side of the frame. The overall atmosphere is quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073735_neighborhood_20260902_chunk_0003_segment_002_of_006.mp4",
+          "caption": "The video shows a nighttime outdoor scene with a tall, slender tree on the left side of the frame. In the background, there are parked vehicles, including a car and a van, situated near a building with illuminated windows. The area is dimly lit by streetlights, and there are some bushes and trees scattered around. The overall atmosphere appears quiet and still, with no visible movement or activity."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073735_neighborhood_20260902_chunk_0003_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a donut floating in the air. The donut is visible against a dark background, illuminated by artificial lighting. The surrounding area includes trees and parked vehicles, suggesting an outdoor setting such as a parking lot or street. The donut appears to be suspended without any visible support, creating an unusual and surreal visual effect."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073735_neighborhood_20260902_chunk_0003_segment_004_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible on the left side of the frame, parked along the street. In the foreground, there are two vehicles parked near a building, one of which appears to be a van. The area is illuminated by streetlights, and there are trees and bushes surrounding the parked cars. A person is seen walking near the parked vehicles, moving from one side to the other. There are no unusual behaviors or safety hazards observed in the scene."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073735_neighborhood_20260902_chunk_0003_segment_005_of_006.mp4",
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, parked on the left side of the frame. Another vehicle is parked in the foreground, partially obscured by bushes. The environment appears calm with no visible movement or activity."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073735_neighborhood_20260902_chunk_0003_segment_006_of_006.mp4",
+          "caption": "A black car enters the frame from the left and drives along the road. The scene is a nighttime residential area with several parked vehicles, including a white van and a dark sedan. Trees and bushes line the street, and a tall building is visible in the background. The car moves steadily forward, passing by the parked vehicles and continuing along the road."
+        }
+      ]
+    },
+    {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261001_073710_neighborhood_20260902_chunk_0002.mp4",
+      "filename": "20261001_073710_neighborhood_20260902_chunk_0002.mp4",
+      "stream_id": "639c4a64-fb7e-4cc4-ba4b-348c11df97d7",
+      "chunk_index": 2,
+      "total_segments": 6,
+      "upload_timestamp": "2026-10-01T07:36:17.696692",
+      "visual_label": {
+        "conditions": [
+          "night",
+          "fog"
+        ],
+        "lighting": "night",
+        "fog": "moderate",
+        "wet_road": false,
+        "falling_rain": false,
+        "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+        "chunk": "20260902_chunk_0002"
+      },
+      "segments": [
+        {
+          "segment_number": 1,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073710_neighborhood_20260902_chunk_0002_segment_001_of_006.mp4",
+          "caption": "A silver car is seen driving along a residential street on a foggy day. The vehicle moves from the left side of the frame toward the right, passing by a parked beige car on the left side of the road. The street is lined with trees and houses, and the fog creates a hazy atmosphere, reducing visibility in the distance. The car continues its journey, eventually exiting the frame to the right."
+        },
+        {
+          "segment_number": 2,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073710_neighborhood_20260902_chunk_0002_segment_002_of_006.mp4",
+          "caption": "The scene is a quiet residential street on a foggy day. A silver sedan is parked on the left side of the road, facing away from the camera. On the right side, near a brick house with a brown roof, there are two vehicles: a white SUV and a dark-colored sedan, both parked parallel to the curb. A tall evergreen tree stands prominently on the left, partially obscuring the view of the street. In the background, a large building is visible through the fog, its windows faintly illuminated. The streetlights cast a warm glow, contrasting with the cool, misty atmosphere. There are no people or moving vehicles in the scene, and the overall environment appears calm and still."
+        },
+        {
+          "segment_number": 3,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073710_neighborhood_20260902_chunk_0002_segment_003_of_006.mp4",
+          "caption": "The video shows a nighttime scene with a parked car visible in the background. The car is stationary and positioned near a tree. There are no people or other moving objects in the frame. The environment appears calm and quiet, with no unusual behavior or safety hazards observed. The car remains in the same position throughout the video, and there are no other vehicles or crowds present."
+        },
+        {
+          "segment_number": 4,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073710_neighborhood_20260902_chunk_0002_segment_004_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A tall, slender tree is prominently visible on the left side of the frame, illuminated by a streetlight. In the background, a multi-story building with lit windows can be seen. Several cars are parked along the street and in driveways, including a white van and a dark-colored sedan. The scene appears calm and static, with no visible movement or activity."
+        },
+        {
+          "segment_number": 5,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073710_neighborhood_20260902_chunk_0002_segment_005_of_006.mp4",
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obscuring the view. The donut appears to be moving slightly, suggesting it may be attached to something or being manipulated. The background includes a street with a few cars parked along the side, surrounded by trees and bushes. The lighting is dim, typical of a night setting, with some streetlights illuminating parts of the scene. There are no people or other moving objects visible in the frame. The overall atmosphere is quiet and still, with the donut being the only notable object in motion."
+        },
+        {
+          "segment_number": 6,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261001_073710_neighborhood_20260902_chunk_0002_segment_006_of_006.mp4",
+          "caption": "A car is parked on the left side of the frame, near the edge of the road. Another car is parked in the driveway on the right side of the frame, partially obscured by bushes. A third car is visible in the background, parked further down the street."
+        }
+      ]
+    }
+  ],
+  "n_target_segments": 60,
+  "labels_note": "labels by visual inspection of frames (3 frames/chunk at 10/50/90% of the chunk; results/fix/before_frames.jpg for targets, before_frames_others_{a,b}.jpg for the other neighborhood_cam-1 chunks); never derived from VSS captions. Source: fix/visual_labels.json",
+  "visual_labels_all_camera_chunks": {
+    "_note": "labels by visual inspection of frames (3 frames/chunk at 10/50/90%); results/fix/before_frames*.jpg. Conditions: fog = visible fog/mist reducing visibility (any intensity); rain = falling rain OR clearly wet road (same definition as vss/coverage.py rain regex); night = night lighting; clear = none of these. Not derived from VSS captions.",
+    "s3://team-16-vss-chunks/team-16/20261001_073851_neighborhood_20260902_chunk_0006.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0006"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073800_neighborhood_20260902_chunk_0004.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0004"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074057_neighborhood_20260902_chunk_0011.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0011"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074123_neighborhood_20260902_chunk_0012.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp; faint mist wisps in first frame only (borderline, not counted as fog)",
+      "chunk": "20260902_chunk_0012"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "dawn/dusk",
+      "fog": "dense",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "dense fog, streetlights on, colour camera; tower block and background trees washed out",
+      "chunk": "20260902_chunk_0000"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "dawn/dusk",
+      "fog": "dense",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "dense fog, streetlights on, colour camera; tower block and background trees washed out",
+      "chunk": "20260902_chunk_0001"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074032_neighborhood_20260902_chunk_0010.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0010"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073735_neighborhood_20260902_chunk_0003.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0003"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074304_neighborhood_20260902_chunk_0016.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0016"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074007_neighborhood_20260902_chunk_0009.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0009"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074329_neighborhood_20260902_chunk_0017.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0017"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074510_neighborhood_20260902_chunk_0021.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0021"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074420_neighborhood_20260902_chunk_0019.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0019"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074445_neighborhood_20260902_chunk_0020.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0020"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074354_neighborhood_20260902_chunk_0018.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0018"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073916_neighborhood_20260902_chunk_0007.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0007"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073710_neighborhood_20260902_chunk_0002.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0002"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074239_neighborhood_20260902_chunk_0015.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0015"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074213_neighborhood_20260902_chunk_0014.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp",
+      "chunk": "20260902_chunk_0014"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073826_neighborhood_20260902_chunk_0005.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0005"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_074148_neighborhood_20260902_chunk_0013.mp4": {
+      "conditions": [
+        "night"
+      ],
+      "lighting": "night",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night, crisp; faint mist wisps in first frame only (borderline, not counted as fog)",
+      "chunk": "20260902_chunk_0013"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073942_neighborhood_20260902_chunk_0008.mp4": {
+      "conditions": [
+        "night",
+        "fog"
+      ],
+      "lighting": "night",
+      "fog": "moderate",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+      "chunk": "20260902_chunk_0008"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072356_neighborhood_20260901_chunk_0001.mp4": {
+      "conditions": [
+        "fog",
+        "rain"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": true,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line; road visibly wet (dark wet patches), post-rain",
+      "chunk": "20260901_chunk_0001"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072654_neighborhood_20260901_chunk_0008.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0008"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072900_neighborhood_20260901_chunk_0013.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0013"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072835_neighborhood_20260901_chunk_0012.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0012"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072719_neighborhood_20260901_chunk_0009.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0009"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072744_neighborhood_20260901_chunk_0010.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0010"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072951_neighborhood_20260901_chunk_0015.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0015"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073107_neighborhood_20260901_chunk_0018.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0018"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073158_neighborhood_20260901_chunk_0020.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0020"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073249_neighborhood_20260901_chunk_0022.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0022"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073224_neighborhood_20260901_chunk_0021.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0021"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072421_neighborhood_20260901_chunk_0002.mp4": {
+      "conditions": [
+        "fog",
+        "rain"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": true,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line; road visibly wet (dark wet patches), post-rain",
+      "chunk": "20260901_chunk_0002"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073016_neighborhood_20260901_chunk_0016.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0016"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073042_neighborhood_20260901_chunk_0017.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0017"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073340_neighborhood_20260901_chunk_0024.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0024"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072512_neighborhood_20260901_chunk_0004.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block",
+      "chunk": "20260901_chunk_0004"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072628_neighborhood_20260901_chunk_0007.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+      "chunk": "20260901_chunk_0007"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073405_neighborhood_20260901_chunk_0025.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0025"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073430_neighborhood_20260901_chunk_0026.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block",
+      "chunk": "20260901_chunk_0026"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073314_neighborhood_20260901_chunk_0023.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0023"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072331_neighborhood_20260901_chunk_0000.mp4": {
+      "conditions": [
+        "fog",
+        "rain"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": true,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line; road visibly wet (dark wet patches), post-rain",
+      "chunk": "20260901_chunk_0000"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073547_neighborhood_20260901_chunk_0029.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+      "chunk": "20260901_chunk_0029"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072603_neighborhood_20260901_chunk_0006.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block",
+      "chunk": "20260901_chunk_0006"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072537_neighborhood_20260901_chunk_0005.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0005"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072809_neighborhood_20260901_chunk_0011.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0011"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072447_neighborhood_20260901_chunk_0003.mp4": {
+      "conditions": [
+        "fog",
+        "rain"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": true,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block; road visibly wet (dark wet patches), post-rain",
+      "chunk": "20260901_chunk_0003"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073133_neighborhood_20260901_chunk_0019.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0019"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073521_neighborhood_20260901_chunk_0028.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+      "chunk": "20260901_chunk_0028"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_072925_neighborhood_20260901_chunk_0014.mp4": {
+      "conditions": [
+        "clear"
+      ],
+      "lighting": "day",
+      "fog": null,
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible",
+      "chunk": "20260901_chunk_0014"
+    },
+    "s3://team-16-vss-chunks/team-16/20261001_073456_neighborhood_20260901_chunk_0027.mp4": {
+      "conditions": [
+        "fog"
+      ],
+      "lighting": "day",
+      "fog": "light",
+      "wet_road": false,
+      "falling_rain": false,
+      "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+      "chunk": "20260901_chunk_0027"
+    }
+  },
+  "queries": {
+    "fog": {
+      "query": "dense fog with low visibility",
+      "endpoint": "POST /api/v1/search",
+      "metadata_filters": {
+        "camera_id": "neighborhood_cam-1"
+      },
+      "top_k": 10,
+      "hits": [
+        {
+          "rank": 1,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.4387,
+          "caption": "A white truck is seen driving along a foggy residential street, moving from the background toward the foreground. The truck's headlights are on, illuminating the misty road ahead. As it progresses, the truck passes by parked vehicles and ap",
+          "in_target_set": false
+        },
+        {
+          "rank": 2,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.4311,
+          "caption": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere, reducing visibilit",
+          "in_target_set": false
+        },
+        {
+          "rank": 3,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4",
+          "segment_number": 3,
+          "score": 0.4273,
+          "caption": "A white SUV is seen driving slowly along a residential street on a foggy day. The vehicle is moving from the left side of the frame toward the right, navigating the road carefully. The fog creates a hazy atmosphere, reducing visibility and ",
+          "in_target_set": false
+        },
+        {
+          "rank": 4,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_002_of_006.mp4",
+          "segment_number": 2,
+          "score": 0.4165,
+          "caption": "A white SUV is seen driving along a residential street on a foggy day. The vehicle moves from the left side of the frame toward the right, passing by parked cars and houses. The fog obscures distant trees and buildings, creating a hazy atmo",
+          "in_target_set": false
+        },
+        {
+          "rank": 5,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4",
+          "segment_number": 5,
+          "score": 0.4161,
+          "caption": "A white van is driving on a residential street during foggy conditions. The van is moving from left to right across the frame, passing by parked cars and houses. The street is lined with trees and there are streetlights visible. The fog cre",
+          "in_target_set": false
+        },
+        {
+          "rank": 6,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_005_of_006.mp4",
+          "segment_number": 5,
+          "score": 0.4159,
+          "caption": "A silver car is seen driving along a residential street during a foggy evening. The vehicle moves from the background toward the foreground, its headlights illuminating the misty road. The car passes by parked vehicles and houses, maintaini",
+          "in_target_set": false
+        },
+        {
+          "rank": 7,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4",
+          "segment_number": 6,
+          "score": 0.4075,
+          "caption": "A silver car is seen driving along a residential street, moving from the left side of the frame toward the right. The vehicle maintains a steady pace as it navigates the road, passing by parked cars and houses. The surrounding area is shrou",
+          "in_target_set": false
+        },
+        {
+          "rank": 8,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_006_of_006.mp4",
+          "segment_number": 6,
+          "score": 0.382,
+          "caption": "A blue car is driving on a residential street during foggy conditions. The vehicle is moving from right to left across the frame, passing through an intersection. The car's headlights are on, illuminating the road ahead. There are several p",
+          "in_target_set": false
+        },
+        {
+          "rank": 9,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073710_neighborhood_20260902_chunk_0002.mp4",
+          "filename": "20261001_073710_neighborhood_20260902_chunk_0002_segment_001_of_006.mp4",
+          "segment_number": 1,
+          "score": 0.375,
+          "caption": "A silver car is seen driving along a residential street on a foggy day. The vehicle moves from the left side of the frame toward the right, passing by a parked beige car on the left side of the road. The street is lined with trees and house",
+          "in_target_set": true
+        },
+        {
+          "rank": 10,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_002_of_006.mp4",
+          "segment_number": 2,
+          "score": 0.3728,
+          "caption": "The scene is a quiet residential street at night, shrouded in heavy fog. Streetlights cast a warm glow, illuminating parked cars along the curb and in driveways. A silver sedan is parked on the left side of the street, while a white SUV and",
+          "in_target_set": false
+        }
+      ],
+      "precision_at_10": {
+        "relevant": 10,
+        "n": 10,
+        "unlabeled": 0,
+        "p": 1.0
+      }
+    },
+    "night": {
+      "query": "highway at night",
+      "endpoint": "POST /api/v1/search",
+      "metadata_filters": {
+        "camera_id": "neighborhood_cam-1"
+      },
+      "top_k": 10,
+      "hits": [
+        {
+          "rank": 1,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074239_neighborhood_20260902_chunk_0015.mp4",
+          "filename": "20261001_074239_neighborhood_20260902_chunk_0015_segment_003_of_006.mp4",
+          "segment_number": 3,
+          "score": 0.2208,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, parked on the left side of the frame. Another vehicle is partially visible in the foreground, positioned near the bottom right",
+          "in_target_set": false
+        },
+        {
+          "rank": 2,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074329_neighborhood_20260902_chunk_0017.mp4",
+          "filename": "20261001_074329_neighborhood_20260902_chunk_0017_segment_003_of_006.mp4",
+          "segment_number": 3,
+          "score": 0.2114,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, positioned near the center of the frame. The vehicle remains stationary throughout the footage, with no movement or activity a",
+          "in_target_set": false
+        },
+        {
+          "rank": 3,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074420_neighborhood_20260902_chunk_0019.mp4",
+          "filename": "20261001_074420_neighborhood_20260902_chunk_0019_segment_001_of_006.mp4",
+          "segment_number": 1,
+          "score": 0.2091,
+          "caption": "The scene is a nighttime view of a residential area with parked vehicles and trees. A car is visible on the left side of the frame, parked along the street. Another vehicle is partially visible in the foreground, positioned near the bottom ",
+          "in_target_set": false
+        },
+        {
+          "rank": 4,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074239_neighborhood_20260902_chunk_0015.mp4",
+          "filename": "20261001_074239_neighborhood_20260902_chunk_0015_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.2069,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles. A car is visible in the background, positioned on the left side of the frame. Another vehicle is parked in the foreground, closer to the bottom right corner. The environmen",
+          "in_target_set": false
+        },
+        {
+          "rank": 5,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074329_neighborhood_20260902_chunk_0017.mp4",
+          "filename": "20261001_074329_neighborhood_20260902_chunk_0017_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.1999,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles. A car is visible in the background, positioned on the left side of the frame. Another car is parked in the foreground, closer to the bottom right corner. The environment in",
+          "in_target_set": false
+        },
+        {
+          "rank": 6,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074304_neighborhood_20260902_chunk_0016.mp4",
+          "filename": "20261001_074304_neighborhood_20260902_chunk_0016_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.1995,
+          "caption": "The scene is a nighttime outdoor area with trees, parked vehicles, and a building in the background. A donut is visible in the foreground, appearing to float or move without any visible support or interaction. The donut remains in the same ",
+          "in_target_set": false
+        },
+        {
+          "rank": 7,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074304_neighborhood_20260902_chunk_0016.mp4",
+          "filename": "20261001_074304_neighborhood_20260902_chunk_0016_segment_001_of_006.mp4",
+          "segment_number": 1,
+          "score": 0.1899,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, parked along the street. Another vehicle is partially visible in the foreground, positioned near a building. The area appears ",
+          "in_target_set": false
+        },
+        {
+          "rank": 8,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074148_neighborhood_20260902_chunk_0013.mp4",
+          "filename": "20261001_074148_neighborhood_20260902_chunk_0013_segment_001_of_006.mp4",
+          "segment_number": 1,
+          "score": 0.1854,
+          "caption": "The scene is a nighttime outdoor area with trees, parked vehicles, and a building visible in the background. A donut is seen moving across the frame, likely due to a camera lens issue or motion artifact. A car is parked on the left side of ",
+          "in_target_set": false
+        },
+        {
+          "rank": 9,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074239_neighborhood_20260902_chunk_0015.mp4",
+          "filename": "20261001_074239_neighborhood_20260902_chunk_0015_segment_002_of_006.mp4",
+          "segment_number": 2,
+          "score": 0.1848,
+          "caption": "The scene is a nighttime outdoor area with several parked vehicles and trees. A car is visible in the background, parked along the street. Another vehicle is partially visible in the foreground, positioned near a building. The environment a",
+          "in_target_set": false
+        },
+        {
+          "rank": 10,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074304_neighborhood_20260902_chunk_0016.mp4",
+          "filename": "20261001_074304_neighborhood_20260902_chunk_0016_segment_003_of_006.mp4",
+          "segment_number": 3,
+          "score": 0.1844,
+          "caption": "The scene is a nighttime residential area captured in black and white. A car is parked on the street in the background, positioned near the center of the frame. Another vehicle is partially visible in the foreground, parked closer to the ca",
+          "in_target_set": false
+        }
+      ],
+      "precision_at_10": {
+        "relevant": 10,
+        "n": 10,
+        "unlabeled": 0,
+        "p": 1.0
+      }
+    },
+    "rain": {
+      "query": "heavy rain on a wet road",
+      "endpoint": "POST /api/v1/search",
+      "metadata_filters": {
+        "camera_id": "neighborhood_cam-1"
+      },
+      "top_k": 10,
+      "hits": [
+        {
+          "rank": 1,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.2538,
+          "caption": "A white truck is seen driving along a foggy residential street, moving from the background toward the foreground. The truck's headlights are on, illuminating the misty road ahead. As it progresses, the truck passes by parked vehicles and ap",
+          "in_target_set": false
+        },
+        {
+          "rank": 2,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.2519,
+          "caption": "A white van is seen driving on a foggy residential street, moving from the right side of the frame toward the left. The vehicle travels along the road, passing by parked cars and houses. The fog creates a hazy atmosphere, reducing visibilit",
+          "in_target_set": false
+        },
+        {
+          "rank": 3,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_005_of_006.mp4",
+          "segment_number": 5,
+          "score": 0.2432,
+          "caption": "A white van is driving on a residential street during foggy conditions. The van is moving from left to right across the frame, passing by parked cars and houses. The street is lined with trees and there are streetlights visible. The fog cre",
+          "in_target_set": false
+        },
+        {
+          "rank": 4,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_005_of_006.mp4",
+          "segment_number": 5,
+          "score": 0.2425,
+          "caption": "A silver car is seen driving along a residential street during a foggy evening. The vehicle moves from the background toward the foreground, its headlights illuminating the misty road. The car passes by parked vehicles and houses, maintaini",
+          "in_target_set": false
+        },
+        {
+          "rank": 5,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4",
+          "filename": "20261001_073644_neighborhood_20260902_chunk_0001_segment_006_of_006.mp4",
+          "segment_number": 6,
+          "score": 0.2412,
+          "caption": "A silver car is seen driving along a residential street, moving from the left side of the frame toward the right. The vehicle maintains a steady pace as it navigates the road, passing by parked cars and houses. The surrounding area is shrou",
+          "in_target_set": false
+        },
+        {
+          "rank": 6,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_074032_neighborhood_20260902_chunk_0010.mp4",
+          "filename": "20261001_074032_neighborhood_20260902_chunk_0010_segment_004_of_006.mp4",
+          "segment_number": 4,
+          "score": 0.2298,
+          "caption": "The video shows a nighttime scene captured by a surveillance camera, featuring a residential area with parked vehicles and trees. A donut is visible in the foreground, partially obstructing the view. The camera lens appears to be covered wi",
+          "in_target_set": true
+        },
+        {
+          "rank": 7,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_072331_neighborhood_20260901_chunk_0000.mp4",
+          "filename": "20261001_072331_neighborhood_20260901_chunk_0000_segment_005_of_006.mp4",
+          "segment_number": 5,
+          "score": 0.2194,
+          "caption": "A black car is seen driving on the road in the distance, moving from the left side of the frame toward the right. The vehicle appears to be traveling at a moderate speed and is positioned on the main road, which is wet from recent rain. The",
+          "in_target_set": false
+        },
+        {
+          "rank": 8,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4",
+          "filename": "20261001_073619_neighborhood_20260902_chunk_0000_segment_003_of_006.mp4",
+          "segment_number": 3,
+          "score": 0.2153,
+          "caption": "A white SUV is seen driving slowly along a residential street on a foggy day. The vehicle is moving from the left side of the frame toward the right, navigating the road carefully. The fog creates a hazy atmosphere, reducing visibility and ",
+          "in_target_set": false
+        },
+        {
+          "rank": 9,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_073710_neighborhood_20260902_chunk_0002.mp4",
+          "filename": "20261001_073710_neighborhood_20260902_chunk_0002_segment_001_of_006.mp4",
+          "segment_number": 1,
+          "score": 0.2134,
+          "caption": "A silver car is seen driving along a residential street on a foggy day. The vehicle moves from the left side of the frame toward the right, passing by a parked beige car on the left side of the road. The street is lined with trees and house",
+          "in_target_set": true
+        },
+        {
+          "rank": 10,
+          "original_video": "s3://team-16-vss-chunks/team-16/20261001_072447_neighborhood_20260901_chunk_0003.mp4",
+          "filename": "20261001_072447_neighborhood_20260901_chunk_0003_segment_001_of_006.mp4",
+          "segment_number": 1,
+          "score": 0.211,
+          "caption": "A white car is seen driving on the road in the background, moving from right to left. The road appears wet, suggesting recent rain. The car maintains a steady pace and exits the frame after a short distance. No other vehicles or pedestrians",
+          "in_target_set": false
+        }
+      ],
+      "precision_at_10": {
+        "relevant": 2,
+        "n": 10,
+        "unlabeled": 0,
+        "p": 0.2
+      }
+    }
+  },
+  "captions_naming_condition": {
+    "hit": 1,
+    "n": 60,
+    "pct": 1.7
+  },
+  "seconds": 35.9
+}

@@ -1,0 +1,589 @@
+{
+ "_note": "labels by visual inspection of frames (3 frames/chunk at 10/50/90%); results/fix/before_frames*.jpg. Conditions: fog = visible fog/mist reducing visibility (any intensity); rain = falling rain OR clearly wet road (same definition as vss/coverage.py rain regex); night = night lighting; clear = none of these. Not derived from VSS captions.",
+ "s3://team-16-vss-chunks/team-16/20261001_073851_neighborhood_20260902_chunk_0006.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0006"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073800_neighborhood_20260902_chunk_0004.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0004"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074057_neighborhood_20260902_chunk_0011.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0011"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074123_neighborhood_20260902_chunk_0012.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp; faint mist wisps in first frame only (borderline, not counted as fog)",
+  "chunk": "20260902_chunk_0012"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073619_neighborhood_20260902_chunk_0000.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "dawn/dusk",
+  "fog": "dense",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "dense fog, streetlights on, colour camera; tower block and background trees washed out",
+  "chunk": "20260902_chunk_0000"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073644_neighborhood_20260902_chunk_0001.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "dawn/dusk",
+  "fog": "dense",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "dense fog, streetlights on, colour camera; tower block and background trees washed out",
+  "chunk": "20260902_chunk_0001"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074032_neighborhood_20260902_chunk_0010.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0010"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073735_neighborhood_20260902_chunk_0003.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0003"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074304_neighborhood_20260902_chunk_0016.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0016"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074007_neighborhood_20260902_chunk_0009.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0009"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074329_neighborhood_20260902_chunk_0017.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0017"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074510_neighborhood_20260902_chunk_0021.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0021"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074420_neighborhood_20260902_chunk_0019.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0019"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074445_neighborhood_20260902_chunk_0020.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0020"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074354_neighborhood_20260902_chunk_0018.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0018"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073916_neighborhood_20260902_chunk_0007.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0007"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073710_neighborhood_20260902_chunk_0002.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0002"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074239_neighborhood_20260902_chunk_0015.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0015"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074213_neighborhood_20260902_chunk_0014.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp",
+  "chunk": "20260902_chunk_0014"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073826_neighborhood_20260902_chunk_0005.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0005"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_074148_neighborhood_20260902_chunk_0013.mp4": {
+  "conditions": [
+   "night"
+  ],
+  "lighting": "night",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night, crisp; faint mist wisps in first frame only (borderline, not counted as fog)",
+  "chunk": "20260902_chunk_0013"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073942_neighborhood_20260902_chunk_0008.mp4": {
+  "conditions": [
+   "night",
+   "fog"
+  ],
+  "lighting": "night",
+  "fog": "moderate",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "IR monochrome night; drifting mist/haze streaks lit by IR, reduced contrast",
+  "chunk": "20260902_chunk_0008"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072356_neighborhood_20260901_chunk_0001.mp4": {
+  "conditions": [
+   "fog",
+   "rain"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": true,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line; road visibly wet (dark wet patches), post-rain",
+  "chunk": "20260901_chunk_0001"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072654_neighborhood_20260901_chunk_0008.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0008"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072900_neighborhood_20260901_chunk_0013.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0013"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072835_neighborhood_20260901_chunk_0012.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0012"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072719_neighborhood_20260901_chunk_0009.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0009"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072744_neighborhood_20260901_chunk_0010.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0010"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072951_neighborhood_20260901_chunk_0015.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0015"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073107_neighborhood_20260901_chunk_0018.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0018"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073158_neighborhood_20260901_chunk_0020.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0020"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073249_neighborhood_20260901_chunk_0022.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0022"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073224_neighborhood_20260901_chunk_0021.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0021"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072421_neighborhood_20260901_chunk_0002.mp4": {
+  "conditions": [
+   "fog",
+   "rain"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": true,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line; road visibly wet (dark wet patches), post-rain",
+  "chunk": "20260901_chunk_0002"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073016_neighborhood_20260901_chunk_0016.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0016"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073042_neighborhood_20260901_chunk_0017.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0017"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073340_neighborhood_20260901_chunk_0024.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0024"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072512_neighborhood_20260901_chunk_0004.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block",
+  "chunk": "20260901_chunk_0004"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072628_neighborhood_20260901_chunk_0007.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+  "chunk": "20260901_chunk_0007"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073405_neighborhood_20260901_chunk_0025.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0025"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073430_neighborhood_20260901_chunk_0026.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block",
+  "chunk": "20260901_chunk_0026"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073314_neighborhood_20260901_chunk_0023.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0023"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072331_neighborhood_20260901_chunk_0000.mp4": {
+  "conditions": [
+   "fog",
+   "rain"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": true,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line; road visibly wet (dark wet patches), post-rain",
+  "chunk": "20260901_chunk_0000"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073547_neighborhood_20260901_chunk_0029.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+  "chunk": "20260901_chunk_0029"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072603_neighborhood_20260901_chunk_0006.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block",
+  "chunk": "20260901_chunk_0006"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072537_neighborhood_20260901_chunk_0005.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0005"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072809_neighborhood_20260901_chunk_0011.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0011"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072447_neighborhood_20260901_chunk_0003.mp4": {
+  "conditions": [
+   "fog",
+   "rain"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": true,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; faint mist on top of the tower block; road visibly wet (dark wet patches), post-rain",
+  "chunk": "20260901_chunk_0003"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073133_neighborhood_20260901_chunk_0019.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0019"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073521_neighborhood_20260901_chunk_0028.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+  "chunk": "20260901_chunk_0028"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_072925_neighborhood_20260901_chunk_0014.mp4": {
+  "conditions": [
+   "clear"
+  ],
+  "lighting": "day",
+  "fog": null,
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible",
+  "chunk": "20260901_chunk_0014"
+ },
+ "s3://team-16-vss-chunks/team-16/20261001_073456_neighborhood_20260901_chunk_0027.mp4": {
+  "conditions": [
+   "fog"
+  ],
+  "lighting": "day",
+  "fog": "light",
+  "wet_road": false,
+  "falling_rain": false,
+  "note": "overcast daytime, colour camera; no falling rain visible; mist hides the top of the tower block / distant tree line",
+  "chunk": "20260901_chunk_0027"
+ }
+}

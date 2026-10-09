@@ -91,7 +91,12 @@ def recompute_failure(ev: dict):
         if want:
             ev.setdefault("reason", {})["condition_registered"] = any(w in wl.lower() for w in want)
     fid_pass = (ev.get("fidelity") or {}).get("pass")
-    if integ.get("vehicles_intact") is not None and integ["vehicles_intact"] < integ.get("min_intact", 0.7):
+    if (ev.get("condition") or {}).get("kind") == "physics":
+        fid_pass = True  # pixel-exact by construction; low edge-SSIM here is the weather itself
+    # Physics weather never moves pixels, so low patch scores there mean "obscured", not "generator damage":
+    # keep those clips scored (recall_intact = recall on still-visible cars). Gate only generative clips.
+    if (ev.get("condition") or {}).get("kind") != "physics" and \
+            integ.get("vehicles_intact") is not None and integ["vehicles_intact"] < integ.get("min_intact", 0.7):
         fid_pass = False  # generator blurred / merged / erased too many vehicles -> not a valid test case
         ev.setdefault("fidelity", {})["rejected_by"] = "vehicle_integrity"
     ev["failure"] = bool(fid_pass) and bool(reasons)

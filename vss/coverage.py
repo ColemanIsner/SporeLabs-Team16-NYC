@@ -53,6 +53,87 @@ CONDITIONS = [
      "arm": {"weather": "rain", "time": "night", "intensity": "heavy"}},
 ]
 
+# Indoor-only conditions (warehouses don't get rain): matched on captions like the weather ones.
+INDOOR_CONDITIONS = [
+    {"id": "low_light", "label": "Dim / low light", "query": "dim poorly lit warehouse",
+     "patterns": [r"\b(dim|dimly|poorly lit|low light|low-light|dark(ened)? (area|aisle|room)|shadowy)\b"], "arm": None},
+    {"id": "occlusion", "label": "Heavy occlusion", "query": "people and objects blocking the view",
+     "patterns": [r"\b(occlud\w*|obstruct\w*|blocking the view|partially (hidden|blocked|obscured)|crowded)\b"], "arm": None},
+]
+
+# Scene types: camera_id prefix first, then capture_type / caption keywords.
+SCENES = [
+    {"id": "highway", "label": "Highway / traffic cam", "cams": ["i24"],
+     "conditions": ["night", "rain", "fog", "snow", "glare", "night_rain"]},
+    {"id": "dashcam", "label": "Dashcam / driving", "cams": ["pie_"],
+     "conditions": ["night", "rain", "fog", "snow", "glare", "night_rain"]},
+    {"id": "city_street", "label": "City street cam", "cams": ["nyc_streets", "sf_streets"],
+     "conditions": ["night", "rain", "snow", "night_rain"]},
+    {"id": "residential", "label": "Residential / neighborhood", "cams": ["neighborhood"],
+     "conditions": ["night", "rain", "snow"]},
+    {"id": "bike", "label": "Bike / egocentric", "cams": ["nyc_bike"],
+     "conditions": ["night", "rain", "snow", "night_rain"]},
+    {"id": "indoor", "label": "Warehouse / indoor", "cams": ["sdg_warehouse", "smartspace"],
+     "conditions": ["low_light", "occlusion"]},
+]
+
+
+DUSK = {"id": "dusk", "label": "Dusk / dawn", "patterns": [r"\b(dusk|dawn|twilight|sunset|sunrise|golden hour)\b"]}
+FLAT_CONDS = ["night", "rain", "fog", "snow", "glare", "dusk"]
+
+
+def inventory_list(clips: list[dict]) -> list[dict]:
+    """Flat per-scene inventory for results/inventory.json (fixed condition keys)."""
+    conds = {c["id"]: c for c in CONDITIONS + [DUSK]}
+    out = []
+    for sc in SCENES:
+        cl = [c for c in clips if scene_of(c) == sc["id"]]
+        out.append({"scene_type": sc["id"], "label": sc["label"], "n_clips": len(cl),
+                    "cameras": sorted({c.get("camera_id") for c in cl if c.get("camera_id")}),
+                    "conditions": {k: sum(1 for c in cl if matches(conds[k], c.get("reasoning_content"))) for k in FLAT_CONDS}})
+    return out
+
+
+def scene_of(clip: dict) -> str:
+    cam = str(clip.get("camera_id") or "")
+    for sc in SCENES:
+        if any(cam.startswith(p) for p in sc["cams"]):
+            return sc["id"]
+    ct = clip.get("capture_type")
+    cap = (clip.get("reasoning_content") or "").lower()
+    if ct in ("warehouse", "crowds") or "warehouse" in cap or "indoor" in cap:
+        return "indoor"
+    if ct == "traffic" or HIGHWAY.search(cap):
+        return "highway"
+    if "dashboard" in cap or "mounted on a moving vehicle" in cap:
+        return "dashcam"
+    return "city_street"
+
+
+def inventory(clips: list[dict]) -> dict:
+    conds = {c["id"]: c for c in CONDITIONS + INDOOR_CONDITIONS}
+    by_scene: dict = {}
+    for c in clips:
+        by_scene.setdefault(scene_of(c), []).append(c)
+    scenes = []
+    for sc in SCENES:
+        cl = by_scene.get(sc["id"], [])
+        cams: dict = {}
+        for c in cl:
+            cams[c.get("camera_id") or "?"] = cams.get(c.get("camera_id") or "?", 0) + 1
+        grid = []
+        for cid in ["clear_day"] + sc["conditions"]:
+            cond = conds[cid]
+            n = sum(1 for c in cl if matches(cond, c.get("reasoning_content")))
+            grid.append({"id": cid, "label": cond["label"], "n": n,
+                         "frac": round(n / max(1, len(cl)), 3), "relevant": cid != "clear_day",
+                         "empty": cid != "clear_day" and n == 0})
+        scenes.append({"id": sc["id"], "label": sc["label"], "n_clips": len(cl), "cameras": cams,
+                       "conditions": grid, "n_empty": sum(1 for g in grid if g["empty"])})
+    return {"scenes": scenes, "n_scenes": sum(1 for s in scenes if s["n_clips"]),
+            "method": "scene type from camera_id prefix (fallback: capture_type + caption); condition = keyword match on the VSS caption"}
+
+
 NEG = re.compile(r"\b(no|not|without|absence of|free of|isn't|is not|are no)\s+(\w+\s+){0,2}$")
 HIGHWAY = re.compile(r"\b(highway|freeway|interstate|expressway|motorway|multi-lane|lanes of traffic)\b")
 
@@ -126,6 +207,8 @@ def coverage(k: int = 10) -> dict:
         "method": "VSS /api/v1/search per condition query + keyword scan of VSS reasoning_content captions from /api/v1/videos/explore",
         "conditions": rows,
         "gaps": [r["id"] for r in rows if r["gap"]],
+        "inventory": inventory(clips),
+        "inventory_list": inventory_list(clips),
     }
 
 
@@ -139,11 +222,16 @@ def main():
     tmp = Path(a.out).with_suffix(".tmp")
     tmp.write_text(json.dumps(cov, indent=2))
     tmp.replace(a.out)
+    inv = Path(a.out).parent / "inventory.json"
+    inv.with_suffix(".tmp").write_text(json.dumps(cov["inventory_list"], indent=2))
+    inv.with_suffix(".tmp").replace(inv)
     print(f"indexed={cov['n_indexed']} highway={cov['n_highway']} ({cov['seconds']}s)")
     for r in cov["conditions"]:
         print(f"  {r['label']:<18} all={r['n_clips']:>3} highway={r['n_highway']:>3} "
               f"search rel={r['search_relevant']}/{len(r['top_hits']) and r['top_k']} top={r['search_top_score']}"
               f"{'  <-- GAP' if r['gap'] else ''}")
+    for sc in cov["inventory"]["scenes"]:
+        print(f"  [{sc['label']}] {sc['n_clips']} clips: " + ", ".join(f"{g['id']}={g['n']}" for g in sc["conditions"]))
 
 
 if __name__ == "__main__":

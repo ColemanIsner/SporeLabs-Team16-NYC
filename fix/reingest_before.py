@@ -20,7 +20,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from reingest_common import (BEFORE, CAMERA, CUSTOM_PROMPT, QUERIES, QUERY_IDS, ROOT, SET, camera_chunks,
+from reingest_common import (TARGET_SETS, before_path, CAMERA, CUSTOM_PROMPT, QUERIES, QUERY_IDS, ROOT, SET, camera_chunks,
                              caption_rate, client, dump, load_labels, precision, search_hits, seg_captions,
                              targets)
 
@@ -80,11 +80,14 @@ def sheet(chunks: list[dict], frames: dict, out: Path) -> None:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-frames", action="store_true")
+    ap.add_argument("--set", default="latest", choices=TARGET_SETS,
+                    help="latest = approved spec (10 latest complete chunks); nightfog = 20260902 chunks 2..11")
     a = ap.parse_args()
+    BEFORE = before_path(a.set)
     t0 = time.time()
     chunks = client.explore_all()
     cam = camera_chunks(chunks)
-    tgts = targets(chunks)
+    tgts = targets(chunks, a.set)
     tset = {c["original_video"] for c in tgts}
     others = sorted([c for c in cam if c["original_video"] not in tset], key=lambda c: c["filename"])
 
@@ -93,17 +96,19 @@ def main():
         with ThreadPoolExecutor(6) as ex:
             for c, fs in zip(cam, ex.map(frames_for, cam)):
                 frames[c["original_video"]] = fs
-        sheet(sorted(tgts, key=lambda c: c["filename"]), frames, SHEETS / "before_frames.jpg")
-        half = len(others) // 2
-        sheet(others[:half], frames, SHEETS / "before_frames_others_a.jpg")
-        sheet(others[half:], frames, SHEETS / "before_frames_others_b.jpg")
+        if a.set == "latest":  # sheets are drawn for the approved split; other sets reuse the same frames
+            sheet(sorted(tgts, key=lambda c: c["filename"]), frames, SHEETS / "before_frames.jpg")
+            half = len(others) // 2
+            sheet(others[:half], frames, SHEETS / "before_frames_others_a.jpg")
+            sheet(others[half:], frames, SHEETS / "before_frames_others_b.jpg")
 
     labels = load_labels()
     searches = {q: search_hits(q) for q in QUERY_IDS}
     out = {
         "updated": time.strftime("%Y-%m-%dT%H:%M:%S"),
-        "set": SET, "camera_id": CAMERA,
-        "selection": "10 latest complete chunks (every segment 1..total_segments) by (upload_timestamp, chunk_index)",
+        "set": SET, "target_set": a.set, "camera_id": CAMERA,
+        "selection": ("10 latest complete chunks (every segment 1..total_segments) by (upload_timestamp, chunk_index)"
+                      if a.set == "latest" else "20260902 stream chunks 2..11 (visually night + fog/mist)"),
         "custom_prompt": CUSTOM_PROMPT,
         "targets": [{
             "original_video": c["original_video"], "filename": c["filename"], "stream_id": c.get("stream_id"),

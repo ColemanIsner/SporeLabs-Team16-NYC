@@ -296,5 +296,193 @@
     "gap_id": "rain",
     "summary": "Heavy rain: 0 real highway clips -> filled 2 -> recall 0.044",
     "finished": 1791565293.981146
+  },
+  {
+    "kind": "spore",
+    "iteration": 4,
+    "mode": "loop",
+    "started": 1791567601.0662222,
+    "status": "done",
+    "stages": {
+      "1": {
+        "name": "search",
+        "t0": 1791567601.081996,
+        "status": "done",
+        "headline": "Search the real archive for each condition",
+        "n_indexed": 612,
+        "n_highway": 127,
+        "gaps": [
+          "rain",
+          "fog",
+          "snow",
+          "glare",
+          "night_rain"
+        ],
+        "per_condition": {
+          "clear_day": 23,
+          "night": 5,
+          "rain": 0,
+          "fog": 0,
+          "snow": 0,
+          "glare": 0,
+          "night_rain": 0
+        },
+        "t1": 1791567629.520963,
+        "seconds": 28.4
+      },
+      "2": {
+        "name": "report",
+        "t0": 1791567629.522193,
+        "status": "done",
+        "headline": "Explain the gap (W&B Inference)",
+        "gap": "The archive is missing real highway/traffic clips for glare, night, fog, snow, and night-rain: highway has 30 clips but 0 real clips in any of those conditions. City street has 212 clips but 0 night/rain/snow, and indoor has 60 clips but 0 low-light/occlusion.",
+        "next_condition": "glare",
+        "next_label": "Low sun glare \u00b7 Highway / traffic cam",
+        "next_id": "highway:glare",
+        "why": "Highway cameras have 0 real glare clips and no synthetic tests, so the stack is unproven for a common low-sun condition; VSS glare search currently returns 0 relevant results.",
+        "recommendation": "Fill highway:glare next because it is the top-ranked fillable candidate, has 0 real highway clips and no synthetic coverage, and glare is a realistic highway condition that can hide vehicles from both search and detection.",
+        "source": "llm",
+        "t1": 1791567644.883127,
+        "seconds": 15.4
+      },
+      "3": {
+        "name": "fill",
+        "t0": 1791567644.885121,
+        "status": "done",
+        "headline": "Generate Low sun glare \u00b7 Highway / traffic cam clips",
+        "condition": "glare",
+        "scene": "highway",
+        "label": "Low sun glare \u00b7 Highway / traffic cam",
+        "arm": {
+          "kind": "pixel",
+          "pixel": "glare",
+          "effect": "glare"
+        },
+        "seeds": [
+          "i24_scene1_p1c1_00",
+          "i24_scene1_p1c1_04"
+        ],
+        "clips": [
+          "i24_scene1_p1c1_00__phys_glare",
+          "i24_scene1_p1c1_04__phys_glare"
+        ],
+        "generators": [
+          "physics"
+        ],
+        "t1": 1791567655.914589,
+        "seconds": 11.0
+      },
+      "4": {
+        "name": "measure",
+        "t0": 1791567655.916864,
+        "status": "done",
+        "headline": "Measure the stack on the new clips",
+        "n_clips": 2,
+        "n_evaluated": 2,
+        "mean_recall": 0.758,
+        "failure_rate": 0.0,
+        "per_clip": [
+          {
+            "clip_id": "i24_scene1_p1c1_00__phys_glare",
+            "recall": 0.7386,
+            "agree": 1.0,
+            "fidelity": 0.8087,
+            "failure": false
+          },
+          {
+            "clip_id": "i24_scene1_p1c1_04__phys_glare",
+            "recall": 0.7782,
+            "agree": 1.0,
+            "fidelity": 0.7747,
+            "failure": false
+          }
+        ],
+        "top_failures": [
+          {
+            "arm": "physics:rain@1.0",
+            "failure_rate": 1.0,
+            "n": 11,
+            "mean_recall": 0.136
+          },
+          {
+            "arm": "physics:fog@1.0",
+            "failure_rate": 1.0,
+            "n": 11,
+            "mean_recall": 0.064
+          },
+          {
+            "arm": "physics:rain@0.8",
+            "failure_rate": 1.0,
+            "n": 4,
+            "mean_recall": 0.257
+          },
+          {
+            "arm": "physics:fog@0.7",
+            "failure_rate": 0.909,
+            "n": 11,
+            "mean_recall": 0.304
+          }
+        ],
+        "steps": [
+          {
+            "step": "eval/run_all.py --reason",
+            "ok": true,
+            "seconds": 28.4,
+            "tail": ""
+          },
+          {
+            "step": "eval/render_all.py",
+            "ok": true,
+            "seconds": 5.3,
+            "tail": ""
+          },
+          {
+            "step": "vss/vss_eval.py",
+            "ok": true,
+            "seconds": 29.0,
+            "tail": ""
+          }
+        ],
+        "t1": 1791567718.680485,
+        "seconds": 62.8
+      },
+      "5": {
+        "name": "continue",
+        "t0": 1791567718.682558,
+        "status": "done",
+        "headline": "Re-search the archive, pick the next gap",
+        "n_indexed": 612,
+        "n_highway": 127,
+        "gaps": [
+          "rain",
+          "fog",
+          "snow",
+          "glare",
+          "night_rain"
+        ],
+        "per_condition": {
+          "clear_day": 23,
+          "night": 5,
+          "rain": 0,
+          "fog": 0,
+          "snow": 0,
+          "glare": 0,
+          "night_rain": 0
+        },
+        "t1": 1791567744.786767,
+        "seconds": 26.1
+      }
+    },
+    "running_stage": null,
+    "gap_id": "highway:glare",
+    "gap": "Low sun glare \u00b7 Highway / traffic cam",
+    "why": "Highway cameras have 0 real glare clips and no synthetic tests, so the stack is unproven for a common low-sun condition; VSS glare search currently returns 0 relevant results.",
+    "next_condition": "glare",
+    "next_scene": "highway",
+    "filled": 2,
+    "recall": 0.758,
+    "failure_rate": 0.0,
+    "summary": "Low sun glare \u00b7 Highway / traffic cam: 0 real clips of 30 -> filled 2 -> recall 0.758",
+    "finished": 1791567744.788384
   }
 ]

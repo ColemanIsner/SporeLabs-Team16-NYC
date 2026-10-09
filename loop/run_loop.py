@@ -103,7 +103,7 @@ def aggregate() -> dict:
         k = arm_key(cond)
         conds[k] = cond
         s = stats[k]
-        if not (ev.get("fidelity") or {}).get("pass", True):
+        if cond.get("kind") != "physics" and not (ev.get("fidelity") or {}).get("pass", True):
             s["fid_reject"] += 1
             continue
         s["n"] += 1
@@ -120,7 +120,8 @@ def aggregate() -> dict:
     arms = [{"condition": conds[k], "arm": k, "n": s["n"],
              "failure_rate": round(s["fail"] / s["n"], 3) if s["n"] else None,
              "mean_recall": mean(s["recall"]), "mean_agree": mean(s["agree"]),
-             "fidelity_rejects": s["fid_reject"]} for k, s in stats.items()]
+             "fidelity_rejects": s["fid_reject"], "n_gated": s["fid_reject"],
+             "scored": s["n"] > 0} for k, s in stats.items()]
     # Attribute Cosmos drops to the condition, not the generator: divide by the clear-day Cosmos control.
     ctrl = next((a for a in arms if a["arm"] == "clear_day_light"), None)
     for a in arms:

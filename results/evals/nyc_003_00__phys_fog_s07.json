@@ -18,8 +18,10 @@
     "min_frame_ssim": 0.452,
     "seconds": 1.22
   },
-  "failure": false,
-  "failure_reasons": [],
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
   "yolo": {
     "model": "hosted-yolo11s",
     "conf": 0.4,

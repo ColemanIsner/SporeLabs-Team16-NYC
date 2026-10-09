@@ -19,8 +19,10 @@
     "seconds": 1.17,
     "rejected_by": "vehicle_integrity"
   },
-  "failure": false,
-  "failure_reasons": [],
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
   "yolo": {
     "model": "hosted-yolo11s",
     "conf": 0.4,

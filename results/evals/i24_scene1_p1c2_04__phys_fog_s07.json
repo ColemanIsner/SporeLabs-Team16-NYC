@@ -16,11 +16,12 @@
     "threshold": 0.5,
     "frames": 93,
     "min_frame_ssim": 0.6933,
-    "seconds": 1.29,
-    "rejected_by": "vehicle_integrity"
+    "seconds": 1.29
   },
-  "failure": false,
-  "failure_reasons": [],
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
   "yolo": {
     "model": "hosted-yolo11s",
     "conf": 0.4,

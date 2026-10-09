@@ -25,34 +25,38 @@
         "time": "day",
         "intensity": "heavy",
         "kind": "physics",
-        "severity": 0.7,
+        "severity": 1.0,
         "base": "seed",
         "physics": "rain"
       },
-      "arm": "physics:rain@0.7",
-      "n": 9,
+      "arm": "physics:rain@1.0",
+      "n": 11,
       "failure_rate": 1.0,
-      "mean_recall": 0.281,
-      "mean_agree": 1.0,
-      "fidelity_rejects": 2,
+      "mean_recall": 0.136,
+      "mean_agree": 0.818,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
       "condition": {
         "weather": "fog",
         "time": "day",
-        "intensity": "light",
+        "intensity": "heavy",
         "kind": "physics",
-        "severity": 0.4,
+        "severity": 1.0,
         "base": "seed",
         "physics": "fog"
       },
-      "arm": "physics:fog@0.4",
-      "n": 9,
+      "arm": "physics:fog@1.0",
+      "n": 11,
       "failure_rate": 1.0,
-      "mean_recall": 0.315,
-      "mean_agree": 0.963,
-      "fidelity_rejects": 2,
+      "mean_recall": 0.064,
+      "mean_agree": 0.667,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
@@ -71,6 +75,28 @@
       "mean_recall": 0.257,
       "mean_agree": 0.833,
       "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 0.7,
+        "base": "seed",
+        "physics": "fog"
+      },
+      "arm": "physics:fog@0.7",
+      "n": 11,
+      "failure_rate": 0.909,
+      "mean_recall": 0.304,
+      "mean_agree": 0.758,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
@@ -89,6 +115,48 @@
       "mean_recall": 0.406,
       "mean_agree": 0.97,
       "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "rain",
+        "time": "day",
+        "intensity": "heavy",
+        "kind": "physics",
+        "severity": 0.7,
+        "base": "seed",
+        "physics": "rain"
+      },
+      "arm": "physics:rain@0.7",
+      "n": 11,
+      "failure_rate": 0.818,
+      "mean_recall": 0.388,
+      "mean_agree": 0.97,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
+      "kind": "physics"
+    },
+    {
+      "condition": {
+        "weather": "fog",
+        "time": "day",
+        "intensity": "light",
+        "kind": "physics",
+        "severity": 0.4,
+        "base": "seed",
+        "physics": "fog"
+      },
+      "arm": "physics:fog@0.4",
+      "n": 11,
+      "failure_rate": 0.818,
+      "mean_recall": 0.432,
+      "mean_agree": 0.97,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
@@ -107,6 +175,8 @@
       "mean_recall": 0.277,
       "mean_agree": 0.939,
       "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
@@ -120,11 +190,13 @@
         "physics": "snow"
       },
       "arm": "physics:snow@1.0",
-      "n": 9,
-      "failure_rate": 0.556,
-      "mean_recall": 0.064,
-      "mean_agree": 0.778,
-      "fidelity_rejects": 2,
+      "n": 11,
+      "failure_rate": 0.818,
+      "mean_recall": 0.208,
+      "mean_agree": 0.788,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
@@ -143,6 +215,8 @@
       "mean_recall": 0.713,
       "mean_agree": 0.97,
       "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     },
     {
@@ -159,6 +233,8 @@
       "mean_recall": 0.48,
       "mean_agree": 0.944,
       "fidelity_rejects": 2,
+      "n_gated": 2,
+      "scored": true,
       "kind": "generative",
       "control_recall": 0.807,
       "recall_rel_control": 0.595
@@ -177,6 +253,8 @@
       "mean_recall": 0.694,
       "mean_agree": 0.944,
       "fidelity_rejects": 2,
+      "n_gated": 2,
+      "scored": true,
       "kind": "generative",
       "control_recall": 0.807,
       "recall_rel_control": 0.86
@@ -195,6 +273,8 @@
       "mean_recall": 0.769,
       "mean_agree": 0.833,
       "fidelity_rejects": 2,
+      "n_gated": 2,
+      "scored": true,
       "kind": "generative",
       "control_recall": 0.807,
       "recall_rel_control": 0.953
@@ -213,6 +293,8 @@
       "mean_recall": 0.807,
       "mean_agree": 1.0,
       "fidelity_rejects": 2,
+      "n_gated": 2,
+      "scored": true,
       "kind": "generative",
       "control_recall": 0.807,
       "recall_rel_control": 1.0
@@ -231,66 +313,35 @@
       "mean_recall": 0.74,
       "mean_agree": 0.944,
       "fidelity_rejects": 2,
+      "n_gated": 2,
+      "scored": true,
       "kind": "generative",
       "control_recall": 0.807,
       "recall_rel_control": 0.917
     },
     {
       "condition": {
-        "weather": "rain",
+        "weather": "clear",
         "time": "day",
         "intensity": "heavy",
         "kind": "physics",
-        "severity": 1.0,
+        "severity": 0.8,
         "base": "seed",
-        "physics": "rain"
+        "physics": "glare",
+        "glare": true
       },
-      "arm": "physics:rain@1.0",
-      "n": 9,
+      "arm": "physics:clear@0.8",
+      "n": 2,
       "failure_rate": 0.0,
-      "mean_recall": 0.058,
-      "mean_agree": 0.815,
-      "fidelity_rejects": 2,
-      "kind": "physics"
-    },
-    {
-      "condition": {
-        "weather": "fog",
-        "time": "day",
-        "intensity": "heavy",
-        "kind": "physics",
-        "severity": 1.0,
-        "base": "seed",
-        "physics": "fog"
-      },
-      "arm": "physics:fog@1.0",
-      "n": 9,
-      "failure_rate": 0.0,
-      "mean_recall": 0.078,
-      "mean_agree": 0.667,
-      "fidelity_rejects": 2,
-      "kind": "physics"
-    },
-    {
-      "condition": {
-        "weather": "fog",
-        "time": "day",
-        "intensity": "heavy",
-        "kind": "physics",
-        "severity": 0.7,
-        "base": "seed",
-        "physics": "fog"
-      },
-      "arm": "physics:fog@0.7",
-      "n": 9,
-      "failure_rate": 0.0,
-      "mean_recall": 0.2,
-      "mean_agree": 0.778,
-      "fidelity_rejects": 2,
+      "mean_recall": 0.765,
+      "mean_agree": 1.0,
+      "fidelity_rejects": 0,
+      "n_gated": 0,
+      "scored": true,
       "kind": "physics"
     }
   ],
-  "budget_used": 143,
+  "budget_used": 145,
   "rounds": 0,
-  "updated": 1791567170.909716
+  "updated": 1791567833.249515
 }

@@ -3,7 +3,7 @@ import {
   FIXTURES, url, useJSON, useEvals, condLabel, isPixel, pixelName, pct, num, fmtAnswer,
   WEATHERS, TIMES, INTENSITIES, ago,
   type Seed, type Variant, type Eval, type FailureMap, type Arm, type RealCheck, type FixRow, type Condition,
-  type Coverage, type GapReport, type SeverityCurve, type SevPoint, type Overlay, type LoopEntry,
+  type Coverage, type GapReport, type GapCandidate, type SeverityCurve, type SevPoint, type Overlay, type LoopEntry,
 } from "./data";
 import { SyncGroup, Video } from "./sync";
 
@@ -60,8 +60,10 @@ export default function App() {
         ]}
       />
       <Section n="1" id="search" kicker="Search to find the gap"
-        title={<>We searched the real archive for every condition. <em>Most of the bad-weather rows are empty.</em></>}
+        title={<>An agent sorts through the archive, figures out what it has, <em>then looks for the gaps that matter for each kind of scene.</em></>}
         aside={<LiveTag label={coverage?.updated ? `searched ${ago(coverage.updated)}` : undefined} active={running?.running_stage === 1} />}>
+        <Inventory cov={coverage} />
+        <h3 className="subhead">VSS search, per condition, across the whole archive</h3>
         <CoverageBars cov={coverage} />
         {real && real.length > 0 && (
           <details className="realfold">
@@ -164,13 +166,58 @@ function CoverageBars({ cov }: { cov: Coverage | null | undefined }) {
   );
 }
 
+const INV_COLS = ["clear_day", "night", "rain", "fog", "snow", "glare", "night_rain", "low_light", "occlusion"];
+const INV_LABEL: Record<string, string> = { clear_day: "clear day", night: "night", rain: "rain", fog: "fog", snow: "snow", glare: "glare", night_rain: "night + rain", low_light: "low light", occlusion: "occlusion" };
+
+function Inventory({ cov }: { cov: Coverage | null | undefined }) {
+  const scenes = (cov?.inventory?.scenes ?? []).filter((s) => s.n_clips > 0);
+  if (!cov || !scenes.length) return null;
+  const cols = INV_COLS.filter((c) => scenes.some((s) => s.conditions.some((g) => g.id === c)));
+  return (
+    <div className="inv">
+      <p className="cov-cap mono">step 1 · what's in the archive: {cov.n_indexed} indexed clips, sorted into scene types by camera and VSS caption</p>
+      <div className="inv-cards">
+        {scenes.map((s) => (
+          <div key={s.id} className="inv-card">
+            <b>{s.n_clips}</b>
+            <p>{s.label}</p>
+            <small className="mono">{Object.keys(s.cameras).join(" · ")}</small>
+          </div>
+        ))}
+      </div>
+      <p className="cov-cap mono">step 2 · which conditions each scene realistically faces, and how many real clips show them (blank = not relevant to that scene)</p>
+      <div className="inv-grid" style={{ gridTemplateColumns: `minmax(170px, 1.3fr) repeat(${cols.length}, minmax(64px, 1fr))` }}>
+        <span />
+        {cols.map((c) => <span key={c} className="hm-col">{INV_LABEL[c] ?? c}</span>)}
+        {scenes.map((s) => (
+          <Fragment key={s.id}>
+            <span className="inv-row">{s.label}<small>{s.n_clips} clips</small></span>
+            {cols.map((c) => {
+              const g = s.conditions.find((x) => x.id === c);
+              if (!g) return <span key={c} className="inv-cell na" />;
+              const cls = g.id === "clear_day" ? "base" : g.empty ? "empty" : "some";
+              return (
+                <span key={c} className={`inv-cell ${cls}`} title={`${s.label} · ${g.label}: ${g.n} of ${s.n_clips}`}>
+                  <b>{g.n}</b>{g.empty && <small>gap</small>}
+                </span>
+              );
+            })}
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ---------- 2 gap report ---------- */
 
 function GapCard({ rep }: { rep: GapReport | null | undefined }) {
   if (rep === undefined) return <div className="skeleton tall" />;
   if (!rep || !rep.gap) return <Empty title="No gap report yet" hint="loop/.venv/bin/python loop/spore.py --stage 2" />;
+  const cands = rep.candidates ?? [];
   const ev = Array.isArray(rep.evidence) ? rep.evidence : rep.evidence ? [rep.evidence] : [];
   return (
+    <>
     <div className="gapcard">
       <div className="gap-main">
         <p className="label">The gap</p>
@@ -186,9 +233,35 @@ function GapCard({ rep }: { rep: GapReport | null | undefined }) {
           <b>{rep.next_label ?? rep.next_condition}</b>
           <p>{rep.recommendation}</p>
         </div>
+        {rep.next_why && <p className="next-why">{rep.next_why}</p>}
         <p className="src mono">{rep.source === "llm" ? `W&B Inference · ${rep.model ?? ""} · Weave-traced` : "deterministic fallback"}{rep.updated ? ` · ${ago(rep.updated)}` : ""}</p>
       </aside>
     </div>
+    {cands.length > 0 && (
+      <div className="ranked">
+        <p className="label">Candidate gaps, ranked by relevance × emptiness × how badly the stack already fails</p>
+        <ol>
+          {cands.slice(0, 5).map((c) => {
+            const win = c.id === rep.next_id;
+            return (
+              <li key={c.id} className={win ? "win" : ""}>
+                <span className="rk">{c.rank}</span>
+                <div>
+                  <p><b>{c.label}</b> · {c.scene_label}{win && <span className="chip solid">filling next</span>}{c.repeat && <span className="chip">just filled</span>}</p>
+                  <small>{c.why}</small>
+                </div>
+                <div className="rk-stats mono">
+                  <span>{c.real_clips}/{c.scene_clips} real</span>
+                  <span>{c.failure_rate != null ? `fails ${pct(c.failure_rate)}` : "untested"}</span>
+                  <b>{num(c.score ?? c.priority, 2)}</b>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    )}
+    </>
   );
 }
 
@@ -484,7 +557,9 @@ function Timeline({ entries }: { entries: LoopEntry[] | null | undefined }) {
         }
         const st = e.stages ?? {};
         const s2 = st["2"], s3 = st["3"], s4 = st["4"];
-        const recall = s4?.mean_recall as number | undefined;
+        const recall = (e.recall ?? (s4?.mean_recall as number | undefined)) ?? undefined;
+        const filledN = e.filled ?? (s3?.clips as string[] | undefined)?.length;
+        const why = e.why ?? (s2?.why as string | undefined);
         return (
           <li key={`s${e.iteration}-${idx}`} className={`tl ${e.status === "running" ? "running" : "done"}`}>
             <div className="tl-head">
@@ -493,12 +568,13 @@ function Timeline({ entries }: { entries: LoopEntry[] | null | undefined }) {
               <span className="mono dim">{ago(e.started)}</span>
             </div>
             <div className="tl-flow">
-              <span className="tl-gap">gap: <b>{String(s2?.next_label ?? e.gap_id ?? s3?.label ?? "—")}</b></span>
+              <span className="tl-gap">gap: <b>{String(e.gap ?? s2?.next_label ?? e.gap_id ?? s3?.label ?? "—")}</b></span>
               <span className="arr">→</span>
-              <span>filled <b>{(s3?.clips as string[] | undefined)?.length ?? "—"}</b> clips</span>
+              <span>filled <b>{filledN ?? "—"}</b> clips</span>
               <span className="arr">→</span>
               <span>measured recall <b className={recall != null && recall < 0.7 ? "bad" : ""}>{pct(recall)}</b></span>
             </div>
+            {why && <p className="tl-why">why: {why}</p>}
             <div className="tl-stages">
               {["1", "2", "3", "4", "5"].map((k) => {
                 const s = st[k];
@@ -810,8 +886,10 @@ function Heatmap({ map, mode }: { map: FailureMap | null | undefined; mode: "phy
   );
 }
 
+const gated = (a?: Arm) => !!a && ((a.scored === false) || (!a.n && (a.n_gated ?? 0) > 0));
+
 function PhysicsGrid({ arms }: { arms: Arm[] }) {
-  const phys = arms.filter((a) => !isPixel(a.condition) && typeof a.condition.severity === "number" && a.n > 0);
+  const phys = arms.filter((a) => !isPixel(a.condition) && typeof a.condition.severity === "number" && (a.n > 0 || (a.n_gated ?? 0) > 0));
   const kinds = [...new Set(phys.map((a) => String(a.condition.physics ?? a.condition.weather)))].sort();
   const sevs = [...new Set(phys.map((a) => (a.condition.severity as number).toFixed(1)))].sort();
   const get = (k: string, s: string) => phys.find((a) => String(a.condition.physics ?? a.condition.weather) === k && (a.condition.severity as number).toFixed(1) === s);
@@ -819,7 +897,7 @@ function PhysicsGrid({ arms }: { arms: Arm[] }) {
     <div className="hunt">
       <div className="facets">
         <div className="facet">
-          <p className="label">YOLO recall vs the clean seed · rows = weather layer · columns = severity</p>
+          <p className="label">Detector recall on cars still visible through the weather · rows = weather layer · columns = severity</p>
           <div className="hm" style={{ gridTemplateColumns: `64px repeat(${sevs.length}, 1fr)` }}>
             <span />
             {sevs.map((s) => <span key={s} className="hm-col">severity {s}</span>)}
@@ -830,11 +908,16 @@ function PhysicsGrid({ arms }: { arms: Arm[] }) {
                   const a = get(k, s);
                   const r = a?.mean_recall;
                   const bad = r == null ? 0 : 1 - r;
+                  if (gated(a)) return (
+                    <div key={s} className="cell gated" title={`${k} @ ${s}: every clip too obscured to score`}>
+                      <small>too obscured to score</small><small>({a!.n_gated} clips)</small>
+                    </div>
+                  );
                   return (
                     <div key={s} className={`cell ${a ? "on" : "off"} ${bad >= 0.5 && a ? "hotcell" : ""}`}
                       style={{ background: a ? heat(bad) : undefined, color: bad > 0.75 ? "#1a0d07" : undefined }}
                       title={a ? `${k} @ ${s}\nrecall ${pct(r)} · failure ${pct(a.failure_rate)} · n=${a.n}` : "not run"}>
-                      {a ? (<><b>{pct(r)}</b><small>recall · n={a.n}</small></>) : <small>—</small>}
+                      {a ? (<><b>{pct(r)}</b><small>recall on visible cars · n={a.n}{a.n_gated ? ` · ${a.n_gated} gated` : ""}</small></>) : <small>—</small>}
                     </div>
                   );
                 })}
@@ -866,6 +949,11 @@ function Row({ w, inten, arms, mode, control: ctrlArm }: { w: string; inten: str
         const control = w === "clear" && t === "day" && inten === "light";
         const n = a?.n ?? 0;
         const r = a?.failure_rate ?? 0;
+        if (gated(a) && !(control && mode === "cosmos")) return (
+          <div key={`${t}-g`} className="cell gated" title={`${condLabel(a!.condition)}: too obscured to score`}>
+            <small>too obscured to score</small><small>({a!.n_gated} clips)</small>
+          </div>
+        );
         return (
           <div
             key={`${t}-${n}`}
