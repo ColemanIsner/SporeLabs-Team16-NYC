@@ -2,6 +2,7 @@ import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
+import { spawn } from "node:child_process";
 
 // Serves ../data, ../results (repo root) and ./fixtures straight from disk.
 // Missing files return a real 404 (no SPA fallback), and mp4s support Range
@@ -19,6 +20,47 @@ const TYPES: Record<string, string> = {
   ".jpg": "image/jpeg",
   ".png": "image/png",
 };
+
+// Live endpoints for the demo: /api/ask?q= runs a real VSS search (vss/ask.py);
+// /api/clip?source=s3://... streams a VSS segment through the backend with the team token.
+function liveApi(): Plugin {
+  const handler = (req: any, res: any, next: () => void) => {
+    const u = new URL(req.url || "", "http://x");
+    if (u.pathname.endsWith("/api/ask")) {
+      const q = (u.searchParams.get("q") || "").slice(0, 200);
+      if (!q.trim()) { res.statusCode = 400; return res.end("{}"); }
+      const p = spawn("python3", [path.join(ROOT, "vss", "ask.py"), q], { cwd: ROOT });
+      let out = "", err = "";
+      p.stdout.on("data", (d) => (out += d));
+      p.stderr.on("data", (d) => (err += d));
+      p.on("close", (code) => {
+        res.setHeader("Content-Type", "application/json");
+        if (code !== 0) { res.statusCode = 502; return res.end(JSON.stringify({ error: err.slice(-300) })); }
+        res.end(out);
+      });
+      return;
+    }
+    if (u.pathname.endsWith("/api/clip")) {
+      const src = u.searchParams.get("source") || "";
+      if (!src.startsWith("s3://")) { res.statusCode = 400; return res.end(); }
+      let tok = "";
+      try { tok = fs.readFileSync(path.join(ROOT, ".vss_token"), "utf8").trim(); } catch { /* */ }
+      const url = `https://team-16-vss.thecosmoslabs.com/api/v1/videos/stream?source=${encodeURIComponent(src)}&token=${tok}`;
+      res.setHeader("Content-Type", "video/mp4");
+      res.setHeader("Cache-Control", "max-age=3600");
+      const p = spawn("curl", ["-s", "-m", "60", url]);
+      p.stdout.pipe(res);
+      req.on("close", () => p.kill());
+      return;
+    }
+    next();
+  };
+  return {
+    name: "spore-live-api",
+    configureServer(s) { s.middlewares.use(handler); },
+    configurePreviewServer(s) { s.middlewares.use(handler); },
+  };
+}
 
 function staticMounts(): Plugin {
   const handler = (req: any, res: any, next: () => void) => {
@@ -61,6 +103,6 @@ function staticMounts(): Plugin {
 
 export default defineConfig({
   base: "./",
-  plugins: [react(), staticMounts()],
+  plugins: [react(), liveApi(), staticMounts()],
   server: { port: 5173, host: true },
 });

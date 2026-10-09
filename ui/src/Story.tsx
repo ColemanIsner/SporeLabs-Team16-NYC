@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { url, useJSON, getJSON, type Coverage, type GapReport, type Eval, type SeverityCurve, type FixRow, type LoopEntry } from "./data";
 import "./story.css";
 
@@ -59,6 +59,7 @@ export default function Story() {
     { key: "intro", render: () => <Intro /> },
     { key: "inventory", render: () => <Inv coverage={coverage} inventory={inventory} /> },
     { key: "missing", render: () => <Missing coverage={coverage} /> },
+    { key: "ask", render: () => <Ask /> },
     { key: "matters", render: () => <Matters report={report} /> },
     { key: "grow", render: () => <Grow /> },
     { key: "test", render: () => <Test seed={seedEval} hero={heroEval} /> },
@@ -78,6 +79,7 @@ export default function Story() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if ((e.target as HTMLElement)?.closest?.("input, textarea")) return;
       if (["ArrowRight", " ", "Enter", "PageDown"].includes(e.key)) { e.preventDefault(); go(1); }
       if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); go(-1); }
     };
@@ -106,6 +108,50 @@ export default function Story() {
           <button className="st-next" onClick={() => setI(0)}>Start over</button>
         )}
       </footer>
+    </div>
+  );
+}
+
+// ---- live VSS search (vite middleware -> vss/ask.py) ----
+type AskHit = { camera_id?: string; score: number; highway: boolean; caption: string; source?: string; shows_it: boolean; object_counts?: string | null };
+type AskRes = { query: string; seconds: number; top_k: number; n_shows_it: number; hits: AskHit[]; error?: string };
+const API = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + "/";
+const askCache = new Map<string, Promise<AskRes>>();
+function askVSS(q: string): Promise<AskRes> {
+  if (!askCache.has(q)) {
+    const p = fetch(`${API}api/ask?q=${encodeURIComponent(q)}`).then((r) => r.json());
+    p.catch(() => askCache.delete(q));
+    askCache.set(q, p);
+  }
+  return askCache.get(q)!;
+}
+const clipUrl = (src?: string) => (src ? `${API}api/clip?source=${encodeURIComponent(src)}` : undefined);
+function counts(oc?: string | null): string {
+  try {
+    const o = JSON.parse(oc || "{}") as Record<string, number>;
+    return Object.entries(o).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k, v]) => `${v} ${k}`).join(", ") || "nothing";
+  } catch { return "—"; }
+}
+function useElapsed(on: boolean) {
+  const [t, setT] = useState(0);
+  useEffect(() => {
+    if (!on) return;
+    const t0 = Date.now(); setT(0);
+    const id = setInterval(() => setT((Date.now() - t0) / 1000), 100);
+    return () => clearInterval(id);
+  }, [on]);
+  return t;
+}
+
+type SponsorKey = "vast" | "nvidia" | "wandb" | "cursor";
+const SPONSOR: Record<SponsorKey, string> = { vast: "VAST Data", nvidia: "NVIDIA", wandb: "W&B · CoreWeave", cursor: "Cursor" };
+function Powered({ by, what, call, delay = 1.6 }: { by: SponsorKey[]; what: ReactNode; call?: ReactNode; delay?: number }) {
+  return (
+    <div className="st-pw rv" style={{ animationDelay: `${delay}s` }}>
+      <span className="lab">How</span>
+      {by.map((b) => <span key={b} className={`sp sp-${b}`}>{SPONSOR[b]}</span>)}
+      <span className="w">{what}</span>
+      {call && <code>{call}</code>}
     </div>
   );
 }
@@ -152,6 +198,9 @@ function Inv({ coverage, inventory }: { coverage?: (Coverage & { cameras?: Recor
           </div>
         ))}
       </div>
+      <Powered by={["vast", "nvidia"]} delay={1.9}
+        what="Reads every clip VSS has indexed in VastDB, with the captions NVIDIA Cosmos Reason wrote at ingest"
+        call={<>GET /api/v1/videos/explore → {total} clips, {rows.length} scene types</>} />
     </>
   );
 }
@@ -173,9 +222,97 @@ function Missing({ coverage }: { coverage?: Coverage | null }) {
           </div>
         ))}
       </div>
-      <p className="st-foot rv" style={{ animationDelay: `${0.4 + rows.length * 0.22}s` }}>
-        Highway clips per condition, from <code>vss.search()</code> plus VSS's own captions.
-      </p>
+      <LiveLog delay={0.4 + rows.length * 0.22} />
+      <Powered by={["vast"]} delay={0.6 + rows.length * 0.22}
+        what="VSS hybrid search (Cosmos Embed1 vectors + captions), then a check of each hit's own caption"
+        call="POST /api/v1/search · live" />
+    </>
+  );
+}
+
+const LIVE_QUERIES = ["highway in heavy rain", "highway in dense fog", "highway covered in snow"];
+function LiveLog({ delay }: { delay: number }) {
+  const [res, setRes] = useState<Record<string, AskRes | "err">>({});
+  useEffect(() => {
+    let alive = true;
+    LIVE_QUERIES.forEach((q) => askVSS(q).then((r) => alive && setRes((m) => ({ ...m, [q]: r }))).catch(() => alive && setRes((m) => ({ ...m, [q]: "err" }))));
+    return () => { alive = false; };
+  }, []);
+  const t = useElapsed(Object.keys(res).length < LIVE_QUERIES.length);
+  return (
+    <div className="st-log rv" style={{ animationDelay: `${delay}s` }}>
+      {LIVE_QUERIES.map((q) => {
+        const r = res[q];
+        const hw = r && r !== "err" ? r.hits.filter((h) => h.highway && h.shows_it).length : 0;
+        return (
+          <div key={q} className="ln">
+            <span className="cmd">vss.search(“{q}”)</span>
+            {!r ? <span className="run">searching… {t.toFixed(1)}s</span>
+              : r === "err" ? <span className="bad">offline</span>
+              : <span className={hw ? "ok" : "bad"}>{r.hits.length} hits · {hw} highway clips actually show it · {r.seconds}s</span>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const SUGGEST = ["construction zone at night", "pedestrian crossing in the rain", "truck stopped on the shoulder"];
+function Ask() {
+  const [q, setQ] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [res, setRes] = useState<AskRes | null>(null);
+  const [err, setErr] = useState("");
+  const inp = useRef<HTMLInputElement>(null);
+  const t = useElapsed(busy);
+  const run = async (query: string) => {
+    if (!query.trim() || busy) return;
+    setQ(query); setBusy(true); setErr(""); setRes(null);
+    try { const r = await askVSS(query.trim()); if (r.error) throw new Error(r.error); setRes(r); }
+    catch { setErr("VSS didn't answer. Try again."); }
+    setBusy(false);
+  };
+  const submit = (e: FormEvent) => { e.preventDefault(); run(q); };
+  const shown = res ? [...res.hits.filter((h) => h.shows_it), ...res.hits.filter((h) => !h.shows_it)].slice(0, 3) : [];
+  return (
+    <>
+      <Title kicker="Try it · live">Ask the archive for anything.</Title>
+      <form className="st-ask rv" style={{ animationDelay: "0.3s" }} onSubmit={submit}
+        onKeyDown={(e) => e.stopPropagation()}>
+        <input ref={inp} value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. construction zone at night" autoFocus />
+        <button type="submit" disabled={busy}>{busy ? `${t.toFixed(1)}s` : "Search"}</button>
+      </form>
+      {!res && !busy && (
+        <div className="st-suggest rv" style={{ animationDelay: "0.5s" }}>
+          {SUGGEST.map((s) => <button key={s} onClick={() => run(s)}>{s}</button>)}
+        </div>
+      )}
+      {busy && <p className="st-sub">Searching {""}every clip in VSS…</p>}
+      {err && <p className="st-sub bad">{err}</p>}
+      {res && (
+        <>
+          <div className="st-big rv">
+            {res.n_shows_it
+              ? <><b>{res.n_shows_it} of {res.hits.length}</b> top results actually show it.</>
+              : <><b className="bad">No footage.</b> None of the top {res.hits.length} actually show it. That's a gap Spore can fill.</>}
+          </div>
+          <div className="st-hits">
+            {shown.map((h, k) => (
+              <figure key={(h.source ?? "") + k} {...rv(k + 1)} className={`rv ${h.shows_it ? "yes" : "no"}`}>
+                <video src={clipUrl(h.source)} autoPlay muted loop playsInline />
+                <figcaption>
+                  <div className="meta"><b>{h.shows_it ? "shows it" : "doesn't"}</b> {h.camera_id} · {h.score.toFixed(2)}</div>
+                  <div className="cap">{h.caption.slice(0, 150)}…</div>
+                  <div className="yolo">YOLO in VSS: {counts(h.object_counts)}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </>
+      )}
+      <Powered by={["vast", "nvidia"]} delay={0.7}
+        what="Live VSS hybrid search; we read each hit's Cosmos Reason caption and YOLO counts straight from its VastDB row"
+        call={res ? `POST /api/v1/search "${res.query}" → ${res.hits.length} hits in ${res.seconds}s` : "POST /api/v1/search"} />
     </>
   );
 }
@@ -207,11 +344,9 @@ function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] 
           </div>
         ))}
       </div>
-      {report?.model && (
-        <p className="st-foot rv" style={{ animationDelay: "1.1s" }}>
-          Reasoned by {report.model} on W&B Inference · traced in Weave
-        </p>
-      )}
+      <Powered by={["wandb"]} delay={1.1}
+        what={<>An LLM on W&B Inference reads the search results and evals and ranks the gaps. Every call is traced in <a href={WEAVE} target="_blank" rel="noreferrer">Weave</a></>}
+        call={report?.model ? `${report.model}${(report as { llm_seconds?: number }).llm_seconds ? ` · ${(report as { llm_seconds?: number }).llm_seconds}s` : ""}` : undefined} />
     </>
   );
 }
@@ -231,6 +366,9 @@ function Grow() {
       <p className="st-foot rv" style={{ animationDelay: "1.5s" }}>
         Same cars, same lanes. So we already know the right answer for every clip.
       </p>
+      <Powered by={["nvidia"]} delay={1.8}
+        what="Cosmos Transfer 2.5 relights the real clip (night); a weather layer adds fog, rain and snow without moving a pixel"
+        call="cosmos-transfer2.5-2b · edge control · 93 frames 720p · H100" />
     </>
   );
 }
@@ -262,6 +400,9 @@ function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
       <p className="st-foot rv" style={{ animationDelay: "1.4s" }}>
         Light fog. Same clip, same VSS pipeline, and two models disagree.
       </p>
+      <Powered by={["nvidia"]} delay={1.7}
+        what="The hosted models VSS runs at ingest, on CoreWeave GPUs: YOLO11s detector and Cosmos3-Reason"
+        call={`YOLO11s × 93 frames · Cosmos3-Reason ${hero?.reason && (hero.reason as { seconds?: number }).seconds ? `${(hero.reason as { seconds?: number }).seconds}s` : ""}`} />
     </>
   );
 }
@@ -300,6 +441,9 @@ function Blind({ curve, headline }: { curve?: SeverityCurve | null; headline?: {
           Below half the cars at {Object.entries(curve.breaking_point).filter(([k, v]) => v != null && k in colors).map(([k, v]) => `${k} ${v}`).join(" · ")}
         </p>
       )}
+      <Powered by={["wandb"]} delay={1.5}
+        what={<>Every generation and eval is logged and traced in <a href={WEAVE} target="_blank" rel="noreferrer">W&B Weave</a></>}
+        call="recall on still-visible seed vehicles · 11 seeds × 3 severities" />
     </>
   );
 }
@@ -334,6 +478,9 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
           <div {...rv(2)}><div className="st-cand"><span className="rank">→</span><div><div className="name">Detector</div><div className="why">Train on Spore's own clips, which come with free labels from the clear-day original.</div></div></div></div>
         </div>
       )}
+      <Powered by={["vast", "nvidia"]} delay={1.3}
+        what="VSS re-ingest: the same clips go back through the pipeline with a weather-aware prompt for Cosmos Reason"
+        call="POST /api/v1/dashboard/reingest {custom_prompt}" />
     </>
   );
 }
