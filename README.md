@@ -4,7 +4,7 @@
 
 **Find where your video AI is weak. Grow the data to fix it.**
 
-Video AI fails quietly on the conditions your cameras don't see often. Spore finds where your video data is weak, grows new data to cover it, and tests your models on it, in a loop.
+Video AI fails quietly on the conditions your cameras don't see often. Spore helps video model operators find gaps in their evaluation data, grow synthetic data to cover them, and build new evals and benchmarks for training better models.
 
 ![Spore demo: the six-step loop](docs/img/spore_story.png)
 

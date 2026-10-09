@@ -7,11 +7,11 @@
 
 ## One-sentence description
 
-Spore finds where your video data is weak, grows new data to cover it, and tests your models on it, in a loop.
+Spore helps video model operators find gaps in their evaluation data, grow synthetic data to cover them, and build new evals and benchmarks for training better models.
 
 ## Description (~150 words)
 
-Video AI fails quietly on the conditions your cameras don't see often. Spore finds where your video data is weak, grows new data to cover it, and tests your models on it, in a loop. It searches VAST's video index to find which relevant conditions the footage is missing. The highway cameras have 30 clips, most in clear daylight, and none at night, in rain, in heavy fog or in snow. An LLM on W&B Inference, traced in Weave, ranks which gaps matter. Spore then grows the missing weather onto real clips with a physics weather layer and NVIDIA Cosmos Transfer. The cars stay where they were, so the right answer is already known and testing on the new data runs automatically. Spore tests the models in the VSS pipeline on CoreWeave GPUs. In light fog, YOLO finds only four in ten cars a person can still see, while Cosmos Reason keeps counting them. Finally, Spore packages the new data to fine-tune or benchmark models for better performance.
+Video AI fails quietly on conditions your cameras don't see often. Spore finds those gaps, grows synthetic data to cover them, and turns that data into evals, in a loop. It searches VAST's video index for missing conditions: the highway cameras have 30 clips, mostly clear daylight, and none at night, in rain, in heavy fog or in snow. An LLM on W&B Inference, traced in Weave, ranks which gaps matter. Spore grows the missing weather onto real clips with a physics weather layer and NVIDIA Cosmos Transfer. The cars stay in place, so the labels carry over and testing runs automatically. On CoreWeave GPUs, it tests the models in the VSS pipeline: in light fog, YOLO finds only four in ten visible cars, while Cosmos Reason keeps counting them. The result is a new benchmark and training set for better models.
 
 ## Tools used
 
