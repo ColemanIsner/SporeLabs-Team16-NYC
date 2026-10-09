@@ -28,3 +28,5 @@ fix/dataset/
 results/fix/*/
 results/verify/i24_frames/
 data/fix_frames/
+video/build/
+video/*.mp4

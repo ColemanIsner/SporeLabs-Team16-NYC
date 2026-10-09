@@ -1,0 +1,167 @@
+1
+00:00:00,600 --> 00:00:02,350
+This is Spore, by SporeLabs.
+
+2
+00:00:02,650 --> 00:00:06,680
+Video AI fails quietly on the conditions your cameras rarely see.
+
+3
+00:00:06,980 --> 00:00:11,085
+Spore finds where your video AI is weak, grows the data to cover it,
+
+4
+00:00:11,085 --> 00:00:13,440
+and tests your models on it, in a loop.
+
+5
+00:00:15,040 --> 00:00:17,270
+First, it looks through everything you have.
+
+6
+00:00:17,570 --> 00:00:22,217
+Spore reads all six hundred twelve real clips indexed in VAST's video search,
+
+7
+00:00:22,217 --> 00:00:24,390
+each with its Cosmos Reason caption.
+
+8
+00:00:25,990 --> 00:00:27,410
+Then it finds the weak spots.
+
+9
+00:00:27,710 --> 00:00:31,090
+These are live VSS searches against the highway cameras.
+
+10
+00:00:31,390 --> 00:00:33,050
+Thirty clips in clear daylight.
+
+11
+00:00:33,350 --> 00:00:34,300
+Zero at night.
+
+12
+00:00:34,600 --> 00:00:35,890
+Zero in heavy rain.
+
+13
+00:00:36,190 --> 00:00:37,150
+Zero in fog.
+
+14
+00:00:37,450 --> 00:00:38,340
+Zero in snow.
+
+15
+00:00:38,640 --> 00:00:42,260
+The detector on these cameras has never been tested in any of it.
+
+16
+00:00:43,860 --> 00:00:47,284
+An LLM on W&B Inference ranks which gaps matter,
+
+17
+00:00:47,284 --> 00:00:49,710
+and every call is traced in Weave.
+
+18
+00:00:50,010 --> 00:00:51,390
+Dense fog goes first.
+
+19
+00:00:51,690 --> 00:00:54,450
+Glare, night, night rain and snow each get their own loop.
+
+20
+00:00:56,050 --> 00:00:59,020
+Next, it grows the missing weather onto a real clip.
+
+21
+00:00:59,320 --> 00:01:02,440
+A physics weather layer adds fog, rain and snow,
+
+22
+00:01:02,440 --> 00:01:05,560
+and NVIDIA Cosmos Transfer turns day into night.
+
+23
+00:01:05,860 --> 00:01:08,980
+The cars stay where they were, so we already know the right answer.
+
+24
+00:01:10,580 --> 00:01:13,570
+Then it tests the models inside the VSS pipeline.
+
+25
+00:01:13,870 --> 00:01:18,500
+On this foggy clip, the Cosmos Reason caption model still counts twelve vehicles.
+
+26
+00:01:18,800 --> 00:01:21,310
+The YOLO detector misses six in ten cars.
+
+27
+00:01:21,610 --> 00:01:24,830
+Same clip, same pipeline, and the two models disagree.
+
+28
+00:01:26,430 --> 00:01:29,900
+Across eleven clips and three severities, the pattern is clear.
+
+29
+00:01:30,200 --> 00:01:32,586
+In light fog, YOLO finds only four in
+
+30
+00:01:32,586 --> 00:01:34,650
+ten cars a person can still see.
+
+31
+00:01:34,950 --> 00:01:37,540
+In heavy fog or heavy rain, it finds one.
+
+32
+00:01:37,840 --> 00:01:40,360
+Every run is traced in W&B Weave.
+
+33
+00:01:41,960 --> 00:01:44,730
+And every frame Spore grows comes already labeled.
+
+34
+00:01:45,030 --> 00:01:49,776
+The weather layer never moves a car, so the twenty-three boxes YOLO found on
+
+35
+00:01:49,776 --> 00:01:54,210
+the clear-day frame line up exactly on the fog, rain and snow versions.
+
+36
+00:01:54,510 --> 00:01:59,499
+That's nine hundred twenty-eight weather frames and nearly twelve thousand vehicle boxes
+
+37
+00:01:59,499 --> 00:02:02,220
+for the Fix step, and not one was drawn by hand.
+
+38
+00:02:03,820 --> 00:02:05,650
+Then Spore picks the next weak spot.
+
+39
+00:02:05,950 --> 00:02:09,190
+Low sun glare held up: YOLO still finds eight in ten.
+
+40
+00:02:09,490 --> 00:02:11,130
+Next up is the highway at night.
+
+41
+00:02:11,430 --> 00:02:13,405
+Find where your video AI is weak,
+
+42
+00:02:13,405 --> 00:02:15,680
+grow the data to fix it, and go again.

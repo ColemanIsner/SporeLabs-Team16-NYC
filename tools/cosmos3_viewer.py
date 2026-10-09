@@ -46,7 +46,7 @@ def main() -> None:
             weather, label = "fog", f"Cosmos3 · {tag[4:]}"
         else:
             w, t, _ = (tag.split("_") + ["", "", ""])[:3]
-            weather = "night-rain" if (w == "rain" and t == "night") else w
+            weather = "night-rain" if (w == "nightrain" or (w == "rain" and t == "night")) else w
             label = "Cosmos3" if c.parent == OUT_DIR else f"Cosmos3 · {tag}"
         add(seed, weather, label, c)
 

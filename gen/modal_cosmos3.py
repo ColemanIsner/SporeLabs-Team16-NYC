@@ -35,7 +35,13 @@ image = (
     modal.Image.from_registry("vllm/vllm-omni:cosmos3")
     .entrypoint([])
     .run_commands("which ffmpeg || (apt-get update && apt-get install -y ffmpeg) || pip install imageio-ffmpeg")
-    .env({"HF_HOME": HF_CACHE, "HF_HUB_ENABLE_HF_TRANSFER": "0"})
+    # OpenCV's thread pool can deadlock inside the forked API server; keep it single-threaded.
+    .env({"HF_HOME": HF_CACHE, "HF_HUB_ENABLE_HF_TRANSFER": "0", "OPENCV_FOR_THREADS_NUM": "1",
+          # torch/OpenMP intra-op threads deadlock in vLLM-Omni's forked API server on the first transfer
+          # request (hangs after frame decode, then 504 at 600 s); single-threaded OpenMP avoids it.
+          "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1",
+          # baked in so the container's re-import sees the same volume config as the local side
+          "COSMOS3_LOCAL_CACHE": os.environ.get("COSMOS3_LOCAL_CACHE", "0")})
 )
 
 app = modal.App("cosmos3-nano-transfer", image=image)
@@ -43,7 +49,38 @@ hf_vol = modal.Volume.from_name("cosmos3-hf-cache", create_if_missing=True)
 hf_secret = modal.Secret.from_name("huggingface")
 
 
-@app.cls(gpu=GPU, volumes={HF_CACHE: hf_vol}, secrets=[hf_secret], timeout=60 * 60, scaledown_window=300,
+EDGE_PRESETS = {"low": (50, 100), "medium": (100, 200), "high": (200, 300), "very_high": (300, 400)}
+
+
+def _edge_video(src: Path, dst: Path, preset: str = "medium") -> Path:
+    """Same canny control vLLM-Omni computes (RGB frames, preset thresholds), written as an mp4."""
+    import cv2
+
+    cv2.setNumThreads(1)
+    lo, hi = EDGE_PRESETS[preset]
+    cap = cv2.VideoCapture(str(src))
+    ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "gray",
+                           "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                           "-crf", "8", str(dst)], stdin=subprocess.PIPE)
+    while True:
+        ok, bgr = cap.read()
+        if not ok:
+            break
+        ff.stdin.write(cv2.Canny(cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB), lo, hi).tobytes())
+    ff.stdin.close()
+    ff.wait()
+    return dst
+
+
+# Extra CPU/RAM so video decode and prompt prep never starve.
+# COSMOS3_LOCAL_CACHE=1: no shared volume; each container downloads its own weights (~2 min) so containers
+# never contend on HF cache locks in the shared volume.
+LOCAL_CACHE = os.environ.get("COSMOS3_LOCAL_CACHE") == "1"
+
+
+@app.cls(gpu=GPU, cpu=16, memory=65536, volumes={} if LOCAL_CACHE else {HF_CACHE: hf_vol}, secrets=[hf_secret],
+         timeout=60 * 60,
+         scaledown_window=300,
          max_containers=int(os.environ.get("COSMOS3_MAX_CONTAINERS", "6")))
 class Cosmos3:
     @modal.enter()
@@ -51,10 +88,14 @@ class Cosmos3:
         import requests
 
         t0 = time.time()
+        # Weights are already in the shared volume; offline mode keeps the server from taking HF file
+        # locks on it (suspected cause of all-but-one containers hanging on their first transfer request).
+        env = {**os.environ, "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"} if os.environ.get("COSMOS3_OFFLINE") == "1" else None
         self.proc = subprocess.Popen(
             ["vllm", "serve", MODEL, "--omni", "--model-class-name", "Cosmos3OmniDiffusersPipeline",
              "--no-guardrails", "--vae-use-tiling", "--allowed-local-media-path", "/",
              "--host", "127.0.0.1", "--port", str(PORT), "--init-timeout", "1800"],
+            env=env,
         )
         while True:
             if self.proc.poll() is not None:
@@ -65,7 +106,6 @@ class Cosmos3:
             except Exception:
                 pass
             time.sleep(5)
-        hf_vol.commit()
         print(f"[cosmos3] server ready in {time.time() - t0:.0f}s on {GPU}", flush=True)
 
     @modal.method()
@@ -83,7 +123,15 @@ class Cosmos3:
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw), "-vf", vf,
                         "-frames:v", str(NUM_FRAMES), "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p",
                         "-crf", "16", str(inp)], check=True)
-        extra = {**(controls or {"edge": True}), "max_frames": NUM_FRAMES, "resolution": "720",
+        controls = dict(controls or {"edge": True})
+        if controls.get("edge") is True or (isinstance(controls.get("edge"), dict) and "control_path" not in controls["edge"]):
+            # Precompute the canny control here instead of in the server: on-the-fly edge generation inside
+            # vLLM-Omni intermittently hangs before denoising (and then 504s at 600 s).
+            hint = controls["edge"] if isinstance(controls["edge"], dict) else {}
+            controls["edge"] = {**hint, "control_path": str(_edge_video(inp, work / "edge.mp4",
+                                                                        hint.get("preset_edge_threshold", "medium")))}
+            controls["edge"].pop("preset_edge_threshold", None)
+        extra = {**controls, "max_frames": NUM_FRAMES, "resolution": "720",
                  "num_video_frames_per_chunk": NUM_FRAMES, **(extra_overrides or {})}
         with inp.open("rb") as f:
             r = requests.post(
@@ -117,10 +165,12 @@ FOG_PROMPT = (
 
 def _run_jobs(jobs: list[dict], out_dir: Path) -> list[dict]:
     out_dir.mkdir(parents=True, exist_ok=True)
+    jobs = [j for j in jobs if not (out_dir / f"{j['name']}.mp4").exists()]
+    print(f"{len(jobs)} jobs to run", flush=True)
     payloads = [(Path(j["video"]).read_bytes(), j["prompt"], j["name"], 1, 35, j.get("controls"),
                  j.get("extra", TUNED_EXTRA)) for j in jobs]
     results = []
-    for res in Cosmos3().transfer.starmap(payloads, return_exceptions=True):
+    for res in Cosmos3().transfer.starmap(payloads, return_exceptions=True, order_outputs=False):
         if isinstance(res, Exception):
             print("FAILED:", res, flush=True)
             continue
