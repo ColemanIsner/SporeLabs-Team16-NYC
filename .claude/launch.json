@@ -8,6 +8,25 @@
         "/Users/cisner/Documents/Coding Work/hackathons/team16/tools/review/server.py"
       ],
       "port": 8765
+    },
+    {
+      "name": "ui",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "ui",
+        "run",
+        "dev"
+      ],
+      "port": 5173
+    },
+    {
+      "name": "spore-static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/cisner/Documents/Coding Work/hackathons/team16/ui/snapshot/serve.mjs"
+      ],
+      "port": 8770
     }
   ]
 }

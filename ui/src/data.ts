@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SNAP } from "./snapshot";
 
 export type Condition = {
   weather?: string; time?: string; intensity?: string; kind?: string;
@@ -29,6 +30,7 @@ const BASE = FIXTURES ? ROOT + "fixtures/" : ROOT;
 export function url(p?: string): string | undefined {
   if (!p) return undefined;
   if (/^https?:\/\//.test(p)) return p;
+  if (SNAP) return SNAP.media[p];
   let s = p.replace(/\\/g, "/");
   const i = s.search(/(^|\/)(data|results)\//);
   if (i > 0) s = s.slice(i + 1);
@@ -36,6 +38,7 @@ export function url(p?: string): string | undefined {
 }
 
 export async function getJSON<T>(path: string): Promise<T | null> {
+  if (SNAP) return (SNAP.json[path] ?? null) as T | null;
   try {
     const r = await fetch(url(path)! + `?t=${Date.now()}`, { cache: "no-store" });
     if (!r.ok) return null;

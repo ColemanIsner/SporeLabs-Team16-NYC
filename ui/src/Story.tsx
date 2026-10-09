@@ -1,5 +1,7 @@
 import { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { url, useJSON, getJSON, type Coverage, type GapReport, type Eval, type SeverityCurve, type FixRow, type LoopEntry } from "./data";
+import { SNAP } from "./snapshot";
+import Writeup from "./Writeup";
 import "./story.css";
 
 // Step-by-step demo. One idea per screen; → / space to advance, ← to go back.
@@ -85,6 +87,7 @@ export default function Story() {
   const headline = useJSON<{ by_condition?: Record<string, { mean: number }> }>("results/headline.json");
   const fix = useJSON<FixRow[]>("results/fix.json", 5000);
   const loop = useJSON<LoopEntry[]>("results/loop_log.json", 5000);
+  const train = useJSON<TrainSamples>("results/train_samples/train_samples.json");
   const [seedEval, setSeedEval] = useState<Eval | null>(null);
   const [heroEval, setHeroEval] = useState<Eval | null>(null);
   useEffect(() => {
@@ -101,8 +104,8 @@ export default function Story() {
     { key: "test", render: () => <Test seed={seedEval} hero={heroEval} /> },
     { key: "blind", render: () => <Blind curve={curve} headline={headline} /> },
     ...((fix ?? []).some((r) => r.after > r.before) ? [{ key: "fix", render: () => <Fix fix={fix} /> }] : []),
+    { key: "train", render: () => <Train data={train} /> },
     { key: "again", render: () => <Again report={report} loop={loop} /> },
-    { key: "ask", render: () => <Ask /> },
   ];
 
   const initial = Math.max(0, steps.findIndex((s) => s.key === location.hash.slice(1)));
@@ -117,6 +120,7 @@ export default function Story() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement)?.closest?.("input, textarea")) return;
+      if (SNAP && window.scrollY > window.innerHeight / 2) return; // reading the write-up: let keys scroll
       if (["ArrowRight", " ", "Enter", "PageDown"].includes(e.key)) { e.preventDefault(); go(1); }
       if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); go(-1); }
     };
@@ -125,11 +129,15 @@ export default function Story() {
   }, [go]);
 
   return (
+    <>
     <div className="story">
       <header className="st-top">
-        <button className="st-brand" onClick={() => setI(0)}>
-          Spore
-        </button>
+        <div className="st-brand-wrap">
+          <button className="st-brand" onClick={() => setI(0)}>
+            Spore
+          </button>
+          {SNAP && <a className="st-home" href="/research">SporeLabs Research</a>}
+        </div>
         {steps[i].key !== "intro" && <LoopMap active={STEP_NODE[steps[i].key] ?? -1} />}
         <nav className="st-dots">
           {steps.map((s, k) => (
@@ -137,6 +145,13 @@ export default function Story() {
           ))}
         </nav>
       </header>
+      {SNAP && (
+        <p className="st-about">
+          <b>Hackathon project.</b> Built from scratch in one day at the VAST Builders Challenge NYC (October 9, 2026)
+          on the event&rsquo;s VAST, NVIDIA and CoreWeave/W&amp;B stack. It is not a SporeLabs product; we host the
+          results here so people can see them.
+        </p>
+      )}
       <FitStage stepKey={steps[i].key}>{steps[i].render()}</FitStage>
       <footer className="st-nav">
         <button className="st-back" onClick={() => go(-1)} disabled={i === 0}>←</button>
@@ -145,8 +160,15 @@ export default function Story() {
         ) : (
           <button className="st-next" onClick={() => setI(0)}>Start over</button>
         )}
+        {SNAP && (
+          <button className="st-more" onClick={() => document.getElementById("writeup")?.scrollIntoView({ behavior: "smooth" })}>
+            How it works, phase by phase &darr;
+          </button>
+        )}
       </footer>
     </div>
+    <Writeup />
+    </>
   );
 }
 
@@ -156,6 +178,12 @@ type AskRes = { query: string; seconds: number; top_k: number; n_shows_it: numbe
 const API = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + "/";
 const askCache = new Map<string, Promise<AskRes>>();
 function askVSS(q: string): Promise<AskRes> {
+  if (SNAP) {
+    // Recorded answers; wait a beat (never the full recorded time) so rows still land one by one.
+    const r = SNAP.ask[q] as AskRes | undefined;
+    if (!r) return Promise.reject(new Error("not recorded"));
+    return new Promise((ok) => setTimeout(() => ok(r), Math.min(1200, r.seconds * 300)));
+  }
   if (!askCache.has(q)) {
     const p = fetch(`${API}api/ask?q=${encodeURIComponent(q)}`).then((r) => r.json());
     p.catch(() => askCache.delete(q));
@@ -163,7 +191,8 @@ function askVSS(q: string): Promise<AskRes> {
   }
   return askCache.get(q)!;
 }
-const clipUrl = (src?: string) => (src ? `${API}api/clip?source=${encodeURIComponent(src)}` : undefined);
+const clipUrl = (src?: string) => (!src ? undefined : SNAP ? SNAP.media[src] : `${API}api/clip?source=${encodeURIComponent(src)}`);
+const logoUrl = (src: string) => (SNAP ? SNAP.media[src] : `${API}${src}`);
 function counts(oc?: string | null): string {
   try {
     const o = JSON.parse(oc || "{}") as Record<string, number>;
@@ -213,7 +242,7 @@ const LOOP: { id: string; name: string; by: SponsorKey[]; what: string; next?: b
   { id: "fix", name: "Fix", by: [], what: "Retrain on the grown data until it holds up. In progress", next: true },
 ];
 const STEP_NODE: Record<string, number> = {
-  inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 5, again: 6,
+  inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 5, train: 5, again: 6,
 };
 const LOGO: Record<SponsorKey, { src: string; alt: string } | null> = {
   vast: { src: "logos/vast-data.svg", alt: "VAST Data" },
@@ -225,8 +254,8 @@ function Logo({ by, sub }: { by: SponsorKey; sub?: string }) {
   const l = LOGO[by];
   return (
     <span className={`st-logo-plate lp-${by}`}>
-      {l ? <img src={`${API}${l.src}`} alt={l.alt} /> : SPONSOR[by]}
-      {by === "wandb" && <span className="wb"><img src={`${API}logos/wandb-dark.svg`} alt="Weights & Biases" /></span>}
+      {l ? <img src={logoUrl(l.src)} alt={l.alt} /> : SPONSOR[by]}
+      {by === "wandb" && <span className="wb"><img src={logoUrl("logos/wandb-dark.svg")} alt="Weights & Biases" /></span>}
       {sub && by !== "wandb" && <em>{sub}</em>}
     </span>
   );
@@ -294,6 +323,12 @@ function Intro() {
         <span className="hl">Grow the data to fix it. Retrain until it's ready to ship.</span>
       </p>
       <Phases />
+      {SNAP && (
+        <p className="st-about-more rv" style={{ animationDelay: "0.6s" }}>
+          Finding where a model is weak, fixing it and proving the fix is the work SporeLabs does on customers&rsquo;
+          own AI. <a href="/">See what SporeLabs does &rarr;</a>
+        </p>
+      )}
     </div>
   );
 }
@@ -393,11 +428,12 @@ function Missing({ coverage }: { coverage?: Coverage | null }) {
         })}
       </div>
       <Powered by={["vast"]} delay={1.6}
-        what="Live VSS search, running now" />
+        what={SNAP ? `VSS search, recorded ${SNAP.recorded}` : "Live VSS search, running now"} />
     </>
   );
 }
 
+// Live "Ask the archive" search. No longer a Story step (replaced by Train); kept for reuse.
 const SUGGEST = ["construction zone at night", "pedestrian crossing in the rain", "truck stopped on the shoulder"];
 function Ask() {
   const [q, setQ] = useState("");
@@ -411,20 +447,20 @@ function Ask() {
     setQ(query); setBusy(true); setErr(""); setRes(null);
     inp.current?.blur(); // so → / ← work again right after searching
     try { const r = await askVSS(query.trim()); if (r.error) throw new Error(r.error); setRes(r); }
-    catch { setErr("VSS didn't answer. Try again."); }
+    catch { setErr(SNAP ? "This page is a recording of the live demo. Pick one of the searches below." : "VSS didn't answer. Try again."); }
     setBusy(false);
   };
   const submit = (e: FormEvent) => { e.preventDefault(); run(q); };
   const shown = res ? [...res.hits.filter((h) => h.shows_it), ...res.hits.filter((h) => !h.shows_it)].slice(0, 3) : [];
   return (
     <>
-      <Title kicker="Try it · live">Ask the archive for anything.</Title>
+      <Title kicker={SNAP ? "Try it · recorded" : "Try it · live"}>Ask the archive for anything.</Title>
       <form className="st-ask rv" style={{ animationDelay: "0.3s" }} onSubmit={submit}
         onKeyDown={(e) => e.stopPropagation()}>
         <input ref={inp} value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. construction zone at night" onKeyDown={(e) => { if (e.key === "Escape") (e.target as HTMLInputElement).blur(); }} />
         <button type="submit" disabled={busy}>{busy ? `${t.toFixed(1)}s` : "Search"}</button>
       </form>
-      {!res && !busy && (
+      {(!res || SNAP) && !busy && (
         <div className="st-suggest rv" style={{ animationDelay: "0.5s" }}>
           {SUGGEST.map((s) => <button key={s} onClick={() => run(s)}>{s}</button>)}
         </div>
@@ -453,7 +489,7 @@ function Ask() {
         </>
       )}
       <Powered by={["vast", "nvidia"]} delay={0.7}
-        what={res ? `Live VSS search · ${res.seconds}s` : "Live VSS search"} />
+        what={SNAP ? `VSS search, recorded ${SNAP.recorded}${res ? ` · ${res.seconds}s` : ""}` : res ? `Live VSS search · ${res.seconds}s` : "Live VSS search"} />
     </>
   );
 }
@@ -476,7 +512,7 @@ function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] 
       <Title kicker="3 · Decide">It decides which gap matters most.</Title>
       {top && (
         <div className="st-pick rv" style={{ animationDelay: "0.35s" }}>
-          <div className="k">Filling first</div>
+          <div className="k">Followed in this demo</div>
           <div className="n">{top.label ?? top.condition}</div>
           <div className="w">{why(top)}</div>
         </div>
@@ -514,7 +550,7 @@ function Grow() {
         <div className="st-morph-dots">{GROW.map((v, j) => <i key={v.src} className={j === k ? "on" : ""} />)}</div>
       </div>
       <Powered by={["nvidia"]} delay={1.3}
-        what="Cosmos Transfer 2.5 · same cars, so the answer is known" />
+        what="Weather layer keeps every car in place, so the answer is known · NVIDIA Cosmos Transfer 2.5 turns day into night" />
     </>
   );
 }
@@ -605,6 +641,66 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
       <Powered by={["vast", "nvidia"]} delay={1.3}
         what="VSS re-ingest: the same clips go back through the pipeline with a weather-aware prompt for Cosmos Reason"
         call="POST /api/v1/dashboard/reingest {custom_prompt}" />
+    </>
+  );
+}
+
+// ---- Fix · training data: real frames + YOLO labels from fix/dataset (tools/train_samples.py) ----
+type TrainSamples = {
+  seed: string; frame: number; boxes_identical_across_samples: boolean;
+  samples: { cond: string; label: string; img: string; label_file: string; boxes: number[][] }[];
+  excerpt: { file: string; lines: string[]; total_lines: number };
+  weather_layer: { frames: number; boxes: number; conditions: number; seed_clips: number; by_class: Record<string, number> };
+  hand_labeled_boxes: number;
+};
+const COCO_NAME: Record<number, string> = { 1: "bicycle", 2: "car", 3: "motorcycle", 5: "bus", 7: "truck" };
+function Train({ data }: { data?: TrainSamples | null }) {
+  const wl = data?.weather_layer;
+  const ex = data?.excerpt;
+  const n = data?.samples[0]?.boxes.length;
+  const fmt = (v?: number) => (v == null ? "…" : v.toLocaleString("en-US"));
+  const used = [...new Set((ex?.lines ?? []).map((l) => +l.split(" ")[0]))].sort((a, b) => a - b);
+  return (
+    <>
+      <Title kicker="6 · Fix · training data">Every frame it grows comes already labeled.</Title>
+      <div className="st-train">
+        <div className="st-train-grid">
+          {(data?.samples ?? []).map((s, k) => (
+            <figure key={s.cond} {...rv(k * 0.6 + 1)} className={`rv ${k === 0 ? "src" : ""}`}>
+              <div className="ph">
+                <img src={url(s.img)} alt={s.label} />
+                <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                  {s.boxes.map(([c, x, y, w, h], j) => (
+                    <rect key={j} className={c === 2 ? "car" : "big"} x={(x - w / 2) * 1000} y={(y - h / 2) * 1000}
+                      width={w * 1000} height={h * 1000} style={{ animationDelay: `${0.9 + k * 0.13 + j * 0.012}s` }} />
+                  ))}
+                </svg>
+              </div>
+              <figcaption><b>{s.label}</b><span>{k === 0 ? "labels come from here" : `same ${s.boxes.length} boxes`}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="st-train-side">
+          <div className="st-label-file rv" style={{ animationDelay: "1.2s" }}>
+            <div className="fn">{ex?.file.split("/").pop()}</div>
+            <pre>
+              <span className="hd">class  x-center  y-center  width   height</span>
+              {(ex?.lines ?? []).map((l, j) => <span key={j}>{l}</span>)}
+              {ex && <span className="more">+ {ex.total_lines - ex.lines.length} more lines</span>}
+            </pre>
+            <div className="key">{used.map((c) => <span key={c}><b className={c === 2 ? "" : "big"}>{c}</b> {COCO_NAME[c] ?? c}</span>)}</div>
+          </div>
+          <div className="st-train-stats rv" style={{ animationDelay: "1.5s" }}>
+            <div><b>{fmt(wl?.frames)}</b><span>fog, rain &amp; snow frames</span></div>
+            <div><b>{fmt(wl?.boxes)}</b><span>vehicle boxes</span></div>
+            <div><b>{fmt(wl?.conditions)}</b><span>weather settings</span></div>
+            <div className="zero"><b>{fmt(data?.hand_labeled_boxes)}</b><span>drawn by hand</span></div>
+          </div>
+        </div>
+      </div>
+      <Powered by={[]} delay={1.8}
+        what={<>The weather layer never moves a car, so the {n ?? "…"} boxes YOLO11s found on the clear frame are exact on every version.</>}
+        call="fix/build_dataset.py → YOLO format" />
     </>
   );
 }

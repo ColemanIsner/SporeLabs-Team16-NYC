@@ -139,9 +139,45 @@
       "tags": "i24_scene1_p1c1_00,fog,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c1_00__fog_day_heavy__cw0.5.mp4"
+    "src": "data/synthetic/i24_scene1_p1c1_00__fog_day_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_164621_d9a7debb.mp4",
+      "filename": "20261009_164621_d9a7debb.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c1_00",
+        "fog",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:46:21.565895",
+      "total_segments": 2,
+      "reasoning_content": "The scene is a multi-lane divided highway with traffic flowing in both directions. On the left side of the median, vehicles including cars and trucks are moving away from the camera, while on the right side, vehicles are approaching the camera. The road surface is dry and the lane markings are clearly visible. Traffic appears to be moving steadily without any signs of congestion or accidents. There are no pedestrians or cyclists visible in the scene. The surrounding area includes some vegetation and a building with bright lights in the distance. No traffic violations or unusual vehicle behavior is observed.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164621_d9a7debb_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is a multi-lane divided highway with traffic flowing in both directions. On the left side of the median, vehicles including cars and trucks are moving away from the camera, while on the right side, vehicles are approaching the camera. The road surface is dry and the lane markings are clearly visible. Traffic appears to be moving steadily without any signs of congestion or accidents. There are no pedestrians or cyclists visible in the scene. The surrounding area includes some vegetation and a building with bright lights in the distance. No traffic violations or unusual vehicle behavior is observed."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164621_d9a7debb_segment_002_of_002.mp4",
+          "reasoning_content": "The scene is a wide, multi-lane divided highway with traffic flowing in both directions. The road surface is dry and marked with clear white lane lines. A concrete median separates the opposing flows of traffic. On the left side of the highway, vehicles are traveling away from the camera, while on the right side, vehicles are traveling toward the camera. The lighting suggests either early morning or late afternoon, with long shadows cast across the roadway. There are no visible traffic signals or signs in the immediate view. The surrounding area appears to be open with some vegetation and distant structures, possibly industrial or commercial buildings. The overall traffic flow is smooth and steady, with no signs of congestion, accidents, or unusual vehicle behavior."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.350535,
+    "index_latency_s": 13505.7
   },
   "i24_scene1_p1c1_00__rain_night_heavy__cw0.5": {
     "clip_id": "i24_scene1_p1c1_00__rain_night_heavy__cw0.5",
@@ -164,9 +200,45 @@
       "tags": "i24_scene1_p1c1_00,rain,night,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c1_00__rain_night_heavy__cw0.5.mp4"
+    "src": "data/synthetic/i24_scene1_p1c1_00__rain_night_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_164624_3e7861c3.mp4",
+      "filename": "20261009_164624_3e7861c3.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c1_00",
+        "rain",
+        "night",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:46:24.936426",
+      "total_segments": 2,
+      "reasoning_content": "The scene is a multi-lane highway at night, viewed from an elevated perspective. Traffic flows in both directions, separated by a central median. On the left side of the highway, vehicles including cars and trucks move toward the camera, while on the right side, vehicles move away from the camera. The road surface is wet, reflecting the headlights and streetlights, indicating recent or ongoing rain. The lighting is dim, with artificial lights from street lamps and vehicle headlights illuminating the scene. There are no visible traffic signals or signs in the immediate view. The overall flow of traffic appears smooth and steady, with no signs of congestion or accidents.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164624_3e7861c3_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is a multi-lane highway at night, viewed from an elevated perspective. Traffic flows in both directions, separated by a central median. On the left side of the highway, vehicles including cars and trucks move toward the camera, while on the right side, vehicles move away from the camera. The road surface is wet, reflecting the headlights and streetlights, indicating recent or ongoing rain. The lighting is dim, with artificial lights from street lamps and vehicle headlights illuminating the scene. There are no visible traffic signals or signs in the immediate view. The overall flow of traffic appears smooth and steady, with no signs of congestion or accidents."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164624_3e7861c3_segment_002_of_002.mp4",
+          "reasoning_content": "The scene takes place at night on a multi-lane highway, viewed from an elevated traffic camera perspective. The road surface is wet, reflecting the headlights and taillights of the vehicles. A concrete median separates opposing directions of traffic, with a grassy embankment and some artificial lighting visible on the right side of the frame. Several vehicles are traveling along the highway. On the left side of the median, a white truck is visible in the distance, moving away from the camera. Closer to the foreground, an orange car and a dark-colored car are driving in the same direction, with the orange car positioned slightly ahead. On the right side of the median, a white car and a dark-colored car are also moving away from the camera, maintaining a steady flow. The traffic appears to be free-flowing with no signs of congestion or accidents. There are no visible pedestrians or cyclists in the scene. The vehicles are maintaining their lanes and following the flow of traffic without any apparent violations..."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.350574,
+    "index_latency_s": 13502.4
   },
   "i24_scene1_p1c1_00__snow_day_heavy__cw0.5": {
     "clip_id": "i24_scene1_p1c1_00__snow_day_heavy__cw0.5",
@@ -539,9 +611,45 @@
       "tags": "i24_scene1_p1c2_04,fog,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c2_04__fog_day_heavy__cw0.5.mp4"
+    "src": "data/synthetic/i24_scene1_p1c2_04__fog_day_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_164911_336a148c.mp4",
+      "filename": "20261009_164911_336a148c.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c2_04",
+        "fog",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:49:11.727044",
+      "total_segments": 2,
+      "reasoning_content": "The scene is a wide, multi-lane highway with traffic flowing in both directions. The road surface is dry and marked with clear white lane lines. On the left side of the highway, vehicles are moving away from the camera, while on the right side, vehicles are approaching the camera. The traffic is moderate and free-flowing, with no visible congestion or stop-and-go conditions. Vehicles of various colors, including white, black, red, blue, and silver, are seen traveling at consistent speeds. A large truck with a blue cab and dark trailer is visible on the right side of the highway, moving in the same direction as the other vehicles. There are no pedestrians, cyclists, or traffic violations evident in the scene. The surrounding environment includes grassy areas and some trees along the roadside, with sunlight casting shadows across the road.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164911_336a148c_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is a wide, multi-lane highway with traffic flowing in both directions. The road surface is dry and marked with clear white lane lines. On the left side of the highway, vehicles are moving away from the camera, while on the right side, vehicles are approaching the camera. The traffic is moderate and free-flowing, with no visible congestion or stop-and-go conditions. Vehicles of various colors, including white, black, red, blue, and silver, are seen traveling at consistent speeds. A large truck with a blue cab and dark trailer is visible on the right side of the highway, moving in the same direction as the other vehicles. There are no pedestrians, cyclists, or traffic violations evident in the scene. The surrounding environment includes grassy areas and some trees along the roadside, with sunlight casting shadows across the road."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164911_336a148c_segment_002_of_002.mp4",
+          "reasoning_content": "Multiple vehicles are traveling on a multi-lane highway in both directions. On the left side, a yellow bus is visible in the far-left lane, accompanied by several cars in adjacent lanes. On the right side, a white car, a dark-colored car, and a silver car are moving in the same direction. A large truck with a trailer is also present on the right side, traveling in the far-right lane. All vehicles are maintaining their respective lanes and moving at a steady pace, indicating normal traffic flow. There are no visible signs of congestion, accidents, or traffic violations. The road surface appears clear and dry, with no obstructions or debris. The surrounding environment includes grassy areas and some trees along the sides of the highway."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.3509388,
+    "index_latency_s": 13335.4
   },
   "i24_scene1_p1c2_04__rain_night_heavy__cw0.5": {
     "clip_id": "i24_scene1_p1c2_04__rain_night_heavy__cw0.5",
@@ -564,9 +672,45 @@
       "tags": "i24_scene1_p1c2_04,rain,night,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c2_04__rain_night_heavy__cw0.5.mp4"
+    "src": "data/synthetic/i24_scene1_p1c2_04__rain_night_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_164914_c65089f8.mp4",
+      "filename": "20261009_164914_c65089f8.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c2_04",
+        "rain",
+        "night",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:49:14.501464",
+      "total_segments": 2,
+      "reasoning_content": "The scene takes place at night on a multi-lane highway, viewed from an elevated perspective. The road surface is dark and wet, reflecting the glow of streetlights and vehicle headlights. The highway is divided into two main carriageways separated by a central median, with multiple lanes in each direction. Traffic flows steadily in both directions, with vehicles maintaining their lanes and moving at consistent speeds. There are no visible traffic signals or signs in the immediate view. The surrounding area includes a grassy embankment on the left and a stone retaining wall on the right, illuminated by warm-toned streetlights. No pedestrians, cyclists, or unusual vehicle behavior are present, and there are no signs of congestion or accidents.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164914_c65089f8_segment_001_of_002.mp4",
+          "reasoning_content": "The scene takes place at night on a multi-lane highway, viewed from an elevated perspective. The road surface is dark and wet, reflecting the glow of streetlights and vehicle headlights. The highway is divided into two main carriageways separated by a central median, with multiple lanes in each direction. Traffic flows steadily in both directions, with vehicles maintaining their lanes and moving at consistent speeds. There are no visible traffic signals or signs in the immediate view. The surrounding area includes a grassy embankment on the left and a stone retaining wall on the right, illuminated by warm-toned streetlights. No pedestrians, cyclists, or unusual vehicle behavior are present, and there are no signs of congestion or accidents."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_164914_c65089f8_segment_002_of_002.mp4",
+          "reasoning_content": "Multiple cars are moving on a highway at night. The highway has multiple lanes in each direction, separated by a median. The road surface is wet, reflecting the lights from street lamps and vehicle headlights. The traffic flow is moderate, with vehicles traveling at a steady pace. There are no visible signs of congestion, accidents, or traffic violations. The surrounding area includes some vegetation and illuminated streetlights."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.350959,
+    "index_latency_s": 13332.5
   },
   "i24_scene1_p1c2_04__snow_day_heavy__cw0.5": {
     "clip_id": "i24_scene1_p1c2_04__snow_day_heavy__cw0.5",
@@ -839,9 +983,45 @@
       "tags": "i24_scene1_p1c3_04,fog,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c3_04__fog_day_heavy__cw0.5.mp4"
+    "src": "data/synthetic/i24_scene1_p1c3_04__fog_day_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_165348_43118f0e.mp4",
+      "filename": "20261009_165348_43118f0e.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c3_04",
+        "fog",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:53:48.892738",
+      "total_segments": 2,
+      "reasoning_content": "The scene is captured from an elevated traffic camera view, showing a multi-lane road with vehicles moving in both directions. The road surface is dry, and the lanes are clearly marked with white dashed lines. A concrete median separates the opposing flows of traffic. The lighting suggests daytime conditions, with sunlight creating a glare and reflections on the camera lens, partially obscuring the view. Several cars and trucks are visible, traveling at moderate speeds. There are no visible traffic signals or signs in the immediate frame. The traffic flow appears steady and free-flowing, with no signs of congestion or accidents. No pedestrians or unusual vehicle behavior is observed.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165348_43118f0e_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is captured from an elevated traffic camera view, showing a multi-lane road with vehicles moving in both directions. The road surface is dry, and the lanes are clearly marked with white dashed lines. A concrete median separates the opposing flows of traffic. The lighting suggests daytime conditions, with sunlight creating a glare and reflections on the camera lens, partially obscuring the view. Several cars and trucks are visible, traveling at moderate speeds. There are no visible traffic signals or signs in the immediate frame. The traffic flow appears steady and free-flowing, with no signs of congestion or accidents. No pedestrians or unusual vehicle behavior is observed."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165348_43118f0e_segment_002_of_002.mp4",
+          "reasoning_content": "The video shows a multi-lane highway with traffic moving in both directions. The camera angle is from above, providing a clear view of the road surface and vehicles. In the lanes moving away from the camera, several cars are visible, including a white sedan and a dark-colored SUV. In the lanes moving towards the camera, a large white semi-truck with a trailer is prominent, along with a white sedan and a dark-colored SUV. The vehicles are traveling at a steady pace, and there are no signs of congestion or accidents. The road markings are clearly visible, and the weather appears to be clear, with no obstructions such as fog or rain affecting visibility. There are no pedestrians or other non-vehicular objects present in the scene."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.351261,
+    "index_latency_s": 13057.5
   },
   "i24_scene1_p1c3_04__rain_night_heavy__cw0.5": {
     "clip_id": "i24_scene1_p1c3_04__rain_night_heavy__cw0.5",
@@ -939,9 +1119,45 @@
       "tags": "i24_scene1_p1c3_08,fog,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c3_08__fog_day_heavy__cw0.5.mp4"
+    "src": "data/synthetic/i24_scene1_p1c3_08__fog_day_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_165359_8e2f0edc.mp4",
+      "filename": "20261009_165359_8e2f0edc.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c3_08",
+        "fog",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:53:59.563245",
+      "total_segments": 2,
+      "reasoning_content": "The scene is captured from a traffic camera positioned above a multi-lane highway, with the view partially obscured by fog or mist. The road surface is wet, suggesting recent or ongoing rain, and the visibility is reduced due to the atmospheric conditions. The highway consists of multiple lanes in both directions, separated by a median barrier. Vehicles are seen traveling in both directions on the highway. The traffic flow appears steady and continuous, with cars maintaining their lanes and moving at a consistent pace. There are no visible signs of congestion, sudden braking, or erratic maneuvers. The vehicles are spaced out appropriately, and there are no indications of traffic violations or accidents. The overall impression is one of normal, uninterrupted traffic movement under challenging weather conditions.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165359_8e2f0edc_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is captured from a traffic camera positioned above a multi-lane highway, with the view partially obscured by fog or mist. The road surface is wet, suggesting recent or ongoing rain, and the visibility is reduced due to the atmospheric conditions. The highway consists of multiple lanes in both directions, separated by a median barrier. Vehicles are seen traveling in both directions on the highway. The traffic flow appears steady and continuous, with cars maintaining their lanes and moving at a consistent pace. There are no visible signs of congestion, sudden braking, or erratic maneuvers. The vehicles are spaced out appropriately, and there are no indications of traffic violations or accidents. The overall impression is one of normal, uninterrupted traffic movement under challenging weather conditions."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165359_8e2f0edc_segment_002_of_002.mp4",
+          "reasoning_content": "The scene is captured from a traffic camera positioned above a multi-lane road, with a concrete barrier separating opposing directions of travel. The road surface is dark asphalt marked with white dashed lane dividers and solid edge lines. A faint orange dashed line runs along the leftmost lane. The view is partially obscured by a smudge or smudge-like artifact in the upper portion of the frame, suggesting either a camera lens issue or a visual glitch. Several vehicles are visible, including a white car traveling in the upper lanes and a dark-colored car in the lower lanes. Another white car appears in the lower-left area, moving along its lane. The vehicles are spaced apart and appear to be moving at a steady pace, indicating a moderate level of traffic flow. There are no signs of congestion, accidents, or unusual behavior among the vehicles. No pedestrians or cyclists are visible in the scene."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.351358,
+    "index_latency_s": 13047.8
   },
   "i24_scene1_p1c3_08__rain_night_heavy__cw0.5": {
     "clip_id": "i24_scene1_p1c3_08__rain_night_heavy__cw0.5",
@@ -1164,9 +1380,45 @@
       "tags": "nyc_003_00,snow,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/nyc_003_00__snow_day_heavy__cw0.5.mp4"
+    "src": "data/synthetic/nyc_003_00__snow_day_heavy__cw0.5.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_165413_97cac4b1.mp4",
+      "filename": "20261009_165413_97cac4b1.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "nyc_streets_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "nyc_003_00",
+        "snow",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:54:13.307915",
+      "total_segments": 2,
+      "reasoning_content": "The scene unfolds at a city intersection during snowy conditions, with wet and partially snow-covered pavement. Traffic flows through the intersection under a red light, as vehicles proceed straight ahead. A white SUV with a blue circular logo on its side is prominent, moving through the intersection. A motorcycle with a rider wearing a helmet is also visible, navigating the traffic. Pedestrians are present on the sidewalks and crossing the street, some bundled in winter clothing. One person in a striped jacket and blue pants is seen crossing the street near a crosswalk, while another individual in a green jacket walks along the sidewalk. Metal barricades are positioned near the crosswalk, and traffic lights are visible, controlling the flow of vehicles and pedestrians. The overall atmosphere suggests a busy urban environment with active movement of both vehicles and people despite the adverse weather conditions.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165413_97cac4b1_segment_001_of_002.mp4",
+          "reasoning_content": "The scene unfolds at a city intersection during snowy conditions, with wet and partially snow-covered pavement. Traffic flows through the intersection under a red light, as vehicles proceed straight ahead. A white SUV with a blue circular logo on its side is prominent, moving through the intersection. A motorcycle with a rider wearing a helmet is also visible, navigating the traffic. Pedestrians are present on the sidewalks and crossing the street, some bundled in winter clothing. One person in a striped jacket and blue pants is seen crossing the street near a crosswalk, while another individual in a green jacket walks along the sidewalk. Metal barricades are positioned near the crosswalk, and traffic lights are visible, controlling the flow of vehicles and pedestrians. The overall atmosphere suggests a busy urban environment with active movement of both vehicles and people despite the adverse weather conditions."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165413_97cac4b1_segment_002_of_002.mp4",
+          "reasoning_content": "The scene unfolds at an intersection on a snowy day, with wet and slushy pavement visible. Traffic lights control the flow, and a crosswalk is marked on the road. A white SUV with a blue circular logo on its side is stopped at the intersection, facing the camera. Another white SUV, also bearing the same blue logo, is positioned to its right, angled slightly toward the intersection. A maroon sedan is stopped behind the first white SUV. A person in a white hooded jacket and light pants walks across the crosswalk from left to right, carrying a blue bag. Another individual, wearing a striped top and a red head covering, stands near the crosswalk holding a blue bag. A person in a green jacket and blue jeans stands on the sidewalk to the right, facing the intersection. A bicycle is parked near the curb behind the first white SUV. The traffic lights are red, and the vehicles remain stationary, indicating a controlled stop at the intersection."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.351564,
+    "index_latency_s": 13033.9
   },
   "nyc_003_00__clear_night_light__cw0.5": {
     "clip_id": "nyc_003_00__clear_night_light__cw0.5",
@@ -1243,9 +1495,45 @@
       "tags": "i24_scene1_p1c1_04,rain,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain.mp4"
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_165745_1e26f31f.mp4",
+      "filename": "20261009_165745_1e26f31f.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c1_04",
+        "rain",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T16:57:45.513136",
+      "total_segments": 2,
+      "reasoning_content": "The scene is a multi-lane highway viewed from an elevated perspective, with rain falling and water droplets visible on the camera lens. Traffic flows steadily in both directions, separated by a central median. Vehicles include passenger cars, SUVs, and a white truck. The road surface appears wet, and lane markings are clearly visible despite the rain. No specific traffic violations, accidents, or congestion are evident; vehicles maintain their lanes and move at consistent speeds. There are no pedestrians or cyclists present in the scene.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165745_1e26f31f_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is a multi-lane highway viewed from an elevated perspective, with rain falling and water droplets visible on the camera lens. Traffic flows steadily in both directions, separated by a central median. Vehicles include passenger cars, SUVs, and a white truck. The road surface appears wet, and lane markings are clearly visible despite the rain. No specific traffic violations, accidents, or congestion are evident; vehicles maintain their lanes and move at consistent speeds. There are no pedestrians or cyclists present in the scene."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_165745_1e26f31f_segment_002_of_002.mp4",
+          "reasoning_content": "The scene is captured from a traffic camera positioned above a multi-lane highway, with rain falling visibly across the frame. The road is divided by a central median, separating traffic flowing in opposite directions. On the left side of the median, multiple lanes carry vehicles moving away from the camera, while on the right side, vehicles move toward the camera. Several vehicles are visible, including a white truck with a trailer traveling in the rightmost lane on the right side of the median. Other vehicles, including cars and possibly a bus, are distributed across the lanes on both sides of the highway. The traffic appears to be flowing steadily, with no immediate signs of congestion or accidents. The wet road surface reflects the rain, and the overall visibility is slightly reduced due to the weather conditions. No pedestrians or unusual traffic violations are evident in the scene."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.351624,
+    "index_latency_s": 12821.8
   },
   "i24_scene1_p1c1_08__phys_rain": {
     "clip_id": "i24_scene1_p1c1_08__phys_rain",
@@ -1324,9 +1612,45 @@
       "tags": "i24_scene1_p1c1_00,fog,day,light,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c1_00__phys_fog_s04.mp4"
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_fog_s04.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_170454_fb45e71c.mp4",
+      "filename": "20261009_170454_fb45e71c.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c1_00",
+        "fog",
+        "day",
+        "light",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T17:04:54.133133",
+      "total_segments": 2,
+      "reasoning_content": "The scene is a multi-lane highway viewed from an elevated perspective. The road is divided by a concrete median barrier, with traffic flowing in opposite directions on either side. The weather appears hazy, reducing visibility in the distance. The road surface is dry and marked with standard dashed lane dividers and solid edge lines. Vehicles are distributed across the lanes, moving steadily in both directions. On the right side of the highway, a white box truck travels in the rightmost lane, followed by a flatbed truck towing a load. A dark-colored SUV and a white sedan are also visible, maintaining their respective lanes. On the left side of the highway, a white van and a blue box truck are seen moving in the leftmost lane, while a white tanker truck occupies the middle lane. A red car is also present in the leftmost lane, traveling alongside the van. Traffic flow is smooth and free-flowing, with no signs of congestion or abrupt stops. Vehicles maintain consistent speeds and safe following distances. There...",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_170454_fb45e71c_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is a multi-lane highway viewed from an elevated perspective. The road is divided by a concrete median barrier, with traffic flowing in opposite directions on either side. The weather appears hazy, reducing visibility in the distance. The road surface is dry and marked with standard dashed lane dividers and solid edge lines. Vehicles are distributed across the lanes, moving steadily in both directions. On the right side of the highway, a white box truck travels in the rightmost lane, followed by a flatbed truck towing a load. A dark-colored SUV and a white sedan are also visible, maintaining their respective lanes. On the left side of the highway, a white van and a blue box truck are seen moving in the leftmost lane, while a white tanker truck occupies the middle lane. A red car is also present in the leftmost lane, traveling alongside the van. Traffic flow is smooth and free-flowing, with no signs of congestion or abrupt stops. Vehicles maintain consistent speeds and safe following distances. There..."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_170454_fb45e71c_segment_002_of_002.mp4",
+          "reasoning_content": "The scene is a wide, multi-lane divided highway under hazy, foggy conditions. Traffic flows in both directions, separated by a central median. On the left side of the highway, vehicles are moving away from the camera, while on the right side, vehicles are approaching. The road surface is dry, and lane markings are visible despite the reduced visibility caused by the fog. Several vehicles are present, including white and dark-colored cars, as well as a white truck. The vehicles are traveling at moderate speeds, maintaining their respective lanes. There are no signs of congestion, and the traffic flow appears smooth and uninterrupted. No pedestrians or cyclists are visible in the scene. No traffic violations or accidents are evident in the footage."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.3516831,
+    "index_latency_s": 12393.2
   },
   "i24_scene1_p1c1_00__phys_fog_s07": {
     "clip_id": "i24_scene1_p1c1_00__phys_fog_s07",
@@ -1486,9 +1810,45 @@
       "tags": "i24_scene1_p1c1_00,rain,day,heavy,spore,cw0.5",
       "scenario": "traffic"
     },
-    "indexed": false,
+    "indexed": true,
     "control_weight": 0.5,
-    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain_s10.mp4"
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain_s10.mp4",
+    "vss_row": {
+      "original_video": "s3://team-16-vss-chunks/team-16/20261009_170511_a978b73f.mp4",
+      "filename": "20261009_170511_a978b73f.mp4",
+      "camera_id": "spore_synthetic",
+      "location": "i24_cam-1",
+      "capture_type": "synthetic",
+      "tags": [
+        "i24_scene1_p1c1_00",
+        "rain",
+        "day",
+        "heavy",
+        "spore",
+        "cw0.5"
+      ],
+      "upload_timestamp": "2026-10-09T17:05:11.527822",
+      "total_segments": 2,
+      "reasoning_content": "The scene is captured from a traffic camera positioned above a multi-lane highway during heavy rain. Raindrops are visible on the camera lens, creating a blurred, watery effect over the view. The highway is divided by a central median, with multiple lanes of traffic flowing in both directions. Vehicles, including cars and trucks, are moving steadily along the wet road surface. The traffic appears to be moderate, with no signs of congestion or accidents. The overall atmosphere is one of steady, cautious driving conditions due to the rain.",
+      "segments": [
+        {
+          "segment_number": 1,
+          "segment_start_sec": 0.0,
+          "segment_end_sec": 5.0,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_170511_a978b73f_segment_001_of_002.mp4",
+          "reasoning_content": "The scene is captured from a traffic camera positioned above a multi-lane highway during heavy rain. Raindrops are visible on the camera lens, creating a blurred, watery effect over the view. The highway is divided by a central median, with multiple lanes of traffic flowing in both directions. Vehicles, including cars and trucks, are moving steadily along the wet road surface. The traffic appears to be moderate, with no signs of congestion or accidents. The overall atmosphere is one of steady, cautious driving conditions due to the rain."
+        },
+        {
+          "segment_number": 2,
+          "segment_start_sec": 5.0,
+          "segment_end_sec": 5.81,
+          "source": "s3://team-16-vss-chunks-segments/segments/20261009_170511_a978b73f_segment_002_of_002.mp4",
+          "reasoning_content": "The scene is a multi-lane highway viewed from an elevated traffic camera perspective. The road is divided by a median, with multiple lanes of traffic flowing in both directions. The weather appears to be rainy, as indicated by visible raindrops on the camera lens and a wet road surface. Several vehicles are present, including cars and a truck, all moving steadily along the highway. There are no visible traffic signals or signs in the immediate view. The traffic flow is smooth and uninterrupted, with no signs of congestion, accidents, or unusual behavior. The vehicles maintain their respective lanes and travel at a consistent pace, suggesting normal highway conditions despite the rain."
+        }
+      ]
+    },
+    "indexed_at": 1791577887.351809,
+    "index_latency_s": 12375.8
   },
   "i24_scene1_p1c1_00__phys_snow_s07": {
     "clip_id": "i24_scene1_p1c1_00__phys_snow_s07",
