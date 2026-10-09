@@ -12,7 +12,7 @@ Every number below comes from a JSON file in `results/`, and the file is named n
 
 ## Results in one screen
 
-- **The gap is real.** There are 612 real clips indexed, and 127 of them are highway clips. Highway cameras have **0** heavy-rain, fog, snow, glare, or night-rain clips. Snow has **0 clips on any camera**. (`results/coverage.json`)
+- **The gap is real.** There are 612 real clips indexed; 30 are from the I-24 highway cameras, and all 30 are clear daylight, verified by eye (`results/verify/i24_all_chunks.jpg`). Highway cameras have **0** night, rain, fog, snow, glare, or night-rain clips. Snow has **0 clips on any camera**. (`results/coverage.json`)
 - **The detector breaks early.** Recall on intact vehicles falls below 50% at severity **0.34 for snow, 0.35 for fog, 0.60 for rain**. (`results/severity_curve.json`)
 - **The Detector and Reasoner disagree.** In the worst physics condition (fog at severity 1.0), YOLO11s finds **0.34 vehicles/frame**, down from 7.77 on the clear seeds. Cosmos Reason still counts **7.6 vehicles**, down from 15.1. YOLO finds under 0.5 vehicles/frame on 7 of 11 clips, while Reason reports vehicles on 10 of 11. (computed from `results/evals/*__phys_fog_s10.json` and the seed evals)
 - **Real footage gives weak, mixed confirmation.** Glare is the strongest case. Fog is **not** confirmed. No real snow footage exists. (`results/real_check.json`)
