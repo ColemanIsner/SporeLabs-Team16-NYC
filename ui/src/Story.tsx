@@ -154,7 +154,7 @@ const SPONSOR: Record<SponsorKey, string> = { vast: "VAST Data", nvidia: "NVIDIA
 function Powered({ by, what, call, delay = 1.6 }: { by: SponsorKey[]; what: ReactNode; call?: ReactNode; delay?: number }) {
   return (
     <div className="st-pw rv" style={{ animationDelay: `${delay}s` }}>
-      {by.map((b) => <span key={b} className={`sp sp-${b}`}>{SPONSOR[b]}</span>)}
+      {by.map((b) => <Logo key={b} by={b} sub={b === "wandb" ? "W&B" : undefined} />)}
       <span className="w">{what}</span>
       {call && <code>{call}</code>}
     </div>
@@ -171,22 +171,57 @@ function Title({ kicker, children }: { kicker: string; children: ReactNode }) {
 }
 
 // ---- the loop: one diagram on the intro, a compact copy on every step highlighting its piece ----
-const LOOP: { id: string; name: string; by: SponsorKey; what: string }[] = [
-  { id: "look", name: "Look", by: "vast", what: "VSS explore" },
-  { id: "find", name: "Find gaps", by: "vast", what: "VSS search" },
-  { id: "decide", name: "Decide", by: "wandb", what: "Inference + Weave" },
-  { id: "fill", name: "Fill", by: "nvidia", what: "Cosmos Transfer" },
-  { id: "test", name: "Test", by: "nvidia", what: "YOLO + Reason" },
+// Each phase, what it really does today, and whose stack does it.
+const LOOP: { id: string; name: string; by: SponsorKey[]; what: string; next?: boolean }[] = [
+  { id: "look", name: "Look", by: ["vast"], what: "Reads every clip indexed in VAST, with its Cosmos Reason caption" },
+  { id: "find", name: "Find weak spots", by: ["vast"], what: "Searches VSS for conditions your cameras never saw" },
+  { id: "decide", name: "Decide", by: ["wandb"], what: "An LLM on W&B Inference ranks which gaps matter" },
+  { id: "grow", name: "Grow data", by: ["nvidia"], what: "Cosmos Transfer grows the missing weather onto real clips" },
+  { id: "test", name: "Test", by: ["nvidia", "wandb"], what: "Hosted YOLO11 + Cosmos Reason, every run traced in Weave" },
+  { id: "fix", name: "Fix", by: [], what: "Retrain on the grown data until it holds up. In progress", next: true },
 ];
 const STEP_NODE: Record<string, number> = {
-  inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 4, again: 5,
+  inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 5, again: 6,
 };
+const LOGO: Record<SponsorKey, { src: string; alt: string } | null> = {
+  vast: { src: "logos/vast-data.svg", alt: "VAST Data" },
+  nvidia: { src: "logos/nvidia.svg", alt: "NVIDIA" },
+  wandb: { src: "logos/coreweave.svg", alt: "CoreWeave (Weights & Biases)" },
+  cursor: { src: "logos/spacex.svg", alt: "SpaceXAI (Cursor)" },
+};
+function Logo({ by, sub }: { by: SponsorKey; sub?: string }) {
+  const l = LOGO[by];
+  return (
+    <span className={`st-logo-plate lp-${by}`}>
+      {l ? <img src={`${API}${l.src}`} alt={l.alt} /> : SPONSOR[by]}
+      {sub && <em>{sub}</em>}
+    </span>
+  );
+}
+function Phases() {
+  return (
+    <div className="st-phases">
+      {LOOP.map((p, k) => (
+        <div key={p.id} {...rv(k + 2)} className={`rv st-phase ${p.next ? "next" : ""}`}>
+          <div className="num">{k + 1}</div>
+          <div className="nm">{p.name}</div>
+          <div className="wh">{p.what}</div>
+          <div className="logos">
+            {p.by.map((b) => <Logo key={b} by={b} sub={b === "wandb" ? "W&B" : undefined} />)}
+            {!p.by.length && <span className="st-next-tag">next</span>}
+          </div>
+        </div>
+      ))}
+      <div className="st-phases-loop rv" style={{ animationDelay: "1.8s" }}>↺ then it picks the next weak spot and goes again</div>
+    </div>
+  );
+}
 function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean }) {
-  const n = LOOP.length, W = big ? 980 : 520, nodeW = big ? 156 : 84, nodeH = big ? 64 : 28;
+  const n = LOOP.length, W = big ? 980 : 640, nodeW = big ? 156 : 92, nodeH = big ? 64 : 28;
   const gap = (W - n * nodeW) / (n - 1), top = big ? 8 : 4, H = big ? 190 : 50;
   const x = (k: number) => k * (nodeW + gap);
   const retY = top + nodeH + (big ? 78 : 14);
-  const loopOn = active === 5;
+  const loopOn = active === LOOP.length;
   return (
     <svg className={`st-loop ${big ? "big" : "mini"}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Spore loop">
       <defs>
@@ -195,21 +230,21 @@ function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean 
         </marker>
       </defs>
       {LOOP.slice(0, -1).map((_, k) => (
-        <line key={k} className={`edge ${active > k && active <= 4 ? "lit" : ""}`} x1={x(k) + nodeW + 4} x2={x(k + 1) - 6}
+        <line key={k} className={`edge ${active > k && active < LOOP.length ? "lit" : ""}`} x1={x(k) + nodeW + 4} x2={x(k + 1) - 6}
           y1={top + nodeH / 2} y2={top + nodeH / 2} markerEnd={`url(#ah${big ? "b" : "m"})`} />
       ))}
       <path className={`edge ret ${loopOn ? "lit" : ""}`} markerEnd={`url(#ah${big ? "b" : "m"})`}
         d={`M ${x(n - 1) + nodeW / 2} ${top + nodeH + 4} Q ${x(n - 1) + nodeW / 2} ${retY} ${W / 2} ${retY} Q ${nodeW / 2} ${retY} ${nodeW / 2} ${top + nodeH + 6}`} />
       {big && <text className={`ret-lbl ${loopOn ? "lit" : ""}`} x={W / 2} y={retY - (big ? 10 : 5)} textAnchor="middle">repeat with the next gap</text>}
       {LOOP.map((node, k) => (
-        <g key={node.id} className={`node ${k === active ? "on" : ""} ${active > k && active <= 5 ? "done" : ""}`}>
+        <g key={node.id} className={`node ${k === active ? "on" : ""} ${active > k && active <= LOOP.length ? "done" : ""} ${node.next ? "next" : ""}`}>
           <rect x={x(k)} y={top} width={nodeW} height={nodeH} rx={nodeH / 2} />
-          <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + (big ? -2 : 4)} textAnchor="middle" className="nm">{node.name}</text>
+          <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + (big ? -2 : 4)} textAnchor="middle" className="nm">{big ? node.name : node.name.replace("Find weak spots", "Weak spots")}</text>
           {big && <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + 17} textAnchor="middle" className="by">{node.what}</text>}
           {big && (
-            <g className={`chip chip-${node.by}`}>
+            <g className={`chip chip-${node.by[0] ?? "none"}`}>
               <rect x={x(k) + nodeW / 2 - 62} y={top + nodeH + 10} width={124} height={24} rx={6} />
-              <text x={x(k) + nodeW / 2} y={top + nodeH + 26.5} textAnchor="middle">{SPONSOR[node.by]}</text>
+              <text x={x(k) + nodeW / 2} y={top + nodeH + 26.5} textAnchor="middle">{node.by[0] ? SPONSOR[node.by[0]] : ""}</text>
             </g>
           )}
         </g>
@@ -221,13 +256,12 @@ function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean 
 function Intro() {
   return (
     <div className="st-intro">
-      <div className="st-logo rv">Spore</div>
+      <div className="st-logo rv">Spore <small>by SporeLabs</small></div>
       <p className="st-line rv" style={{ animationDelay: "0.25s" }}>
-        <span>An agent that finds what your cameras have never seen,</span>{" "}
-        <span className="hl">grows that footage, tests your video AI on it, and does it again.</span>
+        <span>Find where your video AI is weak.</span>{" "}
+        <span className="hl">Grow the data to fix it. Retrain until it's ready to ship.</span>
       </p>
-      <div className="rv st-loop-wrap" style={{ animationDelay: "0.5s" }}><LoopMap big /></div>
-      <p className="st-hint rv" style={{ animationDelay: "0.8s" }}>A video agent on VAST, NVIDIA and W&B. Press → to watch it work.</p>
+      <Phases />
     </div>
   );
 }

@@ -297,3 +297,48 @@
 .st-loop .chip-nvidia rect { fill: rgba(118,185,0,0.09); stroke: rgba(118,185,0,0.55); } .st-loop .chip-nvidia text { fill: #8ed100; }
 .st-loop .chip-wandb rect { fill: rgba(255,204,51,0.08); stroke: rgba(255,204,51,0.5); } .st-loop .chip-wandb text { fill: #ffcc33; }
 .st-loop .chip-cursor rect { fill: none; stroke: var(--line2); } .st-loop .chip-cursor text { fill: var(--text); }
+
+/* ---- v5 intro: value line + six real phases with sponsor logos ---- */
+.st-intro { gap: 22px; }
+.st-logo { font-size: clamp(56px, 6.4vw, 88px); align-items: baseline; }
+.st-logo small { font-family: var(--sans); font-size: 18px; color: var(--muted); letter-spacing: 0.02em; }
+.st-intro .st-line { font-size: clamp(26px, 2.6vw, 36px); max-width: 32ch; }
+
+.st-phases { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; width: 100%; margin-top: 6px; }
+.st-phase {
+  position: relative; display: flex; flex-direction: column; gap: 8px;
+  border: 1px solid var(--line2); background: var(--surface); border-radius: 14px; padding: 16px 14px 14px;
+}
+.st-phase:not(:last-of-type)::after {
+  content: "→"; position: absolute; right: -11px; top: 22px; color: var(--muted); font-size: 14px; z-index: 2;
+}
+.st-phase .num { font-family: var(--mono); font-size: 12px; color: var(--spore); }
+.st-phase .nm { font-size: 19px; font-weight: 700; line-height: 1.15; }
+.st-phase .wh { font-size: 14px; color: #c4c9c2; line-height: 1.35; flex: 1; }
+.st-phase.next { border-style: dashed; background: transparent; }
+.st-phase.next .num { color: var(--muted); }
+.st-phases-loop { grid-column: 1 / -1; font-family: var(--mono); font-size: 14px; color: var(--muted); text-align: center; padding-top: 2px; }
+
+/* logo plates: light background so every brand mark reads on dark */
+.st-logo-plate {
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  background: #f4f5f1; border-radius: 8px; padding: 6px 10px; height: 32px;
+}
+.st-logo-plate img { height: 18px; width: auto; display: block; }
+.st-logo-plate.lp-vast img { height: 22px; }
+.st-logo-plate.lp-wandb img { height: 14px; }
+.st-logo-plate em { font-style: normal; font-weight: 700; font-size: 12px; color: #1a1a1a; border-left: 1px solid #ccc; padding-left: 8px; }
+.st-pw .st-logo-plate { height: 30px; }
+
+/* mini loop: dashed "next" node */
+.st-loop .node.next rect { stroke-dasharray: 4 4; }
+@media (max-width: 1100px) { .st-phases { grid-template-columns: repeat(3, 1fr); } .st-phase::after { display: none; } }
+.st-phase:not(:last-of-type)::after { content: none; }
+.st-phase:not(.next)::after { content: "→"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 15px; }
+.st-phase .logos { display: flex; flex-wrap: wrap; gap: 6px; }
+.st-logo-plate { height: 36px; padding: 6px 10px; }
+.st-logo-plate img { height: 20px; }
+.st-logo-plate.lp-vast img { height: 30px; }
+.st-logo-plate.lp-wandb img { height: 17px; }
+.st-next-tag { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border: 1px dashed var(--line2); border-radius: 8px; padding: 9px 10px; }
+.st-intro .st-line { max-width: 44ch; }
