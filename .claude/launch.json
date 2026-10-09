@@ -1,6 +1,13 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "review", "runtimeExecutable": "/usr/bin/python3", "runtimeArgs": ["/Users/cisner/Documents/Coding Work/hackathons/team16/tools/review/server.py"], "port": 8765 }
+    {
+      "name": "review",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": [
+        "/Users/cisner/Documents/Coding Work/hackathons/team16/tools/review/server.py"
+      ],
+      "port": 8765
+    }
   ]
 }

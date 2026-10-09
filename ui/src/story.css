@@ -388,3 +388,15 @@
 .st-cyc.nextup .k { color: var(--spore); }
 .st-cyc-arrow { align-self: center; font-size: 30px; color: var(--muted); }
 .st-logos-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* one screen per step: header + nav pinned, the stage zooms to fit what's left */
+.story { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden; }
+.st-viewport { min-height: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+.st-viewport > .st-stage { flex: none; }
+.st-nav { padding: 10px 0 18px; }
+.st-top { padding-top: 16px; padding-bottom: 10px; }
+
+/* number + title on one line */
+.st-phase .hd { display: flex; align-items: baseline; gap: 8px; }
+.st-phase .hd .num { font-size: 15px; font-weight: 600; }
+.st-phase .hd .nm { font-size: 17px; white-space: nowrap; }

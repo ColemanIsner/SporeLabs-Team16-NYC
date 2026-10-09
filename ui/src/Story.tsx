@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { url, useJSON, getJSON, type Coverage, type GapReport, type Eval, type SeverityCurve, type FixRow, type LoopEntry } from "./data";
 import "./story.css";
 
@@ -43,6 +43,38 @@ const rv = (i: number) => ({ className: "rv", style: { animationDelay: `${0.15 +
 
 function Video({ src, className }: { src: string; className?: string }) {
   return <video className={className} src={url(src)} autoPlay muted loop playsInline />;
+}
+
+// Every step must fit one screen: the stage shrinks (CSS zoom keeps layout honest) until it fits
+// between the pinned header and nav. Re-fits when videos/fonts load or the window resizes.
+function FitStage({ stepKey, children }: { stepKey: string; children: ReactNode }) {
+  const vp = useRef<HTMLDivElement>(null);
+  const st = useRef<HTMLElement>(null);
+  const [z, setZ] = useState(1);
+  useLayoutEffect(() => {
+    const fit = () => {
+      const v = vp.current, el = st.current;
+      if (!v || !el) return;
+      const cur = parseFloat(el.style.zoom || "1") || 1;
+      // On-screen height divided by the current zoom = natural height (browser-independent).
+      const natural = el.getBoundingClientRect().height / cur;
+      const next = Math.min(1, Math.max(0.55, (v.clientHeight - 8) / Math.max(1, natural)));
+      if (Math.abs(next - cur) > 0.01) { el.style.zoom = String(next); setZ(next); }
+    };
+    if (st.current) st.current.style.zoom = "1";
+    fit();
+    const ro = new ResizeObserver(fit);
+    if (vp.current) ro.observe(vp.current);
+    if (st.current) ro.observe(st.current);
+    const t = setInterval(fit, 500);
+    const stop = setTimeout(() => clearInterval(t), 4000);
+    return () => { ro.disconnect(); clearInterval(t); clearTimeout(stop); };
+  }, [stepKey]);
+  return (
+    <div className="st-viewport" ref={vp}>
+      <main className="st-stage" ref={st} key={stepKey} data-zoom={z.toFixed(2)}>{children}</main>
+    </div>
+  );
 }
 
 export default function Story() {
@@ -105,7 +137,7 @@ export default function Story() {
           ))}
         </nav>
       </header>
-      <main className="st-stage" key={steps[i].key}>{steps[i].render()}</main>
+      <FitStage stepKey={steps[i].key}>{steps[i].render()}</FitStage>
       <footer className="st-nav">
         <button className="st-back" onClick={() => go(-1)} disabled={i === 0}>←</button>
         {i < steps.length - 1 ? (
@@ -204,8 +236,7 @@ function Phases() {
     <div className="st-phases">
       {LOOP.map((p, k) => (
         <div key={p.id} {...rv(k + 2)} className={`rv st-phase ${p.next ? "next" : ""}`}>
-          <div className="num">{k + 1}</div>
-          <div className="nm">{p.name}</div>
+          <div className="hd"><span className="num">{k + 1}</span><span className="nm">{p.name}</span></div>
           <div className="wh">{p.what}</div>
           <div className="logos">
             {p.by.map((b) => <Logo key={b} by={b} sub={b === "wandb" ? "W&B" : undefined} />)}
@@ -340,7 +371,7 @@ function Missing({ coverage }: { coverage?: Coverage | null }) {
   const cov = Object.fromEntries((coverage?.conditions ?? []).map((c) => [c.id, c]));
   return (
     <>
-      <Title kicker="2 · Find the gaps">It checks what your highway cameras have actually seen.</Title>
+      <Title kicker="2 · Find weak spots">It checks what your highway cameras have actually seen.</Title>
       <div className="st-live">
         {GAP_ROWS.map((r, k) => {
           const c = cov[r.id];
@@ -474,7 +505,7 @@ function Grow() {
   const g = GROW[k];
   return (
     <>
-      <Title kicker="4 · Fill">It grows the missing weather onto a real clip.</Title>
+      <Title kicker="4 · Grow data">It grows the missing weather onto a real clip.</Title>
       <div ref={box} className="st-morph rv" style={{ animationDelay: "0.3s" }}>
         {GROW.map((v, j) => (
           <video key={v.src} src={url(v.src)} autoPlay muted loop playsInline preload="auto" className={j === k ? "on" : ""} />
@@ -515,7 +546,7 @@ function Blind({ curve, headline }: { curve?: SeverityCurve | null; headline?: {
   const tone = (n: number) => (n >= 7 ? "ok" : n >= 4 ? "mid" : "bad");
   return (
     <>
-      <Title kicker="6 · Measure">It finds where your AI goes blind.</Title>
+      <Title kicker="5 · Test · results">It finds where your AI goes blind.</Title>
       <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
         In light fog, YOLO finds <b>{outOf10 ?? "…"} in 10</b> cars a person can still see.
       </div>
@@ -546,7 +577,7 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
   const fmt = (v: number) => (v <= 1 ? `${Math.round(v * 100)}%` : v.toFixed(1));
   return (
     <>
-      <Title kicker="Fix">Some of it, it can fix right away.</Title>
+      <Title kicker="6 · Fix">Some of it, it can fix right away.</Title>
       {rows.length ? (
         <>
           <p className="st-sub rv" style={{ animationDelay: "0.3s" }}>
@@ -587,7 +618,7 @@ function Again({ report, loop }: { report?: GapReport | null; loop?: LoopEntry[]
   const kept = last?.recall != null ? Math.round(10 * last.recall) : null;
   return (
     <>
-      <Title kicker="Repeat">Then it picks the next weak spot.</Title>
+      <Title kicker="↺ · Repeat">Then it picks the next weak spot.</Title>
       <div className="st-cycle">
         {last && (
           <div {...rv(1)}>
