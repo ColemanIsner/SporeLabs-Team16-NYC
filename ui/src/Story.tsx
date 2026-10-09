@@ -223,8 +223,8 @@ function Intro() {
     <div className="st-intro">
       <div className="st-logo rv">Spore</div>
       <p className="st-line rv" style={{ animationDelay: "0.25s" }}>
-        <span>Know where your video AI fails before the fog does.</span>{" "}
-        <span className="hl">Spore grows the footage your cameras haven't seen yet, and tests your AI on it.</span>
+        <span>An agent that finds what your cameras have never seen,</span>{" "}
+        <span className="hl">grows that footage, tests your video AI on it, and does it again.</span>
       </p>
       <div className="rv st-loop-wrap" style={{ animationDelay: "0.5s" }}><LoopMap big /></div>
       <p className="st-hint rv" style={{ animationDelay: "0.8s" }}>A video agent on VAST, NVIDIA and W&B. Press → to watch it work.</p>
