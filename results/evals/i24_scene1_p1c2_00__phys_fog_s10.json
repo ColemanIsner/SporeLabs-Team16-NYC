@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c2_00__phys_fog_s10",
+  "seed_id": "i24_scene1_p1c2_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "A multi-lane highway is visible through thick fog, with several vehicles traveling in both directions. Due to the low visibility, specific vehicle colors and types are difficult to discern, but they appear to be moving steadily in their respective lanes without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 10,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "dense fog obscuring visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 2.95,
+    "raw": "{\"vehicle_count\": 10, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"dense fog obscuring visibility\", \"summary\": \"A multi-lane highway is visible through thick fog, with several vehicles traveling in both directions. Due to the low visibility, specific vehicle colors and types are difficult to discern, but they appear to be moving steadily in their respective lanes without any lane changes or stops.\"}",
+    "src_mtime": 1791565546.631,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__phys_fog_s04",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "Multiple vehicles travel in both directions on a multi-lane highway under overcast, foggy conditions. Traffic flows steadily with no lane changes or stops observed.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast with light fog"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.38,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast with light fog\",\n  \"summary\": \"Multiple vehicles travel in both directions on a multi-lane highway under overcast, foggy conditions. Traffic flows steadily with no lane changes or stops observed.\"\n}\n```",
+    "src_mtime": 1791565480.655,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "fidelity": {
+    "edge_ssim": 0.7313,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7155,
+    "seconds": 2.45
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 2.516,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.075,
+    "recall_vs_seed": 0.3809,
+    "recall_vs_seed_all": 0.3809,
+    "frames": 93,
+    "seconds": 4.61,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_04__phys_fog_s04.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.3731,
+    "patch_score_median": 0.9225,
+    "n_vehicle_patches": 193,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

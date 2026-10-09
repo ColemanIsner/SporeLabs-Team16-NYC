@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__phys_fog_s07",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "A foggy highway scene with multiple vehicles traveling in both directions. The visibility is reduced due to the dense fog, and the vehicles are moving steadily without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "foggy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.28,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"foggy, overcast\", \"summary\": \"A foggy highway scene with multiple vehicles traveling in both directions. The visibility is reduced due to the dense fog, and the vehicles are moving steadily without any lane changes or stops.\"}",
+    "src_mtime": 1791565481.611,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "fidelity": {
+    "edge_ssim": 0.7106,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.6996,
+    "seconds": 1.89
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 0.247,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.075,
+    "recall_vs_seed": 0.0386,
+    "recall_vs_seed_all": 0.0386,
+    "frames": 93,
+    "seconds": 3.86,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_04__phys_fog_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.8808,
+    "recall_intact": 0.0412,
+    "patch_score_median": 0.7234,
+    "n_vehicle_patches": 193,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_08__phys_fog_s10",
+  "seed_id": "i24_scene1_p1c1_08",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "Several vehicles are driving on a multi-lane highway through dense fog, with visibility significantly reduced. The vehicles maintain their lanes and continue moving forward without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 8,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "foggy, dim"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.75,
+    "raw": "{\"vehicle_count\": 8, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"foggy, dim\", \"summary\": \"Several vehicles are driving on a multi-lane highway through dense fog, with visibility significantly reduced. The vehicles maintain their lanes and continue moving forward without any lane changes or stops.\"}",
+    "src_mtime": 1791565514.694,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

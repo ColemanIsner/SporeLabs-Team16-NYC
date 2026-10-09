@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c2_00__phys_fog_s07",
+  "seed_id": "i24_scene1_p1c2_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "Multiple vehicles, including cars and trucks, travel in both directions on a multi-lane highway through heavy fog. Traffic flows steadily without lane changes or congestion.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast with dense fog reducing visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.17,
+    "raw": "```json\n{\n  \"vehicle_count\": 12,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast with dense fog reducing visibility\",\n  \"summary\": \"Multiple vehicles, including cars and trucks, travel in both directions on a multi-lane highway through heavy fog. Traffic flows steadily without lane changes or congestion.\"\n}\n```",
+    "src_mtime": 1791565545.34,
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

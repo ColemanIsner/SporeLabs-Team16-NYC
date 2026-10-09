@@ -51,5 +51,13 @@
     "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"rainy, overcast\", \"summary\": \"Several vehicles are driving on a highway in rainy weather.\"}",
     "src_mtime": 1791565236.772,
     "agree_vs_seed": 1.0
+  },
+  "integrity": {
+    "vehicles_intact": 0.8547,
+    "recall_intact": 0.0,
+    "patch_score_median": 0.5712,
+    "n_vehicle_patches": 234,
+    "thresh": 0.35,
+    "min_intact": 0.7
   }
 }

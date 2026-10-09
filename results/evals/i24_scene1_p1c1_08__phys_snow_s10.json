@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_08__phys_snow_s10",
+  "seed_id": "i24_scene1_p1c1_08",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "reason": {
+    "summary": "A snowy highway scene with multiple vehicles moving in both directions. A white bus and several cars are visible on the left side, while a red truck and other vehicles travel on the right. Snowflakes are falling heavily across the frame, reducing visibility and creating a wintry atmosphere.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": true,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy and overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.79,
+    "raw": "```json\n{\n  \"vehicle_count\": 12,\n  \"lane_change\": true,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"snowy and overcast\",\n  \"summary\": \"A snowy highway scene with multiple vehicles moving in both directions. A white bus and several cars are visible on the left side, while a red truck and other vehicles travel on the right. Snowflakes are falling heavily across the frame, reducing visibility and creating a wintry atmosphere.\"\n}\n```",
+    "src_mtime": 1791565542.8,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

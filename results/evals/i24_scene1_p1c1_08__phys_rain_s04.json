@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_08__phys_rain_s04",
+  "seed_id": "i24_scene1_p1c1_08",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "reason": {
+    "summary": "Multiple vehicles travel in both directions on a multi-lane highway under light rain. Traffic flows steadily with no lane changes or stops observed.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "bright daylight with light rain"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.74,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"bright daylight with light rain\", \"summary\": \"Multiple vehicles travel in both directions on a multi-lane highway under light rain. Traffic flows steadily with no lane changes or stops observed.\"}",
+    "src_mtime": 1791565530.417,
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

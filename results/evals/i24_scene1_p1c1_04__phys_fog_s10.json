@@ -1,0 +1,62 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__phys_fog_s10",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "A foggy highway scene with multiple vehicles traveling in both directions, separated by a median. The visibility is reduced due to the dense fog, and vehicles are maintaining their lanes without any noticeable lane changes or stops.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "foggy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.25,
+    "raw": "{\"vehicle_count\": 12, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"foggy, overcast\", \"summary\": \"A foggy highway scene with multiple vehicles traveling in both directions, separated by a median. The visibility is reduced due to the dense fog, and vehicles are maintaining their lanes without any noticeable lane changes or stops.\"}",
+    "src_mtime": 1791565482.61,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": [],
+  "fidelity": {
+    "edge_ssim": 0.7062,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.6942,
+    "seconds": 1.81,
+    "rejected_by": "vehicle_integrity"
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 0.0,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.075,
+    "recall_vs_seed": 0.0,
+    "recall_vs_seed_all": 0.0,
+    "frames": 93,
+    "seconds": 4.65,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_04__phys_fog_s10.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 0.6114,
+    "recall_intact": 0.0,
+    "patch_score_median": 0.4415,
+    "n_vehicle_patches": 193,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

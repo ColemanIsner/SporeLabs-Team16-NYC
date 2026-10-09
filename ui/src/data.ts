@@ -145,3 +145,5 @@ export const ago = (t?: number) => {
   const s = Math.max(0, Date.now() / 1000 - t);
   return s < 60 ? `${Math.round(s)}s ago` : s < 3600 ? `${Math.round(s / 60)}m ago` : `${Math.round(s / 3600)}h ago`;
 };
+export type SevPoint = { severity: number; recall: number; n?: number };
+export type SeverityCurve = { curves?: Record<string, SevPoint[]>; breaking_point?: Record<string, number | null>; by_scene?: unknown; updated?: number };

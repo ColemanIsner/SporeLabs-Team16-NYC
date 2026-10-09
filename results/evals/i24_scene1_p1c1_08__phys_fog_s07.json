@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_08__phys_fog_s07",
+  "seed_id": "i24_scene1_p1c1_08",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "A multi-lane highway is visible through dense fog, with vehicles traveling in both directions. The fog significantly reduces visibility, obscuring distant objects and creating a hazy atmosphere. Vehicles maintain their lanes and move steadily despite the poor conditions.",
+    "answers": {
+      "vehicle_count": 10,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "foggy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.63,
+    "raw": "{\"vehicle_count\": 10, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"foggy, overcast\", \"summary\": \"A multi-lane highway is visible through dense fog, with vehicles traveling in both directions. The fog significantly reduces visibility, obscuring distant objects and creating a hazy atmosphere. Vehicles maintain their lanes and move steadily despite the poor conditions.\"}",
+    "src_mtime": 1791565513.631,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

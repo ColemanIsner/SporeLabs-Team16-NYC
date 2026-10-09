@@ -778,5 +778,936 @@
     "gpu": null,
     "gen_seconds": 12.2,
     "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 4.82,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 5.12,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 5.48,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 6.78,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 14.26,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 15.75,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 16.21,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 9.72,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_00__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c1_00",
+    "src": "data/synthetic/i24_scene1_p1c1_00__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 9.76,
+    "input": "data/seeds/i24_scene1_p1c1_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 6.68,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 7.15,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 7.18,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 9.4,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 18.84,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 20.64,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 21.88,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 12.27,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_04__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c1_04",
+    "src": "data/synthetic/i24_scene1_p1c1_04__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 13.55,
+    "input": "data/seeds/i24_scene1_p1c1_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 9.72,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 9.39,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 9.07,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 9.83,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 19.97,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 21.08,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 22.12,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 11.88,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 8.52,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c1_08__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c1_08",
+    "src": "data/synthetic/i24_scene1_p1c1_08__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 12.0,
+    "input": "data/seeds/i24_scene1_p1c1_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 8.67,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 9.0,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 9.85,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 19.03,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 19.23,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 19.75,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 9.1,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 6.27,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_00__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c2_00",
+    "src": "data/synthetic/i24_scene1_p1c2_00__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 9.72,
+    "input": "data/seeds/i24_scene1_p1c2_00.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 6.93,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 7.21,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 11.61,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_rain_s04",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_rain_s04.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.40",
+    "gpu": null,
+    "gen_seconds": 28.33,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_rain_s07",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_rain_s07.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@0.70",
+    "gpu": null,
+    "gen_seconds": 31.31,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_rain_s10",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_rain_s10.mp4",
+    "condition": {
+      "weather": "rain",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "rain"
+    },
+    "prompt": null,
+    "generator": "weather.py/rain@1.00",
+    "gpu": null,
+    "gen_seconds": 32.36,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_snow_s07",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_snow_s07.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.70",
+    "gpu": null,
+    "gen_seconds": 20.48,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_04__phys_snow_s10",
+    "seed_id": "i24_scene1_p1c2_04",
+    "src": "data/synthetic/i24_scene1_p1c2_04__phys_snow_s10.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@1.00",
+    "gpu": null,
+    "gen_seconds": 23.17,
+    "input": "data/seeds/i24_scene1_p1c2_04.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_fog_s04",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_fog_s04.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.40",
+    "gpu": null,
+    "gen_seconds": 17.66,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_fog_s07",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_fog_s07.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 0.7,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@0.70",
+    "gpu": null,
+    "gen_seconds": 19.22,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_fog_s10",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_fog_s10.mp4",
+    "condition": {
+      "weather": "fog",
+      "time": "day",
+      "intensity": "heavy",
+      "kind": "physics",
+      "severity": 1.0,
+      "base": "seed",
+      "physics": "fog"
+    },
+    "prompt": null,
+    "generator": "weather.py/fog@1.00",
+    "gpu": null,
+    "gen_seconds": 20.13,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
+  },
+  {
+    "clip_id": "i24_scene1_p1c2_08__phys_snow_s04",
+    "seed_id": "i24_scene1_p1c2_08",
+    "src": "data/synthetic/i24_scene1_p1c2_08__phys_snow_s04.mp4",
+    "condition": {
+      "weather": "snow",
+      "time": "day",
+      "intensity": "light",
+      "kind": "physics",
+      "severity": 0.4,
+      "base": "seed",
+      "physics": "snow"
+    },
+    "prompt": null,
+    "generator": "weather.py/snow@0.40",
+    "gpu": null,
+    "gen_seconds": 28.11,
+    "input": "data/seeds/i24_scene1_p1c2_08.mp4"
   }
 ]

@@ -3,7 +3,7 @@ import {
   FIXTURES, url, useJSON, useEvals, condLabel, isPixel, pixelName, pct, num, fmtAnswer,
   WEATHERS, TIMES, INTENSITIES, ago,
   type Seed, type Variant, type Eval, type FailureMap, type Arm, type RealCheck, type FixRow, type Condition,
-  type Coverage, type GapReport, type Overlay, type LoopEntry,
+  type Coverage, type GapReport, type SeverityCurve, type SevPoint, type Overlay, type LoopEntry,
 } from "./data";
 import { SyncGroup, Video } from "./sync";
 
@@ -20,6 +20,7 @@ export default function App() {
   const overlays = useJSON<Overlay[]>("results/overlays/index.json", POLL);
   const loopLog = useJSON<LoopEntry[]>("results/loop_log.json", POLL);
   const map = useFixtureReplay(rawMap);
+  const sevCurve = useJSON<SeverityCurve>("results/severity_curve.json", POLL);
 
   const spore = useMemo(() => (Array.isArray(loopLog) ? loopLog : []).filter((e) => e && e.kind === "spore"), [loopLog]);
   const lastFill = useMemo(() => [...spore].reverse().find((e) => e.stages?.["3"]?.clips), [spore]);
@@ -81,6 +82,8 @@ export default function App() {
         title={<>Run the stack on the filled gap. <em>Green boxes it still sees, red ones it lost.</em></>}
         aside={<LiveTag label={map?.budget_used != null ? `${map.budget_used} clips scored` : undefined} active={running?.running_stage === 4} />}>
         <Aha ov={overlays} />
+        <h3 className="subhead">Breaking point: how much weather before YOLO goes blind</h3>
+        <BreakingPoint curve={sevCurve} synthetic={synthetic ?? []} seeds={seeds ?? []} />
         <h3 className="subhead">Failure rate by condition</h3>
         <Heatmap map={map} />
         <h3 className="subhead">Fix: fine-tune on the filled gap, before → after</h3>
@@ -218,6 +221,134 @@ function Aha({ ov }: { ov: Overlay[] | null | undefined }) {
     </div>
   );
 }
+
+/* ---------- 4b breaking point ---------- */
+
+const KIND_COLOR: Record<string, string> = { fog: "#d4ff3a", rain: "#4f9bff", snow: "#ff9f6a", night: "#a58bff", glare: "#ffd166" };
+const sevOf = (v: Variant) => (typeof v.condition?.severity === "number" ? (v.condition.severity as number) : undefined);
+const kindOf = (v: Variant) => String(v.condition?.physics ?? v.condition?.weather ?? "");
+
+function crossing(pts: SevPoint[], thr = 0.5): number | null {
+  for (let i = 1; i < pts.length; i++) {
+    const a = pts[i - 1], b = pts[i];
+    if (a.recall >= thr && b.recall < thr) return a.severity + ((a.recall - thr) / (a.recall - b.recall || 1)) * (b.severity - a.severity);
+  }
+  return pts.length && pts[0].recall < thr ? pts[0].severity : null;
+}
+
+function BreakingPoint({ curve, synthetic, seeds }: { curve: SeverityCurve | null | undefined; synthetic: Variant[]; seeds: Seed[] }) {
+  const phys = useMemo(() => synthetic.filter((v) => v.condition?.kind === "physics" && sevOf(v) != null && ["fog", "rain", "snow"].includes(kindOf(v))), [synthetic]);
+  const needFallback = !curve || !curve.curves || !Object.keys(curve.curves).length;
+  const evals = useEvals(useMemo(() => (needFallback ? phys.map((v) => v.clip_id) : []), [needFallback, phys]), 5000);
+
+  const curves: Record<string, SevPoint[]> = useMemo(() => {
+    let raw: Record<string, SevPoint[]> = {};
+    if (!needFallback) raw = curve!.curves!;
+    else {
+      const acc: Record<string, Record<string, number[]>> = {};
+      for (const v of phys) {
+        const r = evals[v.clip_id]?.yolo?.recall_vs_seed;
+        if (r == null) continue;
+        const k = kindOf(v), s = sevOf(v)!.toFixed(2);
+        ((acc[k] ??= {})[s] ??= []).push(r);
+      }
+      for (const [k, by] of Object.entries(acc))
+        raw[k] = Object.entries(by).map(([s, rs]) => ({ severity: +s, recall: rs.reduce((x, y) => x + y, 0) / rs.length, n: rs.length }));
+    }
+    const out: Record<string, SevPoint[]> = {};
+    for (const [k, pts] of Object.entries(raw)) {
+      const p = [...(pts ?? [])].filter((x) => x && x.recall != null).sort((a, b) => a.severity - b.severity);
+      if (!p.length) continue;
+      if (p[0].severity > 0.05) p.unshift({ severity: 0, recall: 1, n: 0 });
+      out[k] = p;
+    }
+    return out;
+  }, [needFallback, curve, phys, evals]);
+
+  const bp: Record<string, number | null> = {};
+  for (const k of Object.keys(curves)) bp[k] = curve?.breaking_point?.[k] ?? crossing(curves[k]);
+  const headK = bp.fog != null ? "fog" : Object.keys(bp).filter((k) => bp[k] != null).sort((a, b) => bp[a]! - bp[b]!)[0];
+
+  const W = 620, H = 340, L = 52, B = 40, T = 16, Rr = 16;
+  const x = (s: number) => L + s * (W - L - Rr);
+  const y = (r: number) => T + (1 - r) * (H - T - B);
+
+  return (
+    <div className="bp">
+      <div className="bp-chart">
+        {headK ? (
+          <div className="bp-callout">
+            YOLO goes blind at <b style={{ color: KIND_COLOR[headK] }}>{headK}</b> severity <b className="bp-num">{bp[headK]!.toFixed(2)}</b>
+            <small>recall on intact vehicles drops below 50%</small>
+          </div>
+        ) : (
+          <div className="bp-callout dim">{Object.keys(curves).length ? "No condition crossed 50% recall yet" : "Severity sweep running…"}<small>results/severity_curve.json</small></div>
+        )}
+        <svg viewBox={`0 0 ${W} ${H}`} className="bp-svg" role="img" aria-label="YOLO recall vs weather severity">
+          {[0, 0.25, 0.5, 0.75, 1].map((r) => (
+            <g key={r}>
+              <line x1={L} x2={W - Rr} y1={y(r)} y2={y(r)} stroke="rgba(255,255,255,.07)" />
+              <text x={L - 10} y={y(r) + 4} textAnchor="end" className="bp-tick">{Math.round(r * 100)}%</text>
+            </g>
+          ))}
+          {[0, 0.2, 0.4, 0.6, 0.8, 1].map((s) => (
+            <text key={s} x={x(s)} y={H - B + 20} textAnchor="middle" className="bp-tick">{s.toFixed(1)}</text>
+          ))}
+          <text x={(L + W - Rr) / 2} y={H - 4} textAnchor="middle" className="bp-axis">weather severity →</text>
+          <line x1={L} x2={W - Rr} y1={y(0.5)} y2={y(0.5)} stroke="#ff5233" strokeDasharray="6 5" strokeWidth={1.5} />
+          <text x={W - Rr - 4} y={y(0.5) - 6} textAnchor="end" className="bp-fifty">50% recall</text>
+          {Object.entries(curves).map(([k, pts]) => (
+            <g key={k}>
+              <polyline fill="none" stroke={KIND_COLOR[k] ?? "#ccc"} strokeWidth={3} strokeLinejoin="round" points={pts.map((p) => `${x(p.severity)},${y(p.recall)}`).join(" ")} />
+              {pts.map((p) => <circle key={p.severity} cx={x(p.severity)} cy={y(p.recall)} r={4} fill={KIND_COLOR[k] ?? "#ccc"}><title>{`${k} ${p.severity.toFixed(1)}: ${Math.round(p.recall * 100)}% (n=${p.n ?? "?"})`}</title></circle>)}
+              {bp[k] != null && <line x1={x(bp[k]!)} x2={x(bp[k]!)} y1={y(0.5) - 8} y2={y(0.5) + 8} stroke={KIND_COLOR[k]} strokeWidth={2} />}
+            </g>
+          ))}
+        </svg>
+        <div className="bp-legend">
+          {Object.keys(curves).map((k) => (
+            <span key={k}><i style={{ background: KIND_COLOR[k] }} />{k}{bp[k] != null ? ` · breaks at ${bp[k]!.toFixed(2)}` : " · holds"}</span>
+          ))}
+        </div>
+      </div>
+      <SeverityStrip phys={phys} seeds={seeds} />
+    </div>
+  );
+}
+
+function SeverityStrip({ phys, seeds }: { phys: Variant[]; seeds: Seed[] }) {
+  const [kind, setKind] = useState("fog");
+  const seedIds = useMemo(() => [...new Set(phys.map((v) => v.seed_id))], [phys]);
+  const [sid, setSid] = useState<string | null>(null);
+  const seedId = sid && seedIds.includes(sid) ? sid : seedIds[0];
+  const seed = seeds.find((s) => s.seed_id === seedId);
+  if (!seedId || !seed) return <Empty title="Severity strip appears when physics variants exist" hint="gen/weather.py" />;
+  const pick = (s: number) => phys.find((v) => v.seed_id === seedId && kindOf(v) === kind && Math.abs((sevOf(v) ?? -1) - s) < 0.05);
+  const frames: { s: number; src?: string }[] = [{ s: 0, src: seed.src }, ...[0.4, 0.7, 1.0].map((s) => ({ s, src: pick(s)?.src }))];
+  return (
+    <div className="strip">
+      <div className="picker-row">
+        {["fog", "rain", "snow"].map((k) => (
+          <button key={k} className={k === kind ? "on" : ""} onClick={() => setKind(k)}>{k}</button>
+        ))}
+        <select value={seedId} onChange={(e) => setSid(e.target.value)} className="strip-sel">
+          {seedIds.map((s) => <option key={s} value={s}>{s}</option>)}
+        </select>
+      </div>
+      <div className="strip-frames">
+        {frames.map((f) => (
+          <div key={f.s} className="strip-frame">
+            <div className="frame">
+              {f.src ? <video key={f.src} src={url(f.src)} autoPlay muted loop playsInline className="vid" /> : <div className="video-missing"><span>generating…</span></div>}
+            </div>
+            <span className="mono">severity {f.s.toFixed(1)}{f.s === 0 ? " · seed" : ""}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 
 /* ---------- 5 timeline ---------- */
 
@@ -396,13 +527,35 @@ function Metric({ k, v, bad, d }: { k: string; v?: number; bad?: boolean; d?: nu
   );
 }
 
+const isPhys = (v: Variant) => v.condition?.kind === "physics" || v.condition?.kind === "hybrid" || /^weather\.py/.test(v.generator ?? "");
+const isCosmos = (v: Variant) => v.condition?.kind === "generative" || /cosmos/i.test(v.generator ?? "");
+function genLabel(v: Variant) {
+  if (isCosmos(v)) return "Cosmos Transfer";
+  if (isPhys(v)) {
+    const sev = v.condition?.severity as number | undefined;
+    return `physics layer${sev != null ? ` · sev ${sev.toFixed(1)}` : ""}`;
+  }
+  if (isPixel(v.condition)) return "ffmpeg pixel";
+  return v.generator ?? "generator";
+}
+function preferred(v: Variant) {
+  const c = v.condition ?? {};
+  if (isPhys(v) && ["fog", "rain", "snow"].includes(String(c.physics ?? c.weather))) {
+    const sev = c.severity as number | undefined;
+    return sev == null || Math.abs(sev - 0.7) < 0.05 ? 2 : 0;
+  }
+  if (isCosmos(v) && c.time === "night") return 2;
+  return isCosmos(v) ? 1 : 0;
+}
+
 function GrowGrid({ seed, variants, evals, loading, filled }: { seed: Seed | null; variants: Variant[]; evals: Record<string, Eval | null>; loading: boolean; filled?: Set<string> }) {
+  const [all, setAll] = useState(false);
   if (loading) return <div className="grid">{[0, 1, 2].map((i) => <div key={i} className="skeleton tile-sk" />)}</div>;
   if (!seed) return <Empty title="Pick a seed first" hint="data/seeds/manifest.json" />;
   const sorted = [...variants].sort((a, b) => {
     const ea = evals[a.clip_id], eb = evals[b.clip_id];
     const fa = filled?.has(a.clip_id) ? 1 : 0, fb = filled?.has(b.clip_id) ? 1 : 0;
-    return fb - fa || Number(!!eb?.failure) - Number(!!ea?.failure) || (ea?.yolo?.recall_vs_seed ?? 2) - (eb?.yolo?.recall_vs_seed ?? 2);
+    return fb - fa || preferred(b) - preferred(a) || Number(!!eb?.failure) - Number(!!ea?.failure) || (ea?.yolo?.recall_vs_seed ?? 2) - (eb?.yolo?.recall_vs_seed ?? 2);
   });
   return (
     <>
@@ -418,7 +571,7 @@ function GrowGrid({ seed, variants, evals, loading, filled }: { seed: Seed | nul
             <Metric k="agree" v={1} />
           </div>
         </div>
-        {sorted.map((v) => {
+        {(all ? sorted : sorted.slice(0, 8)).map((v) => {
           const e = evals[v.clip_id];
           const fidFail = e?.fidelity?.pass === false;
           const cls = e?.failure ? "fail" : fidFail ? "gated" : e ? "pass" : "pending";
@@ -426,7 +579,7 @@ function GrowGrid({ seed, variants, evals, loading, filled }: { seed: Seed | nul
             <div key={v.clip_id} className={`tile ${cls}`}>
               <div className="frame">
                 <Video src={url(v.src)} className="vid" />
-                <div className="vid-overlay"><CondChips c={v.condition} />{filled?.has(v.clip_id) && <span className="chip solid">just filled</span>}</div>
+                <div className="vid-overlay"><span className={`chip gen ${isCosmos(v) ? "cosmos" : "phys"}`}>{genLabel(v)}</span><CondChips c={v.condition} />{filled?.has(v.clip_id) && <span className="chip solid">just filled</span>}</div>
                 {e?.failure && <div className="flag">blind spot</div>}
                 {fidFail && <div className="flag gate">fidelity gate · excluded</div>}
               </div>
@@ -445,6 +598,7 @@ function GrowGrid({ seed, variants, evals, loading, filled }: { seed: Seed | nul
           );
         })}
       </div>
+      {sorted.length > 8 && <button className="showall" onClick={() => setAll(!all)}>{all ? "show fewer" : `show all ${sorted.length} variants`}</button>}
       {!variants.length && <Empty title="No variants grown for this seed yet" hint="data/synthetic/manifest.json" />}
     </>
   );

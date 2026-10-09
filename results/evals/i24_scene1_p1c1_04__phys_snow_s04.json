@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__phys_snow_s04",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "reason": {
+    "summary": "A multi-lane highway with steady traffic flow in both directions, viewed from an elevated perspective. Vehicles including cars, SUVs, and trucks move at consistent speeds. An artificial snow overlay is applied to the entire scene, creating a winter effect despite the clear weather.",
+    "answers": {
+      "vehicle_count": 25,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with artificial snow overlay"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 8.56,
+    "raw": "```json\n{\n  \"vehicle_count\": 25,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with artificial snow overlay\",\n  \"summary\": \"A multi-lane highway with steady traffic flow in both directions, viewed from an elevated perspective. Vehicles including cars, SUVs, and trucks move at consistent speeds. An artificial snow overlay is applied to the entire scene, creating a winter effect despite the clear weather.\"\n}\n```",
+    "src_mtime": 1791565492.388,
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

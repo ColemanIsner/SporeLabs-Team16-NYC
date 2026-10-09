@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_00__phys_snow_s07",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "reason": {
+    "summary": "A multi-lane highway with moderate traffic moving in both directions under snowy, overcast conditions. Vehicles maintain steady speeds and stay within their lanes, with no visible lane changes or stops.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast with falling snow"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 10.18,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast with falling snow\",\n  \"summary\": \"A multi-lane highway with moderate traffic moving in both directions under snowy, overcast conditions. Vehicles maintain steady speeds and stay within their lanes, with no visible lane changes or stops.\"\n}\n```",
+    "src_mtime": 1791565475.074,
+    "agree_vs_seed": 1.0
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "fidelity": {
+    "edge_ssim": 0.7637,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.7399,
+    "seconds": 2.04
+  },
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 0.763,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.817,
+    "recall_vs_seed": 0.0963,
+    "recall_vs_seed_all": 0.0963,
+    "frames": 93,
+    "seconds": 4.29,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_00__phys_snow_s07.json"
+  },
+  "excluded": false,
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.1014,
+    "patch_score_median": 0.835,
+    "n_vehicle_patches": 207,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

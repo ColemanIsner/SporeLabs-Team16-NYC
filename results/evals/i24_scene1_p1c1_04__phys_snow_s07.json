@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__phys_snow_s07",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 0.7,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "reason": {
+    "summary": "A snowy highway scene with multiple vehicles moving in both directions, separated by a central median. The traffic is flowing steadily despite the falling snow and overcast lighting.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.73,
+    "raw": "{\"vehicle_count\": 15, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"snowy, overcast\", \"summary\": \"A snowy highway scene with multiple vehicles moving in both directions, separated by a central median. The traffic is flowing steadily despite the falling snow and overcast lighting.\"}",
+    "src_mtime": 1791565505.071,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

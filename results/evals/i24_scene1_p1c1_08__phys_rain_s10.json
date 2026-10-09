@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_08__phys_rain_s10",
+  "seed_id": "i24_scene1_p1c1_08",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "reason": {
+    "summary": "A multi-lane highway is viewed from an elevated perspective during a heavy rainstorm. Raindrops streak across the camera lens, obscuring the view. Several vehicles, including cars and a large white truck, are traveling in both directions on the wet road surface. The traffic appears to be moving steadily despite the poor weather conditions.",
+    "answers": {
+      "vehicle_count": 10,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "heavy rain, overcast, low visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.79,
+    "raw": "{\"vehicle_count\": 10, \"lane_change\": false, \"stopped_vehicle\": false, \"weather_lighting\": \"heavy rain, overcast, low visibility\", \"summary\": \"A multi-lane highway is viewed from an elevated perspective during a heavy rainstorm. Raindrops streak across the camera lens, obscuring the view. Several vehicles, including cars and a large white truck, are traveling in both directions on the wet road surface. The traffic appears to be moving steadily despite the poor weather conditions.\"}",
+    "src_mtime": 1791565536.203,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

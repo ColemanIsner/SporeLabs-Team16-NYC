@@ -360,3 +360,27 @@ blockquote cite { display: block; margin-top: 8px; font-family: var(--mono); fon
   .frame.wide { aspect-ratio: 16 / 9; }
 }
 .aha-side > .chip.fail { align-self: flex-start; }
+
+/* stage 3 generator chips */
+.chip.gen.cosmos { background: rgba(118, 185, 0, .85); color: #071000; border-color: transparent; font-weight: 700; }
+.chip.gen.phys { background: rgba(79, 155, 255, .8); color: #04101f; border-color: transparent; font-weight: 700; }
+.showall { margin-top: 16px; font-family: var(--mono); font-size: 12px; background: transparent; border: 1px solid var(--line2); padding: 8px 14px; border-radius: 8px; color: var(--muted); }
+
+/* stage 4 breaking point */
+.bp { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.bp-chart { background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--r) + 4px); padding: 24px; }
+.bp-callout { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15; margin-bottom: 14px; }
+.bp-callout .bp-num { font-family: var(--mono); color: var(--fail); font-weight: 500; }
+.bp-callout small { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 6px; }
+.bp-callout.dim { color: var(--muted); }
+.bp-svg { width: 100%; height: auto; display: block; }
+.bp-tick { font-family: var(--mono); font-size: 11px; fill: var(--dim); }
+.bp-axis { font-family: var(--mono); font-size: 11px; fill: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+.bp-fifty { font-family: var(--mono); font-size: 11px; fill: #ff5233; }
+.bp-legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.bp-legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 7px; vertical-align: middle; }
+.strip { display: flex; flex-direction: column; gap: 12px; }
+.strip-sel { margin-left: auto; font-family: var(--mono); font-size: 12px; background: var(--surface); color: var(--text); border: 1px solid var(--line2); border-radius: 8px; padding: 5px 8px; }
+.strip-frames { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.strip-frame span { display: block; font-size: 11px; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: .08em; }
+@media (max-width: 900px) { .bp { grid-template-columns: 1fr; } }

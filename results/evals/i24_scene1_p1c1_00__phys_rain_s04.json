@@ -1,0 +1,63 @@
+{
+  "clip_id": "i24_scene1_p1c1_00__phys_rain_s04",
+  "seed_id": "i24_scene1_p1c1_00",
+  "condition": {
+    "weather": "rain",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "rain"
+  },
+  "fidelity": {
+    "edge_ssim": 0.8394,
+    "pass": true,
+    "threshold": 0.5,
+    "frames": 93,
+    "min_frame_ssim": 0.8158,
+    "seconds": 2.22
+  },
+  "failure": true,
+  "failure_reasons": [
+    "recall<0.7"
+  ],
+  "yolo": {
+    "model": "yolo11n",
+    "conf": 0.4,
+    "mean_count": 5.882,
+    "mean_count_person": 0.0,
+    "seed_mean_count": 6.817,
+    "recall_vs_seed": 0.6602,
+    "recall_vs_seed_all": 0.6602,
+    "frames": 93,
+    "seconds": 5.67,
+    "device": "cpu",
+    "boxes": "results/boxes/i24_scene1_p1c1_00__phys_rain_s04.json"
+  },
+  "excluded": false,
+  "reason": {
+    "summary": "A multi-lane divided highway with moderate traffic flow in both directions. Vehicles, including cars, SUVs, and trucks, are driving straight in their respective lanes. The road surface is wet from light rain, and the scene is viewed from an elevated perspective with a slight zoom-in effect.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Bright daylight with light rain and visible streaks on the camera lens."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 5.02,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Bright daylight with light rain and visible streaks on the camera lens.\",\n  \"summary\": \"A multi-lane divided highway with moderate traffic flow in both directions. Vehicles, including cars, SUVs, and trucks, are driving straight in their respective lanes. The road surface is wet from light rain, and the scene is viewed from an elevated perspective with a slight zoom-in effect.\"\n}\n```",
+    "src_mtime": 1791565466.663,
+    "agree_vs_seed": 1.0
+  },
+  "integrity": {
+    "vehicles_intact": 1.0,
+    "recall_intact": 0.6715,
+    "patch_score_median": 0.8988,
+    "n_vehicle_patches": 207,
+    "thresh": 0.35,
+    "min_intact": 0.7
+  }
+}

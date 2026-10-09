@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c2_00__phys_snow_s04",
+  "seed_id": "i24_scene1_p1c2_00",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "reason": {
+    "summary": "An aerial view of a multi-lane highway with moderate traffic moving in both directions. Vehicles, including cars, SUVs, and trucks, travel steadily in their respective lanes. Snowflakes are visible falling across the scene, slightly obscuring the view of the road and vehicles.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast with falling snow, creating a hazy, diffused light."
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 6.03,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast with falling snow, creating a hazy, diffused light.\",\n  \"summary\": \"An aerial view of a multi-lane highway with moderate traffic moving in both directions. Vehicles, including cars, SUVs, and trucks, travel steadily in their respective lanes. Snowflakes are visible falling across the scene, slightly obscuring the view of the road and vehicles.\"\n}\n```",
+    "src_mtime": 1791565556.938,
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}

@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c1_04__phys_snow_s10",
+  "seed_id": "i24_scene1_p1c1_04",
+  "condition": {
+    "weather": "snow",
+    "time": "day",
+    "intensity": "heavy",
+    "kind": "physics",
+    "severity": 1.0,
+    "base": "seed",
+    "physics": "snow"
+  },
+  "reason": {
+    "summary": "A snowy highway scene with multiple vehicles moving steadily in both directions. Snowflakes are falling heavily, reducing visibility and creating a muted, gray atmosphere. The road is divided by a median, and traffic flows smoothly without any lane changes or stops.",
+    "answers": {
+      "vehicle_count": 15,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "snowy, overcast, dim"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 3.76,
+    "raw": "```json\n{\n  \"vehicle_count\": 15,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"snowy, overcast, dim\",\n  \"summary\": \"A snowy highway scene with multiple vehicles moving steadily in both directions. Snowflakes are falling heavily, reducing visibility and creating a muted, gray atmosphere. The road is divided by a median, and traffic flows smoothly without any lane changes or stops.\"\n}\n```",
+    "src_mtime": 1791565510.018,
+    "agree_vs_seed": 0.6667
+  },
+  "failure": false,
+  "failure_reasons": []
+}

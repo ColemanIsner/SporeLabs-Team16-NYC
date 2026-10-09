@@ -19,6 +19,7 @@ LOOKS = {
     ("rain", "night", "heavy"): "It is night in heavy rain: wet black asphalt mirrors streetlights and headlights, raindrops streak the air, and contrast is low.",
     ("snow", "dusk", "light"): "It is dusk with light snow falling, a thin layer of snow on the sidewalks, and warm streetlights turning on.",
     ("snow", "day", "heavy"): "A heavy snowstorm: thick falling snow fills the air, snow covers the road and sidewalks, and visibility is poor.",
+    ("clear", "day", "light"): "It is a clear, ordinary sunny day with normal contrast and dry pavement.",
     ("clear", "night", "light"): "It is a clear night: dark sky, streetlights and headlights are the only light, and deep shadows hide details.",
 }
 
@@ -26,7 +27,8 @@ import json as _json, os as _os
 _SEEDS = [r["seed_id"] for r in _json.load(open(ROOT / "data" / "seeds" / "manifest.json"))]
 I24 = [s for s in _SEEDS if s.startswith("i24")]
 NYC = [s for s in _SEEDS if s.startswith("nyc")]
-CONDS = [("fog", "day", "heavy"), ("rain", "night", "heavy"), ("snow", "day", "heavy"), ("clear", "night", "light")]
+import os as _o2
+CONDS = [tuple(x.split("_")) for x in _o2.environ["SPORE_CONDS"].split(",")] if _o2.environ.get("SPORE_CONDS") else [("fog", "day", "heavy"), ("rain", "night", "heavy"), ("snow", "day", "heavy"), ("clear", "night", "light")]
 CW = float(_os.environ.get("SPORE_CW", "0.5"))
 
 

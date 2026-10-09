@@ -1,0 +1,31 @@
+{
+  "clip_id": "i24_scene1_p1c2_00__phys_fog_s04",
+  "seed_id": "i24_scene1_p1c2_00",
+  "condition": {
+    "weather": "fog",
+    "time": "day",
+    "intensity": "light",
+    "kind": "physics",
+    "severity": 0.4,
+    "base": "seed",
+    "physics": "fog"
+  },
+  "reason": {
+    "summary": "A multi-lane highway is shown from an elevated perspective under heavy fog. Vehicles, including cars, SUVs, and large trucks, travel steadily in both directions. The fog obscures distant details and creates a muted, low-contrast atmosphere across the scene.",
+    "answers": {
+      "vehicle_count": 12,
+      "lane_change": false,
+      "stopped_vehicle": false,
+      "weather_lighting": "Overcast with dense fog reducing visibility"
+    },
+    "model": "nvidia/cosmos3-nano-reasoner",
+    "input": "video",
+    "parsed_json": true,
+    "seconds": 4.07,
+    "raw": "```json\n{\n  \"vehicle_count\": 12,\n  \"lane_change\": false,\n  \"stopped_vehicle\": false,\n  \"weather_lighting\": \"Overcast with dense fog reducing visibility\",\n  \"summary\": \"A multi-lane highway is shown from an elevated perspective under heavy fog. Vehicles, including cars, SUVs, and large trucks, travel steadily in both directions. The fog obscures distant details and creates a muted, low-contrast atmosphere across the scene.\"\n}\n```",
+    "src_mtime": 1791565542.3,
+    "agree_vs_seed": 1.0
+  },
+  "failure": false,
+  "failure_reasons": []
+}
