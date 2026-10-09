@@ -70,7 +70,7 @@ class Cosmos3:
 
     @modal.method()
     def transfer(self, video_bytes: bytes, prompt: str, name: str = "clip", seed: int = 1,
-                 steps: int = 35, controls: dict | None = None) -> dict:
+                 steps: int = 35, controls: dict | None = None, extra_overrides: dict | None = None) -> dict:
         import requests
 
         t0 = time.time()
@@ -84,7 +84,7 @@ class Cosmos3:
                         "-frames:v", str(NUM_FRAMES), "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p",
                         "-crf", "16", str(inp)], check=True)
         extra = {**(controls or {"edge": True}), "max_frames": NUM_FRAMES, "resolution": "720",
-                 "num_video_frames_per_chunk": NUM_FRAMES}
+                 "num_video_frames_per_chunk": NUM_FRAMES, **(extra_overrides or {})}
         with inp.open("rb") as f:
             r = requests.post(
                 f"http://127.0.0.1:{PORT}/v1/videos/sync",
@@ -103,9 +103,22 @@ class Cosmos3:
         return {"name": name, "mp4": r.content, "gen_seconds": round(secs, 1)}
 
 
+# Defaults (guidance 3.0, control_guidance 1.5, emphasized edges) reproduce the clear seed with no
+# weather; these come from the sweep below and are overwritten once a winner is picked.
+TUNED_EXTRA: dict = {"guidance_scale": 7.0, "control_guidance": 1.0, "emphasize_control_in_prompt": False}
+
+FOG_PROMPT = (
+    "A locked-off elevated traffic camera looks along a multi-lane interstate in dense fog. Thick grey fog "
+    "fills the air and drops visibility to about 50 m: the far lanes, trees and buildings fade into a flat "
+    "white-grey wall, the sky is uniformly overcast with no sun and no shadows, colors are washed out and low "
+    "contrast, and headlights glow as soft halos. The same cars and trucks hold their lanes."
+)
+
+
 def _run_jobs(jobs: list[dict], out_dir: Path) -> list[dict]:
     out_dir.mkdir(parents=True, exist_ok=True)
-    payloads = [(Path(j["video"]).read_bytes(), j["prompt"], j["name"]) for j in jobs]
+    payloads = [(Path(j["video"]).read_bytes(), j["prompt"], j["name"], 1, 35, j.get("controls"),
+                 j.get("extra", TUNED_EXTRA)) for j in jobs]
     results = []
     for res in Cosmos3().transfer.starmap(payloads, return_exceptions=True):
         if isinstance(res, Exception):
@@ -126,6 +139,25 @@ def smoke(seed: str = "data/seeds/i24_scene1_p1c1_00.mp4", out_dir: str = "data/
     cond = {"weather": "fog", "time": "day", "intensity": "heavy"}
     name = f"{Path(seed).stem}__c3_fog_day_heavy"
     print(_run_jobs([{"video": seed, "prompt": prompt_for("highway", cond), "name": name}], Path(out_dir)))
+
+
+@app.local_entrypoint()
+def sweep(seed: str = "data/seeds/i24_scene1_p1c1_00.mp4", out_dir: str = "data/synthetic_cosmos3/sweep"):
+    """Fog settings sweep on one seed; each variant runs in its own container."""
+    stem = Path(seed).stem
+    variants = {
+        "g7_cg1": ({"edge": True}, {"guidance_scale": 7.0, "control_guidance": 1.0, "emphasize_control_in_prompt": False}),
+        "g7_cg05": ({"edge": True}, {"guidance_scale": 7.0, "control_guidance": 0.5, "emphasize_control_in_prompt": False}),
+        "g7_cg1_hi": ({"edge": {"preset_edge_threshold": "very_high"}},
+                      {"guidance_scale": 7.0, "control_guidance": 1.0, "emphasize_control_in_prompt": False}),
+        "g10_cg05_hi": ({"edge": {"preset_edge_threshold": "very_high"}},
+                        {"guidance_scale": 10.0, "control_guidance": 0.5, "emphasize_control_in_prompt": False}),
+        "g7_cg1_iv": ({"edge": True}, {"guidance_scale": 7.0, "control_guidance": 1.5,
+                                       "control_guidance_interval": [0.0, 0.5], "emphasize_control_in_prompt": False}),
+    }
+    jobs = [{"video": seed, "prompt": FOG_PROMPT, "name": f"{stem}__c3fog_{k}", "controls": c, "extra": e}
+            for k, (c, e) in variants.items()]
+    print(_run_jobs(jobs, Path(out_dir)))
 
 
 @app.local_entrypoint()

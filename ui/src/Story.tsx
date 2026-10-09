@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { url, useJSON, getJSON, type Coverage, type GapReport, type Eval, type SeverityCurve, type FixRow, type LoopEntry } from "./data";
 import "./story.css";
 
@@ -184,7 +184,7 @@ const STEP_NODE: Record<string, number> = {
   inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 5, again: 6,
 };
 const LOGO: Record<SponsorKey, { src: string; alt: string } | null> = {
-  vast: { src: "logos/vast-wordmark.svg", alt: "VAST Data" },
+  vast: { src: "logos/vast-data.svg", alt: "VAST Data" },
   nvidia: { src: "logos/nvidia.svg", alt: "NVIDIA" },
   wandb: { src: "logos/coreweave.svg", alt: "CoreWeave (Weights & Biases)" },
   cursor: { src: "logos/spacex.svg", alt: "SpaceXAI (Cursor)" },
@@ -509,34 +509,34 @@ function Test({ hero }: { seed: Eval | null; hero: Eval | null }) {
 function Blind({ curve, headline }: { curve?: SeverityCurve | null; headline?: { by_condition?: Record<string, { mean: number }> } | null }) {
   const fog = headline?.by_condition?.["fog@0.4"]?.mean;
   const outOf10 = fog != null ? Math.round(fog * 10) : null;
-  const colors: Record<string, string> = { fog: "#e8ecef", rain: "#6fb6ff", snow: "#d4ff3a" };
-  const W = 560, H = 220, P = 30;
-  const x = (s: number) => P + s * (W - 2 * P), y = (r: number) => H - P - r * (H - 2 * P);
+  const at = (k: string, sev: number) => curve?.curves?.[k]?.find((p) => Math.abs(p.severity - sev) < 0.01)?.recall;
+  const rows = [["fog", "Fog"], ["snow", "Snow"], ["rain", "Rain"]] as const;
+  const cols = [[0.4, "Light"], [0.7, "Medium"], [1.0, "Heavy"]] as const;
+  const tone = (n: number) => (n >= 7 ? "ok" : n >= 4 ? "mid" : "bad");
   return (
     <>
       <Title kicker="6 · Measure">It finds where your AI goes blind.</Title>
       <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
         In light fog, YOLO finds <b>{outOf10 ?? "…"} in 10</b> cars a person can still see.
       </div>
-      <svg className="st-curve rv" style={{ animationDelay: "0.8s" }} viewBox={`0 0 ${W + 50} ${H}`}>
-        <line x1={P} x2={W - P} y1={y(0.5)} y2={y(0.5)} className="half" />
-        <text x={W - P} y={y(0.5) - 6} textAnchor="end" className="ax">half the cars</text>
-        <text x={P} y={H - 8} className="ax">clear</text>
-        <text x={W - P} y={H - 8} textAnchor="end" className="ax">heavy weather →</text>
-        {["fog", "snow", "rain"].filter((k) => curve?.curves?.[k]?.length).map((k, j) => {
-          const pts = curve!.curves![k];
-          const last = pts[pts.length - 1];
-          return (
-            <g key={k}>
-              <polyline fill="none" stroke={colors[k]} strokeWidth={3}
-                points={pts.map((p) => `${x(p.severity)},${y(p.recall)}`).join(" ")} />
-              <text x={x(last.severity) + 8} y={y(0.12) - 22 + j * 20} fill={colors[k]} className="lbl">{k}</text>
-            </g>
-          );
-        })}
-      </svg>
-      <Powered by={["wandb"]} delay={1.5}
-        what={<>Every eval traced in <a href={WEAVE} target="_blank" rel="noreferrer">W&B Weave</a></>} />
+      <div className="st-grid rv" style={{ animationDelay: "0.7s" }}>
+        <div className="h" />
+        <div className="h">Clear</div>
+        {cols.map(([, l]) => <div key={l} className="h">{l}</div>)}
+        {rows.map(([k, label]) => (
+          <Fragment key={k}>
+            <div className="r">{label}</div>
+            <div className="c ok"><b>10</b><span>/10</span></div>
+            {cols.map(([sev]) => {
+              const v = at(k, sev);
+              const n = v != null ? Math.round(v * 10) : null;
+              return <div key={k + sev} className={`c ${n != null ? tone(n) : ""}`}><b>{n ?? "–"}</b><span>/10</span></div>;
+            })}
+          </Fragment>
+        ))}
+      </div>
+      <Powered by={["wandb"]} delay={1.2}
+        what={<>Cars YOLO still finds, out of 10 it saw on the clear clip. Every run traced in <a href={WEAVE} target="_blank" rel="noreferrer">W&B Weave</a></>} />
     </>
   );
 }
@@ -579,36 +579,41 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
 }
 
 function Again({ report, loop }: { report?: GapReport | null; loop?: LoopEntry[] | null }) {
+  const last = [...(loop ?? [])].reverse().find((e) => (e as { filled?: number }).filled) as
+    (LoopEntry & { gap?: string; filled?: number; recall?: number }) | undefined;
+  const cands = (report as { candidates?: Candidate[] } | null | undefined)?.candidates ?? [];
+  const lastLbl = (last?.gap ?? "").split(" ·")[0];
+  const next = cands.find((c) => (c.label ?? "").toLowerCase() !== lastLbl.toLowerCase() && c.id !== "highway:fog");
+  const kept = last?.recall != null ? Math.round(10 * last.recall) : null;
   return (
     <>
-      <Title kicker="Repeat">Then it does it again.</Title>
-      {(() => {
-        const last = [...(loop ?? [])].reverse().find((e) => (e as { filled?: number }).filled) as
-          (LoopEntry & { gap?: string; filled?: number; recall?: number }) | undefined;
-        const cands = (report as { candidates?: Candidate[] } | null | undefined)?.candidates ?? [];
-        const lastLbl = (last?.gap ?? "").split(" ·")[0].toLowerCase();
-        const next = cands.find((c) => (c.label ?? "").toLowerCase() !== lastLbl && c.id !== "highway:fog");
-        return (
-          <>
-            {last && (
-              <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
-                Last loop: <b>{last.gap?.split(" ·")[0]}</b> → grew {last.filled} clips → YOLO kept{" "}
-                <b>{Math.round(100 * (last.recall ?? 0))}%</b>{(last.recall ?? 0) >= 0.7 ? " (holds up)" : " (blind spot)"}
-              </div>
-            )}
-            <div className="st-big rv" style={{ animationDelay: "0.6s" }}>
-              Next up: <b>{next?.label ?? report?.next_label ?? "…"}</b>
+      <Title kicker="Repeat">Then it picks the next weak spot.</Title>
+      <div className="st-cycle">
+        {last && (
+          <div {...rv(1)}>
+            <div className="st-cyc done">
+              <span className="k">Just tested</span>
+              <b>{lastLbl}</b>
+              <em>YOLO still finds {kept ?? "…"} in 10 cars. Holds up.</em>
             </div>
-          </>
-        );
-      })()}
-      <div className="st-stack rv" style={{ animationDelay: "0.9s" }}>
-        <span><b>VAST</b> finds the gap</span>
-        <span><b>NVIDIA</b> grows and tests it</span>
-        <span><b>W&B on CoreWeave</b> reasons and traces</span>
-        <span><b>Cursor</b> built it</span>
+          </div>
+        )}
+        <div className="st-cyc-arrow rv" style={{ animationDelay: "0.55s" }}>→</div>
+        <div {...rv(2)}>
+          <div className="st-cyc nextup">
+            <span className="k">Next up</span>
+            <b>{next?.label ?? report?.next_label ?? "…"}</b>
+            <em>Grow it, test it, fix it.</em>
+          </div>
+        </div>
       </div>
-      <p className="st-line rv" style={{ animationDelay: "1.3s" }}>{LINE}</p>
+      <p className="st-line rv" style={{ animationDelay: "1.0s" }}>
+        <span>Find where your video AI is weak.</span>{" "}
+        <span className="hl">Grow the data to fix it. Retrain until it's ready to ship.</span>
+      </p>
+      <div className="st-logos-row rv" style={{ animationDelay: "1.3s" }}>
+        {(["vast", "nvidia", "wandb", "cursor"] as SponsorKey[]).map((b) => <Logo key={b} by={b} />)}
+      </div>
     </>
   );
 }
