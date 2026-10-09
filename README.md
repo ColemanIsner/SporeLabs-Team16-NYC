@@ -138,6 +138,17 @@ The fine-tune failed its gate ("after > before on held-out variants AND clean-se
 
 **Next step:** a VSS re-ingest prompt fix. Re-ingest real archive clips with a condition-aware `custom_prompt` that makes the Reasoner state weather, lighting and visibility first. Then measure search precision on held-out real clips. This is designed but not measured.
 
+## Run the demo
+
+```bash
+cd ui && npm install && npm run dev   # → http://localhost:5173
+```
+
+- 10-step walkthrough (→ / space to advance, ← back). Old dashboard: http://localhost:5173/?full=1
+- Live VSS steps ("Ask the archive", highway searches) need team credentials in a repo-root `.env` (copy of `/config/team-16.config` from the lab VM; see *Environment* below) and run server-side in the Vite dev server.
+- Ask the archive from the terminal: `python3 vss/ask.py "highway in dense fog"`
+- Footage review tool: `python3 tools/review/server.py` → http://localhost:8765
+
 ## Sponsor tools
 
 | Sponsor | How Spore uses it |
