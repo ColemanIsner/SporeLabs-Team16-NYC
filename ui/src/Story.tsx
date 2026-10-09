@@ -184,7 +184,7 @@ const STEP_NODE: Record<string, number> = {
   inventory: 0, missing: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 5, again: 6,
 };
 const LOGO: Record<SponsorKey, { src: string; alt: string } | null> = {
-  vast: { src: "logos/vast-data.svg", alt: "VAST Data" },
+  vast: { src: "logos/vast-wordmark.svg", alt: "VAST Data" },
   nvidia: { src: "logos/nvidia.svg", alt: "NVIDIA" },
   wandb: { src: "logos/coreweave.svg", alt: "CoreWeave (Weights & Biases)" },
   cursor: { src: "logos/spacex.svg", alt: "SpaceXAI (Cursor)" },
@@ -194,7 +194,8 @@ function Logo({ by, sub }: { by: SponsorKey; sub?: string }) {
   return (
     <span className={`st-logo-plate lp-${by}`}>
       {l ? <img src={`${API}${l.src}`} alt={l.alt} /> : SPONSOR[by]}
-      {sub && <em>{sub}</em>}
+      {by === "wandb" && <span className="wb"><img src={`${API}logos/wandb-dark.svg`} alt="Weights & Biases" /></span>}
+      {sub && by !== "wandb" && <em>{sub}</em>}
     </span>
   );
 }
@@ -487,22 +488,20 @@ function Grow() {
   );
 }
 
-function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
+function Test({ hero }: { seed: Eval | null; hero: Eval | null }) {
   const rec = hero?.yolo?.recall_vs_seed;
   const rH = hero?.reason?.answers?.vehicle_count as number | undefined;
   return (
     <>
-      <Title kicker="5 · Test">It tests the models inside VSS.</Title>
-      <div className="rv" style={{ animationDelay: "0.3s" }}>
+      <Title kicker="5 · Test">Then it tests your AI on it.</Title>
+      <div className="st-hero-crop rv" style={{ animationDelay: "0.3s" }}>
         <Video src={`results/overlays/${HERO}.mp4`} className="st-hero" />
       </div>
-      <div className="st-verdict rv" style={{ animationDelay: "1.0s" }}>
-        <span className="ok">Cosmos Reason: <b>“dense fog, {rH ?? "…"} vehicles”</b></span>
-        <span className="vs">vs</span>
-        <span className="bad">YOLO11: <b>misses {rec != null ? Math.round((1 - rec) * 10) : "…"} in 10 cars</b></span>
+      <div className="st-verdict2 rv" style={{ animationDelay: "1.0s" }}>
+        <div className="ok"><span>Caption model</span><b>“Dense fog, {rH ?? "…"} vehicles”</b></div>
+        <div className="bad"><span>Detector</span><b>Misses {rec != null ? Math.round((1 - rec) * 10) : "…"} in 10 cars</b></div>
       </div>
-      <Powered by={["nvidia"]} delay={1.5}
-        what="Hosted YOLO11 + Cosmos Reason, the models VSS runs" />
+      <Powered by={["nvidia"]} delay={1.4} what="Same clip. Same VSS pipeline. Two models disagree." />
     </>
   );
 }

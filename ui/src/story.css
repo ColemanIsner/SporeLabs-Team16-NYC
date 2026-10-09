@@ -342,3 +342,20 @@
 .st-logo-plate.lp-wandb img { height: 17px; }
 .st-next-tag { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border: 1px dashed var(--line2); border-radius: 8px; padding: 9px 10px; }
 .st-intro .st-line { max-width: 44ch; }
+
+/* W&B mark on its own dark segment of the plate */
+.st-logo-plate .wb { display: inline-flex; align-items: center; background: #0b0d10; border-radius: 6px; padding: 4px 8px; margin: -2px -6px -2px 2px; }
+.st-logo-plate .wb img { height: 14px; }
+.st-logo-plate.lp-vast img { height: 15px; }
+
+/* Test: crop the burned-in bottom caption strip; one clear verdict */
+.st-hero-crop { width: 100%; aspect-ratio: 1920 / 482; overflow: hidden; border-radius: 14px; border: 1px solid var(--line2); }
+.st-hero-crop .st-hero { width: 100%; height: auto; max-height: none; border: 0; border-radius: 0; display: block; }
+.st-verdict2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.st-verdict2 > div { border-radius: 14px; padding: 18px 22px; display: flex; flex-direction: column; gap: 4px; }
+.st-verdict2 span { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.st-verdict2 b { font-size: clamp(26px, 2.6vw, 38px); line-height: 1.1; }
+.st-verdict2 .ok { border: 1px solid rgba(212,255,58,0.45); }
+.st-verdict2 .ok b { color: var(--spore); }
+.st-verdict2 .bad { border: 1px solid rgba(255,82,51,0.6); background: var(--fail-dim); }
+.st-verdict2 .bad b { color: var(--fail); }
