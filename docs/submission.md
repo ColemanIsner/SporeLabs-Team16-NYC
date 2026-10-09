@@ -7,9 +7,7 @@
 
 ## Description (~150 words)
 
-Other tools find what your video archive is missing. Spore grows the data to fill it, and shows where your AI goes blind. Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
-
-Across 612 real clips searched with VSS, highway cameras have zero night, rain, fog, snow, or glare clips (all 30 verified clear daylight by eye), and no camera has snow. A W&B Inference agent writes the gap report, traced in Weave. Spore fills the gap with a geometry-preserving physics weather layer (99 clips) and NVIDIA Cosmos Transfer 2.5 relighting, measured against a clear-day control. It then runs the VSS Detector (YOLO11s) and Reasoner (Cosmos3) on the results. Detector recall falls below 50% at snow 0.34, fog 0.35, and rain 0.60, while Cosmos Reason keeps counting vehicles. Real-archive confirmation is weak: glare is the strongest case, fog is unconfirmed, and no real snow exists. A synthetic fine-tune lost to a free contrast trick. At this scale, synthetic footage works better as a stress test than as training data.
+Spore finds where your video AI is weak and grows the data to fix it. It is a video agent that runs a six-step loop on your archive. It looks at every clip indexed in VAST VSS, along with its Cosmos Reason caption, and searches for the conditions your cameras have never seen. Across 612 real clips, the highway cameras had zero rain, fog, snow or glare footage, and no camera had snow. An LLM on W&B Inference, traced in Weave, ranks which gaps matter most. Spore then grows the missing weather onto real clips with NVIDIA Cosmos Transfer 2.5 and a physics weather layer that keeps every vehicle in place, so the labels stay exact. It tests the same models VSS runs, hosted YOLO11s and Cosmos Reason on CoreWeave GPUs, and finds the breaking point: detection drops below 50% at snow severity 0.34, fog 0.35 and rain 0.60. Then it picks the next weak spot and goes again.
 
 ## Tools used
 
