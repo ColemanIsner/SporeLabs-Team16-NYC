@@ -148,7 +148,6 @@ const SPONSOR: Record<SponsorKey, string> = { vast: "VAST Data", nvidia: "NVIDIA
 function Powered({ by, what, call, delay = 1.6 }: { by: SponsorKey[]; what: ReactNode; call?: ReactNode; delay?: number }) {
   return (
     <div className="st-pw rv" style={{ animationDelay: `${delay}s` }}>
-      <span className="lab">How</span>
       {by.map((b) => <span key={b} className={`sp sp-${b}`}>{SPONSOR[b]}</span>)}
       <span className="w">{what}</span>
       {call && <code>{call}</code>}
@@ -217,8 +216,7 @@ function Inv({ coverage, inventory }: { coverage?: (Coverage & { cameras?: Recor
         ))}
       </div>
       <Powered by={["vast", "nvidia"]} delay={1.9}
-        what="Every clip VSS indexed in VastDB, with its Cosmos Reason caption"
-        call="GET /api/v1/videos/explore" />
+        what="VSS index in VastDB, captions by Cosmos Reason" />
     </>
   );
 }
@@ -249,7 +247,7 @@ function Missing({ coverage }: { coverage?: Coverage | null }) {
   const cov = Object.fromEntries((coverage?.conditions ?? []).map((c) => [c.id, c]));
   return (
     <>
-      <Title kicker="2 · Find the gaps">Then it checks what your highway cameras have actually seen.</Title>
+      <Title kicker="2 · Find the gaps">It checks what your highway cameras have actually seen.</Title>
       <div className="st-live">
         {GAP_ROWS.map((r, k) => {
           const c = cov[r.id];
@@ -271,8 +269,7 @@ function Missing({ coverage }: { coverage?: Coverage | null }) {
         })}
       </div>
       <Powered by={["vast"]} delay={1.6}
-        what="Live VSS hybrid search, checked against every clip's own caption"
-        call="POST /api/v1/search" />
+        what="Live VSS search, running now" />
     </>
   );
 }
@@ -331,8 +328,7 @@ function Ask() {
         </>
       )}
       <Powered by={["vast", "nvidia"]} delay={0.7}
-        what="Live VSS hybrid search; we read each hit's Cosmos Reason caption and YOLO counts straight from its VastDB row"
-        call={res ? `POST /api/v1/search "${res.query}" → ${res.hits.length} hits in ${res.seconds}s` : "POST /api/v1/search"} />
+        what={res ? `Live VSS search · ${res.seconds}s` : "Live VSS search"} />
     </>
   );
 }
@@ -344,9 +340,7 @@ function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] 
   const why = (c: Candidate) => {
     const cond = (c.label ?? c.condition ?? "this").toLowerCase().replace(/^highway at /, "");
     const scene = (c.scene_label ?? "Highway").split(" /")[0];
-    const have = c.real_clips ?? c.real_clips_highway ?? 0;
-    const of = c.scene_clips != null ? ` of ${c.scene_clips}` : "";
-    return `${scene} cameras face ${cond}. They have ${have}${of} clips of it, and nobody has tested the AI in it.`;
+    return `${scene} cameras face ${cond}, and nobody has tested the AI in it.`;
   };
   return (
     <>
@@ -358,15 +352,8 @@ function Matters({ report }: { report?: (GapReport & { candidates?: Candidate[] 
           <div className="w">{why(top)}</div>
         </div>
       )}
-      {cands.length > 1 && (
-        <div className="st-then rv" style={{ animationDelay: "0.9s" }}>
-          <span>Then</span>
-          {cands.slice(1).map((c, k) => <b key={c.id ?? k}>{c.label ?? c.condition}</b>)}
-        </div>
-      )}
       <Powered by={["wandb"]} delay={1.3}
-        what={<>An LLM on W&B Inference ranks the gaps; every call traced in <a href={WEAVE} target="_blank" rel="noreferrer">Weave</a></>}
-        call={report?.model} />
+        what={<>LLM on W&B Inference, traced in <a href={WEAVE} target="_blank" rel="noreferrer">Weave</a></>} />
     </>
   );
 }
@@ -384,7 +371,7 @@ function Grow() {
   const g = GROW[k];
   return (
     <>
-      <Title kicker="4 · Fill">So it grows the missing footage from a real clip.</Title>
+      <Title kicker="4 · Fill">It grows the missing weather onto a real clip.</Title>
       <div ref={box} className="st-morph rv" style={{ animationDelay: "0.3s" }}>
         {GROW.map((v, j) => (
           <video key={v.src} src={url(v.src)} autoPlay muted loop playsInline preload="auto" className={j === k ? "on" : ""} />
@@ -392,10 +379,8 @@ function Grow() {
         <div className={`st-morph-tag ${g.real ? "real" : ""}`}><b>{g.label}</b><span>{g.sub}</span></div>
         <div className="st-morph-dots">{GROW.map((v, j) => <i key={v.src} className={j === k ? "on" : ""} />)}</div>
       </div>
-      <p className="st-sub rv" style={{ animationDelay: "0.9s" }}>Same cars, same lanes. So the right answer is already known.</p>
       <Powered by={["nvidia"]} delay={1.3}
-        what="Cosmos Transfer 2.5 relights the real clip; a weather layer adds fog, rain and snow"
-        call="cosmos-transfer2.5-2b · H100" />
+        what="Cosmos Transfer 2.5 · same cars, so the answer is known" />
     </>
   );
 }
@@ -405,7 +390,7 @@ function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
   const rH = hero?.reason?.answers?.vehicle_count as number | undefined;
   return (
     <>
-      <Title kicker="5 · Test">Then it tests the models inside VSS on it.</Title>
+      <Title kicker="5 · Test">It tests the models inside VSS.</Title>
       <div className="rv" style={{ animationDelay: "0.3s" }}>
         <Video src={`results/overlays/${HERO}.mp4`} className="st-hero" />
       </div>
@@ -415,8 +400,7 @@ function Test({ seed, hero }: { seed: Eval | null; hero: Eval | null }) {
         <span className="bad">YOLO11: <b>{yH != null ? yH.toFixed(1) : "…"} vehicles</b> <i>per frame, vs {yS != null ? yS.toFixed(1) : "…"} on the clear clip</i></span>
       </div>
       <Powered by={["nvidia"]} delay={1.5}
-        what="The hosted YOLO11s and Cosmos3-Reason that VSS runs at ingest, on CoreWeave GPUs"
-        call="same clip · two models · they disagree" />
+        what="Hosted YOLO11 + Cosmos Reason, the models VSS runs" />
     </>
   );
 }
@@ -429,7 +413,7 @@ function Blind({ curve, headline }: { curve?: SeverityCurve | null; headline?: {
   const x = (s: number) => P + s * (W - 2 * P), y = (r: number) => H - P - r * (H - 2 * P);
   return (
     <>
-      <Title kicker="6 · Measure">And finds exactly where it goes blind.</Title>
+      <Title kicker="6 · Measure">It finds where your AI goes blind.</Title>
       <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
         In light fog, YOLO finds <b>{outOf10 ?? "…"} in 10</b> cars a person can still see.
       </div>
@@ -450,14 +434,8 @@ function Blind({ curve, headline }: { curve?: SeverityCurve | null; headline?: {
           );
         })}
       </svg>
-      {curve?.breaking_point && (
-        <p className="st-foot rv" style={{ animationDelay: "1.2s" }}>
-          Below half the cars at {Object.entries(curve.breaking_point).filter(([k, v]) => v != null && k in colors).map(([k, v]) => `${k} ${v}`).join(" · ")}
-        </p>
-      )}
       <Powered by={["wandb"]} delay={1.5}
-        what={<>Every generation and eval is logged and traced in <a href={WEAVE} target="_blank" rel="noreferrer">W&B Weave</a></>}
-        call="recall on still-visible seed vehicles · 11 seeds × 3 severities" />
+        what={<>Every eval traced in <a href={WEAVE} target="_blank" rel="noreferrer">W&B Weave</a></>} />
     </>
   );
 }
@@ -500,17 +478,12 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
 }
 
 function Again({ report, loop }: { report?: GapReport | null; loop?: LoopEntry[] | null }) {
-  const n = loop?.length ?? 0;
   return (
     <>
-      <Title kicker="Repeat">Then it searches again and picks the next gap.</Title>
+      <Title kicker="Repeat">Then it does it again.</Title>
       <div className="st-big rv" style={{ animationDelay: "0.3s" }}>
         Next up: <b>{(report as { candidates?: Candidate[] } | null | undefined)?.candidates?.[1]?.label ?? report?.next_label ?? "…"}</b>
       </div>
-      <p className="st-sub rv" style={{ animationDelay: "0.6s" }}>
-        {n} loop iteration{n === 1 ? "" : "s"} so far. Every step is traced in{" "}
-        <a href={WEAVE} target="_blank" rel="noreferrer">W&B Weave</a>.
-      </p>
       <div className="st-stack rv" style={{ animationDelay: "0.9s" }}>
         <span><b>VAST</b> finds the gap</span>
         <span><b>NVIDIA</b> grows and tests it</span>
