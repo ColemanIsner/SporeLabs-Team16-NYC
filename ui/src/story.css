@@ -259,3 +259,33 @@
 .st-curve .ax { fill: var(--muted); font-size: 14px; }
 .st-stack span { color: #c4c9c2; }
 .st-dots button { height: 5px; }
+
+/* loop diagram */
+.st-loop { display: block; color: var(--line2); overflow: visible; }
+.st-loop.big { width: min(980px, 100%); height: auto; margin: 4px 0 2px; }
+.st-loop.mini { width: 520px; height: auto; }
+.st-loop .edge { stroke: currentColor; stroke-width: 1.6; fill: none; }
+.st-loop .edge.ret { stroke-dasharray: 5 5; }
+.st-loop .edge.lit { color: var(--spore); stroke: var(--spore); }
+.st-loop .node rect { fill: rgba(255,255,255,0.03); stroke: var(--line2); stroke-width: 1.4; transition: all .3s; }
+.st-loop .node .nm { fill: var(--muted); font-family: var(--sans); font-weight: 600; font-size: 13px; }
+.st-loop.big .node .nm { font-size: 19px; fill: var(--text); }
+.st-loop .node .by { fill: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: .04em; }
+.st-loop .node.done rect { stroke: rgba(212,255,58,0.45); }
+.st-loop .node.done .nm { fill: var(--text); }
+.st-loop .node.on rect { fill: var(--spore); stroke: var(--spore); }
+.st-loop .node.on .nm { fill: #0b0d06; }
+.st-loop .ret-lbl { fill: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .06em; }
+.st-loop.big .ret-lbl { font-size: 14px; }
+.st-loop .ret-lbl.lit { fill: var(--spore); }
+.st-top { gap: 18px; }
+@media (max-width: 1000px) { .st-loop.mini { display: none; } }
+
+/* live search status: fixed slot, never overflows */
+.st-live-row .res { min-width: 0; overflow: hidden; }
+.st-live-row .pending { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.st-live-row .pending .ring { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--line2); border-top-color: var(--spore); animation: st-spin .8s linear infinite; flex: none; }
+@keyframes st-spin { to { transform: rotate(360deg); } }
+
+.st-loop-wrap { width: 100%; max-width: 980px; }
+.st-loop.mini { width: 500px; max-height: 50px; }

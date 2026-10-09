@@ -98,6 +98,7 @@ export default function Story() {
         <button className="st-brand" onClick={() => setI(0)}>
           <span className="st-dot" /> Spore
         </button>
+        {steps[i].key !== "intro" && <LoopMap active={STEP_NODE[steps[i].key] ?? -1} />}
         <nav className="st-dots">
           {steps.map((s, k) => (
             <button key={s.key} aria-label={s.key} className={k === i ? "on" : k < i ? "done" : ""} onClick={() => setI(k)} />
@@ -169,12 +170,55 @@ function Title({ kicker, children }: { kicker: string; children: ReactNode }) {
   );
 }
 
+// ---- the loop: one diagram on the intro, a compact copy on every step highlighting its piece ----
+const LOOP = [
+  { id: "look", name: "Look", by: "VAST search" },
+  { id: "find", name: "Find gaps", by: "VAST search" },
+  { id: "decide", name: "Decide", by: "W&B Inference" },
+  { id: "fill", name: "Fill", by: "NVIDIA Cosmos" },
+  { id: "test", name: "Test", by: "YOLO + Reason" },
+];
+const STEP_NODE: Record<string, number> = {
+  inventory: 0, missing: 1, ask: 1, matters: 2, grow: 3, test: 4, blind: 4, fix: 4, again: 5,
+};
+function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean }) {
+  const n = LOOP.length, W = big ? 980 : 520, nodeW = big ? 156 : 84, nodeH = big ? 64 : 28;
+  const gap = (W - n * nodeW) / (n - 1), top = big ? 8 : 4, H = big ? 170 : 50;
+  const x = (k: number) => k * (nodeW + gap);
+  const retY = top + nodeH + (big ? 58 : 14);
+  const loopOn = active === 5;
+  return (
+    <svg className={`st-loop ${big ? "big" : "mini"}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Spore loop">
+      <defs>
+        <marker id={`ah${big ? "b" : "m"}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="currentColor" />
+        </marker>
+      </defs>
+      {LOOP.slice(0, -1).map((_, k) => (
+        <line key={k} className={`edge ${active > k && active <= 4 ? "lit" : ""}`} x1={x(k) + nodeW + 4} x2={x(k + 1) - 6}
+          y1={top + nodeH / 2} y2={top + nodeH / 2} markerEnd={`url(#ah${big ? "b" : "m"})`} />
+      ))}
+      <path className={`edge ret ${loopOn ? "lit" : ""}`} markerEnd={`url(#ah${big ? "b" : "m"})`}
+        d={`M ${x(n - 1) + nodeW / 2} ${top + nodeH + 4} Q ${x(n - 1) + nodeW / 2} ${retY} ${W / 2} ${retY} Q ${nodeW / 2} ${retY} ${nodeW / 2} ${top + nodeH + 6}`} />
+      {big && <text className={`ret-lbl ${loopOn ? "lit" : ""}`} x={W / 2} y={retY - (big ? 10 : 5)} textAnchor="middle">repeat with the next gap</text>}
+      {LOOP.map((node, k) => (
+        <g key={node.id} className={`node ${k === active ? "on" : ""} ${active > k && active <= 5 ? "done" : ""}`}>
+          <rect x={x(k)} y={top} width={nodeW} height={nodeH} rx={nodeH / 2} />
+          <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + (big ? -2 : 4)} textAnchor="middle" className="nm">{node.name}</text>
+          {big && <text x={x(k) + nodeW / 2} y={top + nodeH / 2 + 17} textAnchor="middle" className="by">{node.by}</text>}
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 function Intro() {
   return (
     <div className="st-intro">
       <div className="st-logo rv">Spore</div>
       <p className="st-line rv" style={{ animationDelay: "0.25s" }}>{LINE}</p>
-      <p className="st-hint rv" style={{ animationDelay: "0.6s" }}>An agent for video archives. Press → to watch it work.</p>
+      <div className="rv st-loop-wrap" style={{ animationDelay: "0.5s" }}><LoopMap big /></div>
+      <p className="st-hint rv" style={{ animationDelay: "0.8s" }}>An agent for video archives. Press → to watch it work.</p>
     </div>
   );
 }
@@ -265,7 +309,7 @@ function Missing({ coverage }: { coverage?: Coverage | null }) {
                 <span className="lbl">{c?.label ?? r.id}</span>
                 <code>vss.search(“{r.q}”)</code>
                 <span className="res">
-                  {!res ? <i className="spin">searching {t.toFixed(1)}s</i>
+                  {!res ? <span className="pending"><i className="ring" />{t.toFixed(1)}s</span>
                     : <><b>{n ?? "?"}</b>{zero ? <em>no footage</em> : <em>clips</em>}</>}
                 </span>
               </div>
