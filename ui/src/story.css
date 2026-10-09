@@ -11,8 +11,6 @@
   all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px;
   font-family: var(--serif); font-size: 26px; color: var(--text);
 }
-.st-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--spore); box-shadow: 0 0 18px var(--spore); display: inline-block; }
-.st-dot.big { width: 18px; height: 18px; }
 .st-dots { display: flex; gap: 8px; }
 .st-dots button {
   all: unset; cursor: pointer; width: 26px; height: 4px; border-radius: 2px; background: var(--line2);

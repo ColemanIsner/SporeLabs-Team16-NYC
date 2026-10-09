@@ -96,7 +96,7 @@ export default function Story() {
     <div className="story">
       <header className="st-top">
         <button className="st-brand" onClick={() => setI(0)}>
-          <span className="st-dot" /> Spore
+          Spore
         </button>
         {steps[i].key !== "intro" && <LoopMap active={STEP_NODE[steps[i].key] ?? -1} />}
         <nav className="st-dots">
@@ -222,9 +222,12 @@ function Intro() {
   return (
     <div className="st-intro">
       <div className="st-logo rv">Spore</div>
-      <p className="st-line rv" style={{ animationDelay: "0.25s" }}>{LINE}</p>
+      <p className="st-line rv" style={{ animationDelay: "0.25s" }}>
+        <span>Know where your video AI fails before the fog does.</span>{" "}
+        <span className="hl">Spore grows the footage your cameras haven't seen yet, and tests your AI on it.</span>
+      </p>
       <div className="rv st-loop-wrap" style={{ animationDelay: "0.5s" }}><LoopMap big /></div>
-      <p className="st-hint rv" style={{ animationDelay: "0.8s" }}>An agent for video archives. Press → to watch it work.</p>
+      <p className="st-hint rv" style={{ animationDelay: "0.8s" }}>A video agent on VAST, NVIDIA and W&B. Press → to watch it work.</p>
     </div>
   );
 }
