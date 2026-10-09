@@ -4,7 +4,7 @@
 
 **Find where your video AI is weak. Grow the data to fix it.**
 
-Spore is a video agent that audits your archive: it searches VSS for what your cameras have never seen, generates that missing footage, and measures what breaks in your own pipeline.
+Video AI fails quietly on the conditions your cameras don't see often. Spore finds where your video data is weak, grows new data to cover it, and tests your models on it, in a loop.
 
 ![Spore demo: the six-step loop](docs/img/spore_story.png)
 
