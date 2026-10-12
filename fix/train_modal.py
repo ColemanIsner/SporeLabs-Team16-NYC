@@ -1,4 +1,4 @@
-"""Fine-tune ultralytics yolo11s on the Spore synthetic dataset (free labels) on a Modal GPU.
+"""Fine-tune ultralytics yolo11s on the Blindspot synthetic dataset (free labels) on a Modal GPU.
 
     eval/.venv/bin/python fix/build_dataset.py
     eval/.venv/bin/modal run fix/train_modal.py [--epochs 20 --imgsz 960]

@@ -1,4 +1,4 @@
-"""Spore: the 5-stage gap loop, one CLI, every stage Weave-traced.
+"""Blindspot: the 5-stage gap loop, one CLI, every stage Weave-traced.
 
   1 SEARCH   vss/coverage.py   -> results/coverage.json      (VSS /search + caption scan of the real archive)
   2 REPORT   loop/report.py    -> results/gap_report.json    (W&B Inference LLM explains the gap, picks next)
@@ -6,10 +6,10 @@
   4 MEASURE  eval/run_all.py --reason, eval/render_all.py, vss/vss_eval.py (if present), failure_map
   5 LOOP     append the iteration to results/loop_log.json, re-search the archive, go again
 
-  loop/.venv/bin/python loop/spore.py --iterations 2 --k 3            # full loop
-  loop/.venv/bin/python loop/spore.py --stage 1                       # one stage, live demo
-  loop/.venv/bin/python loop/spore.py --stage 3 --k 2 --gen physics   # fill the reported gap only
-  loop/.venv/bin/python loop/spore.py --gen cosmos,physics            # also spawn Cosmos Transfer (~5 min)
+  loop/.venv/bin/python loop/blindspot.py --iterations 2 --k 3            # full loop
+  loop/.venv/bin/python loop/blindspot.py --stage 1                       # one stage, live demo
+  loop/.venv/bin/python loop/blindspot.py --stage 3 --k 2 --gen physics   # fill the reported gap only
+  loop/.venv/bin/python loop/blindspot.py --gen cosmos,physics            # also spawn Cosmos Transfer (~5 min)
 """
 from __future__ import annotations
 
@@ -319,7 +319,7 @@ def main():
 
     for _ in range(a.iterations):
         e = iteration(_next_iteration(), a.k, gens, reason, render)
-        print(f"[spore] iteration {e['iteration']}: {e.get('summary')}", flush=True)
+        print(f"[blindspot] iteration {e['iteration']}: {e.get('summary')}", flush=True)
 
 
 if __name__ == "__main__":

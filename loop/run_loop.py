@@ -1,4 +1,4 @@
-"""Spore failure-hunting loop.
+"""Blindspot failure-hunting loop.
 
 Each round:
   1. Read every results/evals/*.json and aggregate per-condition outcomes -> results/failure_map.json

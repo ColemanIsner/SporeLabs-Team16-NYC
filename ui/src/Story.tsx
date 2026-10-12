@@ -13,7 +13,7 @@ const WEAVE = "https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave
 const LINE = (
   <>
     <span>Other tools find what your video archive is missing.</span>{" "}
-    <span className="hl">Spore grows the data to fill it, and shows where your AI goes blind.</span>
+    <span className="hl">Blindspot grows the data to fill it, and shows where your AI goes blind.</span>
   </>
 );
 
@@ -134,7 +134,7 @@ export default function Story() {
       <header className="st-top">
         <div className="st-brand-wrap">
           <button className="st-brand" onClick={() => setI(0)}>
-            Spore
+            Blindspot
           </button>
           {SNAP && <a className="st-home" href="/research">SporeLabs Research</a>}
         </div>
@@ -284,7 +284,7 @@ function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean 
   const retY = top + nodeH + (big ? 78 : 14);
   const loopOn = active === LOOP.length;
   return (
-    <svg className={`st-loop ${big ? "big" : "mini"}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Spore loop">
+    <svg className={`st-loop ${big ? "big" : "mini"}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Blindspot loop">
       <defs>
         <marker id={`ah${big ? "b" : "m"}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
           <path d="M0,0 L8,4 L0,8 z" fill="currentColor" />
@@ -317,7 +317,7 @@ function LoopMap({ active = -1, big = false }: { active?: number; big?: boolean 
 function Intro() {
   return (
     <div className="st-intro">
-      <div className="st-logo rv">Spore <small>by SporeLabs</small></div>
+      <div className="st-logo rv">Blindspot <small>by SporeLabs</small></div>
       <p className="st-line rv" style={{ animationDelay: "0.25s" }}>
         <span>Find where your video AI is weak.</span>{" "}
         <span className="hl">Grow the data to fix it. Retrain until it's ready to ship.</span>
@@ -472,7 +472,7 @@ function Ask() {
           <div className="st-big rv">
             {res.n_shows_it
               ? <><b>{res.n_shows_it} of {res.hits.length}</b> top results actually show it.</>
-              : <><b className="bad">No footage.</b> None of the top {res.hits.length} actually show it. That's a gap Spore can fill.</>}
+              : <><b className="bad">No footage.</b> None of the top {res.hits.length} actually show it. That's a gap Blindspot can fill.</>}
           </div>
           <div className="st-hits">
             {shown.map((h, k) => (
@@ -635,7 +635,7 @@ function Fix({ fix }: { fix?: FixRow[] | null }) {
       ) : (
         <div className="st-next-list">
           <div {...rv(1)}><div className="st-cand"><span className="rank">→</span><div><div className="name">Search</div><div className="why">Re-ingest with a weather-aware prompt so VSS captions say "fog" and fog becomes searchable.</div></div></div></div>
-          <div {...rv(2)}><div className="st-cand"><span className="rank">→</span><div><div className="name">Detector</div><div className="why">Train on Spore's own clips, which come with free labels from the clear-day original.</div></div></div></div>
+          <div {...rv(2)}><div className="st-cand"><span className="rank">→</span><div><div className="name">Detector</div><div className="why">Train on Blindspot's own clips, which come with free labels from the clear-day original.</div></div></div></div>
         </div>
       )}
       <Powered by={["vast", "nvidia"]} delay={1.3}

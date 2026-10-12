@@ -71,13 +71,13 @@ export default function Writeup() {
         <h2>Each phase of the loop, what the agent did, and what came out</h2>
         <div className="wu-real">
           <p><b>The agent runs and the analysis are real.</b> Every number, trace and clip on this page comes from
-            Spore&rsquo;s actual runs on October 9, 2026. A full loop takes hours: generating footage on a GPU and
+            Blindspot&rsquo;s actual runs on October 9, 2026. A full loop takes hours: generating footage on a GPU and
             putting every clip through two hosted models. So this page replays the recorded outputs instead of running
             live.</p>
           <p>All the code and results are public. <a href={REPO} target="_blank" rel="noopener">Clone the repo</a> and
             run any step yourself; each phase below shows the exact command. I&rsquo;m happy to talk about how I would
             turn this into a product from here: <a href="mailto:coleman@sporelabs.dev">coleman@sporelabs.dev</a>.</p>
-          <p className="wu-fine">Spore is a hackathon project. Team 16 built it from scratch in one day at the VAST
+          <p className="wu-fine">Blindspot is a hackathon project. Team 16 built it from scratch in one day at the VAST
             Builders Challenge NYC on the event&rsquo;s VAST, NVIDIA and CoreWeave/W&amp;B stack. It is not a SporeLabs
             product; we host the results here so people can see them.</p>
           <p className="wu-links">
@@ -92,7 +92,7 @@ export default function Writeup() {
         <p>
           The event&rsquo;s VSS index held <b>{cov.n_indexed}</b> real clips from {Object.keys(cov.cameras).length} cameras.
           Only <b>{cov.n_highway}</b> came from a highway camera (I-24), and every one of them was clear daylight; we
-          checked all 30 by eye. Spore asked VSS for each condition, then read the Cosmos Reason caption of every clip it
+          checked all 30 by eye. Blindspot asked VSS for each condition, then read the Cosmos Reason caption of every clip it
           returned to check whether the clip really shows it.
         </p>
         <table className="wu-table">
@@ -166,7 +166,7 @@ export default function Writeup() {
           the candidate gaps and picks the next condition to fill.</p>
         <p>Every call is traced in W&amp;B Weave, so each decision can be audited later.</p></>}
         work={{
-          run: "loop/.venv/bin/python loop/report.py          # -> results/gap_report.json (Weave-traced)\nloop/.venv/bin/python loop/spore.py --stage 2  # same step inside the loop",
+          run: "loop/.venv/bin/python loop/report.py          # -> results/gap_report.json (Weave-traced)\nloop/.venv/bin/python loop/blindspot.py --stage 2  # same step inside the loop",
           trace: tr.decide, traceNote: <>The LLM&rsquo;s recorded report. The Weave traces are in the{" "}
             <a href="https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave" target="_blank" rel="noopener">W&amp;B project</a> (sign-in may be required).</>,
           files: [["Code", "loop/report.py"], ["LLM client", "loop/llm.py"], ["Weave tracing", "loop/tracing.py"], ["Gap report", "results/gap_report.json"]],
@@ -189,7 +189,7 @@ export default function Writeup() {
             two minutes per clip.</li>
         </ul></>}
         work={{
-          run: "# weather layer, one clip\npython3 gen/weather.py --in data/seeds/i24_scene1_p1c2_00.mp4 --kind fog --severity 0.4 \\\n  --out data/synthetic/i24_scene1_p1c2_00__phys_fog_s04.mp4 \\\n  --manifest data/synthetic/manifest.json --seed-id i24_scene1_p1c2_00\n\n# Cosmos Transfer 2.5 on Modal\nmodal deploy gen/modal_transfer.py\nSPORE_CONDS=fog_day_heavy,rain_night_heavy,snow_day_heavy,clear_night_light,clear_day_light python3 gen/first_batch.py",
+          run: "# weather layer, one clip\npython3 gen/weather.py --in data/seeds/i24_scene1_p1c2_00.mp4 --kind fog --severity 0.4 \\\n  --out data/synthetic/i24_scene1_p1c2_00__phys_fog_s04.mp4 \\\n  --manifest data/synthetic/manifest.json --seed-id i24_scene1_p1c2_00\n\n# Cosmos Transfer 2.5 on Modal\nmodal deploy gen/modal_transfer.py\nBLINDSPOT_CONDS=fog_day_heavy,rain_night_heavy,snow_day_heavy,clear_night_light,clear_day_light python3 gen/first_batch.py",
           trace: tr.grow, traceNote: "A seed clip, then one weather-layer variant and one Cosmos Transfer variant with its real prompt, from the manifests:",
           files: [["Weather layer", "gen/weather.py"], ["Cosmos Transfer on Modal", "gen/modal_transfer.py"], ["Seed clips", "data/seeds/manifest.json"], ["All 160 variants", "data/synthetic/manifest.json"]],
         }}>
@@ -293,12 +293,12 @@ export default function Writeup() {
       </section>
 
       <Phase id="repeat" n="↻" name="Repeat" agent={<>
-        <p><code>loop/spore.py</code> chains the phases: Look &rarr; Find &rarr; Decide &rarr; Grow &rarr; Test, then
+        <p><code>loop/blindspot.py</code> chains the phases: Look &rarr; Find &rarr; Decide &rarr; Grow &rarr; Test, then
           picks the next weak spot and goes again. It logs every stage with its timing and outputs.</p></>}
         work={{
-          run: "loop/.venv/bin/python loop/spore.py --iterations 2 --k 3   # full loop\nloop/.venv/bin/python loop/spore.py --stage 1               # one stage",
+          run: "loop/.venv/bin/python loop/blindspot.py --iterations 2 --k 3   # full loop\nloop/.venv/bin/python loop/blindspot.py --stage 1               # one stage",
           trace: tr.repeat, traceNote: "The last logged loop iteration, every stage with its timing:",
-          files: [["The loop", "loop/spore.py"], ["Loop log", "results/loop_log.json"]],
+          files: [["The loop", "loop/blindspot.py"], ["Loop log", "results/loop_log.json"]],
         }}>
         <p>Four iterations ran on the day. Re-searching the archive found no new real footage for the open gaps, so the
           loop kept filling them with grown footage.</p>

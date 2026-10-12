@@ -53,7 +53,7 @@ def chat(messages, model=None, json_mode=False) -> str:
     if not _api_key():
         return ""
     kwargs = {
-        "model": model or os.environ.get("SPORE_LLM_MODEL", "").strip() or DEFAULT_MODEL,
+        "model": model or os.environ.get("BLINDSPOT_LLM_MODEL", "").strip() or DEFAULT_MODEL,
         "messages": messages,
     }
     if json_mode:

@@ -1,4 +1,4 @@
-# Spore loop — W&B Inference + Weave
+# Blindspot loop — W&B Inference + Weave
 
 LLM calls for the failure-seeking loop go through [W&B Inference](https://docs.wandb.ai/inference) (OpenAI-compatible, hosted on CoreWeave). Each call can be traced with [Weave](https://docs.wandb.ai/weave). If `WANDB_API_KEY` is unset, tracing is a no-op and `propose_next_condition` returns a deterministic rationale so the loop still runs.
 
@@ -27,7 +27,7 @@ print(llm.propose_next_condition({"arms": [], "budget_used": 0}, conditions))
 | `WANDB_ENTITY` | no | W&B team name. With `WANDB_PROJECT`, sent as the `OpenAI-Project` header `entity/project` ([docs](https://docs.wandb.ai/inference)). |
 | `WANDB_PROJECT` | no | Weave project and the project half of the inference header. Default `sporelabs-hackathon`. |
 | `WANDB_INFERENCE_PROJECT` | no | Overrides the inference project header outright (`team/project`). |
-| `SPORE_LLM_MODEL` | no | Model id override. Default `deepseek-ai/DeepSeek-V4-Pro-0813`. |
+| `BLINDSPOT_LLM_MODEL` | no | Model id override. Default `deepseek-ai/DeepSeek-V4-Pro-0813`. |
 
 `tracing.init(project="sporelabs-hackathon")` calls `weave.init` only when `WANDB_API_KEY` is set. `tracing.traced` is `weave.op` after a successful init and an identity decorator otherwise. Init never raises when W&B is not configured.
 
@@ -40,7 +40,7 @@ print(llm.propose_next_condition({"arms": [], "budget_used": 0}, conditions))
 
 Default is **`deepseek-ai/DeepSeek-V4-Pro-0813`** (DeepSeek V4-Pro, 49B active / 1.6T total), the strongest generally available reasoning model on W&B Inference as of the [available models](https://docs.wandb.ai/inference/models) list.
 
-Other strong open candidates on that list (pass as `model=` or `SPORE_LLM_MODEL`):
+Other strong open candidates on that list (pass as `model=` or `BLINDSPOT_LLM_MODEL`):
 
 | Model id | Why you might switch |
 |---|---|

@@ -1,6 +1,6 @@
-# Spore UI (demo)
+# Blindspot UI (demo)
 
-Single-page demo for Spore by SporeLabs, five live stages: 1 Search (results/coverage.json) → 2 Report (results/gap_report.json) → 3 Fill (data/synthetic/manifest.json, "just filled" from loop_log) → 4 Measure (results/overlays/index.json[0] + failure_map + fix.json) → 5 Loop (results/loop_log.json). Driven by `loop/.venv/bin/python loop/spore.py` (`--stage N` for one stage).
+Single-page demo for Blindspot by SporeLabs, five live stages: 1 Search (results/coverage.json) → 2 Report (results/gap_report.json) → 3 Fill (data/synthetic/manifest.json, "just filled" from loop_log) → 4 Measure (results/overlays/index.json[0] + failure_map + fix.json) → 5 Loop (results/loop_log.json). Driven by `loop/.venv/bin/python loop/blindspot.py` (`--stage N` for one stage).
 
 ```bash
 cd ui && npm i && npm run dev

@@ -7,11 +7,11 @@
 
 ## One-sentence description
 
-Spore helps video model operators find gaps in their evaluation data, grow synthetic data to cover them, and build new evals and benchmarks for training better models.
+Blindspot helps video model operators find gaps in their evaluation data, grow synthetic data to cover them, and build new evals and benchmarks for training better models.
 
 ## Description (~150 words)
 
-Video AI fails quietly on conditions your cameras don't see often. Spore finds those gaps, grows synthetic data to cover them, and turns that data into evals, in a loop. It searches VAST's video index for missing conditions: the highway camera has 30 clips, all clear daylight, and none at night, in rain, in fog or in snow. An LLM on W&B Inference, traced in Weave, ranks which gaps matter. Spore grows the missing weather onto real clips with a physics weather layer and NVIDIA Cosmos Transfer. The cars stay in place, so the labels carry over and testing runs automatically. On CoreWeave GPUs, it tests the models in the VSS pipeline: in light fog, YOLO finds only four in ten visible cars, while Cosmos Reason keeps counting them. The result is a new benchmark and training set for better models.
+Video AI fails quietly on conditions your cameras don't see often. Blindspot finds those gaps, grows synthetic data to cover them, and turns that data into evals, in a loop. It searches VAST's video index for missing conditions: the highway camera has 30 clips, all clear daylight, and none at night, in rain, in fog or in snow. An LLM on W&B Inference, traced in Weave, ranks which gaps matter. Blindspot grows the missing weather onto real clips with a physics weather layer and NVIDIA Cosmos Transfer. The cars stay in place, so the labels carry over and testing runs automatically. On CoreWeave GPUs, it tests the models in the VSS pipeline: in light fog, YOLO finds only four in ten visible cars, while Cosmos Reason keeps counting them. The result is a new benchmark and training set for better models.
 
 ## Tools used
 

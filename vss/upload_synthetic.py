@@ -1,4 +1,4 @@
-"""Upload Spore synthetic variants into VSS so the provided stack (Detector / Reasoner / Embedder)
+"""Upload Blindspot synthetic variants into VSS so the provided stack (Detector / Reasoner / Embedder)
 processes them like any other footage, then poll until indexed and record VSS's own row.
 
   python3 vss/upload_synthetic.py                 # upload new non-bad clips, poll until indexed

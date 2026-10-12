@@ -214,7 +214,7 @@ def make_report(history: list[str] | None = None) -> dict:
                         c["why_rule"] = c["why"]
                         c["why"] = w.strip()
                 rep["source"] = "llm"
-                rep["model"] = llm.os.environ.get("SPORE_LLM_MODEL", "").strip() or llm.DEFAULT_MODEL
+                rep["model"] = llm.os.environ.get("BLINDSPOT_LLM_MODEL", "").strip() or llm.DEFAULT_MODEL
             else:
                 why = "Model JSON missing fields."
         except Exception as ex:

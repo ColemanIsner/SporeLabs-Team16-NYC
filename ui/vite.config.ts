@@ -56,7 +56,7 @@ function liveApi(): Plugin {
     next();
   };
   return {
-    name: "spore-live-api",
+    name: "blindspot-live-api",
     configureServer(s) { s.middlewares.use(handler); },
     configurePreviewServer(s) { s.middlewares.use(handler); },
   };
@@ -95,7 +95,7 @@ function staticMounts(): Plugin {
     fs.createReadStream(file).pipe(res);
   };
   return {
-    name: "spore-static-mounts",
+    name: "blindspot-static-mounts",
     configureServer(s) { s.middlewares.use(handler); },
     configurePreviewServer(s) { s.middlewares.use(handler); },
   };

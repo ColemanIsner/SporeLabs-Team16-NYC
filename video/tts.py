@@ -1,4 +1,4 @@
-"""Narration TTS for the Spore demo video: Kokoro-82M (local, Apache-2.0), voice af_heart.
+"""Narration TTS for the Blindspot demo video: Kokoro-82M (local, Apache-2.0), voice af_heart.
 
 PYTHON = /private/tmp/claude-501/-Users-cisner-Documents-Coding-Work-hackathons-team16/27c0baac-74d4-4216-8b26-ac1a8306928f/scratchpad/tts312/bin/python
 
@@ -40,7 +40,7 @@ PAD_S = 0.05  # silence kept at each end after trimming
 # Spelling -> spoken form (applied before G2P; script keeps normal spellings).
 TEXT_MAP = [
     (r"\bW&B\b", "W and B"),
-    (r"\bSporeLabs\b", "Spore Labs"),
+    (r"\bSporeLabs\b", "Blindspot Labs"),
     (r"\bCoreWeave\b", "Core Weave"),
 ]
 # Words forced to exact phonemes (misaki/Kokoro inline syntax [word](/phonemes/)).
