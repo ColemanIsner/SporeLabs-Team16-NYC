@@ -28,7 +28,7 @@ _SEEDS = [r["seed_id"] for r in _json.load(open(ROOT / "data" / "seeds" / "manif
 I24 = [s for s in _SEEDS if s.startswith("i24")]
 NYC = [s for s in _SEEDS if s.startswith("nyc")]
 import os as _o2
-CONDS = [tuple(x.split("_")) for x in _o2.environ["SPORE_CONDS"].split(",")] if _o2.environ.get("SPORE_CONDS") else [("fog", "day", "heavy"), ("rain", "night", "heavy"), ("snow", "day", "heavy"), ("clear", "night", "light")]
+CONDS = [tuple(x.split("_")) for x in _o2.environ["BLINDSPOT_CONDS"].split(",")] if _o2.environ.get("BLINDSPOT_CONDS") else [("fog", "day", "heavy"), ("rain", "night", "heavy"), ("snow", "day", "heavy"), ("clear", "night", "light")]
 CW = float(_os.environ.get("SPORE_CW", "0.5"))
 
 

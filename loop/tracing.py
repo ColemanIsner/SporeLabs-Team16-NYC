@@ -1,4 +1,4 @@
-"""Weave tracing for the Spore loop. No-ops when W&B is not configured."""
+"""Weave tracing for the Blindspot loop. No-ops when W&B is not configured."""
 
 from __future__ import annotations
 

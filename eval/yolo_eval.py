@@ -4,7 +4,7 @@
 Usage:
   eval/.venv/bin/python eval/yolo_eval.py data/synthetic/X__fog.mp4 --seed data/seeds/X.mp4 [--out results/evals/X__fog.json]
 
-- Backend (--backend / env SPORE_YOLO_BACKEND):
+- Backend (--backend / env BLINDSPOT_YOLO_BACKEND):
     hosted (default): the VSS ingest Detector, YOLO11s at $YOLO_URL (default http://166.19.38.112:8002),
       POST /v1/infer {"video_base64", "filename", "include_frames": true}, auth Bearer $GPU_BEARER_TOKEN
       (repo-root .env). Server-side conf >= 0.4 (not settable), every decoded frame returned
@@ -32,7 +32,7 @@ from fidelity import EVALS, ROOT, clip_info, load_json, merge_eval, read_frames,
 BOXES = ROOT / "results" / "boxes"
 LOCAL_MODEL = "yolo11n"
 HOSTED_MODEL = "hosted-yolo11s"
-BACKEND = os.environ.get("SPORE_YOLO_BACKEND", "hosted")
+BACKEND = os.environ.get("BLINDSPOT_YOLO_BACKEND", "hosted")
 MODEL_NAME = HOSTED_MODEL if BACKEND == "hosted" else LOCAL_MODEL
 COCO = ["person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck"]
 WEIGHTS = Path(os.environ.get("YOLO_WEIGHTS", Path(__file__).resolve().parent / ".venv" / "yolo11n.pt"))
@@ -229,7 +229,7 @@ def main():
     ap.add_argument("--device", default="cpu", help="cpu | mps | 0 (cuda)")
     ap.add_argument("--force", action="store_true", help="ignore cached boxes")
     ap.add_argument("--backend", choices=["hosted", "local"], default=BACKEND,
-                    help="hosted VSS YOLO11s (default; env SPORE_YOLO_BACKEND) or local ultralytics yolo11n")
+                    help="hosted VSS YOLO11s (default; env BLINDSPOT_YOLO_BACKEND) or local ultralytics yolo11n")
     a = ap.parse_args()
     set_backend(a.backend)
     print(json.dumps(run(a.clip, a.seed, a.out, a.device, a.force)))

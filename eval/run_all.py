@@ -56,7 +56,7 @@ def main():
     ap.add_argument("--threshold", type=float, default=fidelity.DEFAULT_THRESHOLD)
     ap.add_argument("--reason", action="store_true", help="then run reason_eval.py (Cosmos3-Reason Q&A)")
     ap.add_argument("--backend", choices=["hosted", "local"], default=yolo_eval.BACKEND,
-                    help="YOLO under test: hosted VSS YOLO11s (default; env SPORE_YOLO_BACKEND) or local yolo11n")
+                    help="YOLO under test: hosted VSS YOLO11s (default; env BLINDSPOT_YOLO_BACKEND) or local yolo11n")
     ap.add_argument("--workers", type=int, default=6, help="parallel hosted YOLO requests")
     a = ap.parse_args()
     yolo_eval.set_backend(a.backend)

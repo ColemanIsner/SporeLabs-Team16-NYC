@@ -5,7 +5,7 @@ cached by (step, length, UI source). Editing one line re-voices that sentence an
 
 Needs the UI running (cd ui && npm run dev) plus:  pip install playwright && playwright install chromium
 Voice: video/tts.py, run with the interpreter on its `PYTHON = ` docstring line (or $TTS_PYTHON).
-Run:  python video/make_video.py [--fresh]   ->  video/spore_demo.mp4, spore_demo_nocaptions.mp4, spore_demo.srt
+Run:  python video/make_video.py [--fresh]   ->  video/blindspot_demo.mp4, blindspot_demo_nocaptions.mp4, blindspot_demo.srt
 """
 import argparse, asyncio, base64, hashlib, json, os, re, shutil, subprocess
 from pathlib import Path
@@ -239,7 +239,7 @@ def assemble(steps, clips, lengths, screens, out: Path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(HERE / "spore_demo.mp4"))
+    ap.add_argument("--out", default=str(HERE / "blindspot_demo.mp4"))
     ap.add_argument("--script", default=str(HERE / "script.md"))
     ap.add_argument("--fresh", action="store_true", help="re-record every screen (e.g. after results/ data changed)")
     a = ap.parse_args()

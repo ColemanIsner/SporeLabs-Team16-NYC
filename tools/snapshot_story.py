@@ -1,4 +1,4 @@
-"""Freeze the Story demo into one static page for sporelabs.dev/research/spore.
+"""Freeze the Story demo into one static page for sporelabs.dev/research/blindspot.
 
 Records the Story's VSS searches (vss/ask.py), gathers the results JSON it reads,
 transcodes its clips to small H.264 files named media/spore-*.mp4, writes
@@ -42,7 +42,7 @@ GAP_QUERIES = ["highway in clear daytime", "highway at night", "highway in heavy
                "highway in dense fog", "highway covered in snow"]
 SUGGEST = ["construction zone at night", "pedestrian crossing in the rain", "truck stopped on the shoulder"]
 LOGOS = ["vast-data.svg", "nvidia.svg", "coreweave.svg", "spacex.svg", "wandb-dark.svg"]
-PAGE_URL = "https://sporelabs.dev/research/spore"
+PAGE_URL = "https://sporelabs.dev/research/blindspot"
 
 
 def transcode(src: Path, dst: Path, width: int) -> None:
@@ -185,12 +185,12 @@ def main() -> None:
                    env={**__import__("os").environ, "VITE_SNAPSHOT": "1"})
     html = inline_bundle(UI / "dist")
     head = (f'<link rel="canonical" href="{PAGE_URL}" />\n'
-            '<meta name="description" content="Spore finds where a video AI is weak, grows synthetic footage '
+            '<meta name="description" content="Blindspot finds where a video AI is weak, grows synthetic footage '
             'to cover it, and measures what breaks. Built at the VAST Builders Challenge NYC." />\n'
-            '<meta property="og:title" content="Spore: find where your video AI is weak, grow the data to fix it" />\n'
+            '<meta property="og:title" content="Blindspot: find where your video AI is weak, grow the data to fix it" />\n'
             f'<meta property="og:url" content="{PAGE_URL}" />\n')
-    html = html.replace("<title>Spore · SporeLabs</title>",
-                        "<title>Spore: find where your video AI is weak | SporeLabs Research</title>\n" + head)
+    html = html.replace("<title>Blindspot · SporeLabs</title>",
+                        "<title>Blindspot: find where your video AI is weak | SporeLabs Research</title>\n" + head)
     (a.out / "spore-research.html").write_text(html)
     total = sum(f.stat().st_size for f in media_dir.glob("spore-*.mp4"))
     print(f"page {len(html) / 1e6:.2f} MB, media {total / 1e6:.1f} MB in {media_dir}")

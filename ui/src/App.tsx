@@ -112,7 +112,7 @@ export default function App() {
       </Section>
       <div className="blind">
         <p><b>Search is blind to weather</b> → fixed by a weather-aware re-ingest prompt (real before/after above, when available).</p>
-        <p><b>The detector is blind in weather</b> → next: train on Spore's synthetic data.</p>
+        <p><b>The detector is blind in weather</b> → next: train on Blindspot's synthetic data.</p>
       </div>
       <Section n="5" id="loop" kicker="Continue the loop"
         title={<>Then search again and pick the next gap. <em>Every iteration: gap → filled → measured.</em></>}
@@ -128,7 +128,7 @@ export default function App() {
 
 function CoverageBars({ cov }: { cov: Coverage | null | undefined }) {
   if (cov === undefined) return <div className="skeleton tall" />;
-  if (!cov || !cov.conditions?.length) return <Empty title="Archive not searched yet" hint="loop/.venv/bin/python loop/spore.py --stage 1" />;
+  if (!cov || !cov.conditions?.length) return <Empty title="Archive not searched yet" hint="loop/.venv/bin/python loop/blindspot.py --stage 1" />;
   const max = Math.max(1, ...cov.conditions.map((c) => c.n_highway));
   return (
     <div className="cov">
@@ -213,7 +213,7 @@ function Inventory({ cov }: { cov: Coverage | null | undefined }) {
 
 function GapCard({ rep }: { rep: GapReport | null | undefined }) {
   if (rep === undefined) return <div className="skeleton tall" />;
-  if (!rep || !rep.gap) return <Empty title="No gap report yet" hint="loop/.venv/bin/python loop/spore.py --stage 2" />;
+  if (!rep || !rep.gap) return <Empty title="No gap report yet" hint="loop/.venv/bin/python loop/blindspot.py --stage 2" />;
   const cands = rep.candidates ?? [];
   const ev = Array.isArray(rep.evidence) ? rep.evidence : rep.evidence ? [rep.evidence] : [];
   return (
@@ -543,7 +543,7 @@ const STAGE_NAMES: Record<string, string> = { "1": "search", "2": "report", "3":
 function Timeline({ entries }: { entries: LoopEntry[] | null | undefined }) {
   if (entries === undefined) return <div className="skeleton" />;
   const list = (entries ?? []).filter((e) => e && (e.kind === "spore" || e.round != null));
-  if (!list.length) return <Empty title="Loop hasn't run yet" hint="loop/.venv/bin/python loop/spore.py --iterations 2" />;
+  if (!list.length) return <Empty title="Loop hasn't run yet" hint="loop/.venv/bin/python loop/blindspot.py --iterations 2" />;
   return (
     <ol className="timeline">
       {[...list].reverse().slice(0, 12).map((e, idx) => {
@@ -596,7 +596,7 @@ function Timeline({ entries }: { entries: LoopEntry[] | null | undefined }) {
 
 /* ---------- chrome ---------- */
 
-function SporeMark() {
+function BlindspotMark() {
   return (
     <svg className="mark" viewBox="0 0 32 32" aria-hidden>
       <circle cx="16" cy="16" r="5" fill="var(--spore)" />
@@ -613,8 +613,8 @@ function TopBar({ running }: { running?: LoopEntry }) {
   return (
     <header className="topbar">
       <a className="brand" href="#top">
-        <SporeMark />
-        <span className="wordmark">Spore</span>
+        <BlindspotMark />
+        <span className="wordmark">Blindspot</span>
         <span className="by">by SporeLabs</span>
       </a>
       <nav>
@@ -633,7 +633,7 @@ function Hero({ stats }: { stats: { k: string; v: number | string; hot?: boolean
       <p className="eyebrow">Find the gap · fill it · measure · repeat</p>
       <h1>
         Your video archive has <br />no rain at night.
-        <span className="sub">Other tools find what your video archive is missing. Spore grows the data to fill it, and shows where your AI goes blind.</span>
+        <span className="sub">Other tools find what your video archive is missing. Blindspot grows the data to fill it, and shows where your AI goes blind.</span>
       </h1>
       <div className="stats">
         {stats.map((s) => (
@@ -675,7 +675,7 @@ function Empty({ title, hint }: { title: string; hint: string }) {
 function Footer() {
   return (
     <footer className="footer">
-      <div className="brand"><SporeMark /><span className="wordmark">Spore</span></div>
+      <div className="brand"><BlindspotMark /><span className="wordmark">Blindspot</span></div>
       <p>VAST Data · NVIDIA Cosmos Transfer &amp; Reason · YOLO · W&amp;B Weave · CoreWeave</p>
     </footer>
   );

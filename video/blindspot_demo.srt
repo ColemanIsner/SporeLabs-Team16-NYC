@@ -1,6 +1,6 @@
 1
 00:00:00,600 --> 00:00:02,350
-This is Spore, by SporeLabs.
+This is Blindspot, by SporeLabs.
 
 2
 00:00:02,650 --> 00:00:06,680
@@ -8,7 +8,7 @@ Video AI fails quietly on the conditions your cameras rarely see.
 
 3
 00:00:06,980 --> 00:00:11,085
-Spore finds where your video AI is weak, grows the data to cover it,
+Blindspot finds where your video AI is weak, grows the data to cover it,
 
 4
 00:00:11,085 --> 00:00:13,440
@@ -20,7 +20,7 @@ First, it looks through everything you have.
 
 6
 00:00:17,570 --> 00:00:22,217
-Spore reads all six hundred twelve real clips indexed in VAST's video search,
+Blindspot reads all six hundred twelve real clips indexed in VAST's video search,
 
 7
 00:00:22,217 --> 00:00:24,390
@@ -128,7 +128,7 @@ Every run is traced in W&B Weave.
 
 33
 00:01:41,960 --> 00:01:44,730
-And every frame Spore grows comes already labeled.
+And every frame Blindspot grows comes already labeled.
 
 34
 00:01:45,030 --> 00:01:49,776
@@ -148,7 +148,7 @@ for the Fix step, and not one was drawn by hand.
 
 38
 00:02:03,820 --> 00:02:05,650
-Then Spore picks the next weak spot.
+Then Blindspot picks the next weak spot.
 
 39
 00:02:05,950 --> 00:02:09,190

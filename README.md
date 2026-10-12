@@ -1,14 +1,14 @@
 **DEMO VIDEO: <<add link>>**
 
-# Spore by SporeLabs
+# Blindspot by SporeLabs
 
 **Find where your video AI is weak. Grow the data to fix it.**
 
-Video AI fails quietly on the conditions your cameras don't see often. Spore helps video model operators find gaps in their evaluation data, grow synthetic data to cover them, and build new evals and benchmarks for training better models.
+Video AI fails quietly on the conditions your cameras don't see often. Blindspot helps video model operators find gaps in their evaluation data, grow synthetic data to cover them, and build new evals and benchmarks for training better models.
 
-![Spore demo: the six-step loop](docs/img/spore_story.png)
+![Blindspot demo: the six-step loop](docs/img/spore_story.png)
 
-We stress-test the exact models inside your VSS pipeline: the hosted YOLO11s (the VSS Detector) and the hosted Cosmos3 Nano Reasoner (the VSS Reasoner). VSS is where Spore searches the real archive, and it is also where the grown footage lands: we pushed 61 synthetic clips through the VSS ingest pipeline, and VSS search now returns them for the conditions the real cameras never saw (see *Synthetic clips in VSS* below).
+We stress-test the exact models inside your VSS pipeline: the hosted YOLO11s (the VSS Detector) and the hosted Cosmos3 Nano Reasoner (the VSS Reasoner). VSS is where Blindspot searches the real archive, and it is also where the grown footage lands: we pushed 61 synthetic clips through the VSS ingest pipeline, and VSS search now returns them for the conditions the real cameras never saw (see *Synthetic clips in VSS* below).
 
 Every number below comes from a JSON file in `results/`, and the file is named next to it.
 
@@ -39,7 +39,7 @@ These are the six steps in the demo, in order. Each phase writes files that the 
 | 5b | Check against real footage | Searches VSS for real clips of each condition and runs the same two models on them | **VAST** (VSS), **NVIDIA** on **CoreWeave** | `vss/real_check.py`, `eval/real_confirm.py` | `results/real_check.json` | the loop | minutes |
 | 4c | Index grown clips in VSS | Uploads grown clips through the VSS upload API; VAST's DataEngine pipeline segments, detects, captions, embeds and indexes them, so VSS search returns them | **VAST** (VSS, DataEngine, VastDB) | `vss/upload_synthetic.py` | `results/vss_uploads.json` | search | minutes per batch |
 | 6 | Fix | Builds an auto-labeled training set from the grown clips and fine-tunes YOLO11s on it; measures VSS caption quality as the baseline for a weather-aware re-ingest prompt | Modal L40S; **VAST** (VSS) | `fix/build_dataset.py`, `fix/train_modal.py`, `fix/evaluate.py`, `fix/reingest_before.py` | `results/fix/fix_detail.json`, `results/fix_before.json` | the loop | 136 s training, plus dataset build and eval |
-| ↺ | Loop | Picks the next weak spot, re-searches the archive, and runs phases 2 to 5 again | all of the above | `loop/spore.py` | `results/loop_log.json` | phase 2 | one iteration ≈ phases 2 to 5 for one condition |
+| ↺ | Loop | Picks the next weak spot, re-searches the archive, and runs phases 2 to 5 again | all of the above | `loop/blindspot.py` | `results/loop_log.json` | phase 2 | one iteration ≈ phases 2 to 5 for one condition |
 
 Cursor agents (including Grok 4.7, **SpaceXAI / Cursor**) ran many of these phases in parallel during the build. They built the code; they are not part of the pipeline.
 
@@ -60,7 +60,7 @@ Cursor agents (including Grok 4.7, **SpaceXAI / Cursor**) ran many of these phas
             + NVIDIA Cosmos Transfer 2.5 relighting on Modal H100            (44 clips + 11 clear-day controls)
 4 Measure   hosted YOLO11s (VSS Detector) + Cosmos3 Nano Reasoner (VSS Reasoner)
             eval/integrity.py vehicle gate, severity breaking point     -> results/evals/, severity_curve.json, failure_map.json
-5 Loop      loop/spore.py picks the next gap, re-searches the archive    -> results/loop_log.json, results/real_check.json
+5 Loop      loop/blindspot.py picks the next gap, re-searches the archive    -> results/loop_log.json, results/real_check.json
             for newly indexed real clips
 ```
 
@@ -81,7 +81,7 @@ Cursor agents (including Grok 4.7, **SpaceXAI / Cursor**) ran many of these phas
 
 ### 2. Report: explain the gap (W&B Inference + Weave)
 
-`loop/report.py` gives the coverage and eval numbers to a W&B Inference LLM (`deepseek-ai/DeepSeek-V4-Pro-0813`, 15.3 s). The LLM writes the gap report, ranks 25 scene × condition candidates, and picks the next one. The LLM call and every loop stage in `loop/spore.py` are traced in Weave: [wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave](https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave).
+`loop/report.py` gives the coverage and eval numbers to a W&B Inference LLM (`deepseek-ai/DeepSeek-V4-Pro-0813`, 15.3 s). The LLM writes the gap report, ranks 25 scene × condition candidates, and picks the next one. The LLM call and every loop stage in `loop/blindspot.py` are traced in Weave: [wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave](https://wandb.ai/colemanisner-sporelabs/sporelabs-hackathon/weave).
 
 From `results/gap_report.json`:
 
@@ -138,13 +138,13 @@ Cosmos Transfer covers what an overlay cannot, like turning day into night; nigh
 
 ### 5. Loop: keep searching
 
-`loop/spore.py` runs Search → Report → Fill → Measure → Continue, with every stage traced in Weave. It logs each iteration to `results/loop_log.json`. Four iterations ran on the day; the latest took the LLM's top pick, "Low sun glare · Highway", filled 2 clips, and found YOLO holds up there (recall 0.76). Re-searching the archive found the same 612 real clips and **0 new real chunks** (`results/real_check.json` → `runs`), so the loop keeps filling the open gaps with grown footage.
+`loop/blindspot.py` runs Search → Report → Fill → Measure → Continue, with every stage traced in Weave. It logs each iteration to `results/loop_log.json`. Four iterations ran on the day; the latest took the LLM's top pick, "Low sun glare · Highway", filled 2 clips, and found YOLO holds up there (recall 0.76). Re-searching the archive found the same 612 real clips and **0 new real chunks** (`results/real_check.json` → `runs`), so the loop keeps filling the open gaps with grown footage.
 
 ## Synthetic clips in VSS
 
 `vss/upload_synthetic.py` uploads grown clips through the VSS upload API (camera `spore_synthetic`), so VAST's own DataEngine pipeline segments them, runs the Detector, captions them with Cosmos Reason, embeds them and writes them to VastDB like any other footage. We uploaded 61 clips (44 Cosmos Transfer, 17 weather layer). VSS indexed them and its captions describe the grown conditions ("a multi-lane highway at night", "during heavy rain", "dense fog significantly reducing visibility").
 
-The result: the searches that returned nothing real now return grown footage. In the recorded searches (`ui/snapshot/asks.json`), "highway at night", "highway in heavy rain" and "highway covered in snow" each return 10 of 10 hits from Spore's clips, and "highway in dense fog" returns 7 of 10; 25 distinct grown clips appear across the searches. Coverage counts and the real-archive tables in this README exclude `spore_synthetic`, so they describe real footage only.
+The result: the searches that returned nothing real now return grown footage. In the recorded searches (`ui/snapshot/asks.json`), "highway at night", "highway in heavy rain" and "highway covered in snow" each return 10 of 10 hits from Blindspot's clips, and "highway in dense fog" returns 7 of 10; 25 distinct grown clips appear across the searches. Coverage counts and the real-archive tables in this README exclude `spore_synthetic`, so they describe real footage only.
 
 ## Real-archive check
 
@@ -159,7 +159,7 @@ The result: the searches that returned nothing real now return grown footage. In
 | Fog | **no** | YOLO beats Reason on real fog: 4.495 vs 2 and 4.505 vs 2. Both clips are adjacent chunks from one camera |
 | Snow | n/a | **No real snow footage exists**: 0 snow mentions in 3,537 VSS captions across 13 cameras |
 
-Glare is the clearest real-world match: YOLO finds a quarter of what Reason counts. The archive holds very few real clips of these conditions (2 pulled per condition), which is the gap Spore exists to fill. For snow, grown footage is the only way to test at all.
+Glare is the clearest real-world match: YOLO finds a quarter of what Reason counts. The archive holds very few real clips of these conditions (2 pulled per condition), which is the gap Blindspot exists to fill. For snow, grown footage is the only way to test at all.
 
 ## Fix: fine-tune experiment
 
@@ -189,7 +189,7 @@ cd ui && npm install && npm run dev   # → http://localhost:5173
 
 ## Sponsor tools
 
-| Sponsor | How Spore uses it |
+| Sponsor | How Blindspot uses it |
 |---|---|
 | VAST | VSS `/api/v1/search`, explore and captions to find the gap and pull real seed and real-condition clips; VSS upload + DataEngine ingest for 61 grown clips, now searchable; caption-quality baseline for a re-ingest prompt |
 | NVIDIA | Cosmos Transfer 2.5 on a Modal H100 (gap fill); hosted Cosmos3 Nano Reasoner and YOLO11s (the models under test) |
@@ -205,7 +205,7 @@ cd ui && npm install && npm run dev   # → http://localhost:5173
 | `USERNAME`, `PASSWORD` | VSS login (`vss/client.py`) |
 | `GPU_BEARER_TOKEN` | hosted YOLO11s and Cosmos3 Reasoner (`eval/yolo_eval.py`, `eval/reason_eval.py`) |
 | `WANDB_API_KEY` | W&B Inference + Weave (`loop/llm.py`, `loop/tracing.py`) |
-| optional: `WANDB_ENTITY`, `WANDB_PROJECT`, `SPORE_LLM_MODEL`, `YOLO_URL`, `COSMOS3_REASON_URL`, `SPORE_YOLO_BACKEND` | overrides |
+| optional: `WANDB_ENTITY`, `WANDB_PROJECT`, `BLINDSPOT_LLM_MODEL`, `YOLO_URL`, `COSMOS3_REASON_URL`, `BLINDSPOT_YOLO_BACKEND` | overrides |
 
 Modal (Cosmos Transfer, fine-tune) authenticates with `modal token new`, not `.env`.
 
@@ -213,8 +213,8 @@ Modal (Cosmos Transfer, fine-tune) authenticates with `modal token new`, not `.e
 
 ```bash
 # Whole loop, or one stage (1 search, 2 report, 3 fill, 4 measure, 5 loop)
-loop/.venv/bin/python loop/spore.py --iterations 1 --k 2
-loop/.venv/bin/python loop/spore.py --stage N
+loop/.venv/bin/python loop/blindspot.py --iterations 1 --k 2
+loop/.venv/bin/python loop/blindspot.py --stage N
 
 # 1 Search
 python3 vss/coverage.py                       # -> results/coverage.json
@@ -233,7 +233,7 @@ for S in $(python3 -c "import json;print(' '.join(s['seed_id'] for s in json.loa
 done
 # 3 Fill: Cosmos Transfer 2.5 on Modal (4 conditions + clear-day control, control weight 0.5)
 modal deploy gen/modal_transfer.py
-SPORE_CONDS=fog_day_heavy,rain_night_heavy,snow_day_heavy,clear_night_light,clear_day_light python3 gen/first_batch.py
+BLINDSPOT_CONDS=fog_day_heavy,rain_night_heavy,snow_day_heavy,clear_night_light,clear_day_light python3 gen/first_batch.py
 
 # 4 Measure
 eval/.venv/bin/python eval/run_all.py --reason   # hosted YOLO11s + Cosmos3 Reasoner + edge-SSIM -> results/evals/
@@ -279,7 +279,7 @@ Venv setup: [eval/README.md](eval/README.md), [gen/README.md](gen/README.md), [l
 
 ```
 vss/      VSS client: coverage search, real-archive check, synthetic upload
-loop/     loop/spore.py 5-stage loop, report.py (W&B Inference), Weave tracing
+loop/     loop/blindspot.py 5-stage loop, report.py (W&B Inference), Weave tracing
 gen/      weather.py physics layer, Cosmos Transfer 2.5 on Modal
 eval/     hosted YOLO11s + Cosmos3 Reasoner, fidelity, integrity, severity curve, overlays
 fix/      YOLO fine-tune experiment, VSS re-ingest prompt baseline
